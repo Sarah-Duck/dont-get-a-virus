@@ -2,6 +2,7 @@ function love.load()
   require "window"
   require "panel"
   require "startmenu"
+  love.graphics.setDefaultFilter("nearest", "nearest")
   sys = {}
   sys.width = love.graphics.getWidth()
   sys.height = love.graphics.getHeight()
@@ -26,19 +27,25 @@ function love.load()
   panel.s.width = 65
   panel.s.height = 20
   panel.s.activate = false
-  love.graphics.setNewFont("fonts/pressstart.ttf", 12)
+  love.graphics.setNewFont()
+  pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
+  pressstart:setFilter("nearest", "nearest")
+  love.graphics.setFont(pressstart)
   test = false
   win = {}
   win[1] = {}
   win[1].x = 100
   win[1].y = 100
-  win[1].w = 300
-  win[1].h = 300
+  win[1].w = 250
+  win[1].h = 400
   win[1].px = win[1].x
   win[1].py = win[1].y
   win[1].ex = false
   win[1].cvs = love.graphics.newCanvas(win[1].w, win[1].h)
   win[1].fd = false
+  win[1].s = 1
+  win[1].min = false
+  win[1].miny = 0
 end
 function love.update(dt)
   sys.mouse.x = love.mouse.getX()
@@ -53,6 +60,13 @@ function love.update(dt)
       end
     end
   end
+  if love.keyboard.isDown("c") == true and win[1].ex == true then
+    win[1].ex = false
+    win[1].s = 0.2
+  end
+  if love.keyboard.isDown("u") == true and win[1].min == true then
+    win[1].min = false
+  end
 end
 function love.mousepressed(x, y, button)
   sys.mouse.p.x = x
@@ -63,9 +77,12 @@ function love.mousereleased(x, y, button)
   sys.mouse.p.p = false
 end
 function love.draw()
-  drawStart()
-  drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
-  if test == true then
-    love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
+  if win[1].ex == true and win[1].s == 0 then
+  elseif win[1].ex == false or win[1].s ~= 0 then
+    drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
   end
+  drawStart()
+  --if test == true then
+  --  love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
+  --end
 end

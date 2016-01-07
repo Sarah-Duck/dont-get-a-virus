@@ -1,0 +1,11 @@
+function drawStart()
+  love.graphics.setColor(192, 192, 192)
+  love.graphics.rectangle("fill", panel.x, panel.y, panel.width, panel.height)
+  love.graphics.setColor(220, 220, 220)
+  love.graphics.setLineWidth(2)
+  love.graphics.line(panel.x, panel.y, panel.width, panel.y)
+  love.graphics.setColor(150, 150, 150)
+  love.graphics.rectangle("line", panel.s.x, panel.s.y, panel.s.width, panel.s.height)
+  love.graphics.setColor(70,70,70)
+  love.graphics.print("START", panel.s.x+4, panel.s.y+7)
+end
