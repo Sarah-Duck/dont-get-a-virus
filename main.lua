@@ -1,13 +1,21 @@
 function love.load()
+  require "window"
+  require "panel"
+  require "startmenu"
   sys = {}
   sys.width = love.graphics.getWidth()
   sys.height = love.graphics.getHeight()
   sys.mouse = {}
+  sys.mouse.p = {}
   sys.mouse.x = love.mouse.getX
   sys.mouse.y = love.mouse.getY
+  sys.mouse.p.x = 0
+  sys.mouse.p.y = 0
+  sys.mouse.p.p = false
+  sys.mouse.drag = false
   love.graphics.setBackgroundColor(0, 128, 128)
   panel = {}
-  panel.thick = 35
+  panel.thick = 30
   panel.x = 0
   panel.y = sys.height-panel.thick
   panel.width = sys.width
@@ -16,10 +24,21 @@ function love.load()
   panel.s.x = panel.x + 5
   panel.s.y = panel.y + 5
   panel.s.width = 65
-  panel.s.height = 25
+  panel.s.height = 20
   panel.s.activate = false
   love.graphics.setNewFont("fonts/pressstart.ttf", 12)
   test = false
+  win = {}
+  win[1] = {}
+  win[1].x = 100
+  win[1].y = 100
+  win[1].w = 300
+  win[1].h = 300
+  win[1].px = win[1].x
+  win[1].py = win[1].y
+  win[1].ex = false
+  win[1].cvs = love.graphics.newCanvas(win[1].w, win[1].h)
+  win[1].fd = false
 end
 function love.update(dt)
   sys.mouse.x = love.mouse.getX()
@@ -35,17 +54,18 @@ function love.update(dt)
     end
   end
 end
+function love.mousepressed(x, y, button)
+  sys.mouse.p.x = x
+  sys.mouse.p.y = y
+  sys.mouse.p.p = true
+end
+function love.mousereleased(x, y, button)
+  sys.mouse.p.p = false
+end
 function love.draw()
-  love.graphics.setColor(192, 192, 192)
-  love.graphics.rectangle("fill", panel.x, panel.y, panel.width, panel.height)
-  love.graphics.setColor(220, 220, 220)
-  love.graphics.setLineWidth(3)
-  love.graphics.line(panel.x, panel.y, panel.width, panel.y)
-  love.graphics.setColor(165, 165, 165)
-  love.graphics.rectangle("line", panel.s.x, panel.s.y, panel.s.width, panel.s.height)
-  love.graphics.setColor(70,70,70)
-  love.graphics.print("START", panel.s.x+4, panel.s.y+9)
+  drawStart()
+  drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
   if test == true then
-    love.graphics.print("IT WORKS")
+    love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
   end
 end
