@@ -46,6 +46,8 @@ function love.load()
   win[1].s = 1
   win[1].min = false
   win[1].miny = 0
+  start = {}
+  start.cvs = love.graphics.newCanvas(250, 350)
 end
 function love.update(dt)
   sys.mouse.x = love.mouse.getX()
@@ -85,4 +87,5 @@ function love.draw()
   --if test == true then
   --  love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
   --end
+  drawMenu()
 end

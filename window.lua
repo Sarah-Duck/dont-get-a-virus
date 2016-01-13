@@ -70,5 +70,6 @@ function drawWindow(id, x, y, w, h, t)
   if win[id].miny < 0 then
     win[id].miny = 0
   end
+  love.graphics.setColor(255,255,255)
   love.graphics.draw(win[id].cvs, win[id].x, win[id].y, 0, win[id].s)
 end
