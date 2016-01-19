@@ -18,7 +18,7 @@ function love.load()
   panel = {}
   panel.thick = 30
   panel.x = 0
-  panel.y = sys.height-panel.thick
+  panel.y = 600-panel.thick
   panel.width = sys.width
   panel.height = panel.thick
   panel.s = {}
@@ -48,6 +48,8 @@ function love.load()
   win[1].miny = 0
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
+  start.o = false
+  start.p = false
 end
 function love.update(dt)
   sys.mouse.x = love.mouse.getX()
@@ -77,6 +79,7 @@ function love.mousepressed(x, y, button)
 end
 function love.mousereleased(x, y, button)
   sys.mouse.p.p = false
+  start.p = false
 end
 function love.draw()
   if win[1].ex == true and win[1].s == 0 then
@@ -84,8 +87,23 @@ function love.draw()
     drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
   end
   drawStart()
+  if sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x and sys.mouse.p.x <= panel.s.x+panel.s.width then
+    if sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height then
+      start.p = true
+      if start.o == true then
+        start.o = false
+      elseif start.o == false then
+        start.o = true
+      end
+    end
+  end
+  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
+    start.o = false
+  end
+  if start.o == true then
+    drawMenu()
+  end
   --if test == true then
   --  love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
   --end
-  drawMenu()
 end
