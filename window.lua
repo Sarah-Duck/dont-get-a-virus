@@ -21,11 +21,10 @@ function drawWindow(id, x, y, w, h, t)
   love.graphics.setColor(220, 220, 220)
   love.graphics.print(t, 0+6, 0+9) --Title
   love.graphics.setCanvas()
-  if sys.mouse.p.p == true and sys.mouse.p.x >= x+2 and sys.mouse.p.x <= (x+2)+(w-44) then
-    if sys.mouse.p.y >= y+2 and sys.mouse.p.y <= y+22 then
-      sys.mouse.drag = true
-      test = true
-    end
+  if(sys.mouse.p.p == true and sys.mouse.p.x >= x+2 and sys.mouse.p.x <= (x+2)+(w-44)
+  and sys.mouse.p.y >= y+2 and sys.mouse.p.y <= y+22) then
+    sys.mouse.drag = true
+    test = true
   end
   if sys.mouse.p.p == false then
     sys.mouse.drag = false
@@ -36,10 +35,9 @@ function drawWindow(id, x, y, w, h, t)
     win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
     win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
   end
-  if sys.mouse.p.p == true and sys.mouse.p.x >= x+w-22 and sys.mouse.p.x <= (x+w-22)+16 then
-    if sys.mouse.drag == false and sys.mouse.p.y >= y+5 and sys.mouse.p.y <= (y+5)+16 then
-      win[id].ex = true
-    end
+  if (sys.mouse.p.p == true and sys.mouse.p.x >= x+w-22 and sys.mouse.p.x <= (x+w-22)+16
+  and sys.mouse.drag == false and sys.mouse.p.y >= y+5 and sys.mouse.p.y <= (y+5)+16) then
+    win[id].ex = true
   end
   if win[id].ex == true and win[id].s ~= 0 then
     win[id].s = win[id].s - 0.2
@@ -51,10 +49,9 @@ function drawWindow(id, x, y, w, h, t)
   elseif win[id].s >= 1 then
     win[id].s = 1
   end
-  if win[id].min == false and sys.mouse.p.p == true and sys.mouse.p.x >= x+w-40 and sys.mouse.p.x <= (x+w-40)+16 then
-    if sys.mouse.drag == false and sys.mouse.p.y >= y+5 and sys.mouse.p.y <= (y+5)+16 then
-      win[id].min = true
-    end
+  if (win[id].min == false and sys.mouse.p.p == true and sys.mouse.p.x >= x+w-40 and sys.mouse.p.x <= (x+w-40)+16
+  and sys.mouse.drag == false and sys.mouse.p.y >= y+5 and sys.mouse.p.y <= (y+5)+16) then
+    win[id].min = true
   end
   if win[id].min == true and win[id].miny < 800 then
     win[id].y = win[id].y + 100

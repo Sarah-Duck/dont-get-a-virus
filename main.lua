@@ -3,6 +3,9 @@ function love.load()
   require "panel"
   require "startmenu"
   love.graphics.setDefaultFilter("nearest", "nearest")
+  icons = {
+    chat = love.graphics.newImage("assets/icon_chat.png")
+  }
   sys = {}
   sys.width = love.graphics.getWidth()
   sys.height = love.graphics.getHeight()
@@ -40,7 +43,7 @@ function love.load()
   win[1].h = 400
   win[1].px = win[1].x
   win[1].py = win[1].y
-  win[1].ex = false
+  win[1].ex = true
   win[1].cvs = love.graphics.newCanvas(win[1].w, win[1].h)
   win[1].fd = false
   win[1].s = 1
@@ -56,13 +59,6 @@ function love.update(dt)
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then
     love.event.quit()
-  end
-  if love.mouse.isDown(1) then
-    if sys.mouse.x >= panel.s.x and sys.mouse.x <= panel.s.x+panel.s.width then
-      if sys.mouse.y >= panel.s.y and sys.mouse.y <= panel.s.y+panel.s.height then
-        test = true
-      end
-    end
   end
   if love.keyboard.isDown("c") == true and win[1].ex == true then
     win[1].ex = false
@@ -87,14 +83,13 @@ function love.draw()
     drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
   end
   drawStart()
-  if sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x and sys.mouse.p.x <= panel.s.x+panel.s.width then
-    if sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height then
-      start.p = true
-      if start.o == true then
-        start.o = false
-      elseif start.o == false then
-        start.o = true
-      end
+  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x and sys.mouse.p.x <= panel.s.x+panel.s.width
+  and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
+    start.p = true
+    if start.o == true then
+      start.o = false
+    elseif start.o == false then
+      start.o = true
     end
   end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
@@ -103,7 +98,4 @@ function love.draw()
   if start.o == true then
     drawMenu()
   end
-  --if test == true then
-  --  love.graphics.print("IT WORKS " .. sys.mouse.p.x, 100, 100)
-  --end
 end
