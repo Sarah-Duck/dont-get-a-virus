@@ -3,8 +3,10 @@ function love.load()
   require "panel"
   require "startmenu"
   love.graphics.setDefaultFilter("nearest", "nearest")
-  icons = {
-    chat = love.graphics.newImage("assets/icon_chat.png")
+  icons = {}
+  icons[32] = {
+    chat = love.graphics.newImage("assets/icon_32_chat.png"),
+    internet = love.graphics.newImage("assets/icon_32_internet.png")
   }
   sys = {}
   sys.width = love.graphics.getWidth()
@@ -46,7 +48,7 @@ function love.load()
   win[1].ex = true
   win[1].cvs = love.graphics.newCanvas(win[1].w, win[1].h)
   win[1].fd = false
-  win[1].s = 1
+  win[1].s = 0
   win[1].min = false
   win[1].miny = 0
   start = {}
@@ -59,10 +61,6 @@ function love.update(dt)
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then
     love.event.quit()
-  end
-  if love.keyboard.isDown("c") == true and win[1].ex == true then
-    win[1].ex = false
-    win[1].s = 0.2
   end
   if love.keyboard.isDown("u") == true and win[1].min == true then
     win[1].min = false

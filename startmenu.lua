@@ -22,6 +22,8 @@ function drawMenu()
     love.graphics.setColor(70,70,70)
     love.graphics.print("INTERNET", 85, 5+22)
   end
+  love.graphics.setColor(255,255,255)
+  love.graphics.draw(icons[32].internet, 44, 13)
   love.graphics.setColor(192, 192, 192)
   if(sys.mouse.x >= 35 and sys.mouse.x <= 242
   and sys.mouse.y >= 600-30-350+2+5+55 and sys.mouse.y <= 600-30-350+2+5+50+55) then
@@ -29,13 +31,17 @@ function drawMenu()
     love.graphics.rectangle("fill", 35, 5+55, 208, 50)
     love.graphics.setColor(220,220,220)
     love.graphics.print("CHAT", 85, 5+55+22)
+    if sys.mouse.p.p == true and win[1].ex == true then
+      win[1].ex = false
+      win[1].s = 0.2
+    end
   else
     love.graphics.rectangle("fill", 35, 5+55, 208, 50)
     love.graphics.setColor(70,70,70)
     love.graphics.print("CHAT", 85, 5+55+22)
   end
   love.graphics.setColor(255,255,255)
-  love.graphics.draw(icons.chat, 44, 60+10)
+  love.graphics.draw(icons[32].chat, 44, 60+10)
   love.graphics.setColor(192, 192, 192)
   if(sys.mouse.x >= 35 and sys.mouse.x <= 242
   and sys.mouse.y >= 600-30-350+2+5+55+55 and sys.mouse.y <= 600-30-350+2+5+50+55+55) then
