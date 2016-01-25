@@ -17,6 +17,10 @@ function drawMenu()
     love.graphics.rectangle("fill", 35, 5, 208, 50)
     love.graphics.setColor(220,220,220)
     love.graphics.print("INTERNET", 85, 5+22)
+    if sys.mouse.p.p == true and win[2].ex == true then
+      win[2].ex = false
+      win[2].s = 0.2
+    end
   else
     love.graphics.rectangle("fill", 35, 5, 208, 50)
     love.graphics.setColor(70,70,70)

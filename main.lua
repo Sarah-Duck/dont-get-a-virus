@@ -2,59 +2,14 @@ function love.load()
   require "window"
   require "panel"
   require "startmenu"
+  require "var"
   love.graphics.setDefaultFilter("nearest", "nearest")
-  icons = {}
-  icons[32] = {
-    chat = love.graphics.newImage("assets/icon_32_chat.png"),
-    internet = love.graphics.newImage("assets/icon_32_internet.png")
-  }
-  sys = {}
-  sys.width = love.graphics.getWidth()
-  sys.height = love.graphics.getHeight()
-  sys.mouse = {}
-  sys.mouse.p = {}
-  sys.mouse.x = love.mouse.getX
-  sys.mouse.y = love.mouse.getY
-  sys.mouse.p.x = 0
-  sys.mouse.p.y = 0
-  sys.mouse.p.p = false
-  sys.mouse.drag = false
   love.graphics.setBackgroundColor(0, 128, 128)
-  panel = {}
-  panel.thick = 30
-  panel.x = 0
-  panel.y = 600-panel.thick
-  panel.width = sys.width
-  panel.height = panel.thick
-  panel.s = {}
-  panel.s.x = panel.x + 5
-  panel.s.y = panel.y + 5
-  panel.s.width = 65
-  panel.s.height = 20
-  panel.s.activate = false
   love.graphics.setNewFont()
   pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
   pressstart:setFilter("nearest", "nearest")
   love.graphics.setFont(pressstart)
-  test = false
-  win = {}
-  win[1] = {}
-  win[1].x = 100
-  win[1].y = 100
-  win[1].w = 250
-  win[1].h = 400
-  win[1].px = win[1].x
-  win[1].py = win[1].y
-  win[1].ex = true
-  win[1].cvs = love.graphics.newCanvas(win[1].w, win[1].h)
-  win[1].fd = false
-  win[1].s = 0
-  win[1].min = false
-  win[1].miny = 0
-  start = {}
-  start.cvs = love.graphics.newCanvas(250, 350)
-  start.o = false
-  start.p = false
+  loadVar()
 end
 function love.update(dt)
   sys.mouse.x = love.mouse.getX()
@@ -64,6 +19,7 @@ function love.update(dt)
   end
   if love.keyboard.isDown("u") == true and win[1].min == true then
     win[1].min = false
+    win[2].min = false
   end
 end
 function love.mousepressed(x, y, button)
@@ -78,7 +34,13 @@ end
 function love.draw()
   if win[1].ex == true and win[1].s == 0 then
   elseif win[1].ex == false or win[1].s ~= 0 then
-    drawWindow(1, win[1].x, win[1].y, win[1].w, win[1].h, "Chat")
+    drawWindow(1)
+    layer[1].id = 1
+  end
+  if win[2].ex == true and win[2].s == 0 then
+  elseif win[2].ex == false or win[2].s ~= 0 then
+    drawWindow(2)
+    layer[1].id = 2
   end
   drawStart()
   if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x and sys.mouse.p.x <= panel.s.x+panel.s.width
@@ -95,5 +57,13 @@ function love.draw()
   end
   if start.o == true then
     drawMenu()
+  end
+  if layer[2].cvs ~= nil then
+    love.graphics.setColor(255,255,255)
+    love.graphics.draw(layer[2])
+  end
+  if layer[1].cvs ~= nil then
+    love.graphics.setColor(255,255,255)
+    love.graphics.draw(layer[1].cvs, layer[1].x, layer[1].y, 0, layer[1].s)
   end
 end
