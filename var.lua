@@ -27,6 +27,14 @@ function loadVar()
   panel.s.width = 65
   panel.s.height = 20
   panel.s.activate = false
+  panel.b = {}
+  panel.b[1] = 0
+  panel.b[2] = 0
+  panel.b[3] = 0
+  panel.b[4] = 0
+  panel.b[5] = 0
+  panel.b[6] = 0
+  panel.b[7] = 0
   test = false
   win = {}
   win[1] = {}
@@ -44,6 +52,7 @@ function loadVar()
   win[1].miny = 0
   win[1].title = "Chat"
   win[1].layer = 0
+  win[1].panel = 0
   win[2] = {}
   win[2].x = 100
   win[2].y = 100
@@ -59,6 +68,7 @@ function loadVar()
   win[2].miny = 0
   win[2].title = "Internet"
   win[2].layer = 0
+  win[2].panel = 0
   winOpen = true
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)

@@ -34,6 +34,21 @@ end
 function love.draw()
   if win[1].ex == true and win[1].s == 0 then
     win[1].layer = 0
+    win[1].panel = 0
+    if panel.b[1] == 1 then
+      panel.b[1] = panel.b[2]
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[2] == 1 then
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    end
   elseif win[1].ex == false or win[1].s ~= 0 then
     if layer[1] == 0 then
       layer[1] = 1
@@ -45,10 +60,30 @@ function love.draw()
       win[1].layer = 1
       win[2].layer = 2
     end
+    if panel.b[1] == 0 then
+      panel.b[1] = 1
+    elseif panel.b[2] == 0 and panel.b[1] ~= 1 then
+      panel.b[2] = 1
+    end
     drawWindow(1)
   end
   if win[2].ex == true and win[2].s == 0 then
     win[1].layer = 0
+    win[1].panel = 0
+    if panel.b[1] == 2 then
+      panel.b[1] = panel.b[2]
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[2] == 2 then
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    end
   elseif win[2].ex == false or win[2].s ~= 0 then
     if layer[1] == 0 then
       layer[1] = 2
@@ -59,6 +94,11 @@ function love.draw()
       layer[1] = 2
       win[2].layer = 1
       win[1].layer = 2
+    end
+    if panel.b[1] == 0 then
+      panel.b[1] = 2
+    elseif panel.b[2] == 0 and panel.b[1] ~= 2 then
+      panel.b[2] = 2
     end
     drawWindow(2)
   end
@@ -85,5 +125,4 @@ function love.draw()
   if start.o == true then
     drawMenu()
   end
-  love.graphics.print(win[1].layer .. " " .. win[2].layer)
 end
