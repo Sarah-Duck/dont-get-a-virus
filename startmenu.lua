@@ -20,6 +20,7 @@ function drawMenu()
     if sys.mouse.p.p == true and win[2].ex == true then
       win[2].ex = false
       win[2].s = 0.2
+      win[2].layer = 1
     end
   else
     love.graphics.rectangle("fill", 35, 5, 208, 50)
@@ -38,6 +39,7 @@ function drawMenu()
     if sys.mouse.p.p == true and win[1].ex == true then
       win[1].ex = false
       win[1].s = 0.2
+      win[1].layer = 1
     end
   else
     love.graphics.rectangle("fill", 35, 5+55, 208, 50)

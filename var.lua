@@ -43,7 +43,7 @@ function loadVar()
   win[1].min = false
   win[1].miny = 0
   win[1].title = "Chat"
-  win[1].layer = 1
+  win[1].layer = 0
   win[2] = {}
   win[2].x = 100
   win[2].y = 100
@@ -58,22 +58,13 @@ function loadVar()
   win[2].min = false
   win[2].miny = 0
   win[2].title = "Internet"
-  win[2].layer = 1
+  win[2].layer = 0
+  winOpen = true
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
   start.o = false
   start.p = false
   layer = {}
-  layer[1] = {}
-  layer[1].id = 0
-  layer[1].cvs = nil
-  layer[1].x = 0
-  layer[1].y = 0
-  layer[1].s = 0
-  layer[2] = {}
-  layer[2].id = 0
-  layer[2].cvs = nil
-  layer[2].x = 0
-  layer[2].y = 0
-  layer[2].s = 0
+  layer[1] = 0
+  layer[2] = 0
 end

@@ -22,16 +22,16 @@ function drawWindow(id)
   love.graphics.print(win[id].title, 0+6, 0+9) --Title
   love.graphics.setCanvas()
   if(sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+2 and sys.mouse.p.x <= (win[id].x+2)+(win[id].w-44)
-  and sys.mouse.p.y >= win[id].y+2 and sys.mouse.p.y <= win[id].y+22) and win[id].layer == 1 then
+  and sys.mouse.p.y >= win[id].y+2 and sys.mouse.p.y <= win[id].y+22) then
     sys.mouse.drag = true
-    test = true
+    win[id].layer = 1
   end
   if sys.mouse.p.p == false then
     sys.mouse.drag = false
     win[id].px = win[id].x
     win[id].py = win[id].y
   end
-  if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and id == layer[1].id then
+  if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
     win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
     win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
   end
@@ -69,9 +69,4 @@ function drawWindow(id)
     win[id].miny = 0
   end
   love.graphics.setColor(255,255,255)
-  layer[win[id].layer].id = id
-  layer[win[id].layer].cvs = win[id].cvs
-  layer[win[id].layer].x = win[id].x
-  layer[win[id].layer].y = win[id].y
-  layer[win[id].layer].s = win[id].s
 end

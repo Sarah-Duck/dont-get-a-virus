@@ -33,17 +33,37 @@ function love.mousereleased(x, y, button)
 end
 function love.draw()
   if win[1].ex == true and win[1].s == 0 then
+    win[1].layer = 0
   elseif win[1].ex == false or win[1].s ~= 0 then
+    if layer[1] == 0 then
+      layer[1] = 1
+      win[1].layer = 1
+    end
+    if layer[1] == 2 and win[1].layer == 1 then
+      layer[2] = 2
+      layer[1] = 1
+      win[1].layer = 1
+      win[2].layer = 2
+    end
     drawWindow(1)
-    layer[1].id = 1
   end
   if win[2].ex == true and win[2].s == 0 then
+    win[1].layer = 0
   elseif win[2].ex == false or win[2].s ~= 0 then
+    if layer[1] == 0 then
+      layer[1] = 2
+      win[2].layer = 1
+    end
+    if layer[1] == 1 and win[2].layer == 1 then
+      layer[2] = 1
+      layer[1] = 2
+      win[2].layer = 1
+      win[1].layer = 2
+    end
     drawWindow(2)
-    layer[1].id = 2
   end
-  drawStart()
-  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x and sys.mouse.p.x <= panel.s.x+panel.s.width
+  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
+  and sys.mouse.p.x <= panel.s.x+panel.s.width
   and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
     start.p = true
     if start.o == true then
@@ -55,15 +75,15 @@ function love.draw()
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
     start.o = false
   end
+  if layer[2] ~= 0 then
+    love.graphics.draw(win[layer[2]].cvs, win[layer[2]].x, win[layer[2]].y, 0, win[layer[2]].s)
+  end
+  if layer[1] ~= 0 then
+    love.graphics.draw(win[layer[1]].cvs, win[layer[1]].x, win[layer[1]].y, 0, win[layer[1]].s)
+  end
+  drawStart()
   if start.o == true then
     drawMenu()
   end
-  if layer[2].cvs ~= nil then
-    love.graphics.setColor(255,255,255)
-    love.graphics.draw(layer[2])
-  end
-  if layer[1].cvs ~= nil then
-    love.graphics.setColor(255,255,255)
-    love.graphics.draw(layer[1].cvs, layer[1].x, layer[1].y, 0, layer[1].s)
-  end
+  love.graphics.print(win[1].layer .. " " .. win[2].layer)
 end
