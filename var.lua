@@ -2,10 +2,10 @@ function loadVar()
   icons = {}
   icons[32] = {
     chat = love.graphics.newImage("assets/icon_32_chat.png"),
-    internet = love.graphics.newImage("assets/icon_32_internet.png")
-    files = love.graphics.newImage("assets/icon_32_files.png")
-    file = love.graphics.newImage("assets/icon_32_file.png")
-    help = love.graphics.newImage("assets/icon_32_help.png")
+    internet = love.graphics.newImage("assets/icon_32_internet.png"),
+    files = love.graphics.newImage("assets/icon_32_files.png"),
+    file = love.graphics.newImage("assets/icon_32_file.png"),
+    help = love.graphics.newImage("assets/icon_32_help.png"),
     torrentr = love.graphics.newImage("assets/icon_32_torrentr.png")
   }
   sys = {}
