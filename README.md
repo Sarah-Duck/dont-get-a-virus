@@ -1,4 +1,4 @@
-# dont-get-a-virus
+# Don't Get a Virus
 An idea for a game. The point of the game is to not get a virus on your computer. I'm making the game with [Love2D](https://love2d.org/).
 The game will act as a computer, and you're supposed to avoid getting viruses on the computer.
 You will be given various tasks, and you will have to complete the tasks without getting any viruses.
