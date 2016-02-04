@@ -3,6 +3,13 @@ function love.load()
   require "panel"
   require "startmenu"
   require "var"
+  require "desktop"
+  require "internet"
+  require "files"
+  require "torrent"
+  require "help"
+  require "chat"
+  require "settings"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 128, 128)
   love.graphics.setNewFont()
