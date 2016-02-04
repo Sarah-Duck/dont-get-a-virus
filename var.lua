@@ -6,7 +6,8 @@ function loadVar()
     files = love.graphics.newImage("assets/icon_32_files.png"),
     file = love.graphics.newImage("assets/icon_32_file.png"),
     help = love.graphics.newImage("assets/icon_32_help.png"),
-    torrentr = love.graphics.newImage("assets/icon_32_torrentr.png")
+    torrentr = love.graphics.newImage("assets/icon_32_torrentr.png"),
+    settings = love.graphics.newImage("assets/icon_32_settings.png")
   }
   sys = {}
   sys.width = love.graphics.getWidth()
