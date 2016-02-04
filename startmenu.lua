@@ -90,6 +90,20 @@ function drawMenu()
   end
   love.graphics.setColor(255,255,255)
   love.graphics.draw(icons[32].help, 44, 60+10+54+55+55)
+  love.graphics.setColor(192, 192, 192)
+  if(sys.mouse.x >= 35 and sys.mouse.x <= 242
+  and sys.mouse.y >= 600-30-350+2+5+55+55+55+55+55 and sys.mouse.y <= 600-30-350+2+5+50+55+55+55+55+55) then
+    love.graphics.setColor(0,0,120)
+    love.graphics.rectangle("fill", 35, 5+55+55+55+55+55, 208, 50)
+    love.graphics.setColor(220,220,220)
+    love.graphics.print("SETTINGS", 85, 5+55+55+55+55+55+22)
+  else
+    love.graphics.rectangle("fill", 35, 5+55+55+55+55+55, 208, 50)
+    love.graphics.setColor(70,70,70)
+    love.graphics.print("SETTINGS", 85, 5+55+55+55+55+55+22)
+  end
+  love.graphics.setColor(255,255,255)
+  love.graphics.draw(icons[32].settings, 44, 60+10+54+55+55+55)
   love.graphics.setCanvas()
   love.graphics.setColor(255,255,255)
   love.graphics.draw(start.cvs, 0, 600-30-350+2)
