@@ -39,6 +39,7 @@ function love.mousereleased(x, y, button)
   start.p = false
 end
 function love.draw()
+  drawDesktop()
   if win[1].ex == true and win[1].s == 0 then
     win[1].layer = 0
     win[1].panel = 0

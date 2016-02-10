@@ -82,4 +82,6 @@ function loadVar()
   layer = {}
   layer[1] = 0
   layer[2] = 0
+  desktop = {}
+  desktop.bg = {}
 end
