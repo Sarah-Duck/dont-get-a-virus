@@ -110,6 +110,41 @@ function love.draw()
     end
     drawWindow(2)
   end
+  if win[3].ex == true and win[3].s == 0 then
+    win[3].layer = 0
+    win[3].panel = 0
+    if panel.b[1] == 1 then
+      panel.b[1] = panel.b[2]
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[2] == 1 then
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    end
+  elseif win[3].ex == false or win[3].s ~= 0 then
+    if layer[1] == 0 then
+      layer[1] = 3
+      win[3].layer = 1
+    end
+    if layer[1] == 2 and win[3].layer == 1 then
+      layer[2] = 2
+      layer[1] = 3
+      win[3].layer = 1
+      win[2].layer = 2
+    end
+    if panel.b[1] == 0 then
+      panel.b[1] = 1
+    elseif panel.b[2] == 0 and panel.b[1] ~= 1 then
+      panel.b[2] = 1
+    end
+    drawWindow(3)
+  end
   if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
   and sys.mouse.p.x <= panel.s.x+panel.s.width
   and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then

@@ -74,6 +74,22 @@ function loadVar()
   win[2].title = "Internet"
   win[2].layer = 0
   win[2].panel = 0
+  win[3] = {}
+  win[3].x = 100
+  win[3].y = 100
+  win[3].w = 450
+  win[3].h = 400
+  win[3].px = win[2].x
+  win[3].py = win[2].y
+  win[3].ex = true
+  win[3].cvs = love.graphics.newCanvas(win[3].w, win[3].h)
+  win[3].fd = false
+  win[3].s = 0
+  win[3].min = false
+  win[3].miny = 0
+  win[3].title = "Files"
+  win[3].layer = 0
+  win[3].panel = 0
   winOpen = true
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
@@ -82,6 +98,10 @@ function loadVar()
   layer = {}
   layer[1] = 0
   layer[2] = 0
+  layer[3] = 0
   desktop = {}
-  desktop.bg = {}
+  desktop.bg = {
+    hills = love.graphics.newImage("assets/bg_hills.png")
+  }
+  desktop.bg.current = desktop.bg.hills
 end

@@ -55,6 +55,11 @@ function drawMenu()
     love.graphics.rectangle("fill", 35, 5+55+55, 208, 50)
     love.graphics.setColor(220,220,220)
     love.graphics.print("FILES", 85, 5+55+55+22)
+    if sys.mouse.p.p == true and win[3].ex == true then
+      win[3].ex = false
+      win[3].s = 0.2
+      win[3].layer = 1
+    end
   else
     love.graphics.rectangle("fill", 35, 5+55+55, 208, 50)
     love.graphics.setColor(70,70,70)
