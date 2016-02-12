@@ -56,6 +56,11 @@ function love.draw()
       panel.b[4] = panel.b[5]
       panel.b[5] = panel.b[6]
       panel.b[6] = panel.b[7]
+    elseif panel.b[3] == 1 then
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
     end
   elseif win[1].ex == false or win[1].s ~= 0 then
     if layer[1] == 0 then
@@ -91,6 +96,11 @@ function love.draw()
       panel.b[4] = panel.b[5]
       panel.b[5] = panel.b[6]
       panel.b[6] = panel.b[7]
+    elseif panel.b[3] == 2 then
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
     end
   elseif win[2].ex == false or win[2].s ~= 0 then
     if layer[1] == 0 then
@@ -113,15 +123,20 @@ function love.draw()
   if win[3].ex == true and win[3].s == 0 then
     win[3].layer = 0
     win[3].panel = 0
-    if panel.b[1] == 1 then
+    if panel.b[1] == 3 then
       panel.b[1] = panel.b[2]
       panel.b[2] = panel.b[3]
       panel.b[3] = panel.b[4]
       panel.b[4] = panel.b[5]
       panel.b[5] = panel.b[6]
       panel.b[6] = panel.b[7]
-    elseif panel.b[2] == 1 then
+    elseif panel.b[2] == 3 then
       panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[3] == 3 then
       panel.b[3] = panel.b[4]
       panel.b[4] = panel.b[5]
       panel.b[5] = panel.b[6]
@@ -157,6 +172,9 @@ function love.draw()
   end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
     start.o = false
+  end
+  if layer[3] ~= 0 then
+    love.graphics.draw(win[layer[3]].cvs, win[layer[3]].x, win[layer[3]].y, 0, win[layer[3]].s)
   end
   if layer[2] ~= 0 then
     love.graphics.draw(win[layer[2]].cvs, win[layer[2]].x, win[layer[2]].y, 0, win[layer[2]].s)
