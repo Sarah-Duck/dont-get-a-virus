@@ -139,9 +139,9 @@ function love.draw()
       win[2].layer = 2
     end
     if panel.b[1] == 0 then
-      panel.b[1] = 1
-    elseif panel.b[2] == 0 and panel.b[1] ~= 1 then
-      panel.b[2] = 1
+      panel.b[1] = 3
+    elseif panel.b[2] == 0 and panel.b[1] ~= 3 then
+      panel.b[2] = 3
     end
     drawWindow(3)
   end
