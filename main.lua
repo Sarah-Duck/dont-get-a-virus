@@ -56,6 +56,18 @@ function love.draw()
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
     start.o = false
   end
+  if layer[7] ~= 0 then
+    love.graphics.draw(win[layer[7]].cvs, win[layer[7]].x, win[layer[7]].y, 0, win[layer[7]].s)
+  end
+  if layer[6] ~= 0 then
+    love.graphics.draw(win[layer[6]].cvs, win[layer[6]].x, win[layer[6]].y, 0, win[layer[6]].s)
+  end
+  if layer[5] ~= 0 then
+    love.graphics.draw(win[layer[5]].cvs, win[layer[5]].x, win[layer[5]].y, 0, win[layer[5]].s)
+  end
+  if layer[4] ~= 0 then
+    love.graphics.draw(win[layer[4]].cvs, win[layer[4]].x, win[layer[4]].y, 0, win[layer[4]].s)
+  end
   if layer[3] ~= 0 then
     love.graphics.draw(win[layer[3]].cvs, win[layer[3]].x, win[layer[3]].y, 0, win[layer[3]].s)
   end

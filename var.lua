@@ -99,6 +99,10 @@ function loadVar()
   layer[1] = 0
   layer[2] = 0
   layer[3] = 0
+  layer[4] = 0
+  layer[5] = 0
+  layer[6] = 0
+  layer[7] = 0
   desktop = {}
   desktop.bg = {
     hills = love.graphics.newImage("assets/bg_hills.png")
