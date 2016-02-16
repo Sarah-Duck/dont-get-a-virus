@@ -69,4 +69,6 @@ function love.draw()
   if start.o == true then
     drawMenu()
   end
+  love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
+  love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer, 0, 20)
 end
