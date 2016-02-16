@@ -79,8 +79,8 @@ function loadVar()
   win[3].y = 100
   win[3].w = 450
   win[3].h = 400
-  win[3].px = win[2].x
-  win[3].py = win[2].y
+  win[3].px = win[3].x
+  win[3].py = win[3].y
   win[3].ex = true
   win[3].cvs = love.graphics.newCanvas(win[3].w, win[3].h)
   win[3].fd = false
