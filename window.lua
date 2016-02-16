@@ -70,3 +70,69 @@ function drawWindow(id)
   end
   love.graphics.setColor(255,255,255)
 end
+function orderWindow(id)
+  if win[id].ex == true and win[id].s == 0 then
+    win[id].layer = 0
+    win[id].panel = 0
+    if panel.b[1] == id then
+      panel.b[1] = panel.b[2]
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[2] == id then
+      panel.b[2] = panel.b[3]
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[3] == id then
+      panel.b[3] = panel.b[4]
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    end
+  elseif win[id].ex == false or win[id].s ~= 0 then
+    if layer[1] == 0 then
+      layer[1] = id
+      win[id].layer = 1
+    end
+    if layer[1] ~= id and win[id].layer == 1 then
+      layer[7] = layer[6]
+      layer[6] = layer[5]
+      layer[5] = layer[4]
+      layer[4] = layer[3]
+      layer[3] = layer[2]
+      layer[2] = layer[1]
+      layer[1] = id
+      win[id].layer = 1
+      if layer[7] ~= 0 then
+        win[layer[7]].layer = 7
+      end
+      if layer[6] ~= 0 then
+        win[layer[6]].layer = 6
+      end
+      if layer[5] ~= 0 then
+        win[layer[5]].layer = 5
+      end
+      if layer[4] ~= 0 then
+        win[layer[4]].layer = 4
+      end
+      if layer[3] ~= 0 then
+        win[layer[3]].layer = 3
+      end
+      if layer[2] ~= 0 then
+        win[layer[2]].layer = 2
+      end
+    end
+    if panel.b[1] == 0 then
+      panel.b[1] = id
+    elseif panel.b[2] == 0 and panel.b[1] ~= id then
+      panel.b[2] = id
+    elseif panel.b[3] == 0 and panel.b[1] ~= id and panel.b[2] ~= id then
+      panel.b[3] = id
+    end
+    drawWindow(id)
+  end
+end
