@@ -101,13 +101,40 @@ function orderWindow(id)
       win[id].layer = 1
     end
     if layer[1] ~= id and win[id].layer == 1 then
-      layer[7] = layer[6]
-      layer[6] = layer[5]
-      layer[5] = layer[4]
-      layer[4] = layer[3]
-      layer[3] = layer[2]
-      layer[2] = layer[1]
-      layer[1] = id
+      if win[id].oldlayer == 2 then
+        layer[2] = layer[1]
+        layer[1] = id
+      elseif win[id].oldlayer == 3 then
+        layer[3] = layer[2]
+        layer[2] = layer[1]
+        layer[1] = id
+      elseif win[id].oldlayer == 4 then
+        layer[4] = layer[3]
+        layer[3] = layer[2]
+        layer[2] = layer[1]
+        layer[1] = id
+      elseif win[id].oldlayer == 5 then
+        layer[5] = layer[4]
+        layer[4] = layer[3]
+        layer[3] = layer[2]
+        layer[2] = layer[1]
+        layer[1] = id
+      elseif win[id].oldlayer == 6 then
+        layer[6] = layer[5]
+        layer[5] = layer[4]
+        layer[4] = layer[3]
+        layer[3] = layer[2]
+        layer[2] = layer[1]
+        layer[1] = id
+      else
+        layer[7] = layer[6]
+        layer[6] = layer[5]
+        layer[5] = layer[4]
+        layer[4] = layer[3]
+        layer[3] = layer[2]
+        layer[2] = layer[1]
+        layer[1] = id
+      end
       win[id].layer = 1
       if layer[7] ~= 0 then
         win[layer[7]].layer = 7
