@@ -58,6 +58,7 @@ function loadVar()
   win[1].title = "Chat"
   win[1].layer = 0
   win[1].panel = 0
+  win[1].oldlayer = 0
   win[2] = {}
   win[2].x = 100
   win[2].y = 100
@@ -74,6 +75,7 @@ function loadVar()
   win[2].title = "Internet"
   win[2].layer = 0
   win[2].panel = 0
+  win[2].oldlayer = 0
   win[3] = {}
   win[3].x = 100
   win[3].y = 100
@@ -90,6 +92,7 @@ function loadVar()
   win[3].title = "Files"
   win[3].layer = 0
   win[3].panel = 0
+  win[3].oldlayer = 0
   winOpen = true
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)

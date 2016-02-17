@@ -23,9 +23,11 @@ function drawStart()
     and sys.mouse.p.x <= (panel.s.x+72)+(panel.s.width*2)
     and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
       if win[panel.b[1]].min == false then
+        win[panel.b[1]].oldlayer = win[panel.b[1]].layer
         win[panel.b[1]].layer = 1
       elseif win[panel.b[1]].min == true then
         win[panel.b[1]].min = false
+        win[panel.b[1]].oldlayer = win[panel.b[1]].layer
         win[panel.b[1]].layer = 1
       end
     end
@@ -45,9 +47,11 @@ function drawStart()
     and sys.mouse.p.x <= (panel.s.x+72+70+67)+(panel.s.width*2)
     and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
       if win[panel.b[2]].min == false then
+        win[panel.b[2]].oldlayer = win[panel.b[2]].layer
         win[panel.b[2]].layer = 1
       elseif win[panel.b[2]].min == true then
         win[panel.b[2]].min = false
+        win[panel.b[2]].oldlayer = win[panel.b[2]].layer
         win[panel.b[2]].layer = 1
       end
     end
@@ -67,9 +71,11 @@ function drawStart()
     and sys.mouse.p.x <= (panel.s.x+72+137+137)+(panel.s.width*2)
     and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
       if win[panel.b[3]].min == false then
+        win[panel.b[3]].oldlayer = win[panel.b[3]].layer
         win[panel.b[3]].layer = 1
       elseif win[panel.b[2]].min == true then
         win[panel.b[3]].min = false
+        win[panel.b[3]].oldlayer = win[panel.b[3]].layer
         win[panel.b[3]].layer = 1
       end
     end
