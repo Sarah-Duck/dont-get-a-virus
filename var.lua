@@ -59,6 +59,8 @@ function loadVar()
   win[1].layer = 0
   win[1].panel = 0
   win[1].oldlayer = 0
+  win[1].hov = false
+  win[1].hover = false
   win[2] = {}
   win[2].x = 100
   win[2].y = 100
@@ -76,6 +78,8 @@ function loadVar()
   win[2].layer = 0
   win[2].panel = 0
   win[2].oldlayer = 0
+  win[2].hov = false
+  win[2].hover = false
   win[3] = {}
   win[3].x = 100
   win[3].y = 100
@@ -93,6 +97,8 @@ function loadVar()
   win[3].layer = 0
   win[3].panel = 0
   win[3].oldlayer = 0
+  win[3].hov = false
+  win[3].hover = false
   winOpen = true
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
