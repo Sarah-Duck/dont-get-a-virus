@@ -73,7 +73,7 @@ function drawStart()
       if win[panel.b[3]].min == false then
         win[panel.b[3]].oldlayer = win[panel.b[3]].layer
         win[panel.b[3]].layer = 1
-      elseif win[panel.b[2]].min == true then
+      elseif win[panel.b[3]].min == true then
         win[panel.b[3]].min = false
         win[panel.b[3]].oldlayer = win[panel.b[3]].layer
         win[panel.b[3]].layer = 1
