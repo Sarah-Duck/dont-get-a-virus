@@ -20,6 +20,7 @@ function drawMenu()
     if sys.mouse.p.p == true and win[2].ex == true then
       win[2].ex = false
       win[2].s = 0.2
+      win[2].oldlayer = win[2].layer
       win[2].layer = 1
     end
   else
@@ -39,6 +40,7 @@ function drawMenu()
     if sys.mouse.p.p == true and win[1].ex == true then
       win[1].ex = false
       win[1].s = 0.2
+      win[1].oldlayer = win[1].layer
       win[1].layer = 1
     end
   else
@@ -58,6 +60,7 @@ function drawMenu()
     if sys.mouse.p.p == true and win[3].ex == true then
       win[3].ex = false
       win[3].s = 0.2
+      win[3].oldlayer = win[3].layer
       win[3].layer = 1
     end
   else
