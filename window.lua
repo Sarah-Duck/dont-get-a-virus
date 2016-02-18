@@ -159,6 +159,14 @@ function orderWindow(id)
       layer[1] = id
       win[id].oldlayer = win[id].layer
       win[id].layer = 1
+    elseif layer[1] == 0 and layer[2] == 0 and layer[3] == id then
+      layer[1] = id
+      win[id].oldlayer = win[id].layer
+      win[id].layer = 1
+    elseif layer[1] == 0 and layer[2] == 0 and layer[3] == 0 and layer[4] == id then
+      layer[1] = id
+      win[id].oldlayer = win[id].layer
+      win[id].layer = 1
     end
     if layer[1] ~= id and win[id].layer == 1 then
       if win[id].oldlayer == 2 then
