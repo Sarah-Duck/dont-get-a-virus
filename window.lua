@@ -27,18 +27,20 @@ function drawWindow(id)
   else
     win[id].hov = false
   end
-  if win[id].layer ~= 1 and win[layer[1]].hov == true then
-    win[id].hover = false
-  elseif win[id].layer ~= 1 and win[id].layer ~= 2 and layer[1] ~= 0 and layer[2] ~= 0 then
-    if win[layer[1]].hov == true or win[layer[2]].hov == true then
+  if layer[1] ~= 0 then
+    if win[id].layer ~= 1 and win[layer[1]].hov == true then
+      win[id].hover = false
+    elseif win[id].layer ~= 1 and win[id].layer ~= 2 and layer[1] ~= 0 and layer[2] ~= 0 then
+      if win[layer[1]].hov == true or win[layer[2]].hov == true then
+        win[id].hover = false
+      else
+        win[id].hover = true
+      end
+    elseif win[id].hov == false then
       win[id].hover = false
     else
       win[id].hover = true
     end
-  elseif win[id].hov == false then
-    win[id].hover = false
-  else
-    win[id].hover = true
   end
   if win[id].hov == false then
     win[id].hover = false
@@ -153,7 +155,7 @@ function orderWindow(id)
       panel.b[6] = panel.b[7]
     end
   elseif win[id].ex == false or win[id].s ~= 0 then
-    if layer[1] == 0 then
+    if layer[1] == 0 and layer[2] == id then
       layer[1] = id
       win[id].oldlayer = win[id].layer
       win[id].layer = 1
