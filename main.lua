@@ -22,11 +22,17 @@ function love.update(dt)
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then
+    love.window.setMode(800, 600, {fullscreen=false})
     love.event.quit()
   end
   if love.keyboard.isDown("u") == true and win[1].min == true then
     win[1].min = false
     win[2].min = false
+  end
+  if love.keyboard.isDown("f4") == true then
+    love.window.setMode(800, 600, {fullscreen=true, fullscreentype="exclusive"})
+  elseif love.keyboard.isDown("f5") == true then
+    love.window.setMode(800, 600, {fullscreen=false})
   end
 end
 function love.mousepressed(x, y, button)
