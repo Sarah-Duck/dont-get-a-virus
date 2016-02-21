@@ -19,6 +19,8 @@ function love.load()
   loadVar()
 end
 function love.update(dt)
+  sys.w = love.graphics.getWidth()
+  sys.h = love.graphics.getHeight()
   minim = love.graphics.getHeight()+10
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()

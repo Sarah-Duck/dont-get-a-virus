@@ -20,6 +20,8 @@ function loadVar()
   sys.mouse.p.y = 0
   sys.mouse.p.p = false
   sys.mouse.drag = false
+  sys.w = love.graphics.getWidth()
+  sys.h = love.graphics.getHeight()
   panel = {}
   panel.thick = 30
   panel.x = 0
