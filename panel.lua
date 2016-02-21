@@ -1,4 +1,8 @@
 function drawStart()
+  panel.width = love.graphics.getWidth( )
+  panel.y = love.graphics.getHeight()
+  panel.y = panel.y - panel.thick
+  panel.s.y = panel.y + 5
   love.graphics.setColor(192, 192, 192)
   love.graphics.rectangle("fill", panel.x, panel.y, panel.width, panel.height)
   love.graphics.setColor(220, 220, 220)

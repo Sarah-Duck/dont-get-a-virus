@@ -19,6 +19,7 @@ function love.load()
   loadVar()
 end
 function love.update(dt)
+  minim = love.graphics.getHeight()+10
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then
@@ -30,7 +31,7 @@ function love.update(dt)
     win[2].min = false
   end
   if love.keyboard.isDown("f4") == true then
-    love.window.setMode(800, 600, {fullscreen=true, fullscreentype="exclusive"})
+    love.window.setMode(800, 600, {fullscreen=true, fullscreentype="desktop"})
   elseif love.keyboard.isDown("f5") == true then
     love.window.setMode(800, 600, {fullscreen=false})
   end

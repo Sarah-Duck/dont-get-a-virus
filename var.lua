@@ -100,10 +100,13 @@ function loadVar()
   win[3].hov = false
   win[3].hover = false
   winOpen = true
+  minim = love.graphics.getHeight()+10
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
   start.o = false
   start.p = false
+  start.x = 0
+  start.y = 600-30-350+2
   layer = {}
   layer[1] = 0
   layer[2] = 0

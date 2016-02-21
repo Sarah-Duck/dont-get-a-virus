@@ -86,16 +86,16 @@ function drawWindow(id)
   and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) then
     win[id].min = true
   end
-  if win[id].min == true and win[id].miny < 800 then
-    win[id].y = win[id].y + 100
-    win[id].miny = win[id].miny + 100
+  if win[id].min == true and win[id].miny < minim then
+    win[id].y = win[id].y + 150
+    win[id].miny = win[id].miny + 150
   end
-  if win[id].miny > 800 then
-    win[id].miny = 800
+  if win[id].miny > minim then
+    win[id].miny = minim
   end
   if win[id].min == false and win[id].miny > 0 then
-    win[id].y = win[id].y - 100
-    win[id].miny = win[id].miny - 100
+    win[id].y = win[id].y - 150
+    win[id].miny = win[id].miny - 150
   end
   if win[id].miny < 0 then
     win[id].miny = 0
