@@ -117,7 +117,11 @@ function loadVar()
   layer[7] = 0
   desktop = {}
   desktop.bg = {
-    hills = love.graphics.newImage("assets/bg_hills.png")
+    hills = love.graphics.newImage("assets/bg_hills.jpg"),
+    coast = love.graphics.newImage("assets/bg_coast.jpg"),
+    cloud = love.graphics.newImage("assets/bg_cloud.jpg"),
+    flower = love.graphics.newImage("assets/bg_flower.jpg"),
+    city = love.graphics.newImage("assets/bg_city.jpg")
   }
-  desktop.bg.current = desktop.bg.hills
+  desktop.bg.current = 0
 end
