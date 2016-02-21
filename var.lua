@@ -62,10 +62,10 @@ function loadVar()
   win[1].hov = false
   win[1].hover = false
   win[2] = {}
-  win[2].x = 100
-  win[2].y = 100
-  win[2].w = 550
-  win[2].h = 450
+  win[2].x = 75
+  win[2].y = 9
+  win[2].w = 650
+  win[2].h = 550
   win[2].px = win[2].x
   win[2].py = win[2].y
   win[2].ex = true
