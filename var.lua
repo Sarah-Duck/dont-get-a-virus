@@ -126,5 +126,7 @@ function loadVar()
     city = love.graphics.newImage("assets/bg_city.jpg")
   }
   desktop.bg.current = 0
+  fade = 0
+  fadeOpacity = 255
   scene = 1
 end
