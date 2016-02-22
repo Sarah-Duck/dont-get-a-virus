@@ -126,4 +126,5 @@ function loadVar()
     city = love.graphics.newImage("assets/bg_city.jpg")
   }
   desktop.bg.current = 0
+  scene = 1
 end

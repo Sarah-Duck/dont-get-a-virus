@@ -10,6 +10,7 @@ function love.load()
   require "help"
   require "chat"
   require "settings"
+  require "system"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 128, 128)
   love.graphics.setNewFont()
@@ -37,6 +38,11 @@ function love.update(dt)
   elseif love.keyboard.isDown("f5") == true then
     love.window.setMode(800, 600, {fullscreen=false})
   end
+  if fade == 1 and fadeOpacity ~= 255 then
+    fadeOpacity = fadeOpacity + 5
+  elseif fade == 0  and fadeOpacity ~= 0 then
+    fadeOpacity = fadeOpacity - 5
+  end
 end
 function love.mousepressed(x, y, button)
   sys.mouse.p.x = x
@@ -48,51 +54,7 @@ function love.mousereleased(x, y, button)
   start.p = false
 end
 function love.draw()
-  drawDesktop()
-  orderWindow(1)
-  orderWindow(2)
-  orderWindow(3)
-  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
-  and sys.mouse.p.x <= panel.s.x+panel.s.width
-  and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
-    start.p = true
-    if start.o == true then
-      start.o = false
-    elseif start.o == false then
-      start.o = true
-    end
+  if scene == 1 then
+    drawSystem()
   end
-  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
-    start.o = false
-  end
-  if layer[7] ~= 0 then
-    love.graphics.draw(win[layer[7]].cvs, win[layer[7]].x, win[layer[7]].y, 0, win[layer[7]].s)
-  end
-  if layer[6] ~= 0 then
-    love.graphics.draw(win[layer[6]].cvs, win[layer[6]].x, win[layer[6]].y, 0, win[layer[6]].s)
-  end
-  if layer[5] ~= 0 then
-    love.graphics.draw(win[layer[5]].cvs, win[layer[5]].x, win[layer[5]].y, 0, win[layer[5]].s)
-  end
-  if layer[4] ~= 0 then
-    love.graphics.draw(win[layer[4]].cvs, win[layer[4]].x, win[layer[4]].y, 0, win[layer[4]].s)
-  end
-  if layer[3] ~= 0 then
-    love.graphics.draw(win[layer[3]].cvs, win[layer[3]].x, win[layer[3]].y, 0, win[layer[3]].s)
-  end
-  if layer[2] ~= 0 then
-    love.graphics.draw(win[layer[2]].cvs, win[layer[2]].x, win[layer[2]].y, 0, win[layer[2]].s)
-  end
-  if layer[1] ~= 0 then
-    love.graphics.draw(win[layer[1]].cvs, win[layer[1]].x, win[layer[1]].y, 0, win[layer[1]].s)
-  end
-  drawStart()
-  if start.o == true then
-    drawMenu()
-  end
-  --love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
-  --love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer, 0, 20)
-  --if win[1].hover == true then
-  --  love.graphics.print("YAAAAS", 0, 40)
-  --end
 end
