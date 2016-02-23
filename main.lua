@@ -11,8 +11,9 @@ function love.load()
   require "chat"
   require "settings"
   require "system"
+  require "loading"
   love.graphics.setDefaultFilter("nearest", "nearest")
-  love.graphics.setBackgroundColor(0, 128, 128)
+  love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setNewFont()
   pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
   pressstart:setFilter("nearest", "nearest")
@@ -26,7 +27,6 @@ function love.update(dt)
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then
-    love.window.setMode(800, 600, {fullscreen=false})
     love.event.quit()
   end
   if love.keyboard.isDown("u") == true and win[1].min == true then
@@ -56,5 +56,8 @@ end
 function love.draw()
   if scene == 1 then
     drawSystem()
+  end
+  if scene == 0 then
+    drawLoading()
   end
 end
