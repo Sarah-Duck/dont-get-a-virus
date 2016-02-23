@@ -45,8 +45,8 @@ function loadVar()
   test = false
   win = {}
   win[1] = {}
-  win[1].x = 100
-  win[1].y = 100
+  win[1].x = math.random(10, 500)
+  win[1].y = math.random(10, 500)
   win[1].w = 250
   win[1].h = 400
   win[1].px = win[1].x
@@ -65,8 +65,8 @@ function loadVar()
   win[1].hover = false
   win[1].update = true
   win[2] = {}
-  win[2].x = 75
-  win[2].y = 9
+  win[2].x = math.random(10, 500)
+  win[2].y = math.random(10, 500)
   win[2].w = 650
   win[2].h = 550
   win[2].px = win[2].x
@@ -85,8 +85,8 @@ function loadVar()
   win[2].hover = false
   win[2].update = true
   win[3] = {}
-  win[3].x = 100
-  win[3].y = 100
+  win[3].x = math.random(10, 500)
+  win[3].y = math.random(10, 500)
   win[3].w = 450
   win[3].h = 400
   win[3].px = win[3].x
@@ -105,8 +105,8 @@ function loadVar()
   win[3].hover = false
   win[3].update = true
   win[4] = {}
-  win[4].x = 100
-  win[4].y = 100
+  win[4].x = math.random(10, 500)
+  win[4].y = math.random(10, 500)
   win[4].w = 200
   win[4].h = 150
   win[4].px = win[4].x
@@ -125,8 +125,8 @@ function loadVar()
   win[4].hover = false
   win[4].update = true
   win[5] = {}
-  win[5].x = 100
-  win[5].y = 100
+  win[5].x = math.random(10, 500)
+  win[5].y = math.random(10, 500)
   win[5].w = 450
   win[5].h = 400
   win[5].px = win[5].x
@@ -145,8 +145,8 @@ function loadVar()
   win[5].hover = false
   win[5].update = true
   win[6] = {}
-  win[6].x = 100
-  win[6].y = 100
+  win[6].x = math.random(10, 500)
+  win[6].y = math.random(10, 500)
   win[6].w = 400
   win[6].h = 550
   win[6].px = win[6].x
