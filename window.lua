@@ -1,26 +1,29 @@
 function drawWindow(id)
-  love.graphics.setCanvas(win[id].cvs)
-  love.graphics.setColor(192, 192, 192)
-  love.graphics.rectangle("fill", 0, 0, win[id].w, win[id].h) --Box
-  love.graphics.setLineWidth(4)
-  love.graphics.setColor(220, 220, 220)
-  love.graphics.line(0, win[id].y+win[id].h, 0, 0, 0+win[id].w, 0) --BoxLight
-  love.graphics.setColor(150,150,150)
-  love.graphics.line(0, 0+win[id].h, 0+win[id].w, 0+win[id].h, 0+win[id].w, 0) --BoxShadow
-  love.graphics.setColor(0,0,120)
-  love.graphics.rectangle("fill", 0+3, 0+3, win[id].w-7, 20) --Blue Bar
-  love.graphics.setColor(192, 192, 192)
-  love.graphics.rectangle("fill", 0+win[id].w-22, 0+5, 16, 16) --X Button
-  love.graphics.setColor(70,70,70)
-  love.graphics.print("X", 0+win[id].w-19, 0+10)
-  love.graphics.setColor(192, 192, 192)
-  love.graphics.rectangle("fill", 0+win[id].w-40, 0+5, 16, 16) --Minimize Button
-  love.graphics.setColor(70,70,70)
-  love.graphics.setLineWidth(3)
-  love.graphics.line(0+win[id].w-37, 0+13, 0+win[id].w-37+10, 0+13)
-  love.graphics.setColor(220, 220, 220)
-  love.graphics.print(win[id].title, 0+6, 0+9) --Title
-  love.graphics.setCanvas()
+  if win[id].update == true then
+    love.graphics.setCanvas(win[id].cvs)
+    love.graphics.setColor(192, 192, 192)
+    love.graphics.rectangle("fill", 0, 0, win[id].w, win[id].h) --Box
+    love.graphics.setLineWidth(4)
+    love.graphics.setColor(220, 220, 220)
+    love.graphics.line(0, win[id].y+win[id].h, 0, 0, 0+win[id].w, 0) --BoxLight
+    love.graphics.setColor(150,150,150)
+    love.graphics.line(0, 0+win[id].h, 0+win[id].w, 0+win[id].h, 0+win[id].w, 0) --BoxShadow
+    love.graphics.setColor(0,0,120)
+    love.graphics.rectangle("fill", 0+3, 0+3, win[id].w-7, 20) --Blue Bar
+    love.graphics.setColor(192, 192, 192)
+    love.graphics.rectangle("fill", 0+win[id].w-22, 0+5, 16, 16) --X Button
+    love.graphics.setColor(70,70,70)
+    love.graphics.print("X", 0+win[id].w-19, 0+10)
+    love.graphics.setColor(192, 192, 192)
+    love.graphics.rectangle("fill", 0+win[id].w-40, 0+5, 16, 16) --Minimize Button
+    love.graphics.setColor(70,70,70)
+    love.graphics.setLineWidth(3)
+    love.graphics.line(0+win[id].w-37, 0+13, 0+win[id].w-37+10, 0+13)
+    love.graphics.setColor(220, 220, 220)
+    love.graphics.print(win[id].title, 0+6, 0+9) --Title
+    love.graphics.setCanvas()
+    win[id].update = false
+  end
   if(sys.mouse.x >= win[id].x and sys.mouse.x <= win[id].x+win[id].w
   and sys.mouse.y >= win[id].y and sys.mouse.y <= win[id].y+win[id].h) then
     win[id].hov = true
@@ -153,6 +156,15 @@ function orderWindow(id)
       panel.b[4] = panel.b[5]
       panel.b[5] = panel.b[6]
       panel.b[6] = panel.b[7]
+    elseif panel.b[4] == id then
+      panel.b[4] = panel.b[5]
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[5] == id then
+      panel.b[5] = panel.b[6]
+      panel.b[6] = panel.b[7]
+    elseif panel.b[6] == id then
+      panel.b[6] = panel.b[7]
     end
   elseif win[id].ex == false or win[id].s ~= 0 then
     if layer[1] == 0 and layer[2] == id then
@@ -243,6 +255,10 @@ function orderWindow(id)
         win[layer[2]].oldlayer = win[layer[2]].layer
         win[layer[2]].layer = 2
       end
+      if layer[1] ~= 0 then
+        win[layer[1]].oldlayer = win[layer[1]].layer
+        win[layer[1]].layer = 1
+      end
     end
     if layer[2] == id and win[id].layer ~= 2 then
       layer[2] = 0
@@ -268,6 +284,15 @@ function orderWindow(id)
       panel.b[2] = id
     elseif panel.b[3] == 0 and panel.b[1] ~= id and panel.b[2] ~= id then
       panel.b[3] = id
+    elseif (panel.b[4] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
+    and panel.b[3] ~= id) then
+      panel.b[4] = id
+    elseif (panel.b[5] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
+    and panel.b[3] ~= id and panel.b[4] ~= id) then
+      panel.b[5] = id
+    elseif (panel.b[6] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
+    and panel.b[3] ~= id and panel.b[4] ~= id and panel.b[5] ~= id) then
+      panel.b[6] = id
     end
     drawWindow(id)
   end
