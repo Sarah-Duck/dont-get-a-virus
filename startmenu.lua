@@ -78,11 +78,17 @@ function drawMenu()
     love.graphics.setColor(0,0,120)
     love.graphics.rectangle("fill", 35, 5+55+55+55, 208, 50)
     love.graphics.setColor(220,220,220)
-    love.graphics.print("TORRENTS", 85, 5+55+55+55+22)
+    love.graphics.print("ANTIVIRUS", 85, 5+55+55+55+22)
+    if sys.mouse.p.p == true and win[4].ex == true then
+      win[4].ex = false
+      win[4].s = 0.2
+      win[4].oldlayer = win[3].layer
+      win[4].layer = 1
+    end
   else
     love.graphics.rectangle("fill", 35, 5+55+55+55, 208, 50)
     love.graphics.setColor(70,70,70)
-    love.graphics.print("TORRENTS", 85, 5+55+55+55+22)
+    love.graphics.print("ANTIVIRUS", 85, 5+55+55+55+22)
   end
   love.graphics.setColor(255,255,255)
   love.graphics.draw(icons[32].torrentr, 44, 60+10+54+55)
@@ -93,6 +99,12 @@ function drawMenu()
     love.graphics.rectangle("fill", 35, 5+55+55+55+55, 208, 50)
     love.graphics.setColor(220,220,220)
     love.graphics.print("HELP", 85, 5+55+55+55+55+22)
+    if sys.mouse.p.p == true and win[5].ex == true then
+      win[5].ex = false
+      win[5].s = 0.2
+      win[5].oldlayer = win[3].layer
+      win[5].layer = 1
+    end
   else
     love.graphics.rectangle("fill", 35, 5+55+55+55+55, 208, 50)
     love.graphics.setColor(70,70,70)
@@ -107,6 +119,12 @@ function drawMenu()
     love.graphics.rectangle("fill", 35, 5+55+55+55+55+55, 208, 50)
     love.graphics.setColor(220,220,220)
     love.graphics.print("SETTINGS", 85, 5+55+55+55+55+55+22)
+    if sys.mouse.p.p == true and win[6].ex == true then
+      win[6].ex = false
+      win[6].s = 0.2
+      win[6].oldlayer = win[3].layer
+      win[6].layer = 1
+    end
   else
     love.graphics.rectangle("fill", 35, 5+55+55+55+55+55, 208, 50)
     love.graphics.setColor(70,70,70)
