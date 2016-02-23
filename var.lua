@@ -117,7 +117,7 @@ function loadVar()
   win[4].s = 0
   win[4].min = false
   win[4].miny = 0
-  win[4].title = "Anti Virus"
+  win[4].title = "Antivirus"
   win[4].layer = 0
   win[4].panel = 0
   win[4].oldlayer = 0
