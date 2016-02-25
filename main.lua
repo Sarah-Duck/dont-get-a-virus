@@ -31,10 +31,6 @@ function love.update(dt)
   if love.keyboard.isDown("escape") == true then
     love.event.quit()
   end
-  if love.keyboard.isDown("u") == true and win[1].min == true then
-    win[1].min = false
-    win[2].min = false
-  end
   if love.keyboard.isDown("f4") == true then
     love.window.setMode(800, 600, {fullscreen=true, fullscreentype="desktop"})
   elseif love.keyboard.isDown("f5") == true then
