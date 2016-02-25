@@ -56,7 +56,7 @@ function loadVar()
   win[1].update = true
   win[2] = {}
   win[2].x = math.random(10, 500)
-  win[2].y = math.random(10, 500)
+  win[2].y = math.random(10, 100)
   win[2].w = 650
   win[2].h = 550
   win[2].px = win[2].x
