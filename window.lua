@@ -48,6 +48,9 @@ function drawWindow(id)
   if win[id].hov == false then
     win[id].hover = false
   end
+  if sys.mouse.y >= sys.h-panel.thick then
+    win[id].hover = false
+  end
   if(sys.mouse.p.x >= win[id].x and sys.mouse.p.x <= win[id].x+win[id].w
   and sys.mouse.p.y >= win[id].y and sys.mouse.p.y <= win[id].y+win[id].h) then
   else
