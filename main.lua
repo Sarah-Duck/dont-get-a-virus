@@ -7,7 +7,7 @@ function love.load()
   require "desktop"
   require "internet"
   require "files"
-  require "torrent"
+  require "antivirus"
   require "help"
   require "chat"
   require "settings"
