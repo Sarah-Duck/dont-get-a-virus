@@ -38,7 +38,7 @@ function love.update(dt)
   if love.keyboard.isDown("f4") == true then
     love.window.setMode(800, 600, {fullscreen=true, fullscreentype="desktop"})
   elseif love.keyboard.isDown("f5") == true then
-    love.window.setMode(800, 600, {fullscreen=false})
+    love.window.setMode(1280, 720, {fullscreen=false})
   end
   if fade == 1 and fadeOpacity ~= 255 then
     fadeOpacity = fadeOpacity + 5
