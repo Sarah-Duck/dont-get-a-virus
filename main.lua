@@ -1,4 +1,5 @@
 function love.load()
+  require "assets"
   require "window"
   require "panel"
   require "startmenu"
@@ -18,6 +19,7 @@ function love.load()
   pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
   pressstart:setFilter("nearest", "nearest")
   love.graphics.setFont(pressstart)
+  loadAssets()
   loadVar()
 end
 function love.update(dt)

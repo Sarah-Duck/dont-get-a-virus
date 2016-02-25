@@ -1,14 +1,4 @@
 function loadVar()
-  icons = {}
-  icons[32] = {
-    chat = love.graphics.newImage("assets/icon_32_chat.png"),
-    internet = love.graphics.newImage("assets/icon_32_internet.png"),
-    files = love.graphics.newImage("assets/icon_32_files.png"),
-    file = love.graphics.newImage("assets/icon_32_file.png"),
-    help = love.graphics.newImage("assets/icon_32_help.png"),
-    torrentr = love.graphics.newImage("assets/icon_32_torrentr.png"),
-    settings = love.graphics.newImage("assets/icon_32_settings.png")
-  }
   sys = {}
   sys.width = love.graphics.getWidth()
   sys.height = love.graphics.getHeight()
@@ -180,14 +170,6 @@ function loadVar()
   layer[5] = 0
   layer[6] = 0
   layer[7] = 0
-  desktop = {}
-  desktop.bg = {
-    hills = love.graphics.newImage("assets/bg_hills.jpg"),
-    coast = love.graphics.newImage("assets/bg_coast.jpg"),
-    cloud = love.graphics.newImage("assets/bg_cloud.jpg"),
-    flower = love.graphics.newImage("assets/bg_flower.jpg"),
-    city = love.graphics.newImage("assets/bg_city.jpg")
-  }
   desktop.bg.current = 0
   fade = 0
   fadeOpacity = 0
