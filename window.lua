@@ -27,6 +27,7 @@ function drawWindow(id)
   if(sys.mouse.x >= win[id].x and sys.mouse.x <= win[id].x+win[id].w
   and sys.mouse.y >= win[id].y and sys.mouse.y <= win[id].y+win[id].h) then
     win[id].hov = true
+    winHover = true
   else
     win[id].hov = false
   end

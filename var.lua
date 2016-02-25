@@ -155,6 +155,7 @@ function loadVar()
   win[6].hover = false
   win[6].update = true
   winOpen = true
+  winHover = false
   minim = love.graphics.getHeight()+10
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)

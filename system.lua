@@ -7,6 +7,10 @@ function drawSystem()
   orderWindow(4)
   orderWindow(5)
   orderWindow(6)
+  if (win[1].hov == false and win[2].hov == false and win[3].hov == false
+  and win[4].hov == false and win[5].hov == false and win[6].hov == false) then
+    winHover = false
+  end
   if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
   and sys.mouse.p.x <= panel.s.x+panel.s.width
   and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
