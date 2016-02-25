@@ -7,7 +7,7 @@ function drawLoading()
   love.graphics.setColor(0,0,120)
   love.graphics.rectangle("fill", sys.w/2-125+5, sys.h/2-10, loading, 20)
   if loading ~= 240 then
-    loading = loading + 2
+    loading = loading + math.random(1,2)
   elseif loading == 240 then
     fade = 1
   end
