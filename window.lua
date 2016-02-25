@@ -259,22 +259,22 @@ function orderWindow(id)
         win[layer[1]].layer = 1
       end
     end
-    if layer[2] == id and win[id].layer ~= 2 then
+    if layer[2] == id and win[id].layer ~= 2 and layer[1] == id then
       layer[2] = 0
     end
-    if layer[3] == id and win[id].layer ~= 3 then
+    if layer[3] == id and win[id].layer ~= 3 and layer[1] == id then
       layer[3] = 0
     end
-    if layer[4] == id and win[id].layer ~= 4 then
+    if layer[4] == id and win[id].layer ~= 4 and layer[1] == id then
       layer[4] = 0
     end
-    if layer[5] == id and win[id].layer ~= 5 then
+    if layer[5] == id and win[id].layer ~= 5 and layer[1] == id then
       layer[5] = 0
     end
-    if layer[6] == id and win[id].layer ~= 6 then
+    if layer[6] == id and win[id].layer ~= 6 and layer[1] == id then
       layer[6] = 0
     end
-    if layer[7] == id and win[id].layer ~= 7 then
+    if layer[7] == id and win[id].layer ~= 7 and layer[1] == id then
       layer[7] = 0
     end
     if panel.b[1] == 0 then
@@ -294,5 +294,25 @@ function orderWindow(id)
       panel.b[6] = id
     end
     drawWindow(id)
+  end
+  if layer[2] == 0 and layer[3] ~= 0 then
+    layer[2] = layer[3]
+    layer[3] = 0
+  end
+  if layer[3] == 0 and layer[4] ~= 0 then
+    layer[3] = layer[4]
+    layer[4] = 0
+  end
+  if layer[4] == 0 and layer[5] ~= 0 then
+    layer[4] = layer[5]
+    layer[5] = 0
+  end
+  if layer[5] == 0 and layer[6] ~= 0 then
+    layer[5] = layer[6]
+    layer[6] = 0
+  end
+  if layer[6] == 0 and layer[7] ~= 0 then
+    layer[6] = layer[7]
+    layer[7] = 0
   end
 end
