@@ -16,5 +16,6 @@ function drawLoading()
   if fadeOpacity == 255 and loading == 240 then
     scene = 1
     fade = 0
+    sound.boot:play()
   end
 end

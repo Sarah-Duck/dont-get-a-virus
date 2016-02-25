@@ -18,4 +18,8 @@ function loadAssets()
     city = love.graphics.newImage("assets/bg_city.jpg")
   }
   music = {}
+  sound = {
+    boot = love.audio.newSource("assets/boot.ogg")
+  }
+  sound.boot:setLooping(false)
 end
