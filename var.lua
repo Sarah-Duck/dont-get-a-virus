@@ -20,6 +20,7 @@ function loadWin(id, w, h, title, ico)
   win[id].hover = false
   win[id].update = true
   win[id].icon = ico
+  win[id].exit = true
 end
 function loadVar()
   sys = {}
@@ -80,6 +81,7 @@ function loadVar()
   layer[5] = 0
   layer[6] = 0
   layer[7] = 0
+  layer.sentToFront = 0
   desktop.bg.current = 0
   fade = 0
   fadeOpacity = 0

@@ -6,12 +6,7 @@ end
 function drawSystem()
   love.graphics.setBackgroundColor(0, 128, 128)
   drawDesktop()
-  orderWindow(1)
-  orderWindow(2)
-  orderWindow(3)
-  orderWindow(4)
-  orderWindow(5)
-  orderWindow(6)
+  orderWindows()
   if (win[1].hov == false and win[2].hov == false and win[3].hov == false
   and win[4].hov == false and win[5].hov == false and win[6].hov == false) then
     winHover = false

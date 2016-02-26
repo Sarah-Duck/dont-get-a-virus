@@ -8,8 +8,7 @@ function drawPanelButton(id)
     and sys.mouse.p.x <= (panel.s.x+72+(137*id-137))+(panel.s.width*2)
     and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
       if win[panel.b[id]].min == false then
-        win[panel.b[id]].oldlayer = win[panel.b[id]].layer
-        win[panel.b[id]].layer = 1
+        layer.sentToFront = panel.b[id]
       elseif win[panel.b[id]].min == true then
         win[panel.b[id]].min = false
         win[panel.b[id]].oldlayer = win[panel.b[id]].layer
