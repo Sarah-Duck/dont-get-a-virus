@@ -21,7 +21,7 @@ function drawSystem()
       start.o = true
     end
   end
-  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < 220 then
+  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
     start.o = false
   end
   drawLayer(7)
