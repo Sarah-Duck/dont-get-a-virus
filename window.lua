@@ -21,6 +21,9 @@ function drawWindow(id)
     love.graphics.line(0+win[id].w-37, 0+13, 0+win[id].w-37+10, 0+13)
     love.graphics.setColor(220, 220, 220)
     love.graphics.print(win[id].title, 0+6, 0+9) --Title
+    if id == 4 then
+      drawAntivirus(win[id].x, win[id].y, win[id].hover)
+    end
     love.graphics.setCanvas()
     win[id].update = false
   end
@@ -108,6 +111,9 @@ function drawWindow(id)
   end
   if win[id].miny < 0 then
     win[id].miny = 0
+  end
+  if id == 4 then
+    updateAntivirus()
   end
   love.graphics.setColor(255,255,255)
 end
