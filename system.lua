@@ -35,8 +35,8 @@ function drawSystem()
   if start.o == true then
     drawMenu()
   end
-  love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
-  love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer .. win[4].layer .. win[5].layer .. win[6].layer, 0, 20)
+  --love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
+  --love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer .. win[4].layer .. win[5].layer .. win[6].layer, 0, 20)
   if fade == 0 and fadeOpacity ~= 0 then
     love.graphics.setColor(0, 0, 0, fadeOpacity)
     love.graphics.rectangle("fill", 0, 0, sys.w, sys.h)
