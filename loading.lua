@@ -6,9 +6,10 @@ function drawLoading()
   love.graphics.print("Don't Get a Virus", sys.w/2-102, sys.h/2-30)
   love.graphics.setColor(0,0,120)
   love.graphics.rectangle("fill", sys.w/2-125+5, sys.h/2-10, loading, 20)
-  if loading ~= 240 then
-    loading = loading + math.random(1,2)
-  elseif loading == 240 then
+  if loading < 240 then
+    loading = loading + math.random(0.1,2)
+  elseif loading >= 240 then
+    loading = 240
     fade = 1
   end
   love.graphics.setColor(0, 0, 0, fadeOpacity)
