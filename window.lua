@@ -8,17 +8,10 @@ function drawWindow(id)
     love.graphics.line(0, win[id].y+win[id].h, 0, 0, 0+win[id].w, 0) --BoxLight
     love.graphics.setColor(150,150,150)
     love.graphics.line(0, 0+win[id].h, 0+win[id].w, 0+win[id].h, 0+win[id].w, 0) --BoxShadow
-    love.graphics.setColor(0,0,120)
-    love.graphics.rectangle("fill", 0+3, 0+3, win[id].w-7, 20) --Blue Bar
-    love.graphics.setColor(192, 192, 192)
-    love.graphics.rectangle("fill", 0+win[id].w-22, 0+5, 16, 16) --X Button
-    love.graphics.setColor(70,70,70)
-    love.graphics.print("X", 0+win[id].w-19, 0+10)
-    love.graphics.setColor(192, 192, 192)
-    love.graphics.rectangle("fill", 0+win[id].w-40, 0+5, 16, 16) --Minimize Button
-    love.graphics.setColor(70,70,70)
-    love.graphics.setLineWidth(3)
-    love.graphics.line(0+win[id].w-37, 0+13, 0+win[id].w-37+10, 0+13)
+    love.graphics.setColor(256,256,256)
+    love.graphics.draw(window.bar, 0+3, 0+3, 0, (win[id].w-7)/643, 1) --Blue Bar
+    love.graphics.draw(window.x, 0+win[id].w-22, 5)
+    love.graphics.draw(window.min, 0+win[id].w-40, 0+5) --Minimize Button
     love.graphics.setColor(220, 220, 220)
     love.graphics.print(win[id].title, 0+6, 0+9) --Title
     if id == 4 then

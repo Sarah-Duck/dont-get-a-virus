@@ -1,7 +1,11 @@
 function drawPanelButton(id)
   love.graphics.setColor(150, 150, 150)
   if panel.b[id] ~= 0 then
-    love.graphics.rectangle("line", panel.s.x+72+(137*id-137), panel.s.y, panel.s.width*2, panel.s.height)
+    if layer[1] == panel.b[id] and win[panel.b[id]].min == false then
+      drawDownBox(panel.s.x+72+(137*id-137), panel.s.y, panel.s.width*2, panel.s.height, 2)
+    else
+      drawUpBox(panel.s.x+72+(137*id-137), panel.s.y, panel.s.width*2, panel.s.height, 2)
+    end
     love.graphics.setColor(70,70,70)
     love.graphics.print(win[panel.b[id]].title, panel.s.x+4+77+(137*id-137), panel.s.y+7)
     if (sys.mouse.p.p == true and sys.mouse.p.x >= panel.s.x+72+(137*id-137)
@@ -28,7 +32,11 @@ function drawStart()
   love.graphics.setLineWidth(2)
   love.graphics.line(panel.x, panel.y, panel.width, panel.y)
   love.graphics.setColor(150, 150, 150)
-  love.graphics.rectangle("line", panel.s.x, panel.s.y, panel.s.width, panel.s.height)
+  if start.o == true then
+    drawDownBox(panel.s.x, panel.s.y, panel.s.width, panel.s.height, 2)
+  else
+    drawUpBox(panel.s.x, panel.s.y, panel.s.width, panel.s.height, 2)
+  end
   love.graphics.setColor(70,70,70)
   love.graphics.print("START", panel.s.x+4, panel.s.y+7)
   drawPanelButton(1)

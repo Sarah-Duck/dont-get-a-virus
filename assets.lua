@@ -29,4 +29,7 @@ function loadAssets()
   music.battle1:setLooping(true)
   music.battle2:setLooping(true)
   music.battle3:setLooping(true)
+  window = {
+    barAsset = love.graphics.newImage("assets/win_bar.png")
+  }
 end

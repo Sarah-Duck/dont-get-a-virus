@@ -13,6 +13,7 @@ function love.load()
   require "settings"
   require "system"
   require "loading"
+  require "elements"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setNewFont()
@@ -21,6 +22,7 @@ function love.load()
   love.graphics.setFont(pressstart)
   loadAssets()
   loadVar()
+  loadElements()
 end
 function love.update(dt)
   sys.w = love.graphics.getWidth()

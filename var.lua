@@ -91,4 +91,11 @@ function loadVar()
   antivirus.prog = 0
   antivirus.status = "Not Scanning"
   antivirus.scanning = false
+  colors = {}
+  colors.win = {}
+  colors.win.light = {220,220,220}
+  colors.win.dark = {150,150,150}
+  colors.win.normal = {192,192,192}
+  colors.font = {}
+  colors.font.dark = {70,70,70}
 end
