@@ -2,7 +2,7 @@ function drawWindow(id)
   if win[id].update == true then
     love.graphics.setCanvas(win[id].cvs)
     drawUpBox(0, 0, win[id].w, win[id].h, 4)
-    drawDownBox(4, 27, win[id].w-8, win[id].h-32, 0.5)
+    --drawDownBox(4, 27, win[id].w-8, win[id].h-32, 0.5)
     love.graphics.setColor(256,256,256)
     if win[id].bar == "active" then
       love.graphics.draw(window.bar, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
