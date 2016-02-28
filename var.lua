@@ -1,4 +1,4 @@
-function loadWin(id, w, h, title, ico)
+function loadWin(id, w, h, title, ico, ico16)
   win[id] = {}
   win[id].x = math.random(10, 200)
   win[id].y = math.random(10, 200)
@@ -19,8 +19,10 @@ function loadWin(id, w, h, title, ico)
   win[id].hov = false
   win[id].hover = false
   win[id].update = true
-  win[id].icon = ico
+  win[id].icon32 = ico
+  win[id].icon16 = ico16
   win[id].exit = true
+  win[id].bar = "grey"
 end
 function loadVar()
   sys = {}
@@ -48,6 +50,7 @@ function loadVar()
   panel.s.width = 65
   panel.s.height = 20
   panel.s.activate = false
+  panel.s.dis = 202
   panel.b = {}
   panel.b[1] = 0
   panel.b[2] = 0
@@ -58,12 +61,12 @@ function loadVar()
   panel.b[7] = 0
   test = false
   win = {}
-  loadWin(1, 250, 400, "Chat", icons[32].chat)
-  loadWin(2, 650, 550, "Internet", icons[32].internet)
-  loadWin(3, 450, 400, "Files", icons[32].files)
-  loadWin(4, 200, 150, "Antivirus", icons[32].torrentr)
-  loadWin(5, 450, 400, "Help", icons[32].help)
-  loadWin(6, 400, 550, "Settings", icons[32].settings)
+  loadWin(1, 250, 400, "Chat", icons[32].chat, icons[16].chat)
+  loadWin(2, 650, 550, "Internet", icons[32].internet, icons[16].internet)
+  loadWin(3, 450, 400, "Files", icons[32].files, icons[16].files)
+  loadWin(4, 200, 150, "Antivirus", icons[32].antivirus, icons[16].antivirus)
+  loadWin(5, 450, 400, "Help", icons[32].help, icons[16].help)
+  loadWin(6, 400, 550, "Settings", icons[32].settings, icons[16].settings)
   winOpen = true
   winHover = false
   minim = love.graphics.getHeight()+10
@@ -94,8 +97,8 @@ function loadVar()
   colors = {}
   colors.win = {}
   colors.win.light = {220,220,220}
-  colors.win.dark = {150,150,150}
+  colors.win.dark = {135,135,135}
   colors.win.normal = {192,192,192}
   colors.font = {}
-  colors.font.dark = {70,70,70}
+  colors.font.dark = {50,50,50}
 end

@@ -1,19 +1,20 @@
 function drawWindow(id)
   if win[id].update == true then
     love.graphics.setCanvas(win[id].cvs)
-    love.graphics.setColor(192, 192, 192)
-    love.graphics.rectangle("fill", 0, 0, win[id].w, win[id].h) --Box
-    love.graphics.setLineWidth(4)
-    love.graphics.setColor(220, 220, 220)
-    love.graphics.line(0, win[id].y+win[id].h, 0, 0, 0+win[id].w, 0) --BoxLight
-    love.graphics.setColor(150,150,150)
-    love.graphics.line(0, 0+win[id].h, 0+win[id].w, 0+win[id].h, 0+win[id].w, 0) --BoxShadow
+    drawUpBox(0, 0, win[id].w, win[id].h, 4)
+    drawDownBox(4, 27, win[id].w-8, win[id].h-32, 0.5)
     love.graphics.setColor(256,256,256)
-    love.graphics.draw(window.bar, 0+3, 0+3, 0, (win[id].w-7)/643, 1) --Blue Bar
+    if win[id].bar == "active" then
+      love.graphics.draw(window.bar, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
+    else
+      love.graphics.draw(window.barGrey, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
+    end
     love.graphics.draw(window.x, 0+win[id].w-22, 5)
     love.graphics.draw(window.min, 0+win[id].w-40, 0+5) --Minimize Button
-    love.graphics.setColor(220, 220, 220)
-    love.graphics.print(win[id].title, 0+6, 0+9) --Title
+    love.graphics.setColor(240, 240, 240)
+    love.graphics.print(win[id].title, 28, 0+9) --Title
+    love.graphics.setColor(256, 256, 256)
+    love.graphics.draw(win[id].icon16, 6, 5)
     if id == 4 then
       drawAntivirus(win[id].x, win[id].y, win[id].hover)
     end
@@ -107,6 +108,13 @@ function drawWindow(id)
   end
   if id == 4 then
     updateAntivirus()
+  end
+  if id == layer[1] and win[id].bar == "grey" then
+    win[id].bar = "active"
+    win[id].update = true
+  elseif id ~= layer[1] and win[id].bar == "active" then
+    win[id].bar = "grey"
+    win[id].update = true
   end
   love.graphics.setColor(255,255,255)
 end

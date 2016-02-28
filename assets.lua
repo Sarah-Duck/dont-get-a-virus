@@ -6,8 +6,16 @@ function loadAssets()
     files = love.graphics.newImage("assets/icon_32_files.png"),
     file = love.graphics.newImage("assets/icon_32_file.png"),
     help = love.graphics.newImage("assets/icon_32_help.png"),
-    torrentr = love.graphics.newImage("assets/icon_32_torrentr.png"),
+    antivirus = love.graphics.newImage("assets/icon_32_antivirus.png"),
     settings = love.graphics.newImage("assets/icon_32_settings.png")
+  }
+  icons[16] = {
+    chat = love.graphics.newImage("assets/icon_16_chat.png"),
+    internet = love.graphics.newImage("assets/icon_16_internet.png"),
+    files = love.graphics.newImage("assets/icon_16_files.png"),
+    help = love.graphics.newImage("assets/icon_16_help.png"),
+    settings = love.graphics.newImage("assets/icon_16_settings.png"),
+    antivirus = love.graphics.newImage("assets/icon_16_antivirus.png")
   }
   desktop = {}
   desktop.bg = {
@@ -30,6 +38,7 @@ function loadAssets()
   music.battle2:setLooping(true)
   music.battle3:setLooping(true)
   window = {
-    barAsset = love.graphics.newImage("assets/win_bar.png")
+    bar = love.graphics.newImage("assets/win_bar.png"),
+    barGrey = love.graphics.newImage("assets/win_bar_grey.png")
   }
 end

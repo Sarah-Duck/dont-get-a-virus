@@ -1,13 +1,11 @@
 function drawAntivirus()
-  love.graphics.setColor(150,150,150)
-  love.graphics.setLineWidth(2)
   if antivirus.scanning == true then
     drawDownBox(49, 110, 100, 19, 2)
   else
     drawUpBox(49, 110, 100, 19, 2)
   end
   drawDownBox(10, 40, 180, 30, 2)
-  love.graphics.setColor(70,70,70)
+  love.graphics.setColor(colors.font.dark)
   love.graphics.print("SCAN NOW", 51, 116)
   love.graphics.print(antivirus.status, 10, 77)
   love.graphics.setColor(0,0,120)
