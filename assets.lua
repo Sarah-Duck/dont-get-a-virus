@@ -46,4 +46,7 @@ function loadAssets()
     offline = love.graphics.newImage("assets/chat_status_offline.png"),
     profile = love.graphics.newImage("assets/chat_profile.png")
   }
+  internet = {
+    back = love.graphics.newImage("assets/internet_back.png")
+  }
 end
