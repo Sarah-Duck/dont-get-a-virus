@@ -41,4 +41,9 @@ function loadAssets()
     bar = love.graphics.newImage("assets/win_bar.png"),
     barGrey = love.graphics.newImage("assets/win_bar_grey.png")
   }
+  chat = {
+    online = love.graphics.newImage("assets/chat_status_online.png"),
+    offline = love.graphics.newImage("assets/chat_status_offline.png"),
+    profile = love.graphics.newImage("assets/chat_profile.png")
+  }
 end

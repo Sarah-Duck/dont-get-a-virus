@@ -94,6 +94,8 @@ function loadVar()
   antivirus.prog = 0
   antivirus.status = "Not Scanning"
   antivirus.scanning = false
+  chat.status = 0
+  chat.profilename = "Best Friend"
   colors = {}
   colors.win = {}
   colors.win.light = {220,220,220}
