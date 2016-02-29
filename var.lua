@@ -50,7 +50,7 @@ function loadVar()
   panel.s.width = 65
   panel.s.height = 20
   panel.s.activate = false
-  panel.s.dis = 202
+  panel.s.dis = 185
   panel.b = {}
   panel.b[1] = 0
   panel.b[2] = 0
@@ -88,7 +88,7 @@ function loadVar()
   desktop.bg.current = 0
   fade = 0
   fadeOpacity = 0
-  scene = 0
+  scene = 1
   loading = 0
   antivirus = {}
   antivirus.prog = 0
