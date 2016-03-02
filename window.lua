@@ -16,9 +16,11 @@ function drawWindow(id)
     love.graphics.setColor(256, 256, 256)
     love.graphics.draw(win[id].icon16, 6, 5)
     if id == 4 then
-      drawAntivirus(win[id].x, win[id].y, win[id].hover)
+      drawAntivirus()
     elseif id == 1 then
-      drawChat(win[id].x, win[id].y, win[id].hover)
+      drawChat()
+    elseif id == 2 then
+      drawInternet()
     end
     love.graphics.setCanvas()
     win[id].update = false
