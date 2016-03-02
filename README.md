@@ -9,4 +9,4 @@ If you fail a viruses minigame, the virus takes over and you loose the game.
 
 The game is in it's very early stages.
 
-![alt text](http://i.imgur.com/8yRP3xY.png "A Screenshot of the game so far.")
+![alt text](http://i.imgur.com/nWAno3d.png "A Screenshot of the game so far.")
