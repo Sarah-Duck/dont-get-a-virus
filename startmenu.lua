@@ -10,6 +10,7 @@ function drawMenuItems(id)
       win[id].s = 0.2
       win[id].oldlayer = win[id].layer
       layer.sentToFront = id
+      start.o = false
     end
   else
     love.graphics.rectangle("fill", 35, 5+(id*55-55), 208, 50)
