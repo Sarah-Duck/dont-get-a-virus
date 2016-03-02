@@ -27,8 +27,9 @@ function loadAssets()
   }
   music = {
     battle1 = love.audio.newSource("assets/music/Thrills And Spills.ogg"),
-    battle2 = love.audio.newSource("assets/music/Less Than Three.ogg"),
-    battle3 = love.audio.newSource("assets/music/Alphys Takes Action.ogg")
+    battleNSA = love.audio.newSource("assets/music/Less Than Three.ogg"),
+    battleUndertale = love.audio.newSource("assets/music/Alphys Takes Action.ogg"),
+    battle2 = love.audio.newSource("assets/music/Skyscraper Party.ogg")
   }
   sound = {
     boot = love.audio.newSource("assets/boot.ogg")
@@ -36,7 +37,8 @@ function loadAssets()
   sound.boot:setLooping(false)
   music.battle1:setLooping(true)
   music.battle2:setLooping(true)
-  music.battle3:setLooping(true)
+  music.battleNSA:setLooping(true)
+  music.battleUndertale:setLooping(true)
   window = {
     bar = love.graphics.newImage("assets/win_bar.png"),
     barGrey = love.graphics.newImage("assets/win_bar_grey.png")
