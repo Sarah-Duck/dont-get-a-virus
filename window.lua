@@ -9,8 +9,8 @@ function drawWindow(id)
     else
       love.graphics.draw(window.barGrey, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
     end
-    love.graphics.draw(window.x, 0+win[id].w-22, 5)
-    love.graphics.draw(window.min, 0+win[id].w-40, 0+5) --Minimize Button
+    drawXBox(win[id].w-22, 5)
+    drawMinBox(win[id].w-40, 0+5) --Minimize Button
     love.graphics.setColor(240, 240, 240)
     love.graphics.print(win[id].title, 28, 0+9) --Title
     love.graphics.setColor(256, 256, 256)

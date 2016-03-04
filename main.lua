@@ -22,7 +22,6 @@ function love.load()
   love.graphics.setFont(pressstart)
   loadAssets()
   loadVar()
-  loadElements()
 end
 function love.update(dt)
   sys.w = love.graphics.getWidth()
