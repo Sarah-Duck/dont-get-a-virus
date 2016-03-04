@@ -2,7 +2,6 @@ function drawWindow(id)
   if win[id].update == true then
     love.graphics.setCanvas(win[id].cvs)
     drawUpBox(0, 0, win[id].w, win[id].h, 4)
-    --drawDownBox(4, 27, win[id].w-8, win[id].h-32, 0.5)
     love.graphics.setColor(256,256,256)
     if win[id].bar == "active" then
       love.graphics.draw(window.bar, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
@@ -10,9 +9,9 @@ function drawWindow(id)
       love.graphics.draw(window.barGrey, 0+3, 0+3, 0, (win[id].w-7)/643, 1)
     end
     drawXBox(win[id].w-22, 5)
-    drawMinBox(win[id].w-40, 0+5) --Minimize Button
+    drawMinBox(win[id].w-40, 0+5)
     love.graphics.setColor(240, 240, 240)
-    love.graphics.print(win[id].title, 28, 0+9) --Title
+    love.graphics.print(win[id].title, 28, 0+9)
     love.graphics.setColor(256, 256, 256)
     love.graphics.draw(win[id].icon16, 6, 5)
     if id == 4 then
