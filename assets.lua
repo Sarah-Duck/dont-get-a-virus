@@ -51,4 +51,9 @@ function loadAssets()
   internet = {
     back = love.graphics.newImage("assets/internet_back.png")
   }
+  notification = {
+    bubble = love.graphics.newImage("assets/notification.png"),
+    sound1 = love.audio.newSource("assets/notification1.ogg"),
+    sound2 = love.audio.newSource("assets/notification2.ogg")
+  }
 end
