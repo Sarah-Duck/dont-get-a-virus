@@ -103,4 +103,13 @@ function loadVar()
   colors.win.normal = {192,192,192}
   colors.font = {}
   colors.font.dark = {50,50,50}
+  notify = {}
+  notify.yes = false
+  notify.title = ""
+  notify.body = ""
+  notify.op = 0
+  notify.sound = false
+  notify.x = sys.w-258
+  notify.y = sys.h-135
+  notify.timer = 0
 end

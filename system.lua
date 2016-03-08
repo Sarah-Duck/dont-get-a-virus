@@ -3,6 +3,9 @@ function drawLayer(id)
     love.graphics.draw(win[layer[id]].cvs, win[layer[id]].x, win[layer[id]].y, 0, win[layer[id]].s)
   end
 end
+function updateSystem(dt)
+  timeNoti(dt)
+end
 function drawSystem()
   love.graphics.setBackgroundColor(0, 128, 128)
   drawDesktop()
@@ -35,6 +38,7 @@ function drawSystem()
   if start.o == true then
     drawMenu()
   end
+  drawNoti()
   --love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
   --love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer .. win[4].layer .. win[5].layer .. win[6].layer, 0, 20)
   if fade == 0 and fadeOpacity ~= 0 then

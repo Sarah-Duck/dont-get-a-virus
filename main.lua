@@ -14,6 +14,7 @@ function love.load()
   require "system"
   require "loading"
   require "elements"
+  require "notification"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setNewFont()
@@ -41,6 +42,9 @@ function love.update(dt)
     fadeOpacity = fadeOpacity + 5
   elseif fade == 0  and fadeOpacity ~= 0 then
     fadeOpacity = fadeOpacity - 5
+  end
+  if scene == 1 then
+    updateSystem(dt)
   end
 end
 function love.mousepressed(x, y, button)
