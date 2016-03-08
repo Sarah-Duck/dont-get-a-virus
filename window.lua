@@ -111,6 +111,8 @@ function drawWindow(id)
   end
   if id == 4 then
     updateAntivirus()
+  elseif id == 1 then
+    updateChat()
   end
   if id == layer[1] and win[id].bar == "grey" then
     win[id].bar = "active"

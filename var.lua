@@ -103,6 +103,7 @@ function loadVar()
   colors.win.normal = {192,192,192}
   colors.font = {}
   colors.font.dark = {50,50,50}
+  colors.font.friend = {240,10,10}
   notify = {}
   notify.yes = false
   notify.title = ""
@@ -112,4 +113,7 @@ function loadVar()
   notify.x = sys.w-258
   notify.y = sys.h-135
   notify.timer = 0
+  msg = {}
+  msg.new = false
+  msg.msgs = {}
 end
