@@ -104,6 +104,7 @@ function loadVar()
   colors.font = {}
   colors.font.dark = {50,50,50}
   colors.font.friend = {240,10,10}
+  colors.font.you = {10,10,240}
   notify = {}
   notify.yes = false
   notify.title = ""

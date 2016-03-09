@@ -22,20 +22,15 @@ function drawSystem()
       start.o = false
     elseif start.o == false then
       start.o = true
-      msg.new = true
-      table.insert(msg.msgs, 1, "HEY YOU")
+      sendMessage(1, "HEY WAZZUP FOOL")
     end
   end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
     start.o = false
   end
-  drawLayer(7)
-  drawLayer(6)
-  drawLayer(5)
-  drawLayer(4)
-  drawLayer(3)
-  drawLayer(2)
-  drawLayer(1)
+  for i=1,7 do
+    drawLayer(8-i)
+  end
   drawStart()
   if start.o == true then
     drawMenu()

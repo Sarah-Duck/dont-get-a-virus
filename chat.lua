@@ -19,15 +19,16 @@ function drawChat()
   love.graphics.draw(chat.profile, 6, 30)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print(chat.profilename, 50, 41)
-  love.graphics.setColor(colors.font.friend)
-  if #msg.msgs <= 15 then
-    for i=1,#msg.msgs do
-      love.graphics.print("Friend: " .. msg.msgs[i], 12, 310 - (15*i))
+  for i=1,chatlimit() do
+    if msg.msgs[i][1] == 1 then
+      love.graphics.setColor(colors.font.friend)
+      love.graphics.print("Friend:", 12, 310 - (28*i))
+    elseif msg.msgs[i][1] == 2 then
+      love.graphics.setColor(colors.font.you)
+      love.graphics.print("You:", 12, 310 - (28*i))
     end
-  elseif #msg.msgs >= 15 then
-    for i=1,15 do
-      love.graphics.print("Friend: " .. msg.msgs[i], 12, 310 - (15*i))
-    end
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("\n" .. msg.msgs[i][2], 12, 310 - (28*i))
   end
 end
 function updateChat()
@@ -36,5 +37,17 @@ function updateChat()
     msg.new = false
   end
 end
-function sendMessage(message)
+function sendMessage(id, message)
+  msg.new = true
+  table.insert(msg.msgs, 1, {id, message})
+  if win[1].ex == true or layer[1] ~= 1 then
+    notifyNow("CHAT NOTIFICATION", "New message from\nBest Friend:\n\n" .. message)
+  end
+end
+function chatlimit()
+  if #msg.msgs <=8 then
+    return #msg.msgs
+  else
+    return 8
+  end
 end

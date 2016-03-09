@@ -164,12 +164,9 @@ function orderWindows()
     win[layer.sentToFront].layer = 1
     layer.sentToFront = 0
   end
-  closeWindow(1)
-  closeWindow(2)
-  closeWindow(3)
-  closeWindow(4)
-  closeWindow(5)
-  closeWindow(6)
+  for i=1,6 do
+    closeWindow(7-i)
+  end
   if layer[6] == 0 and layer[7] ~= 0 then
     layer[6] = layer[7]
     layer[7] = 0
@@ -194,24 +191,11 @@ function orderWindows()
     layer[1] = layer[2]
     layer[2] = 0
   end
-  setWindow(6)
-  setWindow(5)
-  setWindow(4)
-  setWindow(3)
-  setWindow(2)
-  setWindow(1)
-  setPanel(1)
-  setPanel(2)
-  setPanel(3)
-  setPanel(4)
-  setPanel(5)
-  setPanel(6)
-  drawWindow(1)
-  drawWindow(2)
-  drawWindow(3)
-  drawWindow(4)
-  drawWindow(5)
-  drawWindow(6)
+  for i=1,6 do
+    setWindow(7-i)
+    setPanel(7-i)
+    drawWindow(7-i)
+  end
 end
 function setWindow(id)
   if layer[id] ~= 0 then
