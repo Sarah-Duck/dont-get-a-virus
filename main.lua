@@ -57,6 +57,9 @@ end
 function love.mousereleased(x, y, button)
   sys.mouse.p.p = false
   start.p = false
+  for i=1,6 do
+    icon[i].cl = false
+  end
 end
 function love.draw()
   if scene == 1 then

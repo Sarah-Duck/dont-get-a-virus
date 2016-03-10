@@ -25,6 +25,15 @@ function loadWin(id, w, h, title, ico, ico16)
   win[id].bar = "grey"
   win[id].pan = 0
 end
+function loadIcon(id, x, y)
+  icon[id] = {}
+  icon[id].x = x
+  icon[id].y = y
+  icon[id].ico = win[id].icon32
+  icon[id].layer = id
+  icon[id].hl = false
+  icon[id].cl = false
+end
 function loadVar()
   sys = {}
   sys.width = love.graphics.getWidth()
@@ -61,6 +70,10 @@ function loadVar()
   loadWin(4, 200, 150, "Antivirus", icons[32].antivirus, icons[16].antivirus)
   loadWin(5, 450, 400, "Help", icons[32].help, icons[16].help)
   loadWin(6, 400, 550, "Settings", icons[32].settings, icons[16].settings)
+  icon = {}
+  for i=1,6 do
+    loadIcon(i, 10, 10+(90*i-90))
+  end
   winOpen = true
   winHover = false
   minim = love.graphics.getHeight()+10
@@ -92,6 +105,7 @@ function loadVar()
   colors.font.dark = {50,50,50}
   colors.font.friend = {240,10,10}
   colors.font.you = {10,10,240}
+  colors.font.light = {240,240,240}
   notify = {}
   notify.yes = false
   notify.title = ""
