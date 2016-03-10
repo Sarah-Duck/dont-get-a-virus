@@ -19,6 +19,7 @@ function drawChat()
   love.graphics.draw(chat.profile, 6, 30)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print(chat.profilename, 50, 41)
+  love.graphics.setFont(pressstarts)
   for i=1,chatlimit() do
     if msg.msgs[i][1] == 1 then
       love.graphics.setColor(colors.font.friend)
@@ -30,6 +31,7 @@ function drawChat()
     love.graphics.setColor(colors.font.dark)
     love.graphics.print("\n" .. msg.msgs[i][2], 12, 310 - (28*i))
   end
+  love.graphics.setFont(pressstart)
 end
 function updateChat()
   if msg.new == true then
@@ -43,6 +45,7 @@ function sendMessage(id, message)
   if win[1].ex == true or layer[1] ~= 1 then
     notifyNow("CHAT NOTIFICATION", "New message from\nBest Friend:\n\n" .. message)
   end
+  msg.c = msg.c + 1
 end
 function chatlimit()
   if #msg.msgs <=8 then

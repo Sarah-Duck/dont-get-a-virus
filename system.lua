@@ -20,7 +20,7 @@ function drawSystem()
       start.o = false
     elseif start.o == false then
       start.o = true
-      sendMessage(1, "HEY WAZZUP FOOL")
+      sendMessage(1, msgs[msg.c])
     end
   end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then

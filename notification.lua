@@ -4,7 +4,7 @@ function drawNoti()
     love.graphics.draw(notification.bubble, notify.x, notify.y)
     love.graphics.setColor(colors.font.dark, notify.op)
     love.graphics.print(notify.title, notify.x+10, notify.y+10)
-    love.graphics.print(notify.body, notify.x+10, notify.y+30)
+    love.graphics.printf(notify.body, notify.x+10, notify.y+30, 200)
     if notify.sound == true then
       notification.sound1:play()
       notify.sound = false
