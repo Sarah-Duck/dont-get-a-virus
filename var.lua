@@ -23,6 +23,7 @@ function loadWin(id, w, h, title, ico, ico16)
   win[id].icon16 = ico16
   win[id].exit = true
   win[id].bar = "grey"
+  win[id].pan = 0
 end
 function loadVar()
   sys = {}
@@ -52,13 +53,6 @@ function loadVar()
   panel.s.activate = false
   panel.s.dis = 185
   panel.b = {}
-  panel.b[1] = 0
-  panel.b[2] = 0
-  panel.b[3] = 0
-  panel.b[4] = 0
-  panel.b[5] = 0
-  panel.b[6] = 0
-  panel.b[7] = 0
   test = false
   win = {}
   loadWin(1, 250, 400, "Chat", icons[32].chat, icons[16].chat)
@@ -77,13 +71,6 @@ function loadVar()
   start.x = 0
   start.y = 600-30-350+2
   layer = {}
-  layer[1] = 0
-  layer[2] = 0
-  layer[3] = 0
-  layer[4] = 0
-  layer[5] = 0
-  layer[6] = 0
-  layer[7] = 0
   layer.sentToFront = 0
   desktop.bg.current = 0
   fade = 0

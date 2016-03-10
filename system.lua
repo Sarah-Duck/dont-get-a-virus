@@ -1,7 +1,5 @@
 function drawLayer(id)
-  if layer[id] ~= 0 then
-    love.graphics.draw(win[layer[id]].cvs, win[layer[id]].x, win[layer[id]].y, 0, win[layer[id]].s)
-  end
+  love.graphics.draw(win[layer[id]].cvs, win[layer[id]].x, win[layer[id]].y, 0, win[layer[id]].s)
 end
 function updateSystem(dt)
   timeNoti(dt)
@@ -28,16 +26,14 @@ function drawSystem()
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
     start.o = false
   end
-  for i=1,7 do
-    drawLayer(8-i)
+  for i=1,#layer do
+    drawLayer((#layer+1)-i)
   end
   drawStart()
   if start.o == true then
     drawMenu()
   end
   drawNoti()
-  --love.graphics.print(layer[1] .. layer[2] .. layer[3] .. layer[4] .. layer[5] .. layer[6] .. layer[7])
-  --love.graphics.print(win[1].layer .. win[2].layer .. win[3].layer .. win[4].layer .. win[5].layer .. win[6].layer, 0, 20)
   if fade == 0 and fadeOpacity ~= 0 then
     love.graphics.setColor(0, 0, 0, fadeOpacity)
     love.graphics.rectangle("fill", 0, 0, sys.w, sys.h)

@@ -1,6 +1,6 @@
 function drawPanelButton(id)
   love.graphics.setColor(150, 150, 150)
-  if panel.b[id] ~= 0 then
+  if panel.b[id] ~= nil then
     if layer[1] == panel.b[id] and win[panel.b[id]].min == false then
       drawDownBox(panel.s.x+72+(panel.s.dis*id-panel.s.dis), panel.s.y, panel.s.width*2.75, panel.s.height, 2)
     else

@@ -125,71 +125,16 @@ function drawWindow(id)
 end
 function orderWindows()
   if layer.sentToFront ~= 0 and layer[1] ~= layer.sentToFront then
-    if win[layer.sentToFront].oldlayer == 2 then
-        layer[2] = layer[1]
-        layer[1] = id
-      elseif win[layer.sentToFront].oldlayer == 3 then
-        layer[3] = layer[2]
-        layer[2] = layer[1]
-        layer[1] = id
-      elseif win[layer.sentToFront].oldlayer == 4 then
-        layer[4] = layer[3]
-        layer[3] = layer[2]
-        layer[2] = layer[1]
-        layer[1] = id
-      elseif win[layer.sentToFront].oldlayer == 5 then
-        layer[5] = layer[4]
-        layer[4] = layer[3]
-        layer[3] = layer[2]
-        layer[2] = layer[1]
-        layer[1] = id
-      elseif win[layer.sentToFront].oldlayer == 6 then
-        layer[6] = layer[5]
-        layer[5] = layer[4]
-        layer[4] = layer[3]
-        layer[3] = layer[2]
-        layer[2] = layer[1]
-        layer[1] = id
-      else
-        layer[7] = layer[6]
-        layer[6] = layer[5]
-        layer[5] = layer[4]
-        layer[4] = layer[3]
-        layer[3] = layer[2]
-        layer[2] = layer[1]
-        layer[1] = id
-      end
-    layer[1] = layer.sentToFront
+    if win[layer.sentToFront].layer ~= 0 then
+      table.remove(layer, win[layer.sentToFront].layer)
+    end
+    table.insert(layer, 1, layer.sentToFront)
     win[layer.sentToFront].oldlayer = win[layer.sentToFront].layer
     win[layer.sentToFront].layer = 1
     layer.sentToFront = 0
   end
   for i=1,6 do
     closeWindow(7-i)
-  end
-  if layer[6] == 0 and layer[7] ~= 0 then
-    layer[6] = layer[7]
-    layer[7] = 0
-  end
-  if layer[5] == 0 and layer[6] ~= 0 then
-    layer[5] = layer[6]
-    layer[6] = 0
-  end
-  if layer[4] == 0 and layer[5] ~= 0 then
-    layer[4] = layer[5]
-    layer[5] = 0
-  end
-  if layer[3] == 0 and layer[4] ~= 0 then
-    layer[3] = layer[4]
-    layer[4] = 0
-  end
-  if layer[2] == 0 and layer[3] ~= 0 then
-    layer[2] = layer[3]
-    layer[3] = 0
-  end
-  if layer[1] == 0 and layer[2] ~= 0 then
-    layer[1] = layer[2]
-    layer[2] = 0
   end
   for i=1,6 do
     setWindow(7-i)
@@ -198,59 +143,24 @@ function orderWindows()
   end
 end
 function setWindow(id)
-  if layer[id] ~= 0 then
+  if layer[id] ~= nil then
     win[layer[id]].oldlayer = win[layer[id]].layer
     win[layer[id]].layer = id
   end
 end
 function setPanel(id)
-  if win[id].ex == false then
-    if panel.b[1] == 0 then
-     panel.b[1] = id
-   elseif panel.b[2] == 0 and panel.b[1] ~= id then
-     panel.b[2] = id
-   elseif panel.b[3] == 0 and panel.b[1] ~= id and panel.b[2] ~= id then
-     panel.b[3] = id
-   elseif (panel.b[4] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
-   and panel.b[3] ~= id) then
-     panel.b[4] = id
-   elseif (panel.b[5] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
-   and panel.b[3] ~= id and panel.b[4] ~= id) then
-     panel.b[5] = id
-   elseif (panel.b[6] == 0 and panel.b[1] ~= id and panel.b[2] ~= id
-   and panel.b[3] ~= id and panel.b[4] ~= id and panel.b[5] ~= id) then
-     panel.b[6] = id
+  if win[id].ex == false and win[id].pan == 0 then
+    table.insert(panel.b, id)
+    win[id].pan = #panel.b
+  end
+  if win[id].ex == true and win[id].pan ~= 0 then
+   table.remove(panel.b, win[id].panel)
+   for i=1,#panel.b do
+     if panel.b[i] == id then
+       table.remove(panel.b, i)
+     end
    end
- end
- if win[id].ex == true then
-   if panel.b[1] == id then
-      panel.b[1] = panel.b[2]
-      panel.b[2] = panel.b[3]
-      panel.b[3] = panel.b[4]
-      panel.b[4] = panel.b[5]
-      panel.b[5] = panel.b[6]
-      panel.b[6] = panel.b[7]
-    elseif panel.b[2] == id then
-      panel.b[2] = panel.b[3]
-      panel.b[3] = panel.b[4]
-      panel.b[4] = panel.b[5]
-      panel.b[5] = panel.b[6]
-      panel.b[6] = panel.b[7]
-    elseif panel.b[3] == id then
-      panel.b[3] = panel.b[4]
-      panel.b[4] = panel.b[5]
-      panel.b[5] = panel.b[6]
-      panel.b[6] = panel.b[7]
-    elseif panel.b[4] == id then
-      panel.b[4] = panel.b[5]
-      panel.b[5] = panel.b[6]
-      panel.b[6] = panel.b[7]
-    elseif panel.b[5] == id then
-      panel.b[5] = panel.b[6]
-      panel.b[6] = panel.b[7]
-    elseif panel.b[6] == id then
-      panel.b[6] = panel.b[7]
-    end
+   win[id].pan = 0
   end
 end
 function closeWindow(id)
@@ -261,7 +171,7 @@ function closeWindow(id)
     win[id].exit = false
   end
   if win[id].layer ~= 0 and win[id].exit == true then
-    layer[win[id].layer] = 0
+    table.remove(layer, win[id].layer)
     win[id].oldlayer = win[id].layer
     win[id].layer = 0
   end
