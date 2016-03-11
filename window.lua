@@ -45,6 +45,13 @@ function drawWindow(id)
     else
       win[id].hover = true
     end
+    if win[id].layer ~= 1 then
+      for i=1,win[id].layer-1 do
+        if win[layer[i]].hov == true then
+          win[id].hover = false
+        end
+      end
+    end
   end
   if win[id].hov == false then
     win[id].hover = false
