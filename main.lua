@@ -23,6 +23,7 @@ function love.load()
   pressstarts = love.graphics.newFont("fonts/pressstart.ttf", 10)
   pressstarts:setFilter("nearest", "nearest")
   love.graphics.setFont(pressstart)
+  love.keyboard.setKeyRepeat(true)
   loadAssets()
   loadVar()
 end

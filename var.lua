@@ -128,4 +128,7 @@ function loadVar()
   msgs[6] = "Want to get it free?"
   msgs[7] = "Search this on the web:"
   msgs[8] = "www.freedownloads.com"
+  internet.url = "www.homepage.com"
+  internet.urlold = internet.url
+  internet.urlc = internet.url
 end

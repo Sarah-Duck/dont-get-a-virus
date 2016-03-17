@@ -13,5 +13,36 @@ function drawInternet()
   love.graphics.setColor(255, 255, 255)
   love.graphics.draw(internet.back, 11, 32)
   love.graphics.setColor(colors.font.dark)
-  love.graphics.print("http://www.search-stuff.com", 70, 44)
+  love.graphics.print(internet.url, 70, 44)
+  love.graphics.setColor(255, 255, 255)
+  if internet.urlc == "www.homepage.com" then
+    love.graphics.draw(internet.welcome, 8, 74)
+  elseif internet.urlc == "www.freedownloads.com" then
+    love.graphics.draw(internet.freedownloads1, 8, 74)
+  else
+    love.graphics.draw(internet.error, 8, 74)
+  end
+end
+function updateInternet()
+  internet.urlold = internet.url
+  function love.keypressed(key)
+    if key == "backspace" and layer[1] == 2 then
+      internet.url = string.sub(internet.url, 1, string.len(internet.url)-1)
+      if internet.url ~= internet.urlold then
+        win[2].update = true
+      end
+    end
+    if key == "return" and layer[1] == 2 then
+      internet.urlc = internet.url
+      win[2].update = true
+    end
+  end
+  function love.textinput(t)
+    if layer[1] == 2 then
+      internet.url = internet.url .. t
+      if internet.url ~= internet.urlold then
+        win[2].update = true
+      end
+    end
+  end
 end

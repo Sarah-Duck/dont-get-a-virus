@@ -51,7 +51,11 @@ function loadAssets()
     profile = love.graphics.newImage("assets/chat_profile.png")
   }
   internet = {
-    back = love.graphics.newImage("assets/internet_back.png")
+    back = love.graphics.newImage("assets/internet_back.png"),
+    freedownloads1 = love.graphics.newImage("assets/internet_freedownloads.png"),
+    freedownloads2 = love.graphics.newImage("assets/internet_freedownloads2.png"),
+    welcome = love.graphics.newImage("assets/internet_welcome.png"),
+    error = love.graphics.newImage("assets/internet_error.png")
   }
   notification = {
     bubble = love.graphics.newImage("assets/notification.png"),
