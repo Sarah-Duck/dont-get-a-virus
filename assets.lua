@@ -31,7 +31,8 @@ function loadAssets()
     battleUndertale = love.audio.newSource("assets/music/Alphys Takes Action.ogg"),
     battle2 = love.audio.newSource("assets/music/Skyscraper Party.ogg"),
     sad1 = love.audio.newSource("assets/music/Startup Ambiance.ogg"),
-    battle3 = love.audio.newSource("assets/music/Without Silence.ogg")
+    battle3 = love.audio.newSource("assets/music/Without Silence.ogg"),
+    fox = love.audio.newSource("assets/music/FOX.ogg")
   }
   sound = {
     boot = love.audio.newSource("assets/boot.ogg")
