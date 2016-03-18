@@ -15,6 +15,7 @@ function love.load()
   require "loading"
   require "elements"
   require "notification"
+  require "virus1"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setNewFont()
@@ -49,6 +50,15 @@ function love.update(dt)
   if scene == 1 then
     updateSystem(dt)
   end
+  if virus1.yes == true then
+    virus1.timer = virus1.timer + dt
+  end
+  if virus1.yes == true and virus1.timer >= 5 then
+    scene = 2
+    if virus1.explodeintrotimer <= 7.8 then
+      virus1.explodeintrotimer = virus1.explodeintrotimer + dt
+    end
+  end
 end
 function love.mousepressed(x, y, button)
   sys.mouse.p.x = x
@@ -65,8 +75,9 @@ end
 function love.draw()
   if scene == 1 then
     drawSystem()
-  end
-  if scene == 0 then
+  elseif scene == 0 then
     drawLoading()
+  elseif scene == 2 then
+    drawVirusFight1()
   end
 end

@@ -131,4 +131,11 @@ function loadVar()
   internet.url = "www.homepage.com"
   internet.urlold = internet.url
   internet.urlc = internet.url
+  virus1.yes = false
+  virus1.timer = 0
+  virus1.shakemin = 0
+  virus1.shakemax = 0
+  virus1.introplay = false
+  virus1.explodeintro = false
+  virus1.explodeintrotimer = 0
 end

@@ -62,4 +62,8 @@ function loadAssets()
     sound1 = love.audio.newSource("assets/notification1.ogg"),
     sound2 = love.audio.newSource("assets/notification2.ogg")
   }
+  virus1 = {
+    intro = love.audio.newSource("assets/virus1intro.ogg"),
+    scorch = love.graphics.newImage("assets/virus_scorch.png")
+  }
 end

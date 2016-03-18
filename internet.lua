@@ -19,6 +19,7 @@ function drawInternet()
     love.graphics.draw(internet.welcome, 8, 74)
   elseif internet.urlc == "www.freedownloads.com" then
     love.graphics.draw(internet.freedownloads1, 8, 74)
+    virus1.yes = true
   else
     love.graphics.draw(internet.error, 8, 74)
   end

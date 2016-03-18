@@ -3,6 +3,9 @@ function drawDesktop()
   if desktop.bg.current ~= 0 then
     love.graphics.draw(desktop.bg.current, 0, 0, 0, sys.w/1920, sys.h/1280)
   end
+  if virus1.explodeintro == true and virus1.yes == true then
+    love.graphics.draw(virus1.scorch, win[2].x-300, win[2].y-100)
+  end
   for i=1,6 do
     drawIcon(i)
     checkIcon(i)
@@ -26,7 +29,7 @@ function drawIcon(id, x, y)
 end
 function checkIcon(id)
   if(sys.mouse.p.x >= icon[id].x+4 and sys.mouse.p.x <= icon[id].x+100 and sys.mouse.p.p == true
-  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75) then
+  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75 and virus1.yes == false) then
     if icon[id].hl == false and icon[id].cl == false then
       icon[id].hl = true
       icon[id].cl = true
