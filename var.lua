@@ -88,7 +88,7 @@ function loadVar()
   desktop.bg.current = 0
   fade = 0
   fadeOpacity = 0
-  scene = 1
+  scene = 0
   loading = 0
   antivirus = {}
   antivirus.prog = 0
