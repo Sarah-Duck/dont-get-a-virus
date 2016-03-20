@@ -70,9 +70,9 @@ function loadAssets()
   expl = {}
   for i=1,90 do
     if i < 10 then
-      expl[i] = love.graphics.newImage("assets/explosion/explosion1_000" .. i .. ".png")
+      expl[i] = love.graphics.newImage("assets/explosion/explosion_1000" .. i .. ".png")
     elseif i >= 10 then
-      expl[i] = love.graphics.newImage("assets/explosion/explosion1_00" .. i .. ".png")
+      expl[i] = love.graphics.newImage("assets/explosion/explosion_100" .. i .. ".png")
     end
   end
   expl.frame = 1

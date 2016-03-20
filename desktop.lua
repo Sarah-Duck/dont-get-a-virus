@@ -26,7 +26,7 @@ function drawDesktop()
       end
     end
     if expl.frame <= 90 then
-      love.graphics.draw(expl[expl.frame], win[2].x-750, win[2].y-500, 0, 3.5, 3.5)
+      love.graphics.draw(expl[expl.frame], win[2].x-750, win[2].y-500, 0, 7, 7)
       expl.frame = expl.frame + 1
     end
   end
