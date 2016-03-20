@@ -138,4 +138,23 @@ function loadVar()
   virus1.introplay = false
   virus1.explodeintro = false
   virus1.explodeintrotimer = 0
+  expl.deb[1].x = 0
+  expl.deb[1].y = 0
+  expl.deb[1].ym = 5
+  expl.deb[1].xm = -13
+  expl.deb[1].r = math.rad(0)
+  expl.deb[1].rm = math.rad(-2)
+  expl.deb[2].x = 0
+  expl.deb[2].y = 0
+  expl.deb[2].ym = 7
+  expl.deb[2].xm = 23
+  expl.deb[2].r = math.rad(0)
+  expl.deb[2].rm = math.rad(3)
+  expl.deb[3].x = 0
+  expl.deb[3].y = 0
+  expl.deb[3].ym = 2
+  expl.deb[3].xm = 10
+  expl.deb[3].r = math.rad(0)
+  expl.deb[3].rm = math.rad(1)
+  expl.deb.load = false
 end

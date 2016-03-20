@@ -4,7 +4,31 @@ function drawDesktop()
     love.graphics.draw(desktop.bg.current, 0, 0, 0, sys.w/1920, sys.h/1280)
   end
   if virus1.explodeintro == true and virus1.yes == true then
-    love.graphics.draw(virus1.scorch, win[2].x-300, win[2].y-100)
+    if expl.frame >= 20 then
+      love.graphics.draw(virus1.scorch, win[2].x-300, win[2].y-100)
+    end
+    if expl.deb.load == false then
+      expl.deb[1].x = win[2].x
+      expl.deb[1].y = win[2].y
+      expl.deb[2].x = win[2].x+300
+      expl.deb[2].y = win[2].y
+      expl.deb[3].x = win[2].x
+      expl.deb[3].y = win[2].y+300
+      expl.deb.load = true
+    end
+    if expl.deb[1].y < sys.h or expl.deb[2].y < sys.h or expl.deb[3].y < sys.h then
+      for i=1,3 do
+        love.graphics.draw(expl.deb[i].pic, expl.deb[i].x, expl.deb[i].y, expl.deb[i].r)
+        expl.deb[i].y = expl.deb[i].y - expl.deb[i].ym
+        expl.deb[i].ym = expl.deb[i].ym - 1
+        expl.deb[i].x = expl.deb[i].x + expl.deb[i].xm
+        expl.deb[i].r = expl.deb[i].r + expl.deb[i].rm
+      end
+    end
+    if expl.frame <= 90 then
+      love.graphics.draw(expl[expl.frame], win[2].x-750, win[2].y-500, 0, 3.5, 3.5)
+      expl.frame = expl.frame + 1
+    end
   end
   for i=1,6 do
     drawIcon(i)

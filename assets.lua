@@ -67,4 +67,20 @@ function loadAssets()
     intro = love.audio.newSource("assets/virus1intro.ogg"),
     scorch = love.graphics.newImage("assets/virus_scorch.png")
   }
+  expl = {}
+  for i=1,90 do
+    if i < 10 then
+      expl[i] = love.graphics.newImage("assets/explosion/explosion1_000" .. i .. ".png")
+    elseif i >= 10 then
+      expl[i] = love.graphics.newImage("assets/explosion/explosion1_00" .. i .. ".png")
+    end
+  end
+  expl.frame = 1
+  expl.deb = {}
+  expl.deb[1] = {}
+  expl.deb[2] = {}
+  expl.deb[3] = {}
+  expl.deb[1].pic = love.graphics.newImage("assets/debris1.png")
+  expl.deb[2].pic = love.graphics.newImage("assets/debris2.png")
+  expl.deb[3].pic = love.graphics.newImage("assets/debris3.png")
 end
