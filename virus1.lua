@@ -14,7 +14,7 @@ function drawVirusFight1()
     virus1.shakemin = virus1.shakemin - 0.1
     virus1.shakemax = virus1.shakemax + 0.1
   end
-  if virus1.explodeintrotimer >= 7.8 then
+  if virus1.explodeintrotimer >= 7.7 then
     virus1.explodeintro = true
   end
 end

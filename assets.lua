@@ -68,14 +68,15 @@ function loadAssets()
     scorch = love.graphics.newImage("assets/virus_scorch.png")
   }
   expl = {}
-  for i=1,90 do
+  for i=2,90 do
     if i < 10 then
       expl[i] = love.graphics.newImage("assets/explosion/explosion_1000" .. i .. ".png")
     elseif i >= 10 then
       expl[i] = love.graphics.newImage("assets/explosion/explosion_100" .. i .. ".png")
     end
   end
-  expl.frame = 1
+  expl.frame = 2
+  expl.opa = 255
   expl.deb = {}
   expl.deb[1] = {}
   expl.deb[2] = {}
