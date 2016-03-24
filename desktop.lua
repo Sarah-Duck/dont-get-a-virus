@@ -25,13 +25,10 @@ function drawDesktop()
         expl.deb[i].r = expl.deb[i].r + expl.deb[i].rm
       end
     end
-    if expl.frame <= 90 then
-      love.graphics.setColor(255,255,255, expl.opa)
-      love.graphics.draw(expl[expl.frame], win[2].x-750, win[2].y-500, 0, 7, 7)
+    if expl.frame <= 89 then
+      love.graphics.setColor(255,255,255)
+      love.graphics.draw(expl.pic, expl.frames[expl.frame], win[2].x-750, win[2].y-500, 0, 7, 7)
       expl.frame = expl.frame + 1
-      if expl.frame >= 80 then
-        expl.opa = expl.opa - 25.5
-      end
     end
   end
   for i=1,6 do

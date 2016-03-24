@@ -17,4 +17,7 @@ function drawVirusFight1()
   if virus1.explodeintrotimer >= 7.7 then
     virus1.explodeintro = true
   end
+  if virus1.timer >= 15 then
+    music.tension1:play()
+  end
 end

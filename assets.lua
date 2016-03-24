@@ -32,7 +32,8 @@ function loadAssets()
     battle2 = love.audio.newSource("assets/music/Skyscraper Party.ogg"),
     sad1 = love.audio.newSource("assets/music/Startup Ambiance.ogg"),
     battle3 = love.audio.newSource("assets/music/Without Silence.ogg"),
-    fox = love.audio.newSource("assets/music/FOX.ogg")
+    fox = love.audio.newSource("assets/music/FOX.ogg"),
+    tension1 = love.audio.newSource("assets/music/Storm Chasers.ogg")
   }
   sound = {
     boot = love.audio.newSource("assets/boot.ogg")
@@ -67,16 +68,21 @@ function loadAssets()
     intro = love.audio.newSource("assets/virus1intro.ogg"),
     scorch = love.graphics.newImage("assets/virus_scorch.png")
   }
+  virus1.c = {}
   expl = {}
-  for i=2,90 do
-    if i < 10 then
-      expl[i] = love.graphics.newImage("assets/explosion/explosion_1000" .. i .. ".png")
-    elseif i >= 10 then
-      expl[i] = love.graphics.newImage("assets/explosion/explosion_100" .. i .. ".png")
+  expl.frames = {}
+  expl.pic = love.graphics.newImage("assets/explosion.png")
+  local frame = 1
+  for i=1,10 do
+    local y = i
+    for i=1,10 do
+      if frame <= 89 then
+        expl.frames[frame] = love.graphics.newQuad(i*320-320, y*240-240, 320, 240, expl.pic:getDimensions())
+        frame = frame + 1
+      end
     end
   end
-  expl.frame = 2
-  expl.opa = 255
+  expl.frame = 1
   expl.deb = {}
   expl.deb[1] = {}
   expl.deb[2] = {}
