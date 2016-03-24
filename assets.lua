@@ -69,19 +69,18 @@ function loadAssets()
     scorch = love.graphics.newImage("assets/virus_scorch.png")
   }
   virus1.c = {}
+  virus1.c.idle = {}
+  virus1.c.idle.fs = {}
+  virus1.c.idle.pic = love.graphics.newImage("assets/virus1_idle.png")
+  loadAnimation(virus1.c.idle.pic, virus1.c.idle.fs, 98, 10, 200, 200)
+  virus1.c.monitorspin = {}
+  virus1.c.monitorspin.fs = {}
+  virus1.c.monitorspin.pic = love.graphics.newImage("assets/virus1_monitorspin.png")
+  loadAnimation(virus1.c.monitorspin.pic, virus1.c.monitorspin.fs, 59, 6, 200, 200)
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
-  local frame = 1
-  for i=1,10 do
-    local y = i
-    for i=1,10 do
-      if frame <= 89 then
-        expl.frames[frame] = love.graphics.newQuad(i*320-320, y*240-240, 320, 240, expl.pic:getDimensions())
-        frame = frame + 1
-      end
-    end
-  end
+  loadAnimation(expl.pic, expl.frames, 89, 9, 320, 240)
   expl.frame = 1
   expl.deb = {}
   expl.deb[1] = {}
@@ -90,4 +89,16 @@ function loadAssets()
   expl.deb[1].pic = love.graphics.newImage("assets/debris1.png")
   expl.deb[2].pic = love.graphics.newImage("assets/debris2.png")
   expl.deb[3].pic = love.graphics.newImage("assets/debris3.png")
+end
+function loadAnimation(pic, quad, frames, limit, w, h)
+  local frame = 1
+  for i=1,limit do
+    local y = i
+    for i=1,10 do
+      if frame <= frames then
+        quad[frame] = love.graphics.newQuad(i*w-w, y*h-h, w, h, pic:getDimensions())
+        frame = frame + 1
+      end
+    end
+  end
 end
