@@ -104,3 +104,12 @@ function loadAnimation(pic, quad, frames, limit, w, h)
     end
   end
 end
+function playAnimation(ani, loop, x, y, r, s, xo, yo)
+  love.graphics.draw(ani.pic, ani.fs[ani.f], x, y, r, s, s, xo, yo)
+  if loop == true and #ani.fs <= ani.f then
+    ani.f = 1
+  elseif loop == false and ani.f >= #ani.fs then
+  else
+    ani.f = ani.f + 1
+  end
+end

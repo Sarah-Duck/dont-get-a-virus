@@ -19,5 +19,6 @@ function drawVirusFight1()
   end
   if v1.timer >= 15 then
     music.tension1:play()
+    playAnimation(v1.c.monitorspin, true, sys.w/2, sys.h/2, 0, 1, 100, 100)
   end
 end
