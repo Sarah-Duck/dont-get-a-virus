@@ -50,13 +50,13 @@ function love.update(dt)
   if scene == 1 then
     updateSystem(dt)
   end
-  if virus1.yes == true then
-    virus1.timer = virus1.timer + dt
+  if v1.yes == true then
+    v1.timer = v1.timer + dt
   end
-  if virus1.yes == true and virus1.timer >= 5 then
+  if v1.yes == true and v1.timer >= 5 then
     scene = 2
-    if virus1.explodeintrotimer <= 7.8 then
-      virus1.explodeintrotimer = virus1.explodeintrotimer + dt
+    if v1.explodeintrotimer <= 7.8 then
+      v1.explodeintrotimer = v1.explodeintrotimer + dt
     end
   end
 end

@@ -64,19 +64,21 @@ function loadAssets()
     sound1 = love.audio.newSource("assets/notification1.ogg"),
     sound2 = love.audio.newSource("assets/notification2.ogg")
   }
-  virus1 = {
+  v1 = {
     intro = love.audio.newSource("assets/virus1intro.ogg"),
     scorch = love.graphics.newImage("assets/virus_scorch.png")
   }
-  virus1.c = {}
-  virus1.c.idle = {}
-  virus1.c.idle.fs = {}
-  virus1.c.idle.pic = love.graphics.newImage("assets/virus1_idle.png")
-  loadAnimation(virus1.c.idle.pic, virus1.c.idle.fs, 98, 10, 200, 200)
-  virus1.c.monitorspin = {}
-  virus1.c.monitorspin.fs = {}
-  virus1.c.monitorspin.pic = love.graphics.newImage("assets/virus1_monitorspin.png")
-  loadAnimation(virus1.c.monitorspin.pic, virus1.c.monitorspin.fs, 59, 6, 200, 200)
+  v1.c = {}
+  v1.c.idle = {}
+  v1.c.idle.fs = {}
+  v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle.png")
+  v1.c.idle.f = 1
+  loadAnimation(v1.c.idle.pic, v1.c.idle.fs, 98, 10, 200, 200)
+  v1.c.monitorspin = {}
+  v1.c.monitorspin.fs = {}
+  v1.c.monitorspin.pic = love.graphics.newImage("assets/virus1_monitorspin.png")
+  v1.c.monitorspin.f = 1
+  loadAnimation(v1.c.monitorspin.pic, v1.c.monitorspin.fs, 59, 6, 200, 200)
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
