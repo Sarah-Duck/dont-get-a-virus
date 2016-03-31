@@ -78,7 +78,16 @@ function loadAssets()
   v1.c.monitorspin.fs = {}
   v1.c.monitorspin.pic = love.graphics.newImage("assets/virus1_monitorspin.png")
   v1.c.monitorspin.f = 1
+  v1.c.monitorspin.x = 330
+  v1.c.monitorspin.y = -100
   loadAnimation(v1.c.monitorspin.pic, v1.c.monitorspin.fs, 59, 6, 200, 200)
+  v1.c.slime = {}
+  v1.c.slime.fs = {}
+  v1.c.slime.pic = love.graphics.newImage("assets/virus1_slime.png")
+  v1.c.slime.f = 1
+  v1.c.slime.x = 330
+  v1.c.slime.y = 350
+  loadAnimation(v1.c.slime.pic, v1.c.slime.fs, 26, 3, 50, 50)
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
@@ -104,12 +113,13 @@ function loadAnimation(pic, quad, frames, limit, w, h)
     end
   end
 end
-function playAnimation(ani, loop, x, y, r, s, xo, yo)
-  love.graphics.draw(ani.pic, ani.fs[ani.f], x, y, r, s, s, xo, yo)
+function playAnimation(ani, loop, x, y, r, s, xo, yo, sp)
+  love.graphics.draw(ani.pic, ani.fs[math.floor(ani.f)], x, y, r, s, s, xo, yo)
+  speed = (60/love.timer.getFPS())*sp
   if loop == true and #ani.fs <= ani.f then
     ani.f = 1
   elseif loop == false and ani.f >= #ani.fs then
   else
-    ani.f = ani.f + 1
+    ani.f = ani.f + speed
   end
 end

@@ -19,6 +19,17 @@ function drawVirusFight1()
   end
   if v1.timer >= 15 then
     music.tension1:play()
-    playAnimation(v1.c.monitorspin, true, sys.w/2, sys.h/2, 0, 1, 100, 100)
+    if win[2].y+v1.c.slime.y >= v1.c.monitorspin.y then
+      love.graphics.stencil(scorchStencil, "replace", 1)
+      love.graphics.setStencilTest("lequal", 0)
+      playAnimation(v1.c.slime, true, win[2].x+v1.c.slime.x, win[2].y+v1.c.slime.y, 0, 2.5, 25, 25, 0.5)
+      playAnimation(v1.c.monitorspin, true, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y, 0, 1, 100, 100, 0.5)
+      love.graphics.setStencilTest()
+      v1.c.slime.y = v1.c.slime.y - 1
+      v1.c.monitorspin.y = v1.c.monitorspin.y + 1
+    end
   end
+end
+function scorchStencil()
+  love.graphics.rectangle("fill", win[2].x+180, win[2].y+295, 400, 500)
 end
