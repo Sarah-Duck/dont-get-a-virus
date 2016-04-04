@@ -79,7 +79,7 @@ function loadAssets()
   v1.c.monitorspin.pic = love.graphics.newImage("assets/virus1_monitorspin.png")
   v1.c.monitorspin.f = 1
   v1.c.monitorspin.x = 330
-  v1.c.monitorspin.y = -100
+  v1.c.monitorspin.y = -200
   loadAnimation(v1.c.monitorspin.pic, v1.c.monitorspin.fs, 59, 6, 200, 200)
   v1.c.slime = {}
   v1.c.slime.fs = {}
@@ -88,6 +88,15 @@ function loadAssets()
   v1.c.slime.x = 330
   v1.c.slime.y = 350
   loadAnimation(v1.c.slime.pic, v1.c.slime.fs, 26, 3, 50, 50)
+  v1.c.shine = {}
+  v1.c.shine.f1 = love.graphics.newImage("assets/shine1.png")
+  v1.c.shine.f2 = love.graphics.newImage("assets/shine2.png")
+  v1.c.shine.r1 = 0
+  v1.c.shine.r2 = 0
+  v1.c.shine.s1 = -30
+  v1.c.shine.s2 = -40
+  v1.c.shine.sm1 = true
+  v1.c.shine.sm2 = true
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
