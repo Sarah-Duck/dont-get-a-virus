@@ -84,7 +84,7 @@ function drawWindow(id)
     win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
   end
   if (sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-22 and sys.mouse.p.x <= (win[id].x+win[id].w-22)+16 and win[id].ex == false
-  and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5 and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) then
+  and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5 and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
     win[id].ex = true
   end
   if win[id].ex == true and win[id].s ~= 0 then
@@ -99,8 +99,11 @@ function drawWindow(id)
   end
   if (win[id].min == false and sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-40
   and sys.mouse.p.x <= (win[id].x+win[id].w-40)+16 and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5
-  and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) then
+  and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
     win[id].min = true
+  end
+  if v1.yes == true and id ~= 2 and win[id].ex == false then
+    win[id].ex = true
   end
   if win[id].min == true and win[id].miny < minim then
     win[id].y = win[id].y + 150

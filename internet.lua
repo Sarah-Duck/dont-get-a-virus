@@ -27,7 +27,7 @@ end
 function updateInternet()
   internet.urlold = internet.url
   function love.keypressed(key)
-    if key == "backspace" and layer[1] == 2 then
+    if key == "backspace" and layer[1] == 2 and v1.yes == false then
       internet.url = string.sub(internet.url, 1, string.len(internet.url)-1)
       if internet.url ~= internet.urlold then
         win[2].update = true
@@ -39,7 +39,7 @@ function updateInternet()
     end
   end
   function love.textinput(t)
-    if layer[1] == 2 then
+    if layer[1] == 2 and v1.yes == false then
       internet.url = internet.url .. t
       if internet.url ~= internet.urlold then
         win[2].update = true

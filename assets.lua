@@ -66,7 +66,8 @@ function loadAssets()
   }
   v1 = {
     intro = love.audio.newSource("assets/virus1intro.ogg"),
-    scorch = love.graphics.newImage("assets/virus_scorch.png")
+    scorch = love.graphics.newImage("assets/virus_scorch.png"),
+    scorchMask = love.graphics.newImage("assets/virus_scorch_mask.png")
   }
   v1.c = {}
   v1.c.idle = {}
@@ -80,6 +81,7 @@ function loadAssets()
   v1.c.monitorspin.f = 1
   v1.c.monitorspin.x = 330
   v1.c.monitorspin.y = -200
+  v1.c.monitorspin.sp = 0.4
   loadAnimation(v1.c.monitorspin.pic, v1.c.monitorspin.fs, 59, 6, 200, 200)
   v1.c.slime = {}
   v1.c.slime.fs = {}
@@ -93,10 +95,12 @@ function loadAssets()
   v1.c.shine.f2 = love.graphics.newImage("assets/shine2.png")
   v1.c.shine.r1 = 0
   v1.c.shine.r2 = 0
-  v1.c.shine.s1 = -30
-  v1.c.shine.s2 = -40
+  v1.c.shine.s1 = 0
+  v1.c.shine.s2 = 0
+  v1.c.shine.s = -25
   v1.c.shine.sm1 = true
   v1.c.shine.sm2 = true
+  v1.c.shine.ct = 0
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
