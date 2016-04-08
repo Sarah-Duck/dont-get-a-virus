@@ -101,6 +101,12 @@ function loadAssets()
   v1.c.shine.sm1 = true
   v1.c.shine.sm2 = true
   v1.c.shine.ct = 0
+  v1.c.shine.opa = 255
+  v1.c.x = 0
+  v1.c.y = 0
+  v1.c.s = 1
+  v1.c.r = 0
+  v1.c.load = false
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
