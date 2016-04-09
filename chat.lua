@@ -45,7 +45,9 @@ function sendMessage(id, message)
   if win[1].ex == true or layer[1] ~= 1 then
     notifyNow("CHAT NOTIFICATION", "New message from\nBest Friend:\n\n" .. message)
   end
-  msg.c = msg.c + 1
+  if msg.c ~= 8 then
+    msg.c = msg.c + 1
+  end
 end
 function chatlimit()
   if #msg.msgs <=8 then
