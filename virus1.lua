@@ -17,7 +17,7 @@ function drawVirusFight1()
   if v1.explodeintrotimer >= 7.7 then
     v1.explodeintro = true
   end
-  if v1.timer >= 20 then
+  if v1.timer >= 16 then
     music.tension1:play()
   end
   if v1.c.shine.ct >= 3 then
@@ -31,7 +31,7 @@ function drawVirusFight1()
     love.graphics.setColor(255,255,255)
     playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
   end
-  if v1.timer >= 15 then
+  if v1.timer >= 16 then
     love.graphics.setColor(255,255,255)
     if win[2].y+v1.c.slime.y >= v1.c.monitorspin.y then
       playAnimation(v1.c.slime, true, win[2].x+v1.c.slime.x+math.random(1,4), win[2].y+v1.c.slime.y+math.random(1,4), 0, 2.5, 25, 25, 0.5)
@@ -41,6 +41,10 @@ function drawVirusFight1()
     end
     if win[2].y+v1.c.slime.y <= v1.c.monitorspin.y+100 and v1.c.shine.s > -70 then
       love.graphics.setColor(255,255,255,v1.c.shine.opa)
+      if v1.shineplay == false then
+        v1.shine:play()
+        v1.shineplay = true
+      end
       love.graphics.draw(v1.c.shine.f2, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y,
       v1.c.shine.r2, (3+v1.c.shine.s2/10)+v1.c.shine.s/10, (3+v1.c.shine.s2/10)+v1.c.shine.s/10, 100, 100)
       love.graphics.draw(v1.c.shine.f1, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y,
@@ -54,14 +58,14 @@ function drawVirusFight1()
         end
       end
       if v1.c.shine.sm1 == true and v1.c.shine.ct < 3 then
-        v1.c.shine.s1 = v1.c.shine.s1 + 0.2
+        v1.c.shine.s1 = v1.c.shine.s1 + 0.3*(60/love.timer.getFPS())
       elseif v1.c.shine.sm1 == false then
-        v1.c.shine.s1 = v1.c.shine.s1 - 0.2
+        v1.c.shine.s1 = v1.c.shine.s1 - 0.3*(60/love.timer.getFPS())
       end
       if v1.c.shine.sm2 == true and v1.c.shine.ct < 3 then
-        v1.c.shine.s2 = v1.c.shine.s2 + 0.3
+        v1.c.shine.s2 = v1.c.shine.s2 + 0.2*(60/love.timer.getFPS())
       elseif v1.c.shine.sm2 == false then
-        v1.c.shine.s2 = v1.c.shine.s2 - 0.3
+        v1.c.shine.s2 = v1.c.shine.s2 - 0.2*(60/love.timer.getFPS())
       end
       if v1.c.shine.s1 >= 7 or v1.c.shine.ct >= 3 then
         v1.c.shine.sm1 = false

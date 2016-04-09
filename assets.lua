@@ -66,8 +66,10 @@ function loadAssets()
   }
   v1 = {
     intro = love.audio.newSource("assets/virus1intro.ogg"),
+    shine = love.audio.newSource("assets/shine.ogg"),
     scorch = love.graphics.newImage("assets/virus_scorch.png"),
-    scorchMask = love.graphics.newImage("assets/virus_scorch_mask.png")
+    scorchMask = love.graphics.newImage("assets/virus_scorch_mask.png"),
+    shineplay = false
   }
   v1.c = {}
   v1.c.idle = {}
