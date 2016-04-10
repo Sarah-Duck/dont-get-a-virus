@@ -50,7 +50,7 @@ function drawBgSel(i)
 end
 function updateSettings()
   for i=1,6 do
-    if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and
+    if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
     sys.mouse.p.x >= win[6].x+263 and sys.mouse.p.x <= win[6].x+263+120 and
     sys.mouse.p.y >= win[6].y+70+(20*(i-1)) and sys.mouse.y <= win[6].y+70+(20*(i-1))+20) then
       for i=1,6 do
