@@ -20,6 +20,8 @@ function drawWindow(id)
       drawChat()
     elseif id == 2 then
       drawInternet()
+    elseif id == 6 then
+      drawSettings()
     end
     love.graphics.setCanvas()
     win[id].update = false
@@ -125,6 +127,8 @@ function drawWindow(id)
     updateChat()
   elseif id == 2 then
     updateInternet()
+  elseif id == 6 then
+    updateSettings()
   end
   if id == layer[1] and win[id].bar == "grey" then
     win[id].bar = "active"

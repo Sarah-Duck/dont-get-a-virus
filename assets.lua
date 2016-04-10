@@ -25,6 +25,25 @@ function loadAssets()
     flower = love.graphics.newImage("assets/bg_flower.jpg"),
     city = love.graphics.newImage("assets/bg_city.jpg")
   }
+  st = {}
+  st[1] = {}
+  st[1].title = "Default"
+  st[1].hl = false
+  st[2] = {}
+  st[2].title = "Hills"
+  st[2].hl = false
+  st[3] = {}
+  st[3].title = "Clouds"
+  st[3].hl = false
+  st[4] = {}
+  st[4].title = "City"
+  st[4].hl = false
+  st[5] = {}
+  st[5].title = "Flower"
+  st[5].hl = false
+  st[6] = {}
+  st[6].title = "Coast"
+  st[6].hl = false
   music = {
     battle1 = love.audio.newSource("assets/music/Thrills And Spills.ogg"),
     battleNSA = love.audio.newSource("assets/music/Less Than Three.ogg"),
@@ -46,6 +65,9 @@ function loadAssets()
   window = {
     bar = love.graphics.newImage("assets/win_bar.png"),
     barGrey = love.graphics.newImage("assets/win_bar_grey.png")
+  }
+  settings = {
+    comp = love.graphics.newImage("assets/computer.png")
   }
   chat = {
     online = love.graphics.newImage("assets/chat_status_online.png"),
