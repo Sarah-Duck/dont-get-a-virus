@@ -82,8 +82,20 @@ function drawWindow(id)
     win[id].py = win[id].y
   end
   if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
-    win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
-    win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
+    if win[id].px+(sys.mouse.x - sys.mouse.p.x) >= 0 and win[id].px+(sys.mouse.x - sys.mouse.p.x) <= sys.w-win[id].w then
+      win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
+    elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) < 0 then
+      win[id].x = 0
+    elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) > sys.w-win[id].w then
+      win[id].x = sys.w-win[id].w
+    end
+    if win[id].py+(sys.mouse.y - sys.mouse.p.y) >= 0 and win[id].py+(sys.mouse.y - sys.mouse.p.y) <= sys.h-win[id].h-panel.thick-1 then
+      win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
+    elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) < 0 then
+      win[id].y = 0
+    elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) > sys.h-win[id].h-panel.thick-1 then
+      win[id].y = sys.h-win[id].h-panel.thick-1
+    end
   end
   if (sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-22 and sys.mouse.p.x <= (win[id].x+win[id].w-22)+16 and win[id].ex == false
   and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5 and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
