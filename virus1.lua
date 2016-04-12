@@ -16,6 +16,11 @@ function drawVirusFight1()
   end
   if v1.explodeintrotimer >= 7.7 then
     v1.explodeintro = true
+    win[2].s = 0
+    win[2].ex = true
+    closeWindow(2)
+    setWindow(2)
+    setPanel(2)
   end
   if v1.timer >= 16 then
     music.tension1:play()
@@ -89,5 +94,11 @@ function drawVirusFight1()
       love.graphics.setColor(255,255,255)
       love.graphics.draw(v1.scorchMask, win[2].x-300, win[2].y-100)
     end
+  end
+  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
+    start.o = false
+  end
+  if start.o == true then
+    drawMenu()
   end
 end

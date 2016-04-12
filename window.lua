@@ -36,7 +36,7 @@ function drawWindow(id)
   if layer[1] ~= 0 and win[id].ex == false then
     if win[id].layer ~= 1 and win[layer[1]].hov == true then
       win[id].hover = false
-    elseif win[id].layer ~= 1 and win[id].layer ~= 2 and layer[1] ~= 0 and layer[2] ~= 0 then
+    elseif win[id].layer ~= 1 and win[id].layer ~= 2 and layer[1] ~= 0 and layer[2] ~= 0 and v1.yes == false and v1.timer <= 4 then
       if win[layer[1]].hov == true or win[layer[2]].hov == true then
         win[id].hover = false
       else
@@ -47,7 +47,7 @@ function drawWindow(id)
     else
       win[id].hover = true
     end
-    if win[id].layer ~= 1 then
+    if win[id].layer ~= 1 and v1.timer <= 4 then
       for i=1,win[id].layer-1 do
         if win[layer[i]].hov == true then
           win[id].hover = false
@@ -116,8 +116,11 @@ function drawWindow(id)
   and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
     win[id].min = true
   end
-  if v1.yes == true and id ~= 2 and win[id].ex == false then
+  if v1.yes == true and id ~= 2 and win[id].ex == false and v1.timer >= 4 then
     win[id].ex = true
+  end
+  if v1.yes == true and id == 2 and v1.timer >= 4 then
+    layer.sendToFront = 2
   end
   if win[id].min == true and win[id].miny < minim then
     win[id].y = win[id].y + 150
