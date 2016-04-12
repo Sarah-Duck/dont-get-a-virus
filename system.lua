@@ -12,17 +12,6 @@ function drawSystem()
   and win[4].hov == false and win[5].hov == false and win[6].hov == false) then
     winHover = false
   end
-  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
-  and sys.mouse.p.x <= panel.s.x+panel.s.width
-  and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
-    start.p = true
-    if start.o == true then
-      start.o = false
-    elseif start.o == false then
-      start.o = true
-      sendMessage(1, msgs[msg.c])
-    end
-  end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
     start.o = false
   end

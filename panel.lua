@@ -47,4 +47,15 @@ function drawStart()
   drawPanelButton(4)
   drawPanelButton(5)
   drawPanelButton(6)
+  if(sys.mouse.p.p == true and start.p == false and sys.mouse.p.x >= panel.s.x
+  and sys.mouse.p.x <= panel.s.x+panel.s.width
+  and sys.mouse.p.y >= panel.s.y and sys.mouse.p.y <= panel.s.y+panel.s.height) then
+    start.p = true
+    if start.o == true then
+      start.o = false
+    elseif start.o == false then
+      start.o = true
+      sendMessage(1, msgs[msg.c])
+    end
+  end
 end
