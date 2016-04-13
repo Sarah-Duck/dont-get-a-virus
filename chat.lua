@@ -19,17 +19,17 @@ function drawChat()
   love.graphics.draw(chat.profile, 6, 30)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print(chat.profilename, 50, 41)
-  love.graphics.setFont(pressstarts)
+  love.graphics.setFont(pixeloperators)
   for i=1,chatlimit() do
     if msg.msgs[i][1] == 1 then
       love.graphics.setColor(colors.font.friend)
-      love.graphics.print("Friend:", 12, 310 - (28*i))
+      love.graphics.print("Friend:", 12, 300 - (28*i))
     elseif msg.msgs[i][1] == 2 then
       love.graphics.setColor(colors.font.you)
-      love.graphics.print("You:", 12, 310 - (28*i))
+      love.graphics.print("You:", 12, 300 - (28*i))
     end
     love.graphics.setColor(colors.font.dark)
-    love.graphics.print("\n" .. msg.msgs[i][2], 12, 310 - (28*i))
+    love.graphics.print("\n" .. msg.msgs[i][2], 12, 300 - (28*i))
   end
   love.graphics.setFont(pressstart)
 end

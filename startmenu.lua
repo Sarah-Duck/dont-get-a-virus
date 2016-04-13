@@ -28,7 +28,7 @@ function drawMenu()
   love.graphics.setColor(192, 192, 192)
   love.graphics.rectangle("fill", 0, 0, 250, 350)
   love.graphics.setColor(220, 220, 220)
-  love.graphics.setLineWidth(4)
+  love.graphics.setLineWidth(3.5)
   love.graphics.line(0, 0+350, 0, 0, 0+250, 0) --BoxLight
   love.graphics.setColor(150,150,150)
   love.graphics.line(0+250, 0+350, 0+250, 0) --BoxShadow

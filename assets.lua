@@ -91,7 +91,9 @@ function loadAssets()
     shine = love.audio.newSource("assets/shine.ogg"),
     scorch = love.graphics.newImage("assets/virus_scorch.png"),
     scorchMask = love.graphics.newImage("assets/virus_scorch_mask.png"),
-    shineplay = false
+    shineplay = false,
+    corner = love.graphics.newImage("assets/chat_bubble_corner.png"),
+    cornerSpike = love.graphics.newImage("assets/chat_bubble_cornerspike.png")
   }
   v1.c = {}
   v1.c.idle = {}

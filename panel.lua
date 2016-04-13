@@ -31,7 +31,7 @@ function drawStart()
   love.graphics.setColor(colors.win.normal)
   love.graphics.rectangle("fill", panel.x, panel.y, panel.width, panel.height)
   love.graphics.setColor(colors.win.light)
-  love.graphics.setLineWidth(2)
+  love.graphics.setLineWidth(1.5)
   love.graphics.line(panel.x, panel.y, panel.width, panel.y)
   love.graphics.setColor(colors.win.dark)
   if start.o == true then
