@@ -120,14 +120,6 @@ function loadVar()
   msg.c = 1
   msg.msgs = {}
   msgs = {}
-  msgs[1] = "Hey, Wazzup?"
-  msgs[2] = "Did you hear the news?"
-  msgs[3] = "New Duty of Call game!"
-  msgs[4] = "It looks so cool!"
-  msgs[5] = "Check it out!"
-  msgs[6] = "Want to get it free?"
-  msgs[7] = "Search this on the web:"
-  msgs[8] = "www.freedownloads.com"
   internet.url = "www.homepage.com"
   internet.urlold = internet.url
   internet.urlc = internet.url

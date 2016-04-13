@@ -16,6 +16,7 @@ function love.load()
   require "elements"
   require "notification"
   require "virus1"
+  require "dialogue"
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setNewFont()
@@ -33,6 +34,7 @@ function love.load()
   love.keyboard.setKeyRepeat(true)
   loadAssets()
   loadVar()
+  loadDia()
 end
 function love.update(dt)
   sys.w = love.graphics.getWidth()

@@ -45,7 +45,7 @@ function sendMessage(id, message)
   if win[1].ex == true or layer[1] ~= 1 then
     notifyNow("CHAT NOTIFICATION", "New message from\nBest Friend:\n\n" .. message)
   end
-  if msg.c ~= 8 then
+  if msg.c ~= 21 then
     msg.c = msg.c + 1
   end
 end

@@ -95,6 +95,7 @@ function loadAssets()
     corner = love.graphics.newImage("assets/chat_bubble_corner.png"),
     cornerSpike = love.graphics.newImage("assets/chat_bubble_cornerspike.png")
   }
+  v1.msgs = {}
   v1.c = {}
   v1.c.idle = {}
   v1.c.idle.fs = {}
