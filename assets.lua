@@ -97,6 +97,12 @@ function loadAssets()
   }
   v1.msgs = {}
   v1.c = {}
+  v1.c.chat = {}
+  v1.c.chat.next = false
+  v1.c.chat.msgs = 1
+  v1.c.chat.msg = ""
+  v1.c.chat.sp = 0.5
+  v1.c.chat.char = 0
   v1.c.idle = {}
   v1.c.idle.fs = {}
   v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle.png")
