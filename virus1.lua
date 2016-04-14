@@ -35,17 +35,19 @@ function drawVirusFight1()
     playAnimation(v1.c.idle, true, v1.c.x-40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
     love.graphics.setColor(255,255,255)
     playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
-    drawBubble(v1.c.x+40, v1.c.y-210, 250, 150, v1.c.chat.msg)
-    if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+250
-    and sys.mouse.p.y >= v1.c.y-210 and sys.mouse.p.y <= v1.c.y-210+150 and
-    v1.c.chat.next == false and sys.mouse.drag == false) then
-      v1.c.chat.next = true
-      v1.c.chat.msgs = v1.c.chat.msgs + 1
-      v1.c.chat.char = 0
-    end
-    if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then
-      v1.c.chat.char = v1.c.chat.char + v1.c.chat.sp*(60/love.timer.getFPS())
-      v1.c.chat.msg = string.sub(v1.msgs[v1.c.chat.msgs], 1, math.floor(v1.c.chat.char))
+    if v1.c.shine.s < -50 then
+      drawBubble(v1.c.x+40, v1.c.y-160, 300, 110, v1.c.chat.msg)
+      if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+300
+      and sys.mouse.p.y >= v1.c.y-160 and sys.mouse.p.y <= v1.c.y-160+110 and
+      v1.c.chat.next == false and sys.mouse.drag == false) then
+        v1.c.chat.next = true
+        v1.c.chat.msgs = v1.c.chat.msgs + 1
+        v1.c.chat.char = 0
+      end
+      if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then
+        v1.c.chat.char = v1.c.chat.char + v1.c.chat.sp*(60/love.timer.getFPS())
+        v1.c.chat.msg = string.sub(v1.msgs[v1.c.chat.msgs], 1, math.floor(v1.c.chat.char))
+      end
     end
   end
   if v1.timer >= 16 then
