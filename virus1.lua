@@ -31,7 +31,7 @@ function drawVirusFight1()
       v1.c.y = v1.c.monitorspin.y
       v1.c.load = true
     end
-    love.graphics.setColor(0,0,0,150)
+    love.graphics.setColor(0,0,0,100)
     playAnimation(v1.c.idle, true, v1.c.x-40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
     love.graphics.setColor(255,255,255)
     playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
