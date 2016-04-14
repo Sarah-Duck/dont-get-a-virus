@@ -79,8 +79,10 @@ function love.mousereleased(x, y, button)
   for i=1,6 do
     icon[i].cl = false
   end
-  if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
-    v1.c.chat.next = false
+  if v1.msgs[v1.c.chat.msgs] ~= nil then
+    if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
+      v1.c.chat.next = false
+    end
   end
 end
 function love.draw()
