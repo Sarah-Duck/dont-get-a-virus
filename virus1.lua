@@ -29,6 +29,8 @@ function drawVirusFight1()
     if v1.c.load == false then
       v1.c.x = win[2].x+v1.c.monitorspin.x
       v1.c.y = v1.c.monitorspin.y
+      v1.c.xd = v1.c.x
+      v1.c.yd = v1.c.y
       v1.c.load = true
     end
     love.graphics.setColor(0,0,0,100)
@@ -43,6 +45,39 @@ function drawVirusFight1()
         v1.c.chat.next = true
         v1.c.chat.msgs = v1.c.chat.msgs + 1
         v1.c.chat.char = 0
+      end
+      if v1.c.chat.msgs == 2 then
+        v1.c.xd = sys.w/2
+        v1.c.yd = sys.h/2
+      end
+		  v1.c.angle = math.atan2((v1.c.yd - v1.c.y), (v1.c.xd - v1.c.x))
+      v1.c.spx = v1.c.sp * math.cos(v1.c.angle)
+		  v1.c.spy = v1.c.sp * math.sin(v1.c.angle)
+      if v1.c.x > v1.c.xd then
+        if v1.c.x + v1.c.spx <= v1.c.xd then
+          v1.c.x = v1.c.xd
+        else
+          v1.c.x = v1.c.x + v1.c.spx
+        end
+      elseif v1.c.x < v1.c.xd then
+        if v1.c.x + v1.c.spx >= v1.c.xd then
+          v1.c.x = v1.c.xd
+        else
+          v1.c.x = v1.c.x + v1.c.spx
+        end
+      end
+      if v1.c.y > v1.c.yd then
+        if v1.c.y + v1.c.spy <= v1.c.yd then
+          v1.c.y = v1.c.yd
+        else
+          v1.c.y = v1.c.y + v1.c.spy
+        end
+      elseif v1.c.y < v1.c.yd then
+        if v1.c.y + v1.c.spy >= v1.c.yd then
+          v1.c.y = v1.c.yd
+        else
+          v1.c.y = v1.c.y + v1.c.spy
+        end
       end
       if v1.msgs[v1.c.chat.msgs] ~= nil then
         if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then

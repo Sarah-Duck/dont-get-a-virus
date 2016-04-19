@@ -139,6 +139,12 @@ function loadAssets()
   v1.c.y = 0
   v1.c.s = 1
   v1.c.r = 0
+  v1.c.xd = 0
+  v1.c.yd = 0
+  v1.c.spx = 0
+  v1.c.spy = 0
+  v1.c.sp = 2
+  v1.c.angle = 0
   v1.c.load = false
   expl = {}
   expl.frames = {}
