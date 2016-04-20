@@ -62,6 +62,7 @@ function drawVirusFight1()
         v1.c.xd = sys.w/2
         v1.c.yd = sys.h/2
       end
+      v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
 		  v1.c.angle = math.atan2((v1.c.yd - v1.c.y), (v1.c.xd - v1.c.x))
       v1.c.spx = v1.c.sp * math.cos(v1.c.angle)
 		  v1.c.spy = v1.c.sp * math.sin(v1.c.angle)

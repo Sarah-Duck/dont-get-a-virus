@@ -145,7 +145,7 @@ function loadAssets()
   v1.c.yd = 0
   v1.c.spx = 0
   v1.c.spy = 0
-  v1.c.sp = 2
+  v1.c.sp = 1
   v1.c.angle = 0
   v1.c.load = false
   v1.c.eyex = 0

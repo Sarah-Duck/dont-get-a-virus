@@ -149,4 +149,5 @@ function loadVar()
   expl.deb[3].r = math.rad(0)
   expl.deb[3].rm = math.rad(1)
   expl.deb.load = false
+  time = 0
 end
