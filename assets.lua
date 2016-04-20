@@ -105,7 +105,9 @@ function loadAssets()
   v1.c.chat.char = 0
   v1.c.idle = {}
   v1.c.idle.fs = {}
-  v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle.png")
+  v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle_noeye.png")
+  v1.c.pupil = love.graphics.newImage("assets/virus1_pupil.png")
+  v1.c.eye = love.graphics.newImage("assets/eye_thing.png")
   v1.c.idle.f = 1
   loadAnimation(v1.c.idle.pic, v1.c.idle.fs, 98, 10, 200, 200)
   v1.c.monitorspin = {}
