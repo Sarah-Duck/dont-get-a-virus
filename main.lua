@@ -14,7 +14,6 @@ function love.load()
   require "system"
   require "loading"
   require "elements"
-  require "notification"
   require "virus1"
   require "dialogue"
   love.graphics.setDefaultFilter("nearest", "nearest")
