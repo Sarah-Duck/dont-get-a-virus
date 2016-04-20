@@ -18,7 +18,7 @@ function drawNoti()
 end
 function timeNoti(dt)
   notify.timer = notify.timer + dt
-  if notify.timer >= 5 then
+  if notify.timer >= 4 then
     notify.yes = false
     notify.timer = 0
     notify.sound = false

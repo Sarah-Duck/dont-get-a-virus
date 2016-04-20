@@ -20,6 +20,8 @@ function loadDia()
   msgs[19] = "I was created so you'd do this."
   msgs[20] = "PLEASE Let me fulfill my purpose!"
   msgs[21] = "www.freedownloads.com or I die."
+  msgstime = {30,35,40,45,50,55,60,65,160,190,230,270,300,330,360,390,430,460,490,520,600}
+  msgssent = 0
   v1.msgs[1] = "Well well well, who do we have here? Oh, and before I forget... Click on the bubble to see my next message."
   v1.msgs[2] = "Cliche introductions out of the way, I'm here to take over your computer!"
   v1.msgs[3] = "Who the hell uses www.freedownloads.com anyways? Like,how freakin' stupid are you?"

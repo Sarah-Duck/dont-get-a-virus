@@ -55,7 +55,7 @@ function drawStart()
       start.o = false
     elseif start.o == false then
       start.o = true
-      sendMessage(1, msgs[msg.c])
+      --sendMessage(1, msgs[msg.c])
     end
   end
 end

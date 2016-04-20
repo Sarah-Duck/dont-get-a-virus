@@ -3,6 +3,10 @@ function drawLayer(id)
 end
 function updateSystem(dt)
   timeNoti(dt)
+  if time >= msgstime[msg.c] and msgssent < msg.c then
+    sendMessage(1, msgs[msg.c])
+    msgssent = msgssent + 1
+  end
 end
 function drawSystem()
   love.graphics.setBackgroundColor(0, 128, 128)
