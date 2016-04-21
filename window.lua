@@ -97,7 +97,7 @@ function drawWindow(id)
       win[id].y = sys.h-win[id].h-panel.thick-1
     end
   end
-  if v1.yes == true and id ~= 2 and win[id].ex == false and v1.timer >= 4 then
+  if v1.yes == true and id ~= 2 and win[id].ex == false and v1.timer >= 4 and v1.c.chat.msgs < 7 then
     win[id].ex = true
   end
   if v1.yes == true and id == 2 and v1.timer >= 4 then

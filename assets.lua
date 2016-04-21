@@ -150,6 +150,8 @@ function loadAssets()
   v1.c.load = false
   v1.c.eyex = 0
   v1.c.eyey = 0
+  v1.c.eyetx = 0
+  v1.c.eyety = 0
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")
