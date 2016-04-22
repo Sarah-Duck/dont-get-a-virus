@@ -36,6 +36,7 @@ function love.load()
   loadDia()
 end
 function love.update(dt)
+  delta = dt
   time = time + dt
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()

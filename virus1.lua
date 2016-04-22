@@ -50,9 +50,7 @@ function drawVirusFight1()
     playAnimation(v1.c.idle, true, v1.c.x+40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
     love.graphics.setColor(255,255,255)
     love.graphics.draw(v1.c.eye, v1.c.x-32, v1.c.y-50, v1.c.r, v1.c.s*0.9, v1.c.s*1.1)
-    if v1.c.chat.msgs < 3 or v1.c.chat.msgs >= 11 then
-      v1.c.eyex = 0
-      v1.c.eyey = 0
+    if v1.c.chat.msgs < 3 or v1.c.chat.msgs >= 11 or v1.c.chat.msgs == 7 then
       v1.c.eyetx = v1.c.x+7
       v1.c.eyety = v1.c.y-28
     elseif v1.c.chat.msgs >= 3 and v1.c.chat.msgs <= 7 then
@@ -95,6 +93,12 @@ function drawVirusFight1()
           v1.c.chat.char = v1.c.chat.char + v1.c.chat.sp*(60/love.timer.getFPS())
           v1.c.chat.msg = string.sub(v1.msgs[v1.c.chat.msgs], 1, math.floor(v1.c.chat.char))
         end
+      end
+    end
+    if v1.c.chat.msgs == 8 then
+      v1.c.chat.time = v1.c.chat.time + delta
+      if v1.c.chat.time > 4 then
+        v1.c.chat.msgs = 9
       end
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
