@@ -31,10 +31,36 @@ function drawVirusFight1()
     win[4].y = sys.h/2-75
     layer.sentToFront = 4
     antivirus.scanning = true
+    antivirus.prog = 0
   end
   if v1.c.chat.msgs > 7 then
     orderWindows()
-    love.graphics.draw(win[4].cvs, win[4].x, win[4].y, 0, win[4].s)
+    if antivirus.status ~= "VIRUS FOUND!" or v1.c.chat.msgs < 12 then
+      love.graphics.draw(win[4].cvs, win[4].x, win[4].y, 0, win[4].s)
+    elseif antivirus.status == "VIRUS FOUND!" and v1.c.chat.msgs >= 12 then
+      if av.transform == false then
+        win[4].w = 342
+        win[4].x = win[4].x - 138/2
+        av.transform = true
+      end
+      if av.gun == 98 then
+        love.graphics.draw(antivirus.gun, win[4].x+138/2+99, win[4].y+5-av.gun, 0, win[4].s, win[4].s, 12)
+      elseif av.gun ~= 98 and av.wings == 138/2 then
+        love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
+      end
+      love.graphics.draw(antivirus.body, win[4].x+138/2+99, win[4].y+5, 0, win[4].s, win[4].s, 80)
+      if av.wings == 138/2 then
+        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
+        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
+      elseif av.wings ~= 138/2 then
+        av.wings = av.wings + 0.5
+        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
+        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
+      end
+      if av.wings == 138/2 and av.gun ~= 98 then
+        av.gun = av.gun + 1
+      end
+    end
   end
   if v1.timer >= 16 then
     music.tension1:play()

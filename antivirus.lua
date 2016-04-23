@@ -16,7 +16,7 @@ end
 function updateAntivirus()
   if (sys.mouse.p.p == true and win[4].hover == true and antivirus.scanning == false
   and sys.mouse.p.x >= win[4].x+49 and sys.mouse.p.x <= win[4].x+49+100
-  and sys.mouse.p.y >= win[4].y+110 and sys.mouse.p.y <= win[4].y+110+19) then
+  and sys.mouse.p.y >= win[4].y+110 and sys.mouse.p.y <= win[4].y+110+19 and v1.yes == false) then
     antivirus.scanning = true
     antivirus.prog = 0
   end

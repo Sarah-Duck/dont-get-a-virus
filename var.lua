@@ -90,10 +90,13 @@ function loadVar()
   fadeOpacity = 0
   scene = 1
   loading = 0
-  antivirus = {}
   antivirus.prog = 0
   antivirus.status = "Not Scanning"
   antivirus.scanning = false
+  av = {}
+  av.wings = 0
+  av.gun = 0
+  av.transform = false
   chat.status = 0
   chat.profilename = "Best Friend"
   colors = {}
