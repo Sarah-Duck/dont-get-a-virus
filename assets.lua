@@ -85,7 +85,9 @@ function loadAssets()
     gun = love.graphics.newImage("assets/antivirus_turret_gun.png"),
     body = love.graphics.newImage("assets/antivirus_turret_body.png"),
     left = love.graphics.newImage("assets/antivirus_turret_leftwing.png"),
-    right = love.graphics.newImage("assets/antivirus_turret_rightwing.png")
+    right = love.graphics.newImage("assets/antivirus_turret_rightwing.png"),
+    open = love.audio.newSource("assets/antivirus_open.ogg"),
+    opengun = love.audio.newSource("assets/antivirus_open_gun.ogg")
   }
   notification = {
     bubble = love.graphics.newImage("assets/notification.png"),

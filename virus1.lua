@@ -53,9 +53,13 @@ function drawVirusFight1()
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
       elseif av.wings ~= 138/2 then
+        antivirus.open:play()
         av.wings = av.wings + 0.5
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
+      end
+      if av.gun == 10 then
+        antivirus.opengun:play()
       end
       if av.wings == 138/2 and av.gun ~= 98 then
         av.gun = av.gun + 1
