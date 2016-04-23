@@ -81,6 +81,12 @@ function loadAssets()
     welcome = love.graphics.newImage("assets/internet_welcome.png"),
     error = love.graphics.newImage("assets/internet_error.png")
   }
+  antivirus = {
+    gun = love.graphics.newImage("assets/antivirus_turret_gun.png"),
+    body = love.graphics.newImage("assets/antivirus_turret_body.png"),
+    left = love.graphics.newImage("assets/antivirus_turret_leftwing.png"),
+    right = love.graphics.newImage("assets/antivirus_turret_rightwing.png")
+  }
   notification = {
     bubble = love.graphics.newImage("assets/notification.png"),
     sound1 = love.audio.newSource("assets/notification1.ogg"),
