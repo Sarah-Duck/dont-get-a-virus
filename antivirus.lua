@@ -28,6 +28,10 @@ function updateAntivirus()
   if antivirus.prog >= 174 then
     antivirus.prog = 174
     antivirus.scanning = false
-    antivirus.status = "0 Viruses Found"
+    if v1.yes == true then
+      antivirus.status = "VIRUS FOUND!"
+    else
+      antivirus.status = "0 Viruses Found"
+    end
   end
 end

@@ -30,6 +30,7 @@ function drawVirusFight1()
     win[4].x = sys.w/2-100+7
     win[4].y = sys.h/2-75
     layer.sentToFront = 4
+    antivirus.scanning = true
   end
   if v1.c.chat.msgs > 7 then
     orderWindows()
