@@ -90,7 +90,8 @@ function loadAssets()
     opengun = love.audio.newSource("assets/antivirus_open_gun.ogg"),
     laser = love.audio.newSource("assets/antivirus_laser.ogg"),
     bullet = love.graphics.newImage("assets/bullet_blue.png"),
-    hit = love.audio.newSource("assets/antivirus_hit.ogg")
+    hit = love.audio.newSource("assets/antivirus_hit.ogg"),
+    charge = love.graphics.newImage("assets/antivirus_charge.png")
   }
   notification = {
     bubble = love.graphics.newImage("assets/notification.png"),

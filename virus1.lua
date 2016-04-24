@@ -57,6 +57,11 @@ function drawVirusFight1()
       love.graphics.setColor(colors.font.dark)
       love.graphics.print("FIRE", win[4].x+138/2+76, win[4].y+99)
       love.graphics.setColor(256,256,256)
+      drawDownBox(win[4].x+138/2+79-1, win[4].y+40-1, 42, 42, 2)
+      love.graphics.stencil(chargeStencil, "replace", 1)
+      love.graphics.setStencilTest("greater", 0)
+      love.graphics.draw(antivirus.charge, win[4].x+138/2+79, win[4].y+40)
+      love.graphics.setStencilTest()
       if av.wings == 138/2 then
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
@@ -72,7 +77,10 @@ function drawVirusFight1()
       if av.wings == 138/2 and av.gun ~= 98 then
         av.gun = av.gun + 1
       end
-      if (sys.mouse.p.x >= win[4].x+138/2+71 and sys.mouse.p.x <= (win[4].x+138/2+71)+56 and av.fireb == true
+      if av.charge ~= 40 then
+        av.fireb = false
+      end
+      if (sys.mouse.p.x >= win[4].x+138/2+71 and sys.mouse.p.x <= (win[4].x+138/2+71)+56 and av.fireb == true and av.charge == 40
       and sys.mouse.p.y >= win[4].y+93 and sys.mouse.p.y <= (win[4].y+93)+19 and sys.mouse.drag == false and sys.mouse.p.p == true) then
         av.fire = true
         av.fireb = false
@@ -82,8 +90,13 @@ function drawVirusFight1()
           v1.c.chat.char = 0
         end
       end
-      if v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
+      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21) and av.charge == 40 then
         av.fireb = true
+      end
+      if av.charge < 40 then
+        av.charge = av.charge + math.random(1,10,25,40,5,2,8)*delta
+      elseif av.charge > 40 then
+        av.charge = 40
       end
       if av.fire == true then
         addBullet(win[4].x+138/2+99,win[4].y+5-av.gun,math.rad(-90),25,"av")
@@ -313,4 +326,7 @@ function drawBullets()
       table.remove(av.bullets, i)
     end
   end
+end
+function chargeStencil()
+   love.graphics.rectangle("fill", win[4].x+138/2+79, win[4].y+40+40, 40, -av.charge)
 end

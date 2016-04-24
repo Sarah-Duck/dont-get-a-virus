@@ -97,7 +97,7 @@ function loadVar()
   av.wings = 0
   av.gun = 0
   av.transform = false
-  av.charge = 0
+  av.charge = 40
   av.fireb = false
   av.fire = false
   av.bullets = {}
