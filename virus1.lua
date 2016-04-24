@@ -84,6 +84,11 @@ function drawVirusFight1()
       if v1.c.chat.msgs == 15 then
         av.fireb = true
       end
+      if av.fire == true then
+        addBullet(win[4].x+138/2+99,win[4].y+5-av.gun,math.rad(-90),25,"av")
+        antivirus.laser:play()
+        av.fire = false
+      end
     end
   end
   if v1.timer >= 16 then
@@ -129,6 +134,12 @@ function drawVirusFight1()
     elseif v1.c.chat.msgs == 8 then
       v1.c.xd = sys.w/2
       v1.c.yd = 200
+    elseif v1.c.chat.msgs == 25 then
+      v1.c.xd = sys.w/2
+      v1.c.yd = 180
+    elseif v1.c.chat.msgs == 26 then
+      v1.c.xd = sys.w/2
+      v1.c.yd = 250
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-165, 300, 115, v1.c.chat.msg)
@@ -255,6 +266,7 @@ function drawVirusFight1()
   if start.o == true then
     drawMenu()
   end
+  drawBullets()
 end
 function drawBubble(x,y,w,h,m)
   love.graphics.setColor(255,255,255)
@@ -273,4 +285,33 @@ function drawBubble(x,y,w,h,m)
   love.graphics.setFont(pixeloperator)
   love.graphics.printf(m,x+15,y+15,w-30)
   love.graphics.setFont(pressstart)
+end
+function addBullet(x,y,a,s,t)
+  if t == "av" then
+    table.insert(av.bullets, 1, {x=x,y=y,a=a,s=s,spx=0,spy=0,rm=false})
+  end
+end
+function drawBullets()
+  for i=1,#av.bullets do
+    av.bullets[i].spx = av.bullets[i].s * math.cos(av.bullets[i].a)
+    av.bullets[i].spy = av.bullets[i].s * math.sin(av.bullets[i].a)
+    av.bullets[i].x = av.bullets[i].x + av.bullets[i].spx
+    av.bullets[i].y = av.bullets[i].y + av.bullets[i].spy
+    love.graphics.draw(antivirus.bullet, av.bullets[i].x, av.bullets[i].y, av.bullets[i].a, 1, 1, 23/2, 7)
+    if v1.yes == true then
+      if av.bullets[i].x >= v1.c.x-80 and av.bullets[i].x <= v1.c.x+80 and av.bullets[i].y >= v1.c.y-80 and av.bullets[i].y <= v1.c.y+70 then
+        if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
+          v1.c.chat.msgs = 25
+        end
+        av.bullets[i].rm = true
+        antivirus.hit:play()
+      end
+    end
+    if av.bullets[i].x < 0 or av.bullets[i].x > sys.w or av.bullets[i].y < 0 or av.bullets[i].y > sys.h then
+      av.bullets[i].rm = true
+    end
+    if av.bullets[i].rm == true then
+      table.remove(av.bullets, i)
+    end
+  end
 end

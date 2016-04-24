@@ -100,6 +100,7 @@ function loadVar()
   av.charge = 0
   av.fireb = false
   av.fire = false
+  av.bullets = {}
   chat.status = 0
   chat.profilename = "Best Friend"
   colors = {}
