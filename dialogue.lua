@@ -24,7 +24,7 @@ function loadDia()
   msgssent = 0
   v1.msgs[1] = "Well well well, who do we have here? Oh, and before I forget... Click on the bubble to see my next message."
   v1.msgs[2] = "Cliche introductions out of the way, I'm here to take over your computer!"
-  v1.msgs[3] = "Who the hell uses www.freedownloads.com anyways? Like,how freakin' stupid are you?"
+  v1.msgs[3] = "Who the hell uses freedownloads.com anyways? Like,how freakin' stupid are you?"
   v1.msgs[4] = "This shouldn't be too difficult then. From this point forward, this computer is MINE! Ha! HAHA!"
   v1.msgs[5] = "Don't even try fighting back! I'm the strongest virus out there!"
   v1.msgs[6] = "That's right! A VIRUS! A program created specifically to exploit MORONS like you!"
