@@ -131,6 +131,10 @@ function drawVirusFight1()
       if v1.c.chat.time > 4 then
         v1.c.chat.msgs = 9
       end
+    elseif v1.c.chat.msgs == 12 then
+      if av.gun == 98 then
+        v1.c.chat.msgs = 13
+      end
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
     if v1.c.chat.msgs == 8 then
