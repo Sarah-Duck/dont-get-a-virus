@@ -49,6 +49,14 @@ function drawVirusFight1()
         love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
       end
       love.graphics.draw(antivirus.body, win[4].x+138/2+99, win[4].y+5, 0, win[4].s, win[4].s, 80)
+      if av.fireb == true then
+        drawUpBox(win[4].x+138/2+71, win[4].y+93, 56, 19, 2)
+      else
+        drawDownBox(win[4].x+138/2+71, win[4].y+93, 56, 19, 2)
+      end
+      love.graphics.setColor(colors.font.dark)
+      love.graphics.print("FIRE", win[4].x+138/2+76, win[4].y+99)
+      love.graphics.setColor(256,256,256)
       if av.wings == 138/2 then
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
@@ -63,6 +71,18 @@ function drawVirusFight1()
       end
       if av.wings == 138/2 and av.gun ~= 98 then
         av.gun = av.gun + 1
+      end
+      if (sys.mouse.p.x >= win[4].x+138/2+71 and sys.mouse.p.x <= (win[4].x+138/2+71)+56 and av.fireb == true
+      and sys.mouse.p.y >= win[4].y+93 and sys.mouse.p.y <= (win[4].y+93)+19 and sys.mouse.drag == false and sys.mouse.p.p == true) then
+        av.fire = true
+        av.fireb = false
+        av.charge = 0
+        if v1.c.chat.msgs == 15 then
+          v1.c.chat.msgs = 16
+        end
+      end
+      if v1.c.chat.msgs == 15 then
+        av.fireb = true
       end
     end
   end
@@ -114,7 +134,7 @@ function drawVirusFight1()
       drawBubble(v1.c.x+40, v1.c.y-165, 300, 115, v1.c.chat.msg)
       if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+300
       and sys.mouse.p.y >= v1.c.y-165 and sys.mouse.p.y <= v1.c.y-165+110 and
-      v1.c.chat.next == false and sys.mouse.drag == false) then
+      v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15) then
         v1.c.chat.next = true
         v1.c.chat.msgs = v1.c.chat.msgs + 1
         v1.c.chat.char = 0

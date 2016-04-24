@@ -97,6 +97,9 @@ function loadVar()
   av.wings = 0
   av.gun = 0
   av.transform = false
+  av.charge = 0
+  av.fireb = false
+  av.fire = false
   chat.status = 0
   chat.profilename = "Best Friend"
   colors = {}
