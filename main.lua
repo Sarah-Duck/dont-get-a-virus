@@ -2,7 +2,6 @@ function love.load()
   require "assets"
   require "window"
   require "panel"
-  require "startmenu"
   require "var"
   require "desktop"
   require "internet"

@@ -77,11 +77,12 @@ function drawVirusFight1()
         av.fire = true
         av.fireb = false
         av.charge = 0
-        if v1.c.chat.msgs == 15 then
-          v1.c.chat.msgs = 16
+        if v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
+          v1.c.chat.msgs = v1.c.chat.msgs + 1
+          v1.c.chat.char = 0
         end
       end
-      if v1.c.chat.msgs == 15 then
+      if v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
         av.fireb = true
       end
       if av.fire == true then
@@ -147,8 +148,13 @@ function drawVirusFight1()
       and sys.mouse.p.y >= v1.c.y-165 and sys.mouse.p.y <= v1.c.y-165+110 and
       v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15) then
         v1.c.chat.next = true
-        v1.c.chat.msgs = v1.c.chat.msgs + 1
+        if v1.c.chat.msgs == 23 then
+          v1.c.chat.msgs = 26
+        else
+          v1.c.chat.msgs = v1.c.chat.msgs + 1
+        end
         v1.c.chat.char = 0
+        v1.c.chat.msg = ""
       end
       if v1.msgs[v1.c.chat.msgs] ~= nil then
         if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then
@@ -161,10 +167,14 @@ function drawVirusFight1()
       v1.c.chat.time = v1.c.chat.time + delta
       if v1.c.chat.time > 4 then
         v1.c.chat.msgs = 9
+        v1.c.chat.char = 0
+        v1.c.chat.msg = ""
       end
     elseif v1.c.chat.msgs == 12 then
       if av.gun == 98 then
         v1.c.chat.msgs = 13
+        v1.c.chat.char = 0
+        v1.c.chat.msg = ""
       end
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
@@ -284,6 +294,8 @@ function drawBullets()
       if av.bullets[i].x >= v1.c.x-80 and av.bullets[i].x <= v1.c.x+80 and av.bullets[i].y >= v1.c.y-80 and av.bullets[i].y <= v1.c.y+70 then
         if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
           v1.c.chat.msgs = 25
+          v1.c.chat.char = 0
+          v1.c.chat.msg = ""
         end
         av.bullets[i].rm = true
         antivirus.hit:play()
@@ -291,6 +303,11 @@ function drawBullets()
     end
     if av.bullets[i].x < 0 or av.bullets[i].x > sys.w or av.bullets[i].y < 0 or av.bullets[i].y > sys.h then
       av.bullets[i].rm = true
+      if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
+        v1.c.chat.msgs = v1.c.chat.msgs + 1
+        v1.c.chat.msg = ""
+        v1.c.chat.char = 0
+      end
     end
     if av.bullets[i].rm == true then
       table.remove(av.bullets, i)
