@@ -120,20 +120,22 @@ function drawVirusFight1()
     playAnimation(v1.c.idle, true, v1.c.x+40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
     love.graphics.setColor(255,255,255)
     love.graphics.draw(v1.c.eye, v1.c.x-32, v1.c.y-50, v1.c.r, v1.c.s*0.9, v1.c.s*1.1)
-    if v1.c.chat.msgs < 3 or v1.c.chat.msgs >= 11 or v1.c.chat.msgs == 7 then
+    if v1.c.chat.msgs < 3 or v1.c.chat.msgs == 26 or v1.c.chat.msgs == 7 or v1.c.chat.msgs == 11 or v1.c.chat.msgs == 15 then
       v1.c.eyetx = v1.c.x+7
       v1.c.eyety = v1.c.y-28
     elseif v1.c.chat.msgs >= 3 and v1.c.chat.msgs <= 7 then
       v1.c.eyetx = sys.mouse.x
       v1.c.eyety = sys.mouse.y
-    elseif v1.c.chat.msgs > 7 and v1.c.chat.msgs <= 10 then
-      v1.c.eyetx = win[4].x+100
-      v1.c.eyety = win[4].y+75
+    elseif v1.c.chat.msgs > 7 and v1.c.chat.msgs <= 25 then
+      v1.c.eyetx = win[4].x+win[4].w/2
+      v1.c.eyety = win[4].y+win[4].h/2
     end
-    if v1.c.eyetx > v1.c.x+7+v1.c.eyex and v1.c.eyex < 15 then
-      v1.c.eyex = v1.c.eyex + 3
-    elseif v1.c.eyetx < v1.c.x+7+v1.c.eyex and v1.c.eyex > -15 then
-      v1.c.eyex = v1.c.eyex - 3
+    for i=1,3 do
+      if v1.c.eyetx > v1.c.x+7+v1.c.eyex and v1.c.eyex < 15 then
+        v1.c.eyex = v1.c.eyex + 1
+      elseif v1.c.eyetx < v1.c.x+7+v1.c.eyex and v1.c.eyex > -15 then
+        v1.c.eyex = v1.c.eyex - 1
+      end
     end
     if v1.c.eyety > v1.c.y-28+v1.c.eyey and v1.c.eyey < 5 then
       v1.c.eyey = v1.c.eyey + 3
@@ -149,17 +151,23 @@ function drawVirusFight1()
       v1.c.xd = sys.w/2
       v1.c.yd = 200
     elseif v1.c.chat.msgs == 25 then
-      v1.c.xd = sys.w/2
+      v1.c.xd = v1.c.xd
       v1.c.yd = 180
     elseif v1.c.chat.msgs == 26 then
       v1.c.xd = sys.w/2
       v1.c.yd = 250
+    elseif v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
+      v1.c.yd = 200
+      if win[4].x+win[4].w/2 >= 100 and win[4].x+win[4].w/2 <= sys.w-350 then
+        v1.c.xd = win[4].x+win[4].w/2
+      end
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-165, 300, 115, v1.c.chat.msg)
       if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+300
       and sys.mouse.p.y >= v1.c.y-165 and sys.mouse.p.y <= v1.c.y-165+110 and
-      v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15) then
+      v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15
+      and v1.c.chat.msgs ~= 17 and v1.c.chat.msgs ~= 19 and v1.c.chat.msgs ~= 21) then
         v1.c.chat.next = true
         if v1.c.chat.msgs == 23 then
           v1.c.chat.msgs = 26
@@ -302,7 +310,7 @@ function drawBullets()
     av.bullets[i].spy = av.bullets[i].s * math.sin(av.bullets[i].a)
     av.bullets[i].x = av.bullets[i].x + av.bullets[i].spx
     av.bullets[i].y = av.bullets[i].y + av.bullets[i].spy
-    love.graphics.draw(antivirus.bullet, av.bullets[i].x, av.bullets[i].y, av.bullets[i].a, 1, 1, 23/2, 7)
+    love.graphics.draw(antivirus.bullet, av.bullets[i].x, av.bullets[i].y, av.bullets[i].a, 1.5, 1.5, 23/2, 7)
     if v1.yes == true then
       if av.bullets[i].x >= v1.c.x-80 and av.bullets[i].x <= v1.c.x+80 and av.bullets[i].y >= v1.c.y-80 and av.bullets[i].y <= v1.c.y+70 then
         if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
