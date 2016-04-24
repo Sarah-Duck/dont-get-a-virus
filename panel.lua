@@ -8,7 +8,7 @@ function drawPanelButton(id)
     end
     love.graphics.setColor(70,70,70)
     love.graphics.print(win[panel.b[id]].title, panel.s.x+4+90+(panel.s.dis*id-panel.s.dis), panel.s.y+7)
-    love.graphics.setColor(256,256,256)
+    love.graphics.setColor(255,255,255)
     love.graphics.draw(win[panel.b[id]].icon16, panel.s.x+4+72+(panel.s.dis*id-panel.s.dis), panel.s.y+2)
     if (sys.mouse.p.p == true and sys.mouse.p.x >= panel.s.x+72+(panel.s.dis*id-panel.s.dis)
     and sys.mouse.p.x <= (panel.s.x+72+(panel.s.dis*id-panel.s.dis))+(panel.s.width*2.75)

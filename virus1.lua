@@ -56,7 +56,7 @@ function drawVirusFight1()
       end
       love.graphics.setColor(colors.font.dark)
       love.graphics.print("FIRE", win[4].x+138/2+76, win[4].y+99)
-      love.graphics.setColor(256,256,256)
+      love.graphics.setColor(255,255,255)
       drawDownBox(win[4].x+138/2+79-1, win[4].y+40-1, 42, 42, 2)
       love.graphics.stencil(chargeStencil, "replace", 1)
       love.graphics.setStencilTest("greater", 0)
