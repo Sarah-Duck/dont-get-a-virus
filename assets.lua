@@ -105,7 +105,10 @@ function loadAssets()
     scorchMask = love.graphics.newImage("assets/virus_scorch_mask.png"),
     shineplay = false,
     corner = love.graphics.newImage("assets/chat_bubble_corner.png"),
-    cornerSpike = love.graphics.newImage("assets/chat_bubble_cornerspike.png")
+    cornerSpike = love.graphics.newImage("assets/chat_bubble_cornerspike.png"),
+    turret = love.graphics.newImage("assets/virus1_turret.png"),
+    ufoTop = love.graphics.newImage("assets/ufo_top.png"),
+    ufoBottom = love.graphics.newImage("assets/ufo_bottom.png")
   }
   v1.msgs = {}
   v1.c = {}
