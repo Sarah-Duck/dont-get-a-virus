@@ -144,6 +144,10 @@ function drawVirusFight1()
     end
     love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5), v1.c.y-28+v1.c.eyey+math.random(0,0.5), v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
     playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
+    if v1.c.chat.msgs > 28 then
+      love.graphics.draw(v1.ufoBottom, v1.c.x-368, v1.c.y-120, 0, v1.c.s*2)
+      love.graphics.draw(v1.ufoTop, v1.c.x-368, v1.c.y-120, 0, v1.c.s*2)
+    end
     if v1.c.chat.msgs == 2 then
       v1.c.xd = sys.w/2
       v1.c.yd = sys.h/2
@@ -161,6 +165,12 @@ function drawVirusFight1()
       if win[4].x+win[4].w/2 >= 100 and win[4].x+win[4].w/2 <= sys.w-350 then
         v1.c.xd = win[4].x+win[4].w/2
       end
+    elseif v1.c.chat.msgs == 28 then
+      v1.c.yd = -500
+      v1.c.xd = sys.w/2
+    elseif v1.c.chat.msgs == 29 then
+      v1.c.yd = 170
+      v1.c.xd = sys.w/2
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-165, 300, 115, v1.c.chat.msg)
@@ -197,6 +207,14 @@ function drawVirusFight1()
         v1.c.chat.char = 0
         v1.c.chat.msg = ""
       end
+    elseif v1.c.chat.msgs == 28 and v1.c.y == -500 then
+      v1.c.chat.msgs = 29
+      v1.c.chat.char = 0
+      v1.c.chat.msg = ""
+    elseif v1.c.chat.msgs == 29 and v1.c.y == 180 then
+      v1.c.chat.msgs = 30
+      v1.c.chat.char = 0
+      v1.c.chat.msg = ""
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
     if v1.c.chat.msgs == 8 then
