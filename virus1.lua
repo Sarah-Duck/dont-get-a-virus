@@ -116,8 +116,37 @@ function drawVirusFight1()
       v1.c.yd = v1.c.y
       v1.c.load = true
     end
-    love.graphics.setColor(0,0,0,100)
-    playAnimation(v1.c.idle, true, v1.c.x+40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
+    if v1.c.chat.msgs > 30 then
+      for i=1,4 do
+        v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
+        if v1.turret[i].r > v1.turret[i].rt then
+          if v1.turret[i].r - math.rad(2) < v1.turret[i].rt then
+            v1.turret[i].r = v1.turret[i].rt
+          else
+            v1.turret[i].r = v1.turret[i].r - math.rad(2)
+          end
+        elseif v1.turret[i].r < v1.turret[i].rt then
+          if v1.turret[i].r + math.rad(2) > v1.turret[i].rt then
+            v1.turret[i].r = v1.turret[i].rt
+          else
+            v1.turret[i].r = v1.turret[i].r + math.rad(2)
+          end
+        end
+      end
+    end
+    if v1.c.chat.msgs > 28 then
+      v1.turret[2].x = v1.c.x-120
+      v1.turret[2].y = v1.c.y+200-100
+      v1.turret[3].x = v1.c.x+120
+      v1.turret[3].y = v1.c.y+200-100
+      love.graphics.draw(v1.turret1, v1.turret[2].x, v1.turret[2].y, v1.turret[2].r, v1.c.s, v1.c.s, 42, 42)
+      love.graphics.draw(v1.turret1, v1.turret[3].x, v1.turret[3].y, v1.turret[3].r, v1.c.s, v1.c.s, 42, 42)
+      love.graphics.draw(v1.shipBack, v1.c.x-615/2, v1.c.y-100+20, 0, v1.c.s)
+    end
+    if v1.c.chat.msgs < 29 then
+      love.graphics.setColor(0,0,0,100)
+      playAnimation(v1.c.idle, true, v1.c.x+40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
+    end
     love.graphics.setColor(255,255,255)
     love.graphics.draw(v1.c.eye, v1.c.x-32, v1.c.y-50, v1.c.r, v1.c.s*0.9, v1.c.s*1.1)
     if v1.c.chat.msgs < 3 or v1.c.chat.msgs == 26 or v1.c.chat.msgs == 7 or v1.c.chat.msgs == 11 or v1.c.chat.msgs == 15 then
@@ -145,8 +174,13 @@ function drawVirusFight1()
     love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5), v1.c.y-28+v1.c.eyey+math.random(0,0.5), v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
     playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
     if v1.c.chat.msgs > 28 then
-      love.graphics.draw(v1.ufoBottom, v1.c.x-368/2*1.2+5, v1.c.y-110+60, 0, v1.c.s*1.2)
-      love.graphics.draw(v1.ufoTop, v1.c.x-368/2*1.2+5, v1.c.y-110+60, 0, v1.c.s*1.2)
+      v1.turret[1].x = v1.c.x-615/2-10
+      v1.turret[1].y = v1.c.y+95-100+20
+      v1.turret[4].x = v1.c.x+615/2+10
+      v1.turret[4].y = v1.c.y+95-100+20
+      love.graphics.draw(v1.shipFront, v1.c.x-615/2, v1.c.y-100+20, 0, v1.c.s)
+      love.graphics.draw(v1.turret2, v1.turret[1].x, v1.turret[1].y, v1.turret[1].r, v1.c.s, v1.c.s, 59/2, 40)
+      love.graphics.draw(v1.turret2, v1.turret[4].x, v1.turret[4].y, v1.turret[4].r, v1.c.s, v1.c.s, 59/2, 40)
     end
     if v1.c.chat.msgs == 2 then
       v1.c.xd = sys.w/2
@@ -169,7 +203,7 @@ function drawVirusFight1()
       v1.c.yd = -500
       v1.c.xd = sys.w/2
     elseif v1.c.chat.msgs == 29 then
-      v1.c.yd = 140
+      v1.c.yd = 180
       v1.c.xd = sys.w/2
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
@@ -215,6 +249,16 @@ function drawVirusFight1()
       v1.c.chat.msgs = 30
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
+    end
+    if v1.c.chat.msgs > 32 and v1.bulletTimer > 1 then
+      local x = math.cos(v1.turret[1].r+math.rad(90))*(v1.turret[1].x+148-v1.turret[1].x)
+      -math.sin(v1.turret[1].r+math.rad(90))*(v1.turret[1].y-v1.turret[1].y)+v1.turret[1].x
+      local y = math.sin(v1.turret[1].r+math.rad(90))*(v1.turret[1].x+148-v1.turret[1].x)
+      +math.cos(v1.turret[1].r+math.rad(90))*(v1.turret[1].y-v1.turret[1].y)+v1.turret[1].y
+      addBullet(x,y,v1.turret[1].r+math.rad(90),25,"v1")
+      v1.bulletTimer = 0
+    elseif v1.c.chat.msgs > 32 and v1.bulletTimer < 2 then
+      v1.bulletTimer = v1.bulletTimer + delta
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
     if v1.c.chat.msgs == 8 then
@@ -321,8 +365,24 @@ function addBullet(x,y,a,s,t)
   if t == "av" then
     table.insert(av.bullets, 1, {x=x,y=y,a=a,s=s,spx=0,spy=0,rm=false})
   end
+  if t == "v1" then
+    table.insert(v1.bullets, 1, {x=x,y=y,a=a,s=s,spx=0,spy=0,rm=false})
+  end
 end
 function drawBullets()
+  for i=1,#v1.bullets do
+    v1.bullets[i].spx = v1.bullets[i].s * math.cos(v1.bullets[i].a)
+    v1.bullets[i].spy = v1.bullets[i].s * math.sin(v1.bullets[i].a)
+    v1.bullets[i].x = v1.bullets[i].x + v1.bullets[i].spx
+    v1.bullets[i].y = v1.bullets[i].y + v1.bullets[i].spy
+    love.graphics.draw(v1.bullet, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
+    if v1.bullets[i].x < 0 or v1.bullets[i].x > sys.w or v1.bullets[i].y < 0 or v1.bullets[i].y > sys.h then
+      v1.bullets[i].rm = true
+    end
+    if v1.bullets[i].rm == true then
+      table.remove(v1.bullets, i)
+    end
+  end
   for i=1,#av.bullets do
     av.bullets[i].spx = av.bullets[i].s * math.cos(av.bullets[i].a)
     av.bullets[i].spy = av.bullets[i].s * math.sin(av.bullets[i].a)
