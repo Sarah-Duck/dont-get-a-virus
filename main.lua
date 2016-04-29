@@ -73,6 +73,11 @@ function love.mousepressed(x, y, button)
   sys.mouse.p.y = y
   sys.mouse.p.p = true
 end
+function love.keyreleased(key)
+   if key == "f11" then
+      v1.c.chat.msgs = v1.c.chat.msgs + 1
+   end
+end
 function love.mousereleased(x, y, button)
   sys.mouse.p.p = false
   start.p = false

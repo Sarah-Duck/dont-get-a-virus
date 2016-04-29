@@ -120,13 +120,12 @@ function loadAssets()
   v1.c.chat.sp = 0.5
   v1.c.chat.char = 0
   v1.turret = {}
-  v1.turret[1] = {r=math.rad(30),x=0,y=0,rt=math.rad(30)}
-  v1.turret[2] = {r=math.rad(15),x=0,y=0,rt=math.rad(15)}
-  v1.turret[3] = {r=math.rad(-15),x=0,y=0,rt=math.rad(-15)}
-  v1.turret[4] = {r=math.rad(-30),x=0,y=0,rt=math.rad(-30)}
+  v1.turret[1] = {r=math.rad(30),x=0,y=0,rt=math.rad(30),t=0,tl=1}
+  v1.turret[2] = {r=math.rad(15),x=0,y=0,rt=math.rad(15),t=0,tl=2}
+  v1.turret[3] = {r=math.rad(-15),x=0,y=0,rt=math.rad(-15),t=0,tl=3}
+  v1.turret[4] = {r=math.rad(-30),x=0,y=0,rt=math.rad(-30),t=0,tl=4}
   v1.bullets = {}
   v1.bullet = love.graphics.newImage("assets/bullet_green.png")
-  v1.bulletTimer = 0
   v1.c.idle = {}
   v1.c.idle.fs = {}
   v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle_noeye.png")

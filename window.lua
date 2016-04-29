@@ -82,19 +82,10 @@ function drawWindow(id)
     win[id].py = win[id].y
   end
   if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
-    if win[id].px+(sys.mouse.x - sys.mouse.p.x) >= 0 and win[id].px+(sys.mouse.x - sys.mouse.p.x) <= sys.w-win[id].w then
-      win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
-    elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) < 0 then
-      win[id].x = 0
-    elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) > sys.w-win[id].w then
-      win[id].x = sys.w-win[id].w
-    end
-    if win[id].py+(sys.mouse.y - sys.mouse.p.y) >= 0 and win[id].py+(sys.mouse.y - sys.mouse.p.y) <= sys.h-win[id].h-panel.thick-1 then
-      win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
-    elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) < 0 then
-      win[id].y = 0
-    elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) > sys.h-win[id].h-panel.thick-1 then
-      win[id].y = sys.h-win[id].h-panel.thick-1
+    if id == 4 and v1.yes == true then
+      windowMouseMove(id,0,sys.w-win[id].w,sys.h/2,sys.h-win[id].h-panel.thick-1)
+    else
+      windowMouseMove(id,0,sys.w-win[id].w,0,sys.h-win[id].h-panel.thick-1)
     end
   end
   if v1.yes == true and id ~= 2 and win[id].ex == false and v1.timer >= 4 and v1.c.chat.msgs < 7 then
@@ -205,5 +196,21 @@ function closeWindow(id)
     table.remove(layer, win[id].layer)
     win[id].oldlayer = win[id].layer
     win[id].layer = 0
+  end
+end
+function windowMouseMove(id,limitx,limitw,limity,limith)
+  if win[id].px+(sys.mouse.x - sys.mouse.p.x) >= limitx and win[id].px+(sys.mouse.x - sys.mouse.p.x) <= limitw then
+    win[id].x = win[id].px + (sys.mouse.x - sys.mouse.p.x)
+  elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) < limitx then
+    win[id].x = limitx
+  elseif win[id].px+(sys.mouse.x - sys.mouse.p.x) > limitw then
+    win[id].x = limitw
+  end
+  if win[id].py+(sys.mouse.y - sys.mouse.p.y) >= limity and win[id].py+(sys.mouse.y - sys.mouse.p.y) <= limith then
+    win[id].y = win[id].py + (sys.mouse.y - sys.mouse.p.y)
+  elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) < limity then
+    win[id].y = limity
+  elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) > limith then
+    win[id].y = limith
   end
 end

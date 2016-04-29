@@ -28,7 +28,7 @@ function drawVirusFight1()
     win[4].s = 0.2
     win[4].oldlayer = win[4].layer
     win[4].x = sys.w/2-100+7
-    win[4].y = sys.h/2-75
+    win[4].y = sys.h/2+50
     layer.sentToFront = 4
     antivirus.scanning = true
     antivirus.prog = 0
@@ -90,7 +90,7 @@ function drawVirusFight1()
           v1.c.chat.char = 0
         end
       end
-      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21) and av.charge == 40 then
+      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs > 35) and av.charge == 40 then
         av.fireb = true
       end
       if av.charge < 40 then
@@ -203,13 +203,13 @@ function drawVirusFight1()
       v1.c.yd = -500
       v1.c.xd = sys.w/2
     elseif v1.c.chat.msgs == 29 then
-      v1.c.yd = 180
+      v1.c.yd = 140
       v1.c.xd = sys.w/2
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
-      drawBubble(v1.c.x+40, v1.c.y-165, 300, 115, v1.c.chat.msg)
+      drawBubble(v1.c.x+40, v1.c.y-135, 300, 115, v1.c.chat.msg)
       if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+300
-      and sys.mouse.p.y >= v1.c.y-165 and sys.mouse.p.y <= v1.c.y-165+110 and
+      and sys.mouse.p.y >= v1.c.y-135 and sys.mouse.p.y <= v1.c.y-135+110 and
       v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15
       and v1.c.chat.msgs ~= 17 and v1.c.chat.msgs ~= 19 and v1.c.chat.msgs ~= 21) then
         v1.c.chat.next = true
@@ -245,20 +245,25 @@ function drawVirusFight1()
       v1.c.chat.msgs = 29
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
-    elseif v1.c.chat.msgs == 29 and v1.c.y == 180 then
+    elseif v1.c.chat.msgs == 29 and v1.c.y == 140 then
       v1.c.chat.msgs = 30
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
     end
-    if v1.c.chat.msgs > 32 and v1.bulletTimer > 1 then
-      local x = math.cos(v1.turret[1].r+math.rad(90))*(v1.turret[1].x+148-v1.turret[1].x)
-      -math.sin(v1.turret[1].r+math.rad(90))*(v1.turret[1].y-v1.turret[1].y)+v1.turret[1].x
-      local y = math.sin(v1.turret[1].r+math.rad(90))*(v1.turret[1].x+148-v1.turret[1].x)
-      +math.cos(v1.turret[1].r+math.rad(90))*(v1.turret[1].y-v1.turret[1].y)+v1.turret[1].y
-      addBullet(x,y,v1.turret[1].r+math.rad(90),25,"v1")
-      v1.bulletTimer = 0
-    elseif v1.c.chat.msgs > 32 and v1.bulletTimer < 2 then
-      v1.bulletTimer = v1.bulletTimer + delta
+    if v1.c.chat.msgs > 35 then
+      for i=1,4 do
+        if v1.turret[i].t > v1.turret[i].tl then
+          local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
+          -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
+          local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
+          +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
+          addBullet(x,y,v1.turret[i].r+math.rad(90),10,"v1")
+          v1.turret[i].t = 0
+          v1.turret[i].tl = math.random(2,3,4,5)
+        elseif v1.turret[i].t < v1.turret[i].tl then
+          v1.turret[i].t = v1.turret[i].t+delta
+        end
+      end
     end
     v1.c.sp = math.sqrt(math.abs(v1.c.xd - v1.c.x)*2 + math.abs(v1.c.yd - v1.c.y)*2)/5
     if v1.c.chat.msgs == 8 then
@@ -371,16 +376,27 @@ function addBullet(x,y,a,s,t)
 end
 function drawBullets()
   for i=1,#v1.bullets do
-    v1.bullets[i].spx = v1.bullets[i].s * math.cos(v1.bullets[i].a)
-    v1.bullets[i].spy = v1.bullets[i].s * math.sin(v1.bullets[i].a)
-    v1.bullets[i].x = v1.bullets[i].x + v1.bullets[i].spx
-    v1.bullets[i].y = v1.bullets[i].y + v1.bullets[i].spy
-    love.graphics.draw(v1.bullet, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
-    if v1.bullets[i].x < 0 or v1.bullets[i].x > sys.w or v1.bullets[i].y < 0 or v1.bullets[i].y > sys.h then
-      v1.bullets[i].rm = true
-    end
-    if v1.bullets[i].rm == true then
-      table.remove(v1.bullets, i)
+    if v1.bullets[i] ~= nil then
+      v1.bullets[i].spx = v1.bullets[i].s * math.cos(v1.bullets[i].a)
+      v1.bullets[i].spy = v1.bullets[i].s * math.sin(v1.bullets[i].a)
+      v1.bullets[i].x = v1.bullets[i].x + v1.bullets[i].spx
+      v1.bullets[i].y = v1.bullets[i].y + v1.bullets[i].spy
+      love.graphics.draw(v1.bullet, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
+      if v1.bullets[i].x < 0 or v1.bullets[i].x > sys.w or v1.bullets[i].y < 0 or v1.bullets[i].y > sys.h then
+        v1.bullets[i].rm = true
+      end
+      if (v1.bullets[i].x >= win[4].x and v1.bullets[i].x <= win[4].x+win[4].w
+      and v1.bullets[i].y >= win[4].y and v1.bullets[i].y <= win[4].y+win[4].h) then
+        v1.bullets[i].rm = true
+        if av.charge - 10 < 0 then
+          av.charge = 0
+        else
+          av.charge = av.charge - 10
+        end
+      end
+      if v1.bullets[i].rm == true then
+        table.remove(v1.bullets, i)
+      end
     end
   end
   for i=1,#av.bullets do
