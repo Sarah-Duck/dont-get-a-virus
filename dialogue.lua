@@ -42,4 +42,9 @@ function loadDia()
   v1.msgs[25] = "Ouch! It's stronger than I thought! No matter, because I have defenses of my own!"
   v1.msgs[26] = "Prepare youself for my UNIMAGINABLY DESTRUCTIVE POWER!"
   v1.msgs[27] = "Also, my giant battleship with multiple turrets."
+  v1.msgs[30] = "What do you think? I made it myself from the many computers I have conqured!"
+  v1.msgs[31] = "It doesn't really matter anyways, because your computer is about to become apart of it!"
+  v1.msgs[32] = "It's time to die! AHAHAHA!"
+  v1.msgs[34] = "Oh? A firewall? Well well well, this just got a bit more interesting."
+  v1.msgs[35] = "No matter, I WILL STILL DESTROY YOU! IT'S ABOUT TIME YOU SAW HOW POWERFUL A VIRUS CAN BE!"
 end
