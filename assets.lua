@@ -106,9 +106,10 @@ function loadAssets()
     shineplay = false,
     corner = love.graphics.newImage("assets/chat_bubble_corner.png"),
     cornerSpike = love.graphics.newImage("assets/chat_bubble_cornerspike.png"),
-    turret = love.graphics.newImage("assets/virus1_turret.png"),
-    ufoTop = love.graphics.newImage("assets/ufo_top.png"),
-    ufoBottom = love.graphics.newImage("assets/ufo_bottom.png")
+    turret1 = love.graphics.newImage("assets/virus1_turret.png"),
+    turret2 = love.graphics.newImage("assets/virus1_turret2.png"),
+    shipFront = love.graphics.newImage("assets/virus1_ship_front.png"),
+    shipBack = love.graphics.newImage("assets/virus1_ship_back.png")
   }
   v1.msgs = {}
   v1.c = {}
