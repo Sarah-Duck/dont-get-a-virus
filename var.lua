@@ -137,6 +137,9 @@ function loadVar()
   v1.introplay = false
   v1.explodeintro = false
   v1.explodeintrotimer = 0
+  v1.fightTimer = 0
+  v1.spm = 1
+  v1.left = false
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

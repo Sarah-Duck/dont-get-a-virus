@@ -124,6 +124,8 @@ function loadAssets()
   v1.turret[2] = {r=math.rad(15),x=0,y=0,rt=math.rad(15),t=0,tl=2}
   v1.turret[3] = {r=math.rad(-15),x=0,y=0,rt=math.rad(-15),t=0,tl=3}
   v1.turret[4] = {r=math.rad(-30),x=0,y=0,rt=math.rad(-30),t=0,tl=4}
+  v1.laserSound = love.audio.newSource("assets/virus1_laser.ogg")
+  v1.laserSound:setVolume(0.6)
   v1.bullets = {}
   v1.bullet = love.graphics.newImage("assets/bullet_green.png")
   v1.c.idle = {}
@@ -176,6 +178,7 @@ function loadAssets()
   v1.c.eyetx = 0
   v1.c.eyety = 0
   v1.c.chat.time = 0
+  v1.c.health = 100
   expl = {}
   expl.frames = {}
   expl.pic = love.graphics.newImage("assets/explosion.png")

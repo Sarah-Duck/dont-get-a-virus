@@ -24,7 +24,7 @@ function drawPanelButton(id)
   end
 end
 function drawStart()
-  panel.width = love.graphics.getWidth( )
+  panel.width = love.graphics.getWidth()
   panel.y = love.graphics.getHeight()
   panel.y = panel.y - panel.thick
   panel.s.y = panel.y + 5
@@ -57,6 +57,10 @@ function drawStart()
       start.o = true
       --sendMessage(1, msgs[msg.c])
     end
+  end
+  if v1.c.chat.msgs > 35 and v1.yes == true then
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("VIRUS HEALTH: " .. v1.c.health, sys.w/2, panel.s.y+7)
   end
 end
 function drawNoti()

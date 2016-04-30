@@ -1,6 +1,5 @@
 function drawVirusFight1()
   drawDesktop()
-  drawStart()
   if v1.introplay == false then
     v1.intro:play()
     v1.introplay = true
@@ -100,12 +99,16 @@ function drawVirusFight1()
       end
       if av.fire == true then
         addBullet(win[4].x+138/2+99,win[4].y+5-av.gun,math.rad(-90),25,"av")
-        antivirus.laser:play()
+        if antivirus.laser:isPlaying() == true then
+          antivirus.laser:rewind()
+        else
+          antivirus.laser:play()
+        end
         av.fire = false
       end
     end
   end
-  if v1.timer >= 16 then
+  if v1.timer >= 16 and v1.c.chat.msgs < 36 then
     music.tension1:play()
   end
   if v1.c.shine.ct >= 3 then
@@ -152,12 +155,15 @@ function drawVirusFight1()
     if v1.c.chat.msgs < 3 or v1.c.chat.msgs == 26 or v1.c.chat.msgs == 7 or v1.c.chat.msgs == 11 or v1.c.chat.msgs == 15 then
       v1.c.eyetx = v1.c.x+7
       v1.c.eyety = v1.c.y-28
-    elseif v1.c.chat.msgs >= 3 and v1.c.chat.msgs <= 7 then
-      v1.c.eyetx = sys.mouse.x
-      v1.c.eyety = sys.mouse.y
+    elseif av.bullets[1] ~= nil then
+      v1.c.eyetx = av.bullets[1].x
+      v1.c.eyety = av.bullets[1].y
     elseif v1.c.chat.msgs > 7 and v1.c.chat.msgs <= 25 then
       v1.c.eyetx = win[4].x+win[4].w/2
       v1.c.eyety = win[4].y+win[4].h/2
+    else
+      v1.c.eyetx = sys.mouse.x
+      v1.c.eyety = sys.mouse.y
     end
     for i=1,3 do
       if v1.c.eyetx > v1.c.x+7+v1.c.eyex and v1.c.eyex < 15 then
@@ -251,17 +257,42 @@ function drawVirusFight1()
       v1.c.chat.msg = ""
     end
     if v1.c.chat.msgs > 35 then
+      v1.fightTimer = v1.fightTimer + delta
+      music.tension1:stop()
+      music.battle1:play()
       for i=1,4 do
         if v1.turret[i].t > v1.turret[i].tl then
           local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),10,"v1")
+          addBullet(x,y,v1.turret[i].r+math.rad(90),16*(v1.spm/2),"v1")
+          if v1.laserSound:isPlaying() == true then
+            v1.laserSound:rewind()
+          else
+            v1.laserSound:play()
+          end
           v1.turret[i].t = 0
-          v1.turret[i].tl = math.random(2,3,4,5)
+          v1.turret[i].tl = math.random(2,3,4,5)/(v1.spm/2)
         elseif v1.turret[i].t < v1.turret[i].tl then
           v1.turret[i].t = v1.turret[i].t+delta
+        end
+      end
+      if v1.c.x == v1.c.xd then
+        if v1.left == true then
+          v1.left = false
+          if v1.c.health > 70 then
+            v1.c.xd = sys.w-320
+          else
+            v1.c.xd = math.random(sys.w-260, sys.w/2+1)
+          end
+        else
+          v1.left = true
+          if v1.c.health > 70 then
+            v1.c.xd = 320
+          else
+            v1.c.xd = math.random(260, sys.w/2-1)
+          end
         end
       end
     end
@@ -269,6 +300,7 @@ function drawVirusFight1()
     if v1.c.chat.msgs == 8 then
       v1.c.sp = v1.c.sp*2
     end
+    v1.c.sp = v1.c.sp*v1.spm
     v1.c.angle = math.atan2((v1.c.yd - v1.c.y), (v1.c.xd - v1.c.x))
     v1.c.spx = v1.c.sp * math.cos(v1.c.angle)
     v1.c.spy = v1.c.sp * math.sin(v1.c.angle)
@@ -365,6 +397,7 @@ function drawVirusFight1()
     drawMenu()
   end
   drawBullets()
+  drawStart()
 end
 function addBullet(x,y,a,s,t)
   if t == "av" then
@@ -393,6 +426,11 @@ function drawBullets()
         else
           av.charge = av.charge - 10
         end
+        if antivirus.hit:isPlaying() == true then
+          antivirus.hit:rewind()
+        else
+          antivirus.hit:play()
+        end
       end
       if v1.bullets[i].rm == true then
         table.remove(v1.bullets, i)
@@ -407,18 +445,33 @@ function drawBullets()
     love.graphics.draw(antivirus.bullet, av.bullets[i].x, av.bullets[i].y, av.bullets[i].a, 1.5, 1.5, 23/2, 7)
     if v1.yes == true then
       if av.bullets[i].x >= v1.c.x-80 and av.bullets[i].x <= v1.c.x+80 and av.bullets[i].y >= v1.c.y-80 and av.bullets[i].y <= v1.c.y+70 then
-        if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
+        if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 21 then
           v1.c.chat.msgs = 25
           v1.c.chat.char = 0
           v1.c.chat.msg = ""
         end
         av.bullets[i].rm = true
-        antivirus.hit:play()
+        if antivirus.hit:isPlaying() == true then
+          antivirus.hit:rewind()
+        else
+          antivirus.hit:play()
+        end
+      end
+      if av.bullets[i].x >= v1.c.x-615/2 and av.bullets[i].x <= v1.c.x-615/2+615 and av.bullets[i].y >= v1.c.y-100+20
+      and av.bullets[i].y <= v1.c.y-100+20+200 and v1.c.chat.msgs > 35 then
+        v1.c.health = v1.c.health - 5
+        v1.spm = v1.spm + 0.2
+        av.bullets[i].rm = true
+        if antivirus.hit:isPlaying() == true then
+          antivirus.hit:rewind()
+        else
+          antivirus.hit:play()
+        end
       end
     end
     if av.bullets[i].x < 0 or av.bullets[i].x > sys.w or av.bullets[i].y < 0 or av.bullets[i].y > sys.h then
       av.bullets[i].rm = true
-      if v1.c.chat.msgs >= 15 or v1.c.chat.msgs <= 21 then
+      if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 21 then
         v1.c.chat.msgs = v1.c.chat.msgs + 1
         v1.c.chat.msg = ""
         v1.c.chat.char = 0
