@@ -267,14 +267,14 @@ function drawVirusFight1()
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),6*(0.75+(v1.spm/4)),"v1",i)
+          addBullet(x,y,v1.turret[i].r+math.rad(90),(6*(0.75+(v1.spm/4)))*(1080/sys.h),"v1",i)
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
           else
             v1.laserSound:play()
           end
           v1.turret[i].t = 0
-          v1.turret[i].tl = (math.random(2,5)/v1.spm)*2
+          v1.turret[i].tl = ((math.random(2,5)/v1.spm)*2)*(1080/sys.h)
         elseif v1.turret[i].t < v1.turret[i].tl and v1.turretTimer < 30 then
           v1.turret[i].t = v1.turret[i].t+delta
         end
@@ -524,7 +524,7 @@ function drawBullets()
       if av.bullets[i].x >= v1.c.x-615/2 and av.bullets[i].x <= v1.c.x-615/2+615 and av.bullets[i].y >= v1.c.y-100+20
       and av.bullets[i].y <= v1.c.y-100+20+200 and v1.c.chat.msgs > 35 then
         v1.c.health = v1.c.health - 5
-        v1.spm = v1.spm + 0.2
+        v1.spm = v1.spm + 0.2*(1080/sys.h)
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()
