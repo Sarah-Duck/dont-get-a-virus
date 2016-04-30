@@ -128,6 +128,8 @@ function loadAssets()
   v1.laserSound:setVolume(0.6)
   v1.bullets = {}
   v1.bullet = love.graphics.newImage("assets/bullet_green.png")
+  v1.bulletRed = love.graphics.newImage("assets/bullet_red.png")
+  v1.bulletYellow = love.graphics.newImage("assets/bullet_yellow.png")
   v1.c.idle = {}
   v1.c.idle.fs = {}
   v1.c.idle.pic = love.graphics.newImage("assets/virus1_idle_noeye.png")

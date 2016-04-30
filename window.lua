@@ -127,6 +127,31 @@ function drawWindow(id)
   if win[id].miny < 0 then
     win[id].miny = 0
   end
+  if id == 4 and win[4].crazy == true then
+    if win[4].crazyLeft == true and win[4].x > 100 then
+      win[4].x = win[4].x - 10+v1.spm
+    elseif win[4].crazyLeft == false and win[4].x < sys.w-300 then
+      win[4].x = win[4].x + 10+v1.spm
+    end
+    if win[4].x <= 100 then
+      win[4].crazyLeft = false
+    elseif win[4].x >= sys.w-300 then
+      win[4].crazyLeft = true
+    end
+    if win[4].crazyUp == true and win[4].y > sys.h/2+50 then
+      win[4].y = win[4].y - 5+v1.spm
+    elseif win[4].crazyUp == false and win[4].y < sys.h-panel.thick-200 then
+      win[4].y = win[4].y + 5+v1.spm
+    end
+    if win[4].y <= sys.h/2+50 then
+      win[4].crazyUp = false
+    elseif win[4].y >= sys.h-panel.thick-200 then
+      win[4].crazyUp = true
+    end
+    if sys.mouse.drag == true then
+      win[4].crazy = false
+    end
+  end
   if id == 4 then
     updateAntivirus()
   elseif id == 1 then

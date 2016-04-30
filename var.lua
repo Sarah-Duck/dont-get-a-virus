@@ -70,6 +70,9 @@ function loadVar()
   loadWin(4, 200, 150, "Antivirus", icons[32].antivirus, icons[16].antivirus)
   loadWin(5, 450, 400, "Help", icons[32].help, icons[16].help)
   loadWin(6, 400, 550, "Settings", icons[32].settings, icons[16].settings)
+  win[4].crazy = false
+  win[4].crazyLeft = false
+  win[4].crazyUp = false
   icon = {}
   for i=1,6 do
     loadIcon(i, 10, 10+(90*i-90))
@@ -138,7 +141,10 @@ function loadVar()
   v1.explodeintro = false
   v1.explodeintrotimer = 0
   v1.fightTimer = 0
+  v1.turretTimer = 0
+  v1.turretAbi = 0
   v1.spm = 1
+  v1.abis = 1
   v1.left = false
   expl.deb[1].x = 0
   expl.deb[1].y = 0
