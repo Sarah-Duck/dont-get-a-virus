@@ -4,7 +4,7 @@ function drawDesktop()
     love.graphics.draw(desktop.bg.current, 0, 0, 0, sys.w/1920, sys.h/1280)
   end
   if v1.explodeintro == true and v1.yes == true then
-    if expl.frame >= 20 then
+    if expl.frame >= 20 or v1.c.chat.msgs > 1 then
       love.graphics.draw(v1.scorch, win[2].x-300, win[2].y-100)
     end
     if expl.deb.load == false then
@@ -25,7 +25,7 @@ function drawDesktop()
         expl.deb[i].r = expl.deb[i].r + expl.deb[i].rm
       end
     end
-    if expl.frame <= 89 then
+    if expl.frame <= 89 and v1.c.chat.msgs < 2 then
       love.graphics.setColor(255,255,255)
       love.graphics.draw(expl.pic, expl.frames[expl.frame], win[2].x-750, win[2].y-500, 0, 7, 7)
       expl.frame = expl.frame + 1

@@ -148,7 +148,7 @@ function drawWindow(id)
     elseif win[4].y >= sys.h-panel.thick-200 then
       win[4].crazyUp = true
     end
-    if sys.mouse.drag == true then
+    if sys.mouse.drag == true or v1.c.chat.msgs >= 41 then
       win[4].crazy = false
     end
   end

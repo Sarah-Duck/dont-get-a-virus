@@ -31,6 +31,7 @@ function drawVirusFight1()
     layer.sentToFront = 4
     antivirus.scanning = true
     antivirus.prog = 0
+    expl.frame = 1
   end
   if v1.c.chat.msgs > 7 then
     orderWindows()
@@ -61,20 +62,24 @@ function drawVirusFight1()
       love.graphics.setStencilTest("greater", 0)
       love.graphics.draw(antivirus.charge, win[4].x+138/2+79, win[4].y+40)
       love.graphics.setStencilTest()
-      if av.wings == 138/2 then
+      if av.wings >= 138/2 then
+        av.wings = 138/2
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
-      elseif av.wings ~= 138/2 then
+      elseif av.wings < 138/2 then
         antivirus.open:play()
-        av.wings = av.wings + 0.5
+        av.wings = av.wings + 0.5*sys.s
         love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
         love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
       end
       if av.gun == 10 then
         antivirus.opengun:play()
       end
-      if av.wings == 138/2 and av.gun ~= 98 then
-        av.gun = av.gun + 1
+      if av.wings == 138/2 and av.gun < 98 then
+        av.gun = av.gun + 1*sys.s
+      end
+      if av.gun > 98 then
+        av.gun = 98
       end
       if av.charge ~= 40 then
         av.fireb = false
@@ -89,7 +94,7 @@ function drawVirusFight1()
           v1.c.chat.char = 0
         end
       end
-      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs > 35) and av.charge == 40 then
+      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40) and av.charge == 40 then
         av.fireb = true
       end
       if av.charge < 40 then
@@ -112,6 +117,11 @@ function drawVirusFight1()
     music.tension1:play()
   end
   if v1.c.shine.ct >= 3 then
+    if v1.c.chat.msgs >= 41 then
+      v1.shake = (v1.c.chat.msgs-40)*3
+      v1.shakex = math.random(v1.shake,-v1.shake)
+      v1.shakey = math.random(v1.shake,-v1.shake)
+    end
     if v1.c.load == false then
       v1.c.x = win[2].x+v1.c.monitorspin.x
       v1.c.y = v1.c.monitorspin.y
@@ -119,25 +129,25 @@ function drawVirusFight1()
       v1.c.yd = v1.c.y
       v1.c.load = true
     end
-    if v1.c.chat.msgs > 30 then
+    if v1.c.chat.msgs > 30 and v1.c.chat.msgs ~= 37 and v1.c.chat.msgs ~= 38 and v1.c.chat.msgs < 41 then
       for i=1,4 do
         v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
         if v1.turret[i].r > v1.turret[i].rt then
-          if v1.turret[i].r - math.rad(2) < v1.turret[i].rt then
+          if v1.turret[i].r - math.rad(2*sys.s) < v1.turret[i].rt then
             v1.turret[i].r = v1.turret[i].rt
           else
-            v1.turret[i].r = v1.turret[i].r - math.rad(2)
+            v1.turret[i].r = v1.turret[i].r - math.rad(2*sys.s)
           end
         elseif v1.turret[i].r < v1.turret[i].rt then
-          if v1.turret[i].r + math.rad(2) > v1.turret[i].rt then
+          if v1.turret[i].r + math.rad(2*sys.s) > v1.turret[i].rt then
             v1.turret[i].r = v1.turret[i].rt
           else
-            v1.turret[i].r = v1.turret[i].r + math.rad(2)
+            v1.turret[i].r = v1.turret[i].r + math.rad(2*sys.s)
           end
         end
       end
     end
-    if v1.c.chat.msgs > 28 then
+    if v1.c.chat.msgs > 28 and expl.frame <= 10 then
       v1.turret[2].x = v1.c.x-120
       v1.turret[2].y = v1.c.y+200-100
       v1.turret[3].x = v1.c.x+120
@@ -151,7 +161,7 @@ function drawVirusFight1()
       playAnimation(v1.c.idle, true, v1.c.x+40, v1.c.y+40, v1.c.r, v1.c.s, 100, 100, 0.5)
     end
     love.graphics.setColor(255,255,255)
-    love.graphics.draw(v1.c.eye, v1.c.x-32, v1.c.y-50, v1.c.r, v1.c.s*0.9, v1.c.s*1.1)
+    love.graphics.draw(v1.c.eye, v1.c.x-32+v1.shakex, v1.c.y-50+v1.shakey, v1.c.r, v1.c.s*0.9, v1.c.s*1.1)
     if v1.c.chat.msgs < 3 or v1.c.chat.msgs == 26 or v1.c.chat.msgs == 7 or v1.c.chat.msgs == 11 or v1.c.chat.msgs == 15 then
       v1.c.eyetx = v1.c.x+7
       v1.c.eyety = v1.c.y-28
@@ -177,9 +187,9 @@ function drawVirusFight1()
     elseif v1.c.eyety < v1.c.y-28+v1.c.eyey and v1.c.eyey > -10 then
       v1.c.eyey = v1.c.eyey - 3
     end
-    love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5), v1.c.y-28+v1.c.eyey+math.random(0,0.5), v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
-    playAnimation(v1.c.idle, true, v1.c.x, v1.c.y, v1.c.r, v1.c.s, 100, 100, 0.5)
-    if v1.c.chat.msgs > 28 then
+    love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5)+v1.shakex, v1.c.y-28+v1.c.eyey+math.random(0,0.5)+v1.shakey, v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
+    playAnimation(v1.c.idle, true, v1.c.x+v1.shakex, v1.c.y+v1.shakey, v1.c.r, v1.c.s, 100, 100, 0.5)
+    if v1.c.chat.msgs > 28 and expl.frame <= 10 then
       v1.turret[1].x = v1.c.x-615/2-10
       v1.turret[1].y = v1.c.y+95-100+20
       v1.turret[4].x = v1.c.x+615/2+10
@@ -187,11 +197,23 @@ function drawVirusFight1()
       love.graphics.draw(v1.shipFront, v1.c.x-615/2, v1.c.y-100+20, 0, v1.c.s)
       love.graphics.draw(v1.turret2, v1.turret[1].x, v1.turret[1].y, v1.turret[1].r, v1.c.s, v1.c.s, 59/2, 40)
       love.graphics.draw(v1.turret2, v1.turret[4].x, v1.turret[4].y, v1.turret[4].r, v1.c.s, v1.c.s, 59/2, 40)
+    elseif v1.c.chat.msgs >= 36 and v1.c.chat.msgs <= 38 and expl.frame > 10 then
+      love.graphics.draw(v1.turret2, v1.turret[1].x, v1.turret[1].y, v1.turret[1].r, v1.c.s, v1.c.s, 59/2, 40)
+    elseif v1.c.chat.msgs >= 39 then
+      love.graphics.draw(v1.turret2Held, v1.turret[1].x+v1.shakex, v1.turret[1].y+v1.shakey, v1.turret[1].r, v1.c.s, v1.c.s, 59/2+14, 40)
+      v1.turret[1].x = v1.c.x-45
+      v1.turret[1].y = v1.c.y+20
+    end
+    if expl.frame <= 89 and v1.c.health < 25 then
+      love.graphics.setColor(255,255,255)
+      love.graphics.draw(expl.pic, expl.frames[expl.frame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
+      expl.frame = expl.frame + 1
+      v1.explosionSound:play()
     end
     if v1.c.chat.msgs == 2 then
       v1.c.xd = sys.w/2
       v1.c.yd = sys.h/2
-    elseif v1.c.chat.msgs == 8 then
+    elseif v1.c.chat.msgs == 8 or v1.c.chat.msgs == 41 or v1.c.chat.msgs == 39 then
       v1.c.xd = sys.w/2
       v1.c.yd = 200
     elseif v1.c.chat.msgs == 25 then
@@ -211,6 +233,12 @@ function drawVirusFight1()
     elseif v1.c.chat.msgs == 29 then
       v1.c.yd = 140
       v1.c.xd = sys.w/2
+    elseif v1.c.chat.msgs == 37 then
+      v1.c.xd = sys.w/2
+      v1.c.yd = 160
+    elseif v1.c.chat.msgs == 38 then
+      v1.c.xd = v1.turret[1].x+45
+      v1.c.yd = v1.turret[1].y-20
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-135, 300, 115, v1.c.chat.msg)
@@ -255,14 +283,30 @@ function drawVirusFight1()
       v1.c.chat.msgs = 30
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
+    elseif v1.c.health <= 20 and expl.frame >= 89 and v1.c.chat.msgs == 36 then
+      v1.c.chat.msgs = 37
+      v1.c.chat.char = 0
+      v1.c.chat.msg = ""
+    elseif v1.c.chat.msgs == 38 and v1.c.x == v1.turret[1].x+45 then
+      v1.c.chat.msgs = 39
+      v1.c.chat.char = 0
+      v1.c.chat.msg = ""
+    elseif v1.c.chat.msgs == 40 and v1.c.health <= 0 then
+      v1.c.chat.msgs = 41
+      v1.c.chat.char = 0
+      v1.c.chat.msg = ""
     end
-    if v1.c.chat.msgs > 35 then
+    if v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40 then
       v1.fightTimer = v1.fightTimer + delta
-      v1.turretTimer = v1.turretTimer + delta
+      if v1.c.health > 20 then
+        v1.turretTimer = v1.turretTimer + delta
+      else
+        v1.turretTimer = 0
+      end
       music.tension1:stop()
       music.battle1:play()
       for i=1,4 do
-        if v1.turret[i].t > v1.turret[i].tl then
+        if v1.turret[i].t > v1.turret[i].tl and v1.c.health > 20 then
           local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
@@ -275,6 +319,19 @@ function drawVirusFight1()
           end
           v1.turret[i].t = 0
           v1.turret[i].tl = ((math.random(2,5)/v1.spm)*2)*(1080/sys.h)
+        elseif v1.c.chat.msgs == 40 and v1.turret[i].t > v1.turret[i].tl and i == 1 then
+          local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
+          -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
+          local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
+          +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
+          addBullet(x,y,v1.turret[i].r+math.rad(90),(10*(0.75+(v1.spm/4)))*(sys.h/1080),"v1",math.random(1,5))
+          if v1.laserSound:isPlaying() == true then
+            v1.laserSound:rewind()
+          else
+            v1.laserSound:play()
+          end
+          v1.turret[i].t = 0
+          v1.turret[i].tl = math.random(0.2,1)*(1080/sys.h)
         elseif v1.turret[i].t < v1.turret[i].tl and v1.turretTimer < 30 then
           v1.turret[i].t = v1.turret[i].t+delta
         end
@@ -296,12 +353,12 @@ function drawVirusFight1()
           end
         end
       end
-      if v1.c.y == v1.c.yd and v1.c.health < 45 and v1.turretTimer < 30 then
+      if v1.c.y == v1.c.yd and v1.c.health < 55 and v1.turretTimer < 30 then
         v1.c.yd = math.random(80,sys.h/2-(120*(1080/sys.h)))
-      elseif v1.turretTimer < 30 and v1.c.health > 40 then
+      elseif v1.turretTimer < 30 and v1.c.health > 50 then
         v1.c.yd = 120
       end
-      if v1.turretTimer >= 30 then
+      if v1.turretTimer >= 30 and v1.c.health > 20 then
         v1.c.xd = win[4].x+win[4].w/2
         v1.c.yd = win[4].y-400
         if v1.turretTimer >= 31 and v1.turretAbi == 0 then
@@ -350,6 +407,10 @@ function drawVirusFight1()
       v1.c.sp = v1.c.sp*2
     end
     v1.c.sp = v1.c.sp*v1.spm
+    if v1.c.health < 25 then
+      v1.c.sp = v1.c.sp*0.25
+    end
+    v1.c.sp = v1.c.sp*sys.s
     v1.c.angle = math.atan2((v1.c.yd - v1.c.y), (v1.c.xd - v1.c.x))
     v1.c.spx = v1.c.sp * math.cos(v1.c.angle)
     v1.c.spy = v1.c.sp * math.sin(v1.c.angle)
@@ -450,10 +511,10 @@ function drawVirusFight1()
 end
 function addBullet(x,y,a,s,t,id)
   if t == "av" then
-    table.insert(av.bullets, 1, {x=x,y=y,a=a,s=s,spx=0,spy=0,rm=false})
+    table.insert(av.bullets, 1, {x=x,y=y,a=a,s=s*sys.s,spx=0,spy=0,rm=false})
   end
   if t == "v1" then
-    table.insert(v1.bullets, 1, {x=x,y=y,a=a,s=s,spx=0,spy=0,rm=false,id=id})
+    table.insert(v1.bullets, 1, {x=x,y=y,a=a,s=s*sys.s,spx=0,spy=0,rm=false,id=id})
   end
 end
 function drawBullets()
@@ -514,6 +575,10 @@ function drawBullets()
           v1.c.chat.char = 0
           v1.c.chat.msg = ""
         end
+        if v1.c.chat.msgs == 40 then
+          v1.c.health = v1.c.health - 5
+          v1.spm = v1.spm + 0.20*(sys.h/1080)
+        end
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()
@@ -522,9 +587,9 @@ function drawBullets()
         end
       end
       if av.bullets[i].x >= v1.c.x-615/2 and av.bullets[i].x <= v1.c.x-615/2+615 and av.bullets[i].y >= v1.c.y-100+20
-      and av.bullets[i].y <= v1.c.y-100+20+200 and v1.c.chat.msgs > 35 then
+      and av.bullets[i].y <= v1.c.y-100+20+200 and v1.c.chat.msgs > 35 and v1.c.health > 20 then
         v1.c.health = v1.c.health - 5
-        v1.spm = v1.spm + 0.2*(sys.h/1080)
+        v1.spm = v1.spm + 0.25*(sys.h/1080)
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()

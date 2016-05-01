@@ -37,6 +37,8 @@ end
 function love.update(dt)
   delta = dt
   time = time + dt
+  fps = love.timer.getFPS()
+  sys.s = 60/fps
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
   minim = love.graphics.getHeight()+10
@@ -76,6 +78,10 @@ end
 function love.keyreleased(key)
    if key == "f11" then
       v1.c.chat.msgs = v1.c.chat.msgs + 1
+   end
+   if key == "f10" then
+     v1.c.health = v1.c.health - 5
+     v1.spm = v1.spm + 0.25*(sys.h/1080)
    end
 end
 function love.mousereleased(x, y, button)

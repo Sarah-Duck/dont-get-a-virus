@@ -36,6 +36,7 @@ function loadIcon(id, x, y)
 end
 function loadVar()
   sys = {}
+  sys.s = 0
   sys.width = love.graphics.getWidth()
   sys.height = love.graphics.getHeight()
   sys.mouse = {}
@@ -146,6 +147,9 @@ function loadVar()
   v1.spm = 1
   v1.abis = 1
   v1.left = false
+  v1.shake = 0
+  v1.shakex = 0
+  v1.shakey = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
