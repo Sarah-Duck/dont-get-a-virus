@@ -1,9 +1,9 @@
 function loadWin(id, w, h, title, ico, ico16)
   win[id] = {}
-  win[id].x = math.random(10, 200)
-  win[id].y = math.random(10, 200)
   win[id].w = w
   win[id].h = h
+  win[id].x = math.random(100, sys.w-win[id].w-100)
+  win[id].y = math.random(10, sys.h-win[id].h-100)
   win[id].px = win[id].x
   win[id].py = win[id].y
   win[id].ex = true
@@ -49,6 +49,7 @@ function loadVar()
   sys.mouse.drag = false
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
+  di = 0.75
   panel = {}
   panel.thick = 30
   panel.x = 0
@@ -150,6 +151,8 @@ function loadVar()
   v1.shake = 0
   v1.shakex = 0
   v1.shakey = 0
+  v1.explodeEndFrame = 1
+  v1.complete = false
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
@@ -170,4 +173,23 @@ function loadVar()
   expl.deb[3].rm = math.rad(1)
   expl.deb.load = false
   time = 0
+  std = {}
+  std[1] = {}
+  std[1].title = "Baby"
+  std[1].hl = false
+  std[2] = {}
+  std[2].title = "Easy"
+  std[2].hl = false
+  std[3] = {}
+  std[3].title = "Normal"
+  std[3].hl = true
+  std[4] = {}
+  std[4].title = "Hard"
+  std[4].hl = false
+  std[5] = {}
+  std[5].title = "Insane"
+  std[5].hl = false
+  std[6] = {}
+  std[6].title = "Impossible"
+  std[6].hl = false
 end

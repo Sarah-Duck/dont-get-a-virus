@@ -121,6 +121,7 @@ function drawVirusFight1()
       v1.shake = (v1.c.chat.msgs-40)*3
       v1.shakex = math.random(v1.shake,-v1.shake)
       v1.shakey = math.random(v1.shake,-v1.shake)
+      v1.rumbleLoop:setPitch(v1.shake/6)
     end
     if v1.c.load == false then
       v1.c.x = win[2].x+v1.c.monitorspin.x
@@ -133,16 +134,16 @@ function drawVirusFight1()
       for i=1,4 do
         v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
         if v1.turret[i].r > v1.turret[i].rt then
-          if v1.turret[i].r - math.rad(2*sys.s) < v1.turret[i].rt then
+          if v1.turret[i].r - math.rad((2*sys.s)*di) < v1.turret[i].rt then
             v1.turret[i].r = v1.turret[i].rt
           else
-            v1.turret[i].r = v1.turret[i].r - math.rad(2*sys.s)
+            v1.turret[i].r = v1.turret[i].r - math.rad((2*sys.s)*di)
           end
         elseif v1.turret[i].r < v1.turret[i].rt then
-          if v1.turret[i].r + math.rad(2*sys.s) > v1.turret[i].rt then
+          if v1.turret[i].r + math.rad((2*sys.s)*di) > v1.turret[i].rt then
             v1.turret[i].r = v1.turret[i].rt
           else
-            v1.turret[i].r = v1.turret[i].r + math.rad(2*sys.s)
+            v1.turret[i].r = v1.turret[i].r + math.rad((2*sys.s)*di)
           end
         end
       end
@@ -292,6 +293,8 @@ function drawVirusFight1()
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
     elseif v1.c.chat.msgs == 40 and v1.c.health <= 0 then
+      music.battle1:stop()
+      v1.rumbleLoop:play()
       v1.c.chat.msgs = 41
       v1.c.chat.char = 0
       v1.c.chat.msg = ""
@@ -311,27 +314,27 @@ function drawVirusFight1()
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),(6*(0.75+(v1.spm/4)))*(sys.h/1080),"v1",i)
+          addBullet(x,y,v1.turret[i].r+math.rad(90),((6*(0.75+(v1.spm/4)))*(sys.h/1080))*di,"v1",i)
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
           else
             v1.laserSound:play()
           end
           v1.turret[i].t = 0
-          v1.turret[i].tl = ((math.random(2,5)/v1.spm)*2)*(1080/sys.h)
+          v1.turret[i].tl = (((math.random(2,5)/v1.spm)*2)*(1080/sys.h))/di
         elseif v1.c.chat.msgs == 40 and v1.turret[i].t > v1.turret[i].tl and i == 1 then
           local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),(10*(0.75+(v1.spm/4)))*(sys.h/1080),"v1",math.random(1,5))
+          addBullet(x,y,v1.turret[i].r+math.rad(90),((8*(0.75+(v1.spm/4)))*(sys.h/1080))*di,"v1",math.random(1,5))
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
           else
             v1.laserSound:play()
           end
           v1.turret[i].t = 0
-          v1.turret[i].tl = math.random(0.2,1)*(1080/sys.h)
+          v1.turret[i].tl = (math.random(0.2,1,1.5)*(1080/sys.h))/di
         elseif v1.turret[i].t < v1.turret[i].tl and v1.turretTimer < 30 then
           v1.turret[i].t = v1.turret[i].t+delta
         end
@@ -367,7 +370,7 @@ function drawVirusFight1()
             -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
             local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
             +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-            addBullet(x,y,v1.turret[i].r+math.rad(90),20,"v1",2)
+            addBullet(x,y,v1.turret[i].r+math.rad(90),20*di,"v1",2)
           end
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
@@ -382,7 +385,7 @@ function drawVirusFight1()
             -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
             local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
             +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-            addBullet(x,y,v1.turret[i].r+math.rad(90),20,"v1",v1.abis)
+            addBullet(x,y,v1.turret[i].r+math.rad(90),20*di,"v1",v1.abis)
           end
           if v1.abis == 5 then
             v1.abis = 1
@@ -411,6 +414,9 @@ function drawVirusFight1()
       v1.c.sp = v1.c.sp*0.25
     end
     v1.c.sp = v1.c.sp*sys.s
+    if v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40 then
+      v1.c.sp = v1.c.sp*di
+    end
     v1.c.angle = math.atan2((v1.c.yd - v1.c.y), (v1.c.xd - v1.c.x))
     v1.c.spx = v1.c.sp * math.cos(v1.c.angle)
     v1.c.spy = v1.c.sp * math.sin(v1.c.angle)
@@ -508,6 +514,18 @@ function drawVirusFight1()
   end
   drawBullets()
   drawStart()
+  if v1.c.chat.msgs == 47 then
+    v1.complete = true
+    love.graphics.setColor(255,255,255)
+    love.graphics.draw(expl.pic, expl.frames[v1.explodeEndFrame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
+    v1.explodeEndFrame = v1.explodeEndFrame + 1
+    v1.explosionSound:play()
+    v1.rumbleLoop:stop()
+    if v1.explodeEndFrame >= 20 then
+      v1.yes = false
+      scene = 1
+    end
+  end
 end
 function addBullet(x,y,a,s,t,id)
   if t == "av" then

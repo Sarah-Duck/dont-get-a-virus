@@ -110,8 +110,10 @@ function loadAssets()
     turret2 = love.graphics.newImage("assets/virus1_turret2.png"),
     turret2Held = love.graphics.newImage("assets/virus1_turret2_held.png"),
     shipFront = love.graphics.newImage("assets/virus1_ship_front.png"),
-    shipBack = love.graphics.newImage("assets/virus1_ship_back.png")
+    shipBack = love.graphics.newImage("assets/virus1_ship_back.png"),
+    rumbleLoop = love.audio.newSource("assets/rumble_loop.ogg")
   }
+  v1.rumbleLoop:setLooping(true)
   v1.msgs = {}
   v1.c = {}
   v1.c.chat = {}

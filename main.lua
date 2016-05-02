@@ -81,7 +81,7 @@ function love.keyreleased(key)
    end
    if key == "f10" then
      v1.c.health = v1.c.health - 5
-     v1.spm = v1.spm + 0.25*(sys.h/1080)
+     v1.spm = v1.spm + 0.5*(sys.h/1080)
    end
 end
 function love.mousereleased(x, y, button)
