@@ -30,9 +30,9 @@ function love.load()
   pixeloperators:setFilter("nearest", "nearest")
   love.graphics.setFont(pressstart)
   love.keyboard.setKeyRepeat(true)
-  loadAssets()
-  loadVar()
-  loadDia()
+  --loadAssets()
+  --loadVar()
+  --loadDia()
 end
 function love.update(dt)
   delta = dt

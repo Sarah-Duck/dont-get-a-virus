@@ -61,6 +61,7 @@ function drawStart()
   if v1.c.chat.msgs > 35 and v1.yes == true then
     love.graphics.setColor(colors.font.dark)
     love.graphics.print("VIRUS HEALTH: " .. v1.c.health, sys.w/2, panel.s.y+7)
+    love.graphics.print("TIMER: " .. v1.fightMinute .. ":" .. math.floor(-(v1.fightTimer-60)), sys.w/2-200, panel.s.y+7)
   end
 end
 function drawNoti()

@@ -117,7 +117,7 @@ function drawVirusFight1()
     music.tension1:play()
   end
   if v1.c.shine.ct >= 3 then
-    if v1.c.chat.msgs >= 41 then
+    if v1.c.chat.msgs >= 41 and v1.c.chat.msgs < 50 then
       v1.shake = (v1.c.chat.msgs-40)*3
       v1.shakex = math.random(v1.shake,-v1.shake)
       v1.shakey = math.random(v1.shake,-v1.shake)
@@ -301,6 +301,13 @@ function drawVirusFight1()
     end
     if v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40 then
       v1.fightTimer = v1.fightTimer + delta
+      if v1.fightMinute == 0 and v1.fightTimer > 59 then
+        v1.c.chat.msgs = 50
+      end
+      if v1.fightTimer > 59 then
+        v1.fightMinute = v1.fightMinute - 1
+        v1.fightTimer = 0
+      end
       if v1.c.health > 20 then
         v1.turretTimer = v1.turretTimer + delta
       else

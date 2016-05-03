@@ -93,7 +93,7 @@ function loadVar()
   desktop.bg.current = 0
   fade = 0
   fadeOpacity = 0
-  scene = 1
+  scene = 0
   loading = 0
   antivirus.prog = 0
   antivirus.status = "Not Scanning"
@@ -142,7 +142,7 @@ function loadVar()
   v1.introplay = false
   v1.explodeintro = false
   v1.explodeintrotimer = 0
-  v1.fightTimer = 0
+  v1.fightTimer = 60
   v1.turretTimer = 0
   v1.turretAbi = 0
   v1.spm = 1
@@ -153,6 +153,7 @@ function loadVar()
   v1.shakey = 0
   v1.explodeEndFrame = 1
   v1.complete = false
+  v1.fightMinute = 5
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
