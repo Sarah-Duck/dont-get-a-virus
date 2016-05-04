@@ -214,7 +214,7 @@ function drawVirusFight1()
     if v1.c.chat.msgs == 2 then
       v1.c.xd = sys.w/2
       v1.c.yd = sys.h/2
-    elseif v1.c.chat.msgs == 8 or v1.c.chat.msgs == 41 or v1.c.chat.msgs == 39 then
+    elseif v1.c.chat.msgs == 8 or v1.c.chat.msgs == 41 or v1.c.chat.msgs == 39 or v1.c.chat.msgs == 50 then
       v1.c.xd = sys.w/2
       v1.c.yd = 200
     elseif v1.c.chat.msgs == 25 then

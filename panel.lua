@@ -65,6 +65,8 @@ function drawStart()
   end
 end
 function drawNoti()
+  notify.x = sys.w-258
+  notify.y = sys.h-135
   if notify.yes == true or notify.op ~= 0 then
     love.graphics.setColor(255, 255, 255, notify.op)
     love.graphics.draw(notification.bubble, notify.x, notify.y)

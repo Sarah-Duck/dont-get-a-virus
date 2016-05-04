@@ -14,15 +14,20 @@ function drawInternet()
   love.graphics.draw(internet.back, 11, 32)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print(internet.url, 70, 44)
+  love.graphics.stencil(internetStencil, "replace", 1)
+  love.graphics.setStencilTest("greater", 0)
   love.graphics.setColor(255, 255, 255)
   if internet.urlc == "www.homepage.com" then
     love.graphics.draw(internet.welcome, 8, 74)
   elseif internet.urlc == "www.freedownloads.com" then
     love.graphics.draw(internet.freedownloads1, 8, 74)
-    v1.yes = true
+    if v1.complete == false then
+      v1.yes = true
+    end
   else
     love.graphics.draw(internet.error, 8, 74)
   end
+  love.graphics.setStencilTest()
 end
 function updateInternet()
   internet.urlold = internet.url
@@ -36,6 +41,7 @@ function updateInternet()
     if key == "return" and layer[1] == 2 then
       internet.urlc = internet.url
       win[2].update = true
+      internet.load = 0
     end
   end
   function love.textinput(t)
@@ -46,4 +52,13 @@ function updateInternet()
       end
     end
   end
+  if internet.load ~= 442 then
+    if math.random(1,3) == 3 then
+      internet.load = internet.load + math.random(0,20)
+      win[2].update = true
+    end
+  end
+end
+function internetStencil()
+  love.graphics.rectangle("fill", 8, 74, 600, internet.load)
 end

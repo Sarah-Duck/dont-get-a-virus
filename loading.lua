@@ -7,7 +7,11 @@ function drawLoading()
   love.graphics.setColor(0,0,120)
   love.graphics.rectangle("fill", sys.w/2-125+5, sys.h/2-10, loading, 20)
   if loading < 240 then
-    loading = loading + math.random(0.1,2)
+    loading = loading + 5
+    if loading > loadingId*10 and loaded == false then
+      loadAssets(loadingId)
+      loadingId = loadingId + 1
+    end
   elseif loading >= 240 then
     loading = 240
     fade = 1
@@ -19,4 +23,6 @@ function drawLoading()
     fade = 0
     sound.boot:play()
   end
+end
+function drawBSOD()
 end

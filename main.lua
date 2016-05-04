@@ -15,21 +15,7 @@ function love.load()
   require "elements"
   require "virus1"
   require "dialogue"
-  love.graphics.setDefaultFilter("nearest", "nearest")
-  love.graphics.setBackgroundColor(0, 0, 0)
-  love.graphics.setNewFont()
-  pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
-  pressstart:setFilter("nearest", "nearest")
-  --pressstarts = love.graphics.newFont("fonts/pressstart.ttf", 10)
-  --pressstarts:setFilter("nearest", "nearest")
-  pixeloperatorb = love.graphics.newFont("fonts/pixel_operator/PixelOperator8-Bold.ttf", 16)
-  pixeloperatorb:setFilter("nearest", "nearest")
-  pixeloperator = love.graphics.newFont("fonts/pixel_operator/PixelOperator8.ttf", 16.5)
-  pixeloperator:setFilter("nearest", "nearest")
-  pixeloperators = love.graphics.newFont("fonts/pixel_operator/PixelOperator-Bold.ttf", 16)
-  pixeloperators:setFilter("nearest", "nearest")
-  love.graphics.setFont(pressstart)
-  love.keyboard.setKeyRepeat(true)
+  loadPre()
   --loadAssets()
   --loadVar()
   --loadDia()
@@ -49,8 +35,14 @@ function love.update(dt)
   end
   if love.keyboard.isDown("f4") == true then
     love.window.setMode(800, 600, {fullscreen=true, fullscreentype="desktop"})
+    for i=1,#win do
+      win[i].update = true
+    end
   elseif love.keyboard.isDown("f5") == true then
     love.window.setMode(1280, 720, {fullscreen=false})
+    for i=1,#win do
+      win[i].update = true
+    end
   end
   if fade == 1 and fadeOpacity ~= 255 then
     fadeOpacity = fadeOpacity + 5
@@ -60,13 +52,15 @@ function love.update(dt)
   if scene == 1 then
     updateSystem(dt)
   end
-  if v1.yes == true then
-    v1.timer = v1.timer + dt
-  end
-  if v1.yes == true and v1.timer >= 5 then
-    scene = 2
-    if v1.explodeintrotimer <= 7.8 then
-      v1.explodeintrotimer = v1.explodeintrotimer + dt
+  if loaded == true then
+    if v1.yes == true and v1.complete == false then
+      v1.timer = v1.timer + dt
+    end
+    if v1.yes == true and v1.timer >= 5 then
+      scene = 2
+      if v1.explodeintrotimer <= 7.8 then
+        v1.explodeintrotimer = v1.explodeintrotimer + dt
+      end
     end
   end
 end

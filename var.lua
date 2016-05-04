@@ -35,20 +35,6 @@ function loadIcon(id, x, y)
   icon[id].cl = false
 end
 function loadVar()
-  sys = {}
-  sys.s = 0
-  sys.width = love.graphics.getWidth()
-  sys.height = love.graphics.getHeight()
-  sys.mouse = {}
-  sys.mouse.p = {}
-  sys.mouse.x = love.mouse.getX
-  sys.mouse.y = love.mouse.getY
-  sys.mouse.p.x = 0
-  sys.mouse.p.y = 0
-  sys.mouse.p.p = false
-  sys.mouse.drag = false
-  sys.w = love.graphics.getWidth()
-  sys.h = love.graphics.getHeight()
   di = 0.75
   panel = {}
   panel.thick = 30
@@ -91,10 +77,6 @@ function loadVar()
   layer = {}
   layer.sentToFront = 0
   desktop.bg.current = 0
-  fade = 0
-  fadeOpacity = 0
-  scene = 0
-  loading = 0
   antivirus.prog = 0
   antivirus.status = "Not Scanning"
   antivirus.scanning = false
@@ -135,6 +117,7 @@ function loadVar()
   internet.url = "www.homepage.com"
   internet.urlold = internet.url
   internet.urlc = internet.url
+  internet.load = 0
   v1.yes = false
   v1.timer = 0
   v1.shakemin = 0
@@ -173,7 +156,6 @@ function loadVar()
   expl.deb[3].r = math.rad(0)
   expl.deb[3].rm = math.rad(1)
   expl.deb.load = false
-  time = 0
   std = {}
   std[1] = {}
   std[1].title = "Baby"
@@ -193,4 +175,42 @@ function loadVar()
   std[6] = {}
   std[6].title = "Impossible"
   std[6].hl = false
+end
+function loadPre()
+  love.graphics.setDefaultFilter("nearest", "nearest")
+  love.graphics.setBackgroundColor(0, 0, 0)
+  love.graphics.setNewFont()
+  pressstart = love.graphics.newFont("fonts/pressstart.ttf", 12)
+  pressstart:setFilter("nearest", "nearest")
+  --pressstarts = love.graphics.newFont("fonts/pressstart.ttf", 10)
+  --pressstarts:setFilter("nearest", "nearest")
+  pixeloperatorb = love.graphics.newFont("fonts/pixel_operator/PixelOperator8-Bold.ttf", 16)
+  pixeloperatorb:setFilter("nearest", "nearest")
+  pixeloperator = love.graphics.newFont("fonts/pixel_operator/PixelOperator8.ttf", 16.5)
+  pixeloperator:setFilter("nearest", "nearest")
+  pixeloperators = love.graphics.newFont("fonts/pixel_operator/PixelOperator-Bold.ttf", 16)
+  pixeloperators:setFilter("nearest", "nearest")
+  love.graphics.setFont(pressstart)
+  love.keyboard.setKeyRepeat(true)
+  scene = 0
+  loading = 0
+  fade = 0
+  loaded = false
+  loadingId = 1
+  time = 0
+  fadeOpacity = 0
+  sys = {}
+  sys.s = 0
+  sys.width = love.graphics.getWidth()
+  sys.height = love.graphics.getHeight()
+  sys.mouse = {}
+  sys.mouse.p = {}
+  sys.mouse.x = love.mouse.getX
+  sys.mouse.y = love.mouse.getY
+  sys.mouse.p.x = 0
+  sys.mouse.p.y = 0
+  sys.mouse.p.p = false
+  sys.mouse.drag = false
+  sys.w = love.graphics.getWidth()
+  sys.h = love.graphics.getHeight()
 end

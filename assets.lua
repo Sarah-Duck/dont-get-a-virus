@@ -227,6 +227,15 @@ function loadAssets(id)
     expl.deb[2].pic = love.graphics.newImage("assets/debris2.png")
     expl.deb[3].pic = love.graphics.newImage("assets/debris3.png")
   end
+  if id == 16 then
+    loadVar()
+  end
+  if id == 17 then
+    loadDia()
+  end
+  if id == 18 then
+    loaded = true
+  end
 end
 function loadAnimation(pic, quad, frames, limit, w, h)
   local frame = 1
