@@ -234,6 +234,10 @@ function loadAssets(id)
     loadDia()
   end
   if id == 18 then
+    bsod = {}
+    bsod.pic = love.graphics.newImage("assets/bsod.png")
+  end
+  if id == 19 then
     loaded = true
   end
 end

@@ -25,4 +25,7 @@ function drawLoading()
   end
 end
 function drawBSOD()
+  love.graphics.setBackgroundColor(0,0,120)
+  love.graphics.setColor(256,256,256)
+  love.graphics.draw(bsod.pic, sys.w/2, sys.h/2, 0, 1, 1, 320, 200)
 end

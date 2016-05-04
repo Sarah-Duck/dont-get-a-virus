@@ -97,5 +97,7 @@ function love.draw()
     drawLoading()
   elseif scene == 2 then
     drawVirusFight1()
+  elseif scene == 666 then
+    drawBSOD()
   end
 end
