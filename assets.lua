@@ -140,15 +140,9 @@ function loadAssets(id)
     }
   end
   if id == 14 then
-    v1.rumbleLoop:setLooping(true)
-    v1.msgs = {}
     v1.c = {}
     v1.c.chat = {}
-    v1.c.chat.next = false
-    v1.c.chat.msgs = 1
-    v1.c.chat.msg = ""
-    v1.c.chat.sp = 0.5
-    v1.c.chat.char = 0
+    v1.rumbleLoop:setLooping(true)
     v1.turret = {}
     v1.turret[1] = {r=math.rad(30),x=0,y=0,rt=math.rad(30),t=0,tl=1}
     v1.turret[2] = {r=math.rad(15),x=0,y=0,rt=math.rad(15),t=0,tl=2}
@@ -195,23 +189,6 @@ function loadAssets(id)
     v1.c.shine.sm2 = true
     v1.c.shine.ct = 0
     v1.c.shine.opa = 255
-    v1.c.x = 0
-    v1.c.y = 0
-    v1.c.s = 1
-    v1.c.r = 0
-    v1.c.xd = 0
-    v1.c.yd = 0
-    v1.c.spx = 0
-    v1.c.spy = 0
-    v1.c.sp = 1
-    v1.c.angle = 0
-    v1.c.load = false
-    v1.c.eyex = 0
-    v1.c.eyey = 0
-    v1.c.eyetx = 0
-    v1.c.eyety = 0
-    v1.c.chat.time = 0
-    v1.c.health = 100
   end
   if id == 15 then
     expl = {}

@@ -137,6 +137,29 @@ function loadVar()
   v1.explodeEndFrame = 1
   v1.complete = false
   v1.fightMinute = 5
+  v1.c.x = 0
+  v1.c.y = 0
+  v1.c.s = 1
+  v1.c.r = 0
+  v1.c.xd = 0
+  v1.c.yd = 0
+  v1.c.spx = 0
+  v1.c.spy = 0
+  v1.c.sp = 1
+  v1.c.angle = 0
+  v1.c.load = false
+  v1.c.eyex = 0
+  v1.c.eyey = 0
+  v1.c.eyetx = 0
+  v1.c.eyety = 0
+  v1.c.chat.time = 0
+  v1.c.health = 100
+  v1.msgs = {}
+  v1.c.chat.next = false
+  v1.c.chat.msgs = 1
+  v1.c.chat.msg = ""
+  v1.c.chat.sp = 0.5
+  v1.c.chat.char = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
@@ -213,4 +236,37 @@ function loadPre()
   sys.mouse.drag = false
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
+end
+function loadRe()
+  loading = 0
+  fade = 0
+  loaded = true
+  loadingId = 1
+  time = 0
+  fadeOpacity = 0
+  v1.c.monitorspin.f = 1
+  v1.c.monitorspin.x = 330
+  v1.c.monitorspin.y = -200
+  v1.c.monitorspin.sp = 0.4
+  v1.c.slime.f = 1
+  v1.c.slime.x = 330
+  v1.c.slime.y = 350
+  v1.c.shine.r1 = 0
+  v1.c.shine.r2 = 0
+  v1.c.shine.s1 = 0
+  v1.c.shine.s2 = 0
+  v1.c.shine.s = -25
+  v1.c.shine.sm1 = true
+  v1.c.shine.sm2 = true
+  v1.c.shine.ct = 0
+  v1.c.shine.opa = 255
+  v1.c.idle.f = 1
+  v1.turret[1] = {r=math.rad(30),x=0,y=0,rt=math.rad(30),t=0,tl=1}
+  v1.turret[2] = {r=math.rad(15),x=0,y=0,rt=math.rad(15),t=0,tl=2}
+  v1.turret[3] = {r=math.rad(-15),x=0,y=0,rt=math.rad(-15),t=0,tl=3}
+  v1.turret[4] = {r=math.rad(-30),x=0,y=0,rt=math.rad(-30),t=0,tl=4}
+  expl.frame = 1
+  loadVar()
+  loadDia()
+  scene = 0
 end
