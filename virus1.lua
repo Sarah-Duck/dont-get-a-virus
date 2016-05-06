@@ -521,8 +521,12 @@ function drawVirusFight1()
   end
   drawBullets()
   drawStart()
-  if v1.c.chat.msgs == 47 then
-    v1.complete = true
+  if v1.c.chat.msgs == 47 or v1.c.chat.msgs == 53 then
+    if v1.c.chat.msgs == 47 then
+      v1.complete = true
+    elseif v1.c.chat.msgs == 53 then
+      virus1Lose = virus1Lose + 1
+    end
     love.graphics.setColor(255,255,255)
     love.graphics.draw(expl.pic, expl.frames[v1.explodeEndFrame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
     v1.explodeEndFrame = v1.explodeEndFrame + 1
@@ -530,7 +534,11 @@ function drawVirusFight1()
     v1.rumbleLoop:stop()
     if v1.explodeEndFrame >= 20 then
       v1.yes = false
-      scene = 1
+      if v1.c.chat.msgs == 47 then
+        scene = 1
+      elseif v1.c.chat.msgs == 53 then
+        scene = 666
+      end
     end
   end
 end

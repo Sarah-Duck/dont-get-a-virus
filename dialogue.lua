@@ -22,10 +22,32 @@ function loadDia()
   msgs[21] = "www.freedownloads.com or I die."
   msgstime = {30,35,40,45,50,55,60,65,160,190,230,270,300,330,360,390,430,460,490,520,600}
   msgssent = 0
-  v1.msgs[1] = "Well well well, who do we have here? Oh, and before I forget... Click on the bubble to see my next message."
-  v1.msgs[2] = "Cliche introductions out of the way, I'm here to take over your computer!"
-  v1.msgs[3] = "Who the hell uses freedownloads.com anyways? Like,how freakin' stupid are you?"
-  v1.msgs[4] = "This shouldn't be too difficult then. From this point forward, this computer is MINE! Ha! HAHA!"
+  if virus1Lose == 0 then
+    v1.msgs[1] = "Well well well, who do we have here? Oh, and before I forget... Click on the bubble to see my next message."
+    v1.msgs[2] = "Cliche introductions out of the way, I'm here to take over your computer!"
+    v1.msgs[3] = "Who the hell uses freedownloads.com anyways? Like, how freakin' stupid are you?"
+    v1.msgs[4] = "This shouldn't be too difficult then. From this point forward, this computer is MINE! Ha! HAHA!"
+  elseif virus1Lose == 1 then
+    v1.msgs[1] = "You again? What?"
+    v1.msgs[2] = "I just beat you! How did you get this all back to normal?"
+    v1.msgs[3] = "And you're so STUPID that you went back to freedownloads.com? What's wrong with you?"
+    v1.msgs[4] = "If you want me to beat you again, then bring it on!"
+  elseif virus1Lose == 2 then
+    v1.msgs[1] = "What the hell, really? Again? Why?"
+    v1.msgs[2] = "Do you want to get your ass kicked three times, huh?"
+    v1.msgs[3] = "You know there's a difficulty setting in your settings program, right?"
+    v1.msgs[4] = "I guess I'll beat you again. Sure, why not."
+  elseif virus1Lose == 3 then
+    v1.msgs[1] = "... Wow, what... what are you doing?"
+    v1.msgs[2] = "What's the point of this? Are... are you getting pleasure from this?"
+    v1.msgs[3] = "Are you one of those freaks who likes to get dominated?"
+    v1.msgs[4] = "I'll beat you again, but... this is weird."
+  elseif virus1Lose >= 4 then
+    v1.msgs[1] = "You're just garbage at this aren't you?"
+    v1.msgs[2] = "There's a difficulty setting you know! Easy mode isn't that difficult!"
+    v1.msgs[3] = "I don't get it! You're just so bad."
+    v1.msgs[4] = "But whatever... destorying people is always fun."
+  end
   v1.msgs[5] = "Don't even try fighting back! I'm the strongest virus out there!"
   v1.msgs[6] = "That's right! A VIRUS! A program created specifically to exploit MORONS like you!"
   v1.msgs[7] = "And you're my next target! You're dead, kiddo!"
@@ -56,6 +78,13 @@ function loadDia()
   v1.msgs[44] = "WHATEVER YOU DID, IT ISN'T FAIR!!! YOU DICKHEAD!!! AAAHH!!!"
   v1.msgs[45] = "THIS ISN'T OVER!!! I WILL STILL DESTORY YOU!!! ONE DAY!!! WATCH YOUR BACK!!!"
   v1.msgs[46] = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!!!!!!"
-  v1.msgs[50] = "AAAAHAHAHAH! I WIN YET AGAIN! ANOTHER COMPUTER, DOMINATED BY ME!!! AAAAAHAHAHA!!!"
-  v1.msgs[51] = "I WIN! YOU LOSE! JUST LIKE IT'S MEANT TO BE!"
+  if virus1Lose <= 1 then
+    v1.msgs[50] = "AAAAHAHAHAH! I WIN YET AGAIN! ANOTHER COMPUTER, DOMINATED BY ME!!! AAAAAHAHAHA!!!"
+    v1.msgs[51] = "I WIN! YOU LOSE! JUST LIKE IT'S MEANT TO BE! JUST LIKE IT ALWAYS WILL BE!"
+    v1.msgs[52] = "AND FOR THE GRAND FINALE, YOUR COMPUTER IS DESTORYED! HAHAHA!!!"
+  elseif virus1Lose >= 2 then
+    v1.msgs[50] = "Yaddah Yaddah Yaddah, I win..."
+    v1.msgs[51] = "Blah blah blah, you lose."
+    v1.msgs[52] = "Now fuck off!"
+  end
 end

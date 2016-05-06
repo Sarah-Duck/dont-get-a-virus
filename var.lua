@@ -236,6 +236,7 @@ function loadPre()
   sys.mouse.drag = false
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
+  virus1Lose = 0
 end
 function loadRe()
   loading = 0
