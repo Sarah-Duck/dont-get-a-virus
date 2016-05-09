@@ -132,7 +132,11 @@ function drawVirusFight1()
     end
     if v1.c.chat.msgs > 30 and v1.c.chat.msgs ~= 37 and v1.c.chat.msgs ~= 38 and v1.c.chat.msgs < 41 then
       for i=1,4 do
-        v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
+        if v1.specialAbi == false then
+          v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
+        elseif v1.specialAbi == true and v1.turretTimer < 30 then
+          v1.turret[i].rt = 0
+        end
         if v1.turret[i].r > v1.turret[i].rt then
           if v1.turret[i].r - math.rad((2*sys.s)*di) < v1.turret[i].rt then
             v1.turret[i].r = v1.turret[i].rt
@@ -310,25 +314,37 @@ function drawVirusFight1()
       end
       if v1.c.health > 20 then
         v1.turretTimer = v1.turretTimer + delta
+        v1.turretTimer2 = v1.turretTimer2 + delta
       else
         v1.turretTimer = 0
       end
       music.tension1:stop()
       music.battle1:play()
       for i=1,4 do
+        if v1.specialAbi == true and v1.turretTimer2 < v1.specialAbiTime+1 then
+          v1.turret[i].tl = 1.5
+        end
         if v1.turret[i].t > v1.turret[i].tl and v1.c.health > 20 then
+          v1.bulletSpeed = ((6*(0.75+(v1.spm/4)))*(sys.h/1080))*di
+          if v1.specialAbi == true then
+            v1.bulletSpeed = v1.bulletSpeed/3
+          end
           local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),((6*(0.75+(v1.spm/4)))*(sys.h/1080))*di,"v1",i)
+          addBullet(x,y,v1.turret[i].r+math.rad(90),v1.bulletSpeed,"v1",i)
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
           else
             v1.laserSound:play()
           end
           v1.turret[i].t = 0
-          v1.turret[i].tl = (((math.random(2,5)/v1.spm)*2)*(1080/sys.h))/di
+          if v1.specialAbi == false then
+            v1.turret[i].tl = (((math.random(2,5)/v1.spm)*2)*(1080/sys.h))/di
+          else
+            v1.turret[i].tl = 3
+          end
         elseif v1.c.chat.msgs == 40 and v1.turret[i].t > v1.turret[i].tl and i == 1 then
           local x = math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
@@ -341,7 +357,11 @@ function drawVirusFight1()
             v1.laserSound:play()
           end
           v1.turret[i].t = 0
-          v1.turret[i].tl = (math.random(0.2,1,1.5)*(1080/sys.h))/di
+          if v1.specialAbi == false then
+            v1.turret[i].tl = (math.random(0.2,1,1.5)*(1080/sys.h))/di
+          else
+            v1.turret[i].tl = 2
+          end
         elseif v1.turret[i].t < v1.turret[i].tl and v1.turretTimer < 30 then
           v1.turret[i].t = v1.turret[i].t+delta
         end
@@ -349,19 +369,27 @@ function drawVirusFight1()
       if v1.c.x == v1.c.xd and v1.turretTimer < 30 then
         if v1.left == true then
           v1.left = false
-          if v1.c.health > 70 then
+          if v1.c.health > 70 or v1.specialAbi == true then
             v1.c.xd = sys.w-320
           else
             v1.c.xd = math.random(sys.w-260, sys.w/2+1)
           end
         else
           v1.left = true
-          if v1.c.health > 70 then
+          if v1.c.health > 70 or v1.specialAbi == true then
             v1.c.xd = 320
           else
             v1.c.xd = math.random(260, sys.w/2-1)
           end
         end
+      end
+      if v1.turretTimer2 >= v1.specialAbiTime and v1.turretTimer2 <= v1.specialAbiTime+4 and v1.turretTimer < 30 then
+        v1.specialAbi = true
+      else
+        v1.specialAbi = false
+      end
+      if v1.turretTimer2 > v1.specialAbiTime+4 then
+        v1.specialAbiTime = v1.specialAbiTime + 21
       end
       if v1.c.y == v1.c.yd and v1.c.health < 55 and v1.turretTimer < 30 then
         v1.c.yd = math.random(80,sys.h/2-(120*(1080/sys.h)))
@@ -421,6 +449,9 @@ function drawVirusFight1()
       v1.c.sp = v1.c.sp*0.25
     end
     v1.c.sp = v1.c.sp*sys.s
+    if v1.specialAbi == true then
+      v1.c.sp = v1.c.sp*3
+    end
     if v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40 then
       v1.c.sp = v1.c.sp*di
     end

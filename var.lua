@@ -160,6 +160,10 @@ function loadVar()
   v1.c.chat.msg = ""
   v1.c.chat.sp = 0.5
   v1.c.chat.char = 0
+  v1.turretTimer2 = 0
+  v1.specialAbi = false
+  v1.bulletSpeed = 0
+  v1.specialAbiTime = 21
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
