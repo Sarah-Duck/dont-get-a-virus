@@ -1,2 +1,13 @@
 function drawFiles()
+  drawDownBox(8, 74, win[3].w-17, win[3].h-108, 4)
+  drawDownBox(8, 31, win[3].w-17, 34, 4)
+  drawDownBox(7, 374, win[3].w-15, 18, 2)
+  love.graphics.setColor(250, 250, 250)
+  love.graphics.rectangle("fill", 8, 74, win[3].w-17, win[3].h-108)
+  love.graphics.rectangle("fill", 8, 31, win[3].w-17, 34)
+  drawUpBox(9, 32, 38, 32, 2)
+  love.graphics.setColor(255, 255, 255)
+  love.graphics.draw(internet.back, 11, 32)
+  love.graphics.setColor(colors.font.dark)
+  love.graphics.print("/User/", 70, 44)
 end

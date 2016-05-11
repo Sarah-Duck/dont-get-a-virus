@@ -389,7 +389,7 @@ function drawVirusFight1()
         v1.specialAbi = false
       end
       if v1.turretTimer2 > v1.specialAbiTime+4 then
-        v1.specialAbiTime = v1.specialAbiTime + 21
+        v1.specialAbiTime = v1.specialAbiTime + math.random(20,70)
       end
       if v1.c.y == v1.c.yd and v1.c.health < 55 and v1.turretTimer < 30 then
         v1.c.yd = math.random(80,sys.h/2-(120*(1080/sys.h)))
@@ -450,7 +450,7 @@ function drawVirusFight1()
     end
     v1.c.sp = v1.c.sp*sys.s
     if v1.specialAbi == true then
-      v1.c.sp = v1.c.sp*3
+      v1.c.sp = v1.c.sp*2
     end
     if v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40 then
       v1.c.sp = v1.c.sp*di
@@ -555,8 +555,6 @@ function drawVirusFight1()
   if v1.c.chat.msgs == 47 or v1.c.chat.msgs == 53 then
     if v1.c.chat.msgs == 47 then
       v1.complete = true
-    elseif v1.c.chat.msgs == 53 then
-      virus1Lose = virus1Lose + 1
     end
     love.graphics.setColor(255,255,255)
     love.graphics.draw(expl.pic, expl.frames[v1.explodeEndFrame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
@@ -566,8 +564,12 @@ function drawVirusFight1()
     if v1.explodeEndFrame >= 20 then
       v1.yes = false
       if v1.c.chat.msgs == 47 then
+        win[4].w = 200
+        antivirus.status = "Virus Defeated"
+        win[4].update = true
         scene = 1
       elseif v1.c.chat.msgs == 53 then
+        virus1Lose = virus1Lose + 1
         scene = 666
       end
     end

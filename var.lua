@@ -163,7 +163,7 @@ function loadVar()
   v1.turretTimer2 = 0
   v1.specialAbi = false
   v1.bulletSpeed = 0
-  v1.specialAbiTime = 21
+  v1.specialAbiTime = 70
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

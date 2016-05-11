@@ -1,4 +1,7 @@
 function drawLayer(id)
+  --love.graphics.setColor(0,0,0,30)
+  --love.graphics.rectangle("fill", win[layer[id]].x+20, win[layer[id]].y+20, win[layer[id]].w, win[layer[id]].h)
+  love.graphics.setColor(256,256,256)
   love.graphics.draw(win[layer[id]].cvs, win[layer[id]].x, win[layer[id]].y, 0, win[layer[id]].s)
 end
 function updateSystem(dt)

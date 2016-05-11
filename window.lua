@@ -22,6 +22,8 @@ function drawWindow(id)
       drawInternet()
     elseif id == 6 then
       drawSettings()
+    elseif id == 3 then
+      drawFiles()
     end
     love.graphics.setCanvas()
     win[id].update = false
@@ -87,6 +89,16 @@ function drawWindow(id)
     else
       windowMouseMove(id,0,sys.w-win[id].w,0,sys.h-win[id].h-panel.thick-1)
     end
+  end
+  if win[id].x > sys.w-win[id].w then
+    win[id].x = sys.w-win[id].w
+  elseif win[id].x < 0 then
+    win[id].x = 0
+  end
+  if win[id].y > sys.h-win[id].h then
+    win[id].y = sys.h-win[id].h
+  elseif win[id].y < 0 then
+    win[id].y = 0
   end
   if v1.yes == true and id ~= 2 and win[id].ex == false and v1.timer >= 4 and v1.c.chat.msgs < 7 then
     win[id].ex = true
