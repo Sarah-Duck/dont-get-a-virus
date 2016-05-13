@@ -202,6 +202,12 @@ function loadVar()
   std[6] = {}
   std[6].title = "Impossible"
   std[6].hl = false
+  files = {}
+  files[1] = {name="Documents",type=0,content={},x=0,y=0}
+  files[2] = {name="Downloads",type=0,content={},x=0,y=0}
+  files[3] = {name="Music",type=0,content={},x=0,y=0}
+  files[4] = {name="Pictures",type=0,content={},x=0,y=0}
+  files[5] = {name="Videos",type=0,content={},x=0,y=0}
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")

@@ -10,4 +10,19 @@ function drawFiles()
   love.graphics.draw(internet.back, 11, 32)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print("/User/", 70, 44)
+  for i=1,#files do
+    if files[i].type == 0 then
+      files[i].x = 40
+      files[i].y = 80
+      if files[i].x*i < 300 then
+        files[i].x = (i*80)-43
+      end
+      love.graphics.setFont(pixeloperators)
+      love.graphics.setColor(256,256,256)
+      love.graphics.draw(icons[32].file,files[i].x,files[i].y,0,1.5,1.5)
+      love.graphics.setColor(colors.font.dark)
+      love.graphics.printf(files[i].name,files[i].x-13,files[i].y+48,75,"center")
+      love.graphics.setFont(pressstart)
+    end
+  end
 end
