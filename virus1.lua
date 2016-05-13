@@ -568,6 +568,7 @@ function drawVirusFight1()
         antivirus.status = "Virus Defeated"
         win[4].update = true
         scene = 1
+        time = 0
       elseif v1.c.chat.msgs == 53 then
         virus1Lose = virus1Lose + 1
         scene = 666
