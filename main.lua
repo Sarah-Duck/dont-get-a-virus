@@ -16,9 +16,6 @@ function love.load()
   require "virus1"
   require "dialogue"
   loadPre()
-  --loadAssets()
-  --loadVar()
-  --loadDia()
 end
 function love.update(dt)
   delta = dt
@@ -67,7 +64,12 @@ end
 function love.mousepressed(x, y, button)
   sys.mouse.p.x = x
   sys.mouse.p.y = y
-  sys.mouse.p.p = true
+  if button == 2 then
+    sys.mouse.p.p = false
+  end
+  if button == 1 then
+    sys.mouse.p.p = true
+  end
 end
 function love.keyreleased(key)
    if key == "f11" then
