@@ -174,6 +174,8 @@ function drawWindow(id)
     updateInternet()
   elseif id == 6 then
     updateSettings()
+  elseif id == 3 then
+    updateFiles()
   end
   if id == layer[1] and win[id].bar == "grey" then
     win[id].bar = "active"
@@ -251,5 +253,12 @@ function windowMouseMove(id,limitx,limitw,limity,limith)
     win[id].y = limity
   elseif win[id].py+(sys.mouse.y - sys.mouse.p.y) > limith then
     win[id].y = limith
+  end
+end
+function mouseClick(x,y,w,h)
+  if sys.mouse.p.x >= x and sys.mouse.p.x <= x+w and
+  sys.mouse.p.y >= y and sys.mouse.p.y <= y+h and
+  sys.mouse.p.p == true and sys.mouse.drag == false then
+    return true
   end
 end

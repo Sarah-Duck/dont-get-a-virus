@@ -91,6 +91,7 @@ function love.mousereleased(x, y, button)
       v1.c.chat.next = false
     end
   end
+  file.p = false
 end
 function love.draw()
   if scene == 1 then
