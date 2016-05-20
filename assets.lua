@@ -22,6 +22,13 @@ function loadAssets(id)
     }
   end
   if id == 3 then
+    icons[48] = {
+      imageFile = love.graphics.newImage("assets/icon_48_imagefile.png"),
+      videoFile = love.graphics.newImage("assets/icon_48_videofile.png"),
+      musicFile = love.graphics.newImage("assets/icon_48_musicfile.png")
+    }
+  end
+  if id == 4 then
     desktop = {}
     desktop.bg = {
       hills = love.graphics.newImage("assets/bg_hills.jpg"),
@@ -30,8 +37,6 @@ function loadAssets(id)
       flower = love.graphics.newImage("assets/bg_flower.jpg"),
       city = love.graphics.newImage("assets/bg_city.jpg")
     }
-  end
-  if id == 4 then
     st = {}
     st[1] = {}
     st[1].title = "Default"
