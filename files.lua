@@ -26,7 +26,19 @@ function drawFiles()
       end
       love.graphics.setFont(pixeloperators)
       love.graphics.setColor(256,256,256)
-      love.graphics.draw(icons[32].file,files[i].x,files[i].y,0,1.5,1.5)
+      if f.home == files then
+        love.graphics.draw(icons[32].file,files[i].x,files[i].y,0,1.5,1.5)
+      elseif files == f.pictures then
+        love.graphics.draw(icons[48].imageFile,files[i].x,files[i].y,0,1,1)
+      elseif files == f.videos then
+        love.graphics.draw(icons[48].videoFile,files[i].x,files[i].y,0,1,1)
+      elseif files == f.music then
+        love.graphics.draw(icons[48].musicFile,files[i].x,files[i].y,0,1,1)
+      elseif files == f.downloads then
+        love.graphics.draw(icons[48].downloadFile,files[i].x,files[i].y,0,1,1)
+      elseif files == f.documents then
+        love.graphics.draw(icons[48].documentFile,files[i].x,files[i].y,0,1,1)
+      end
       if files[i].hl == true then
         love.graphics.setColor(0,0,120)
         love.graphics.rectangle("fill", files[i].x-13,files[i].y+48,75,20)
@@ -53,8 +65,8 @@ function updateFiles()
         win[3].update = true
       elseif files[i].hl == true then
         win[3].update = true
-        file.title = "/User/" .. files[i].name .. "/"
         if f.home == files then
+          file.title = "/User/" .. files[i].name .. "/"
           if i == 4 then
             files = f.pictures
           elseif i == 1 then

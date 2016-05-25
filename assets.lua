@@ -25,7 +25,9 @@ function loadAssets(id)
     icons[48] = {
       imageFile = love.graphics.newImage("assets/icon_48_imagefile.png"),
       videoFile = love.graphics.newImage("assets/icon_48_videofile.png"),
-      musicFile = love.graphics.newImage("assets/icon_48_musicfile.png")
+      musicFile = love.graphics.newImage("assets/icon_48_musicfile.png"),
+      downloadFile = love.graphics.newImage("assets/icon_48_downloadfile.png"),
+      documentFile = love.graphics.newImage("assets/icon_48_documentfile.png")
     }
   end
   if id == 4 then
