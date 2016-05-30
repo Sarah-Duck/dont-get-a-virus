@@ -70,6 +70,11 @@ function love.mousepressed(x, y, button)
   if button == 1 then
     sys.mouse.p.p = true
   end
+  if v1.msgs[v1.c.chat.msgs] ~= nil then
+    if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
+      v1.c.chat.next = false
+    end
+  end
 end
 function love.keyreleased(key)
    if key == "f11" then
@@ -85,11 +90,6 @@ function love.mousereleased(x, y, button)
   start.p = false
   for i=1,6 do
     icon[i].cl = false
-  end
-  if v1.msgs[v1.c.chat.msgs] ~= nil then
-    if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
-      v1.c.chat.next = false
-    end
   end
   file.p = false
 end
