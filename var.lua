@@ -259,6 +259,7 @@ function loadPre()
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
   virus1Lose = 0
+  virus1Pissed = false
 end
 function loadRe()
   loading = 0
