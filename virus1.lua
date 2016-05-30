@@ -247,13 +247,13 @@ function drawVirusFight1()
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-135, 300, 115, v1.c.chat.msg)
-      if (sys.mouse.p.x >= v1.c.x+40 and sys.mouse.p.x <= v1.c.x+40+300
-      and sys.mouse.p.y >= v1.c.y-135 and sys.mouse.p.y <= v1.c.y-135+110 and
-      v1.c.chat.next == false and sys.mouse.drag == false and v1.c.chat.msgs ~= 15
-      and v1.c.chat.msgs ~= 17 and v1.c.chat.msgs ~= 19 and v1.c.chat.msgs ~= 21) then
+      if mouseClick(v1.c.x+40,v1.c.y-135,300,110) == true and
+      v1.c.chat.next == false and v1.c.chat.msgs ~= 15 and
+      v1.c.chat.msgs ~= 17 and v1.c.chat.msgs ~= 19 and v1.c.chat.msgs ~= 21 then
         v1.c.chat.next = true
         if v1.c.chat.msgs == 23 then
           v1.c.chat.msgs = 26
+          virus1Pissed = true
         else
           v1.c.chat.msgs = v1.c.chat.msgs + 1
         end
@@ -637,7 +637,7 @@ function drawBullets()
     love.graphics.draw(antivirus.bullet, av.bullets[i].x, av.bullets[i].y, av.bullets[i].a, 1.5, 1.5, 23/2, 7)
     if v1.yes == true then
       if av.bullets[i].x >= v1.c.x-80 and av.bullets[i].x <= v1.c.x+80 and av.bullets[i].y >= v1.c.y-80 and av.bullets[i].y <= v1.c.y+70 then
-        if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 21 then
+        if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 22 then
           v1.c.chat.msgs = 25
           v1.c.chat.char = 0
           v1.c.chat.msg = ""
@@ -667,8 +667,12 @@ function drawBullets()
     end
     if av.bullets[i].x < 0 or av.bullets[i].x > sys.w or av.bullets[i].y < 0 or av.bullets[i].y > sys.h then
       av.bullets[i].rm = true
-      if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 21 then
+      if v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 22 and virus1Pissed == false then
         v1.c.chat.msgs = v1.c.chat.msgs + 1
+        v1.c.chat.msg = ""
+        v1.c.chat.char = 0
+      elseif v1.c.chat.msgs >= 15 and v1.c.chat.msgs <= 22 and virus1Pissed == true then
+        v1.c.chat.msgs = 23
         v1.c.chat.msg = ""
         v1.c.chat.char = 0
       end
