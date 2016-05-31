@@ -36,7 +36,7 @@ function love.update(dt)
       win[i].update = true
     end
   elseif love.keyboard.isDown("f5") == true then
-    love.window.setMode(1280, 720, {fullscreen=false})
+    love.window.setMode(1280,720,{fullscreen=true, fullscreentype="exclusive"})
     for i=1,#win do
       win[i].update = true
     end

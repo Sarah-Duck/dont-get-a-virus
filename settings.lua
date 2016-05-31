@@ -61,6 +61,9 @@ function drawSettings()
   drawDownBox(8+384/2+4, 340, 384/2-4, 198, 2)
   love.graphics.setColor(255,255,255)
   love.graphics.rectangle("fill", 9+384/2+4, 341, 384/2-2-4, 196)
+  for i=1,#stre do
+    drawReSel(i)
+  end
 end
 function stencilBg()
   love.graphics.rectangle("fill", 88-64, 44+32, 152, 120)
@@ -87,6 +90,17 @@ function drawDiSel(i)
     love.graphics.print(std[i].title, 13, 348+(20*(i-1)))
   end
 end
+function drawReSel(i)
+  if stre[i].hl == false then
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print(stre[i].title, 13+384/2+4, 348+(20*(i-1)))
+  elseif stre[i].hl == true then
+    love.graphics.setColor(0,0,120)
+    love.graphics.rectangle("fill", 9+384/2+4, 341+(20*(i-1)), 384/2-6, 20)
+    love.graphics.setColor(colors.font.light)
+    love.graphics.print(stre[i].title, 13+384/2+4, 348+(20*(i-1)))
+  end
+end
 function updateSettings()
   for i=1,6 do
     if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
@@ -108,6 +122,35 @@ function updateSettings()
       end
       std[i].hl = true
       win[6].update = true
+    end
+  end
+  for i=1,#stre do
+    if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
+    sys.mouse.p.x >= win[6].x+13+384/2+4 and sys.mouse.p.x <= win[6].x+13+384/2+4+120 and
+    sys.mouse.p.y >= win[6].y+342+(20*(i-1)) and sys.mouse.y <= win[6].y+342+(20*(i-1))+20) then
+      for i=1,6 do
+        stre[i].hl = false
+      end
+      win[6].update = true
+      --[[if stre[i].hl ~= true then
+        if i == 1 then
+          love.window.setMode(1,1,{fullscreen=true, fullscreentype="desktop"})
+        elseif i == 2 then
+          love.window.setMode(1280,720,{fullscreen=true, fullscreentype="exclusive"})
+        elseif i == 3 then
+          love.window.setMode(1920,1080,{fullscreen=true, fullscreentype="exclusive"})
+        elseif i == 4 then
+          love.window.setMode(1280,1024,{fullscreen=true, fullscreentype="exclusive"})
+        elseif i == 5 then
+          love.window.setMode(1440,900,{fullscreen=true, fullscreentype="exclusive"})
+        elseif i == 6 then
+          love.window.setMode(1366,768,{fullscreen=true, fullscreentype="exclusive"})
+        end
+        for i=1,#win do
+          win[i].update = true
+        end
+        stre[i].hl = true
+      end]]--
     end
   end
 end

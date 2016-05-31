@@ -202,6 +202,25 @@ function loadVar()
   std[6] = {}
   std[6].title = "Impossible"
   std[6].hl = false
+  stre = {}
+  stre[1] = {}
+  stre[1].title = "Native"
+  stre[1].hl = true
+  stre[2] = {}
+  stre[2].title = "1280x720"
+  stre[2].hl = false
+  stre[3] = {}
+  stre[3].title = "1920x1080"
+  stre[3].hl = false
+  stre[4] = {}
+  stre[4].title = "1280x1024"
+  stre[4].hl = false
+  stre[5] = {}
+  stre[5].title = "1440x900"
+  stre[5].hl = false
+  stre[6] = {}
+  stre[6].title = "1366x768"
+  stre[6].hl = false
   f = {}
   f.home = {}
   f.home[1] = {name="Documents",type=0,x=0,y=0,hl=false}
