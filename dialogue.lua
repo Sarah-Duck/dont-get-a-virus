@@ -69,7 +69,7 @@ function loadDia()
     end
     v1.msgs[13] = "Still as pathetic as ever. I beat that little toy last time, what are you doing?"
     v1.msgs[14] = "It still won't put a dent in me."
-    v1.msgs[15] = "Just shoot me! It still won't even hurt me!"
+    v1.msgs[15] = "Just shoot me! It still won't hurt me!"
   end
   v1.msgs[17] = "Wow, you really are an idiot, huh? Aim it below me and SHOOT IT!"
   v1.msgs[19] = "ARE YOU REALLY THAT STUPID!? SHOOT ME! DO IT YOU MORON!"
@@ -77,7 +77,7 @@ function loadDia()
   if virus1Pissed == false then
     v1.msgs[23] = "Whatever. You had your chance! Now it's time to destory you!"
   else
-    v1.msgs[23] = "I already played you're little games last time, and I won't fall for that again."
+    v1.msgs[23] = "I already played you're little games last time, and I won't fall for it again!"
   end
   if virus1Lose == 0 then
     v1.msgs[25] = "Ouch! It's stronger than I thought! No matter, because I have defenses of my own!"
@@ -86,7 +86,13 @@ function loadDia()
   end
   v1.msgs[26] = "Prepare youself for my UNIMAGINABLY DESTRUCTIVE POWER!"
   v1.msgs[27] = "Also, my giant battleship with multiple turrets."
-  v1.msgs[30] = "What do you think? I made it myself! It's made from the numerous computers I have DESTORYED!"
+  if virus1Lose == 0 then
+    v1.msgs[30] = "What do you think? I made it myself! It's made from the numerous computers I have DESTORYED!"
+  elseif virus1Lose == 1 then
+    v1.msgs[30] = "One nice benefit of you restarting everything is that I get my ship back! Ha!"
+  elseif virus1Lose >= 2 then
+    v1.msgs[30] = "Here's my ship again, I know you've already seen it."
+  end
   v1.msgs[31] = "These green lasers don't actually harm you, they take away your weapons charge!"
   v1.msgs[32] = "The blue lasers hurt you, the red lasers cause you to stop dragging around the window!"
   v1.msgs[33] = "Finally, the yellow lasers cause the window to spasm out of control until you catch it!"
@@ -114,7 +120,7 @@ function loadDia()
     v1.msgs[52] = "AND FOR THE GRAND FINALE, YOUR COMPUTER IS DESTORYED! HAHAHA!!!"
   elseif virus1Lose >= 2 then
     v1.msgs[50] = "Yaddah Yaddah Yaddah, I win... Blah blah blah, you lose."
-    v1.msgs[51] = "Seriously! I won! Stop being such a sore loser by reseting the system!"
+    v1.msgs[51] = "Seriously! I won, okay?! Stop being such a sore loser by reseting everything!"
     v1.msgs[52] = "Just fuck off!"
   end
 end
