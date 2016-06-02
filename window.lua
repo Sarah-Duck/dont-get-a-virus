@@ -196,13 +196,13 @@ function orderWindows()
     win[layer.sentToFront].layer = 1
     layer.sentToFront = 0
   end
-  for i=1,6 do
-    closeWindow(7-i)
+  for i=1,#win do
+    closeWindow((#win+1)-i)
   end
-  for i=1,6 do
-    setWindow(7-i)
-    setPanel(7-i)
-    drawWindow(7-i)
+  for i=1,#win do
+    setWindow((#win+1)-i)
+    setPanel((#win+1)-i)
+    drawWindow((#win+1)-i)
   end
 end
 function setWindow(id)
