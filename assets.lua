@@ -94,6 +94,8 @@ function loadAssets(id)
     settings = {
       comp = love.graphics.newImage("assets/computer.png")
     }
+    picture = {}
+    picture.cat = love.graphics.newImage("assets/cat.jpg")
   end
   if id == 9 then
     chat = {

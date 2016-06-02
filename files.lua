@@ -80,6 +80,10 @@ function updateFiles()
           end
           return
         elseif files == f.pictures then
+          if i == 1 and picture.img ~= picture.cat then
+            picture.img = picture.cat
+            win[7].update = true
+          end
           openFileWindow(7)
         elseif files == f.videos then
           openFileWindow(8)

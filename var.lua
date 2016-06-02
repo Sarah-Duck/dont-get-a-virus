@@ -247,6 +247,7 @@ function loadVar()
   file.title = "/User/"
   file.p = false
   file.back = false
+  picture.img = 0
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")

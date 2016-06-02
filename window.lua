@@ -26,6 +26,8 @@ function drawWindow(id)
       drawFiles()
     elseif id == 5 then
       drawHelp()
+    elseif id == 7 then
+      drawPicture()
     end
     love.graphics.setCanvas()
     win[id].update = false
