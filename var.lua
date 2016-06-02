@@ -226,21 +226,21 @@ function loadVar()
   stre[6].hl = false
   f = {}
   f.home = {}
-  f.home[1] = {name="Documents",type=0,x=0,y=0,hl=false}
-  f.home[2] = {name="Downloads",type=0,x=0,y=0,hl=false}
-  f.home[3] = {name="Music",type=0,x=0,y=0,hl=false}
-  f.home[4] = {name="Pictures",type=0,x=0,y=0,hl=false}
-  f.home[5] = {name="Videos",type=0,x=0,y=0,hl=false}
+  f.home[1] = {name="Documents",x=0,y=0,hl=false}
+  f.home[2] = {name="Downloads",x=0,y=0,hl=false}
+  f.home[3] = {name="Music",x=0,y=0,hl=false}
+  f.home[4] = {name="Pictures",x=0,y=0,hl=false}
+  f.home[5] = {name="Videos",x=0,y=0,hl=false}
   f.pictures = {}
-  f.pictures[1] = {name="cat.jpg",type=0,x=0,y=0,hl=false}
-  f.pictures[2] = {name="meme.png",type=0,x=0,y=0,hl=false}
+  f.pictures[1] = {name="cat.jpg",x=0,y=0,hl=false}
+  f.pictures[2] = {name="meme.png",x=0,y=0,hl=false}
   f.documents = {}
   f.music = {}
-  f.music[1] = {name="chill.mp3",type=0,x=0,y=0,hl=false}
-  f.music[2] = {name="rage.mp3",type=0,x=0,y=0,hl=false}
+  f.music[1] = {name="chill.mp3",x=0,y=0,hl=false}
+  f.music[2] = {name="rage.mp3",x=0,y=0,hl=false}
   f.videos = {}
-  f.videos[1] = {name="wtf.avi",type=0,x=0,y=0,hl=false}
-  f.videos[2] = {name="lol.avi",type=0,x=0,y=0,hl=false}
+  f.videos[1] = {name="wtf.avi",x=0,y=0,hl=false}
+  f.videos[2] = {name="lol.avi",x=0,y=0,hl=false}
   f.downloads = {}
   files = f.home
   file = {}

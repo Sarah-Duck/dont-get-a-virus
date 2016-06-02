@@ -15,41 +15,39 @@ function drawFiles()
   love.graphics.setColor(colors.font.dark)
   love.graphics.print(file.title, 70, 44)
   for i=1,#files do
-    if files[i].type == 0 then
-      files[i].x = 40
-      if i < 6 then
-        files[i].y = 80
-        files[i].x = (i*80)-43
-      elseif i >= 6 then
-        files[i].y = 150
-        files[i].x = ((i-5)*80)-43
-      end
-      love.graphics.setFont(pixeloperators)
-      love.graphics.setColor(256,256,256)
-      if f.home == files then
-        love.graphics.draw(icons[32].file,files[i].x,files[i].y,0,1.5,1.5)
-      elseif files == f.pictures then
-        love.graphics.draw(icons[48].imageFile,files[i].x,files[i].y,0,1,1)
-      elseif files == f.videos then
-        love.graphics.draw(icons[48].videoFile,files[i].x,files[i].y,0,1,1)
-      elseif files == f.music then
-        love.graphics.draw(icons[48].musicFile,files[i].x,files[i].y,0,1,1)
-      elseif files == f.downloads then
-        love.graphics.draw(icons[48].downloadFile,files[i].x,files[i].y,0,1,1)
-      elseif files == f.documents then
-        love.graphics.draw(icons[48].documentFile,files[i].x,files[i].y,0,1,1)
-      end
-      if files[i].hl == true then
-        love.graphics.setColor(0,0,120)
-        love.graphics.rectangle("fill", files[i].x-13,files[i].y+48,75,20)
-        love.graphics.setColor(colors.font.light)
-        love.graphics.printf(files[i].name,files[i].x-13,files[i].y+48,75,"center")
-      else
-        love.graphics.setColor(colors.font.dark)
-        love.graphics.printf(files[i].name,files[i].x-13,files[i].y+48,75,"center")
-      end
-      love.graphics.setFont(pressstart)
+    files[i].x = 40
+    if i < 6 then
+      files[i].y = 80
+      files[i].x = (i*80)-43
+    elseif i >= 6 then
+      files[i].y = 150
+      files[i].x = ((i-5)*80)-43
     end
+    love.graphics.setFont(pixeloperators)
+    love.graphics.setColor(256,256,256)
+    if f.home == files then
+      love.graphics.draw(icons[32].file,files[i].x,files[i].y,0,1.5,1.5)
+    elseif files == f.pictures then
+      love.graphics.draw(icons[48].imageFile,files[i].x,files[i].y,0,1,1)
+    elseif files == f.videos then
+      love.graphics.draw(icons[48].videoFile,files[i].x,files[i].y,0,1,1)
+    elseif files == f.music then
+      love.graphics.draw(icons[48].musicFile,files[i].x,files[i].y,0,1,1)
+    elseif files == f.downloads then
+      love.graphics.draw(icons[48].downloadFile,files[i].x,files[i].y,0,1,1)
+    elseif files == f.documents then
+      love.graphics.draw(icons[48].documentFile,files[i].x,files[i].y,0,1,1)
+    end
+    if files[i].hl == true then
+      love.graphics.setColor(0,0,120)
+      love.graphics.rectangle("fill", files[i].x-13,files[i].y+48,75,20)
+      love.graphics.setColor(colors.font.light)
+      love.graphics.printf(files[i].name,files[i].x-13,files[i].y+48,75,"center")
+    else
+      love.graphics.setColor(colors.font.dark)
+      love.graphics.printf(files[i].name,files[i].x-13,files[i].y+48,75,"center")
+    end
+    love.graphics.setFont(pressstart)
   end
 end
 function updateFiles()
