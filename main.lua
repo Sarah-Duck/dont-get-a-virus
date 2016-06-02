@@ -15,6 +15,7 @@ function love.load()
   require "elements"
   require "virus1"
   require "dialogue"
+  require "viewer"
   loadPre()
 end
 function love.update(dt)
