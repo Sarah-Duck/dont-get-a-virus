@@ -18,7 +18,10 @@ function loadAssets(id)
       files = love.graphics.newImage("assets/icon_16_files.png"),
       help = love.graphics.newImage("assets/icon_16_help.png"),
       settings = love.graphics.newImage("assets/icon_16_settings.png"),
-      antivirus = love.graphics.newImage("assets/icon_16_antivirus.png")
+      antivirus = love.graphics.newImage("assets/icon_16_antivirus.png"),
+      image = love.graphics.newImage("assets/icon_16_image.png"),
+      video = love.graphics.newImage("assets/icon_16_video.png"),
+      music = love.graphics.newImage("assets/icon_16_music.png")
     }
   end
   if id == 3 then

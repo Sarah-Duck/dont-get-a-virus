@@ -58,6 +58,9 @@ function loadVar()
   loadWin(4, 200, 150, "Antivirus", icons[32].antivirus, icons[16].antivirus)
   loadWin(5, 450, 400, "Help", icons[32].help, icons[16].help)
   loadWin(6, 400, 550, "Settings", icons[32].settings, icons[16].settings)
+  loadWin(7, 400, 400, "Image Viewer", nil, icons[16].image)
+  loadWin(8, 400, 300, "Video Player", nil, icons[16].video)
+  loadWin(9, 250, 150, "Music Player", nil, icons[16].music)
   win[4].crazy = false
   win[4].crazyLeft = false
   win[4].crazyUp = false
