@@ -79,6 +79,12 @@ function updateFiles()
             files = f.videos
           end
           return
+        elseif files == f.pictures then
+          openFileWindow(7)
+        elseif files == f.videos then
+          openFileWindow(8)
+        elseif files == f.music then
+          openFileWindow(9)
         end
       end
     end
@@ -91,5 +97,13 @@ function updateFiles()
   elseif file.back == true and sys.mouse.p.p == false then
     file.back = false
     win[3].update = true
+  end
+end
+function openFileWindow(id)
+  if win[id].ex == true then
+    win[id].ex = false
+    win[id].s = 0.2
+    win[id].oldlayer = win[id].layer
+    layer.sentToFront = id
   end
 end
