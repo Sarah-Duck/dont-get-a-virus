@@ -248,6 +248,15 @@ function loadVar()
   file.p = false
   file.back = false
   picture.img = 0
+  mplay = {}
+  mplay.volx = 232
+  mplay.volpx = mplay.volx
+  mplay.volxmax = 10+38+38+38+108
+  mplay.volxmin = 10+38+38+38
+  mplay.voly = win[9].h-39
+  mplay.drag = false
+  mplay.m = 0
+  mplay.p = false
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")

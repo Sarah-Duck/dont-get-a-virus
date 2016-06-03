@@ -93,6 +93,7 @@ function love.mousereleased(x, y, button)
     icon[i].cl = false
   end
   file.p = false
+  mplay.drag = false
 end
 function love.draw()
   if scene == 1 then

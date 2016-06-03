@@ -86,6 +86,10 @@ function updateFiles()
         elseif files == f.videos then
           openFileWindow(8)
         elseif files == f.music then
+          if i == 1 and mplay.m ~= music.chill then
+            mplay.m = music.chill
+            mplay.p = true
+          end
           openFileWindow(9)
         end
       end
