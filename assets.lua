@@ -142,6 +142,8 @@ function loadAssets(id)
       sound1 = love.audio.newSource("assets/notification1.ogg"),
       sound2 = love.audio.newSource("assets/notification2.ogg")
     }
+    notification.sound1:setVolume(0.5)
+    notification.sound2:setVolume(0.5)
   end
   if id == 13 then
     v1 = {
