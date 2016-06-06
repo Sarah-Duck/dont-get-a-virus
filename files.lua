@@ -87,8 +87,40 @@ function updateFiles()
           openFileWindow(8)
         elseif files == f.music then
           if i == 1 and mplay.m ~= music.chill then
+            if mplay.m ~= 0 then
+              mplay.m:stop()
+            end
             mplay.m = music.chill
             mplay.p = true
+            mplay.title = "How it Begins - Kevin Macleod"
+          elseif i == 2 and mplay.m ~= music.rage then
+            if mplay.m ~= 0 then
+              mplay.m:stop()
+            end
+            mplay.m = music.rage
+            mplay.p = true
+            mplay.title = "Fight or Flight - Ethan Meixsell"
+          elseif i == 3 and mplay.m ~= music.sophie then
+            if mplay.m ~= 0 then
+              mplay.m:stop()
+            end
+            mplay.m = music.sophie
+            mplay.p = true
+            mplay.title = "Close My Mouth - Silent Partner"
+          elseif i == 4 and mplay.m ~= music.ohyeah then
+            if mplay.m ~= 0 then
+              mplay.m:stop()
+            end
+            mplay.m = music.ohyeah
+            mplay.p = true
+            mplay.title = "Down N' Dirty - Jingle Punks"
+          elseif i == 5 and mplay.m ~= music.finale then
+            if mplay.m ~= 0 then
+              mplay.m:stop()
+            end
+            mplay.m = music.finale
+            mplay.p = true
+            mplay.title = "Ich Grolle Nicht - Ron Meixsell"
           end
           openFileWindow(9)
         end

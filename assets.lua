@@ -72,7 +72,11 @@ function loadAssets(id)
       battle3 = love.audio.newSource("assets/music/Without Silence.ogg"),
       fox = love.audio.newSource("assets/music/FOX.ogg"),
       tension1 = love.audio.newSource("assets/music/Storm Chasers.ogg"),
-      chill = love.audio.newSource("assets/music/How it Begins.ogg")
+      chill = love.audio.newSource("assets/music/How it Begins.ogg"),
+      rage = love.audio.newSource("assets/music/Fight or Flight.ogg"),
+      sophie = love.audio.newSource("assets/music/Close My Mouth.ogg"),
+      ohyeah = love.audio.newSource("assets/music/Down N Dirty.ogg"),
+      finale = love.audio.newSource("assets/music/Ich Grolle Nicht.ogg")
     }
   end
   if id == 6 then
@@ -84,7 +88,6 @@ function loadAssets(id)
     music.battle2:setLooping(true)
     music.battleNSA:setLooping(true)
     music.battleUndertale:setLooping(true)
-    music.chill:setLooping(false)
   end
   if id == 7 then
     window = {
@@ -105,6 +108,7 @@ function loadAssets(id)
       back = love.graphics.newImage("assets/button_back.png"),
       stop = love.graphics.newImage("assets/button_stop.png")
     }
+    but.but = but.pause
   end
   if id == 9 then
     chat = {

@@ -238,6 +238,9 @@ function loadVar()
   f.music = {}
   f.music[1] = {name="chill.mp3",x=0,y=0,hl=false}
   f.music[2] = {name="rage.mp3",x=0,y=0,hl=false}
+  f.music[3] = {name="sophie.mp3",x=0,y=0,hl=false}
+  f.music[4] = {name="oyeah.mp3",x=0,y=0,hl=false}
+  f.music[5] = {name="finale.mp3",x=0,y=0,hl=false}
   f.videos = {}
   f.videos[1] = {name="wtf.avi",x=0,y=0,hl=false}
   f.videos[2] = {name="lol.avi",x=0,y=0,hl=false}
@@ -257,6 +260,9 @@ function loadVar()
   mplay.drag = false
   mplay.m = 0
   mplay.p = false
+  mplay.pr = false
+  mplay.title = "Nothing"
+  mplay.bar = {}
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")
