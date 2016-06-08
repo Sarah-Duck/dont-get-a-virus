@@ -232,6 +232,8 @@ function loadAssets(id)
     expl.deb[3].pic = love.graphics.newImage("assets/debris3.png")
   end
   if id == 16 then
+    video = {}
+    video.attacktortoise = love.graphics.newVideo("assets/attacktortoise.ogv")
     loadVar()
   end
   if id == 17 then

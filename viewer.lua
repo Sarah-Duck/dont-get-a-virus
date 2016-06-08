@@ -5,6 +5,13 @@ function drawPicture()
   end
 end
 function drawVideo()
+  drawDownBox(8, 31, win[8].w-16, win[8].h-82, 4)
+  love.graphics.setColor(20,20,20)
+  love.graphics.rectangle("fill",8,31,win[8].w-16,win[8].h-82)
+  drawControls(8+38,win[8].h-34-8)
+  if vplay.v ~= 0 then
+    love.graphics.draw(vplay.v,8,31)
+  end
 end
 function drawMusic()
   drawDownBox(8,31,win[9].w-17,win[9].h-82,4)
@@ -44,6 +51,16 @@ function drawControls(x,y)
   love.graphics.draw(but.stop, x+38, y)
   drawUpBox(x-38,y,32,32,2)
   love.graphics.draw(but.back, x-38, y)
+end
+function updateVideo()
+  if vplay.p == true and vplay.v ~= 0 then
+    vplay.v:play()
+    win[8].update = true
+  end
+  if win[8].ex == true and vplay.v ~= 0 then
+    vplay.v:stop()
+    vplay.v = 0
+  end
 end
 function updateMusic()
   if mouseClick(win[9].x+8+38,win[9].y+win[9].h-34-8,32,32) == true and mplay.m ~= 0 and mplay.pr == false then

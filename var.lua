@@ -263,6 +263,9 @@ function loadVar()
   mplay.pr = false
   mplay.title = "Nothing"
   mplay.bar = {}
+  vplay = {}
+  vplay.v = 0
+  vplay.p = false
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")

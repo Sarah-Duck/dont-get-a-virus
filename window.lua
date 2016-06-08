@@ -30,6 +30,8 @@ function drawWindow(id)
       drawPicture()
     elseif id == 9 then
       drawMusic()
+    elseif id == 8 then
+      drawVideo()
     end
     love.graphics.setCanvas()
     win[id].update = false
@@ -182,6 +184,8 @@ function drawWindow(id)
     updateFiles()
   elseif id == 9 then
     updateMusic()
+  elseif id == 8 then
+    updateVideo()
   end
   if id == layer[1] and win[id].bar == "grey" then
     win[id].bar = "active"

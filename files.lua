@@ -84,6 +84,13 @@ function updateFiles()
           end
           openFileWindow(7)
         elseif files == f.videos then
+          if i == 1 and vplay.v ~= video.attacktortoise then
+            if vplay.v ~= 0 then
+              vplay.v:stop()
+            end
+            vplay.v = video.attacktortoise
+            vplay.p = true
+          end
           openFileWindow(8)
         elseif files == f.music then
           if i == 1 and mplay.m ~= music.chill then
