@@ -25,7 +25,7 @@ function love.update(dt)
   sys.s = 60/fps
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
-  minim = love.graphics.getHeight()+10
+  minim = sys.h+10
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()
   if love.keyboard.isDown("escape") == true then

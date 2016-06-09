@@ -24,8 +24,8 @@ function drawPanelButton(id)
   end
 end
 function drawStart()
-  panel.width = love.graphics.getWidth()
-  panel.y = love.graphics.getHeight()
+  panel.width = sys.w
+  panel.y = sys.h
   panel.y = panel.y - panel.thick
   panel.s.y = panel.y + 5
   love.graphics.setColor(colors.win.normal)
@@ -125,7 +125,7 @@ function drawMenuItems(id)
   love.graphics.setColor(colors.win.normal)
 end
 function drawMenu()
-  start.y = love.graphics.getHeight()
+  start.y = sys.h
   start.y = start.y-30-350+2
   love.graphics.setCanvas(start.cvs)
   love.graphics.setColor(192, 192, 192)

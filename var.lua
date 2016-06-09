@@ -40,7 +40,7 @@ function loadVar()
   panel.thick = 30
   panel.x = 0
   panel.y = 600-panel.thick
-  panel.width = sys.width
+  panel.width = sys.w
   panel.height = panel.thick
   panel.s = {}
   panel.s.x = panel.x + 5
@@ -70,7 +70,7 @@ function loadVar()
   end
   winOpen = true
   winHover = false
-  minim = love.graphics.getHeight()+10
+  minim = sys.h+10
   start = {}
   start.cvs = love.graphics.newCanvas(250, 350)
   start.o = false
@@ -292,8 +292,6 @@ function loadPre()
   fadeOpacity = 0
   sys = {}
   sys.s = 0
-  sys.width = love.graphics.getWidth()
-  sys.height = love.graphics.getHeight()
   sys.mouse = {}
   sys.mouse.p = {}
   sys.mouse.x = love.mouse.getX
