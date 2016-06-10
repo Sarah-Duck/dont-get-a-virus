@@ -136,34 +136,34 @@ function drawWindow(id)
     win[id].min = true
   end
   if win[id].min == true and win[id].miny < minim then
-    win[id].y = win[id].y + 150
-    win[id].miny = win[id].miny + 150
+    win[id].y = win[id].y + 150*sys.s
+    win[id].miny = win[id].miny + 150*sys.s
   end
   if win[id].miny > minim then
     win[id].miny = minim
   end
   if win[id].min == false and win[id].miny > 0 then
-    win[id].y = win[id].y - 150
-    win[id].miny = win[id].miny - 150
+    win[id].y = win[id].y - 150*sys.s
+    win[id].miny = win[id].miny - 150*sys.s
   end
   if win[id].miny < 0 then
     win[id].miny = 0
   end
   if id == 4 and win[4].crazy == true then
     if win[4].crazyLeft == true and win[4].x >= 100 then
-      win[4].x = win[4].x - 10+v1.spm
+      win[4].x = win[4].x - 10+v1.spm*sys.s
     elseif win[4].crazyLeft == false and win[4].x <= sys.w-300 then
-      win[4].x = win[4].x + 10+v1.spm
+      win[4].x = win[4].x + 10+v1.spm*sys.s
     end
-    if win[4].x <= 100 then
+    if win[4].x <= 150 then
       win[4].crazyLeft = false
-    elseif win[4].x >= sys.w-300 then
+    elseif win[4].x >= sys.w-350 then
       win[4].crazyLeft = true
     end
     if win[4].crazyUp == true and win[4].y >= sys.h/2+50 then
-      win[4].y = win[4].y - 6+v1.spm
+      win[4].y = win[4].y - 6+v1.spm*sys.s
     elseif win[4].crazyUp == false and win[4].y <= sys.h-panel.thick-200 then
-      win[4].y = win[4].y + 6+v1.spm
+      win[4].y = win[4].y + 6+v1.spm*sys.s
     end
     if win[4].y <= sys.h/2+50 then
       win[4].crazyUp = false
