@@ -146,6 +146,12 @@ function updateFiles()
 end
 function openFileWindow(id)
   if win[id].ex == true then
+    if win[3].x+win[3].w+win[id].w+15 < sys.w then
+      win[id].x = win[3].x+win[3].w+15
+    else
+      win[id].x = win[3].x-15-win[id].w
+    end
+    win[id].y = win[3].y
     win[id].ex = false
     win[id].s = 0.2
     win[id].oldlayer = win[id].layer
