@@ -8,16 +8,18 @@ function drawVideo()
   drawDownBox(8, 31, win[8].w-16, win[8].h-82, 4)
   love.graphics.setColor(20,20,20)
   love.graphics.rectangle("fill",8,31,win[8].w-16,win[8].h-82)
-  drawControls(8+38,win[8].h-34-8)
+  drawControls(8+38,win[8].h-34-8,8)
   if vplay.v ~= 0 then
     love.graphics.draw(vplay.v,8,31)
   end
+  drawDownBox(10+38+38+38+150,win[8].h-34+5,118,5,2)
+  drawUpBox(vplay.volx,vplay.voly,10,25,2)
 end
 function drawMusic()
   drawDownBox(8,31,win[9].w-17,win[9].h-82,4)
   love.graphics.setColor(20,20,20)
   love.graphics.rectangle("fill",8,31,win[9].w-17,win[9].h-82)
-  drawControls(8+38,win[9].h-34-8)
+  drawControls(8+38,win[9].h-34-8,9)
   drawDownBox(10+38+38+38,win[9].h-34+5,118,5,2)
   drawUpBox(mplay.volx,mplay.voly,10,25,2)
   love.graphics.setColor(0,256,0)
@@ -43,10 +45,16 @@ function drawMusic()
   end
   love.graphics.setFont(pressstart)
 end
-function drawControls(x,y)
+function drawControls(x,y,id)
   love.graphics.setColor(256,256,256)
   drawUpBox(x,y,32,32,2)
-  love.graphics.draw(but.but, x, y)
+  if id == 9 then
+    love.graphics.draw(but.but,x,y)
+  elseif id == 8 and vplay.p == true then
+    love.graphics.draw(but.pause,x,y)
+  elseif id == 8 and vplay.p == false then
+    love.graphics.draw(but.play,x,y)
+  end
   drawUpBox(x+38,y,32,32,2)
   love.graphics.draw(but.stop, x+38, y)
   drawUpBox(x-38,y,32,32,2)
@@ -58,8 +66,53 @@ function updateVideo()
     win[8].update = true
   end
   if win[8].ex == true and vplay.v ~= 0 then
-    vplay.v:stop()
+    vplay.v:seek(0)
+    vplay.v:pause()
     vplay.v = 0
+  end
+  if mouseClick(win[8].x+8+38,win[8].y+win[8].h-34-8,32,32) == true and vplay.v ~= 0 and vplay.pr == false then
+    if vplay.p == true then
+      vplay.v:pause()
+      vplay.p = false
+      win[8].update = true
+    elseif vplay.p == false then
+      vplay.p = true
+      win[8].update = true
+      vplay.v:play()
+    end
+    vplay.pr = true
+  elseif mouseClick(win[8].x+8+38-38,win[8].y+win[8].h-34-8,32,32) == true and vplay.v ~= 0 and vplay.pr == false then
+    vplay.v:rewind()
+    vplay.p = true
+    win[8].update = true
+    vplay.pr = true
+  elseif mouseClick(win[8].x+8+38+38,win[8].y+win[8].h-34-8,32,32) == true and vplay.m ~= 0 and vplay.pr == false then
+    vplay.v:seek(0)
+    vplay.v:pause()
+    vplay.p = false
+    win[8].update = true
+    vplay.pr = true
+  end
+  if mouseClick(win[8].x+vplay.volx,win[8].y+vplay.voly,10,25) == true and layer[1] == 8 then
+    vplay.drag = true
+  end
+  if vplay.v ~= 0 then
+    local d = vplay.volx - vplay.volxmin
+    local v = 0.00806451612903226 * d
+    vplay.v:getSource():setVolume(v)
+  end
+  if vplay.drag == true then
+    if vplay.volpx + (sys.mouse.x - sys.mouse.p.x) <= vplay.volxmax
+    and vplay.volpx + (sys.mouse.x - sys.mouse.p.x) >= vplay.volxmin then
+      vplay.volx = vplay.volpx + (sys.mouse.x - sys.mouse.p.x)
+    elseif vplay.volpx + (sys.mouse.x - sys.mouse.p.x) > vplay.volxmax then
+      vplay.volx = vplay.volxmax
+    elseif mplay.volpx + (sys.mouse.x - sys.mouse.p.x) < vplay.volxmin then
+      vplay.volx = vplay.volxmin
+    end
+    win[8].update = true
+  else
+    vplay.volpx = vplay.volx
   end
 end
 function updateMusic()

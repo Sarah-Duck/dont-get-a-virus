@@ -121,14 +121,14 @@ function drawWindow(id)
     win[id].ex = true
   end
   if win[id].ex == true and win[id].s ~= 0 then
-    win[id].s = win[id].s - 0.2
+    win[id].s = win[id].s - 0.2*sys.s
   elseif win[id].ex == false and win[id].s ~= 0 then
-    win[id].s = win[id].s + 0.2
+    win[id].s = win[id].s + 0.2*sys.s
   end
-  if win[id].s <= 0 then
-    win[id].s = 0
-  elseif win[id].s >= 1 then
+  if win[id].s > 1 then
     win[id].s = 1
+  elseif win[id].s < 0 then
+    win[id].s = 0
   end
   if (win[id].min == false and sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-40
   and sys.mouse.p.x <= (win[id].x+win[id].w-40)+16 and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5

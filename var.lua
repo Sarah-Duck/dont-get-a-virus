@@ -266,6 +266,13 @@ function loadVar()
   vplay = {}
   vplay.v = 0
   vplay.p = false
+  vplay.pr = false
+  vplay.volx = 232+150
+  vplay.volpx = mplay.volx
+  vplay.volxmax = 10+38+38+38+150+108
+  vplay.volxmin = 10+38+38+38+150
+  vplay.voly = win[8].h-39
+  vplay.drag = false
 end
 function loadPre()
   love.graphics.setDefaultFilter("nearest", "nearest")
