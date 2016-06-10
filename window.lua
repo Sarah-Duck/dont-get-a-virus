@@ -121,9 +121,9 @@ function drawWindow(id)
     win[id].ex = true
   end
   if win[id].ex == true and win[id].s ~= 0 then
-    win[id].s = win[id].s - 0.2*sys.s
+    win[id].s = win[id].s - (0.4*win[id].s)*sys.s
   elseif win[id].ex == false and win[id].s ~= 0 then
-    win[id].s = win[id].s + 0.2*sys.s
+    win[id].s = win[id].s + (0.075/win[id].s)*sys.s
   end
   if win[id].s > 1 then
     win[id].s = 1
