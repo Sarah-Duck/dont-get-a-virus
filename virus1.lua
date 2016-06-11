@@ -182,15 +182,15 @@ function drawVirusFight1()
     end
     for i=1,3 do
       if v1.c.eyetx > v1.c.x+7+v1.c.eyex and v1.c.eyex < 15 then
-        v1.c.eyex = v1.c.eyex + 1
+        v1.c.eyex = v1.c.eyex + 1*sys.s
       elseif v1.c.eyetx < v1.c.x+7+v1.c.eyex and v1.c.eyex > -15 then
-        v1.c.eyex = v1.c.eyex - 1
+        v1.c.eyex = v1.c.eyex - 1*sys.s
       end
     end
     if v1.c.eyety > v1.c.y-28+v1.c.eyey and v1.c.eyey < 5 then
-      v1.c.eyey = v1.c.eyey + 3
+      v1.c.eyey = v1.c.eyey + 3*sys.s
     elseif v1.c.eyety < v1.c.y-28+v1.c.eyey and v1.c.eyey > -10 then
-      v1.c.eyey = v1.c.eyey - 3
+      v1.c.eyey = v1.c.eyey - 3*sys.s
     end
     love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5)+v1.shakex, v1.c.y-28+v1.c.eyey+math.random(0,0.5)+v1.shakey, v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
     playAnimation(v1.c.idle, true, v1.c.x+v1.shakex, v1.c.y+v1.shakey, v1.c.r, v1.c.s, 100, 100, 0.5)
@@ -523,7 +523,7 @@ function drawVirusFight1()
       end
       if v1.c.shine.s1 >= 7 or v1.c.shine.ct >= 3 then
         v1.c.shine.sm1 = false
-        v1.c.shine.ct = v1.c.shine.ct + 1*sys.s
+        v1.c.shine.ct = v1.c.shine.ct + 1
       elseif v1.c.shine.s1 <= -5 and v1.c.shine.ct < 3 then
         v1.c.shine.sm1 = true
       end

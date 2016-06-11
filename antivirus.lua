@@ -21,7 +21,7 @@ function updateAntivirus()
     antivirus.prog = 0
   end
   if antivirus.scanning == true then
-    antivirus.prog = antivirus.prog + math.random(0,0.5,2,10,1,20,0.1,0.2)
+    antivirus.prog = antivirus.prog + (math.random(0,0.5,2,10,1,20,0.1,0.2)*sys.s)
     win[4].update = true
     antivirus.status = "Scanning: " .. math.floor(antivirus.prog/174*100) .. "%"
   end
