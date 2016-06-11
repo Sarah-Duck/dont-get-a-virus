@@ -54,7 +54,7 @@ function updateInternet()
   end
   if internet.load ~= 442 then
     if math.random(1,3) == 3 then
-      internet.load = internet.load + math.random(0,20)
+      internet.load = internet.load + (math.random(0,20)*sys.s)
       win[2].update = true
     end
   end

@@ -151,9 +151,9 @@ function drawWindow(id)
   end
   if id == 4 and win[4].crazy == true then
     if win[4].crazyLeft == true and win[4].x >= 100 then
-      win[4].x = win[4].x - 10+v1.spm*sys.s
+      win[4].x = win[4].x - (10+v1.spm)*sys.s
     elseif win[4].crazyLeft == false and win[4].x <= sys.w-300 then
-      win[4].x = win[4].x + 10+v1.spm*sys.s
+      win[4].x = win[4].x + (10+v1.spm)*sys.s
     end
     if win[4].x <= 150 then
       win[4].crazyLeft = false
@@ -161,9 +161,9 @@ function drawWindow(id)
       win[4].crazyLeft = true
     end
     if win[4].crazyUp == true and win[4].y >= sys.h/2+50 then
-      win[4].y = win[4].y - 6+v1.spm*sys.s
+      win[4].y = win[4].y - (6+v1.spm)*sys.s
     elseif win[4].crazyUp == false and win[4].y <= sys.h-panel.thick-200 then
-      win[4].y = win[4].y + 6+v1.spm*sys.s
+      win[4].y = win[4].y + (6+v1.spm)*sys.s
     end
     if win[4].y <= sys.h/2+50 then
       win[4].crazyUp = false

@@ -42,9 +42,9 @@ function love.update(dt)
       win[i].update = true
     end
   end
-  if fade == 1 and fadeOpacity ~= 255 then
+  if fade == 1 and fadeOpacity < 255 then
     fadeOpacity = fadeOpacity + 5
-  elseif fade == 0  and fadeOpacity ~= 0 then
+  elseif fade == 0  and fadeOpacity > 0 then
     fadeOpacity = fadeOpacity - 5
   end
   if scene == 1 then

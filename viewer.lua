@@ -33,10 +33,18 @@ function drawMusic()
         mplay.bar[i].ht = 20
       else
         if mplay.bar[i].h > mplay.bar[i].ht then
-          mplay.bar[i].h = mplay.bar[i].h - 1
+          if mplay.bar[i].h - (1*sys.s) < mplay.bar[i].ht then
+            mplay.bar[i].h = mplay.bar[i].ht
+          else
+            mplay.bar[i].h = mplay.bar[i].h - (1*sys.s)
+          end
         elseif mplay.bar[i].h < mplay.bar[i].ht then
-          mplay.bar[i].h = mplay.bar[i].h + 1
-        elseif mplay.bar[i].h == mplay.bar[i].ht then
+          if mplay.bar[i].h + (1*sys.s) > mplay.bar[i].ht then
+            mplay.bar[i].h = mplay.bar[i].ht
+          else
+            mplay.bar[i].h = mplay.bar[i].h + (1*sys.s)
+          end
+        elseif math.floor(mplay.bar[i].h) == mplay.bar[i].ht then
           mplay.bar[i].ht = math.random(0,40)
         end
         love.graphics.rectangle("fill",(23*i)-13,33,21,mplay.bar[i].h)

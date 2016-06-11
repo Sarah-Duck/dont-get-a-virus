@@ -11,8 +11,8 @@ function drawVirusFight1()
     win[2].y+math.random(v1.shakemin,v1.shakemax), 0, 1, 1, 0, 0,
     math.rad(math.random(v1.shakemin/10,v1.shakemax/10)),
     math.rad(math.random(v1.shakemin/10,v1.shakemax/10)))
-    v1.shakemin = v1.shakemin - 0.1
-    v1.shakemax = v1.shakemax + 0.1
+    v1.shakemin = v1.shakemin - (0.1*sys.s)
+    v1.shakemax = v1.shakemax + (0.1*sys.s)
   end
   if v1.explodeintrotimer >= 7.7 then
     v1.explodeintro = true
@@ -211,8 +211,8 @@ function drawVirusFight1()
     end
     if expl.frame <= 89 and v1.c.health < 25 then
       love.graphics.setColor(255,255,255)
-      love.graphics.draw(expl.pic, expl.frames[expl.frame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
-      expl.frame = expl.frame + 1
+      love.graphics.draw(expl.pic, expl.frames[math.floor(expl.frame)], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
+      expl.frame = expl.frame + (1*sys.s)
       v1.explosionSound:play()
     end
     if v1.c.chat.msgs == 2 then
@@ -490,8 +490,8 @@ function drawVirusFight1()
     if win[2].y+v1.c.slime.y >= v1.c.monitorspin.y then
       playAnimation(v1.c.slime, true, win[2].x+v1.c.slime.x+math.random(1,4), win[2].y+v1.c.slime.y+math.random(1,4), 0, 2.5, 25, 25, 0.5)
       playAnimation(v1.c.monitorspin, true, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y, 0, 1, 100, 100, v1.c.monitorspin.sp)
-      v1.c.slime.y = v1.c.slime.y - 0.5
-      v1.c.monitorspin.y = v1.c.monitorspin.y + 1.5
+      v1.c.slime.y = v1.c.slime.y - 0.5*sys.s
+      v1.c.monitorspin.y = v1.c.monitorspin.y + 1.5*sys.s
     end
     if win[2].y+v1.c.slime.y <= v1.c.monitorspin.y+100 and v1.c.shine.s > -70 then
       love.graphics.setColor(255,255,255,v1.c.shine.opa)
@@ -503,10 +503,10 @@ function drawVirusFight1()
       v1.c.shine.r2, (3+v1.c.shine.s2/10)+v1.c.shine.s/10, (3+v1.c.shine.s2/10)+v1.c.shine.s/10, 100, 100)
       love.graphics.draw(v1.c.shine.f1, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y,
       v1.c.shine.r1, (3+v1.c.shine.s1/10)+v1.c.shine.s/10, (3+v1.c.shine.s1/10)+v1.c.shine.s/10, 100, 100)
-      v1.c.shine.r1 = v1.c.shine.r1 + math.rad(1)
-      v1.c.shine.r2 = v1.c.shine.r2 - math.rad(1)
+      v1.c.shine.r1 = v1.c.shine.r1 + (math.rad(1)*sys.s)
+      v1.c.shine.r2 = v1.c.shine.r2 - (math.rad(1)*sys.s)
       if v1.c.monitorspin.sp ~= 1 then
-        v1.c.monitorspin.sp = v1.c.monitorspin.sp + 0.1
+        v1.c.monitorspin.sp = v1.c.monitorspin.sp + 0.1*sys.s
         if v1.c.monitorspin.sp >= 1 then
           v1.c.monitorspin.sp = 1
         end
@@ -523,7 +523,7 @@ function drawVirusFight1()
       end
       if v1.c.shine.s1 >= 7 or v1.c.shine.ct >= 3 then
         v1.c.shine.sm1 = false
-        v1.c.shine.ct = v1.c.shine.ct + 1
+        v1.c.shine.ct = v1.c.shine.ct + 1*sys.s
       elseif v1.c.shine.s1 <= -5 and v1.c.shine.ct < 3 then
         v1.c.shine.sm1 = true
       end
@@ -533,10 +533,10 @@ function drawVirusFight1()
         v1.c.shine.sm2 = true
       end
       if v1.c.shine.ct <= 3 and v1.c.shine.s < 4 then
-        v1.c.shine.s = v1.c.shine.s + 0.2
+        v1.c.shine.s = v1.c.shine.s + 0.2*sys.s
       elseif v1.c.shine.ct >= 3 and v1.c.shine.s > -80 then
-        v1.c.shine.s = v1.c.shine.s - 0.5
-        v1.c.shine.opa = v1.c.shine.opa - 5
+        v1.c.shine.s = v1.c.shine.s - 0.5*sys.s
+        v1.c.shine.opa = v1.c.shine.opa - 5*sys.s
       end
     end
     if v1.timer < 20 then
@@ -557,8 +557,8 @@ function drawVirusFight1()
       v1.complete = true
     end
     love.graphics.setColor(255,255,255)
-    love.graphics.draw(expl.pic, expl.frames[v1.explodeEndFrame], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
-    v1.explodeEndFrame = v1.explodeEndFrame + 1
+    love.graphics.draw(expl.pic, expl.frames[math.floor(v1.explodeEndFrame)], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
+    v1.explodeEndFrame = v1.explodeEndFrame + 1*sys.s
     v1.explosionSound:play()
     v1.rumbleLoop:stop()
     if v1.explodeEndFrame >= 20 then

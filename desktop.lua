@@ -19,16 +19,16 @@ function drawDesktop()
     if expl.deb[1].y < sys.h or expl.deb[2].y < sys.h or expl.deb[3].y < sys.h then
       for i=1,3 do
         love.graphics.draw(expl.deb[i].pic, expl.deb[i].x, expl.deb[i].y, expl.deb[i].r)
-        expl.deb[i].y = expl.deb[i].y - expl.deb[i].ym
-        expl.deb[i].ym = expl.deb[i].ym - 1
-        expl.deb[i].x = expl.deb[i].x + expl.deb[i].xm
-        expl.deb[i].r = expl.deb[i].r + expl.deb[i].rm
+        expl.deb[i].y = expl.deb[i].y - (expl.deb[i].ym*sys.s)
+        expl.deb[i].ym = expl.deb[i].ym - (1*sys.s)
+        expl.deb[i].x = expl.deb[i].x + (expl.deb[i].xm*sys.s)
+        expl.deb[i].r = expl.deb[i].r + (expl.deb[i].rm*sys.s)
       end
     end
     if expl.frame <= 89 and v1.c.chat.msgs < 2 then
       love.graphics.setColor(255,255,255)
-      love.graphics.draw(expl.pic, expl.frames[expl.frame], win[2].x-750, win[2].y-500, 0, 7, 7)
-      expl.frame = expl.frame + 1
+      love.graphics.draw(expl.pic, expl.frames[math.floor(expl.frame)], win[2].x-750, win[2].y-500, 0, 7, 7)
+      expl.frame = expl.frame + 1*sys.s
     end
   end
   for i=1,6 do
