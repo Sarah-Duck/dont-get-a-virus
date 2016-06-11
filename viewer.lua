@@ -94,7 +94,7 @@ function updateVideo()
     vplay.p = true
     win[8].update = true
     vplay.pr = true
-  elseif mouseClick(win[8].x+8+38+38,win[8].y+win[8].h-34-8,32,32) == true and vplay.m ~= 0 and vplay.pr == false then
+  elseif mouseClick(win[8].x+8+38+38,win[8].y+win[8].h-34-8,32,32) == true and vplay.v ~= 0 and vplay.pr == false then
     vplay.v:seek(0)
     vplay.v:pause()
     vplay.p = false
