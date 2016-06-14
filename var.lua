@@ -229,7 +229,7 @@ function loadVar()
   f.home[5] = {name="Videos",x=0,y=0,hl=false}
   f.pictures = {}
   f.pictures[1] = {name="cat.jpg",x=0,y=0,hl=false}
-  f.pictures[2] = {name="meme.png",x=0,y=0,hl=false}
+  f.pictures[2] = {name="art.jpg",x=0,y=0,hl=false}
   f.documents = {}
   f.music = {}
   f.music[1] = {name="chill.mp3",x=0,y=0,hl=false}

@@ -81,6 +81,9 @@ function updateFiles()
           if i == 1 and picture.img ~= picture.cat then
             picture.img = picture.cat
             win[7].update = true
+          elseif i == 2 and picture.img ~= picture.art then
+            picture.img = picture.art
+            win[7].update = true
           end
           openFileWindow(7)
         elseif files == f.videos then

@@ -100,7 +100,8 @@ function loadAssets(id)
       comp = love.graphics.newImage("assets/computer.png")
     }
     picture = {
-      cat = love.graphics.newImage("assets/cat.jpg")
+      cat = love.graphics.newImage("assets/cat.jpg"),
+      art = love.graphics.newImage("assets/art.jpg")
     }
     but = {
       play = love.graphics.newImage("assets/button_play.png"),
