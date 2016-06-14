@@ -8,6 +8,7 @@ function updateSystem(dt)
   timeNoti(dt)
   if time >= msgstime[msg.c] and msgssent < msg.c and v1.yes == false and v1.complete == false then
     sendMessage(1, msgs[msg.c])
+    chat.status = 1
     msgssent = msgssent + 1
   end
 end
