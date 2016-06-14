@@ -63,17 +63,19 @@ function love.update(dt)
   end
 end
 function love.mousepressed(x, y, button)
-  sys.mouse.p.x = x
-  sys.mouse.p.y = y
-  if button == 2 then
-    sys.mouse.p.p = false
-  end
-  if button == 1 then
-    sys.mouse.p.p = true
-  end
-  if v1.msgs[v1.c.chat.msgs] ~= nil then
-    if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
-      v1.c.chat.next = false
+  if scene ~= 0 then
+    sys.mouse.p.x = x
+    sys.mouse.p.y = y
+    if button == 2 then
+      sys.mouse.p.p = false
+    end
+    if button == 1 then
+      sys.mouse.p.p = true
+    end
+    if v1.msgs[v1.c.chat.msgs] ~= nil then
+      if string.len(v1.msgs[v1.c.chat.msgs]) == string.len(v1.c.chat.msg) and v1.yes == true then
+        v1.c.chat.next = false
+      end
     end
   end
 end
@@ -87,16 +89,18 @@ function love.keyreleased(key)
    end
 end
 function love.mousereleased(x, y, button)
-  sys.mouse.p.p = false
-  start.p = false
-  for i=1,6 do
-    icon[i].cl = false
+  if scene ~= 0 then
+    sys.mouse.p.p = false
+    start.p = false
+    for i=1,6 do
+      icon[i].cl = false
+    end
+    file.p = false
+    mplay.drag = false
+    vplay.drag = false
+    mplay.pr = false
+    vplay.pr = false
   end
-  file.p = false
-  mplay.drag = false
-  vplay.drag = false
-  mplay.pr = false
-  vplay.pr = false
 end
 function love.draw()
   if scene == 1 then
