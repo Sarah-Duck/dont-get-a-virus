@@ -39,7 +39,17 @@ function drawStart()
   else
     drawUpBox(panel.s.x, panel.s.y, panel.s.width, panel.s.height, 2)
   end
+  drawDownBox(sys.w-95,panel.s.y,panel.s.width+25,panel.s.height,2)
   love.graphics.setColor(colors.font.dark)
+  clock = os.date("*t")
+  if clock.hour > 12 then
+    clock.hour = clock.hour - 12
+    clock.ayy = "PM"
+  else
+    clock.ayy = "AM"
+  end
+  clock.d = clock.hour .. ":" .. clock.min .. clock.ayy
+  love.graphics.print(clock.d,sys.w-95+3,panel.s.y+7)
   love.graphics.print("START", panel.s.x+4, panel.s.y+7)
   drawPanelButton(1)
   drawPanelButton(2)
