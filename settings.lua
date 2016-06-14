@@ -117,7 +117,7 @@ function updateSettings()
     if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
     sys.mouse.p.x >= win[6].x+13 and sys.mouse.p.x <= win[6].x+13+120 and
     sys.mouse.p.y >= win[6].y+342+(20*(i-1)) and sys.mouse.y <= win[6].y+342+(20*(i-1))+20) then
-      for i=1,6 do
+      for i=1,#std do
         std[i].hl = false
       end
       std[i].hl = true
@@ -125,32 +125,32 @@ function updateSettings()
     end
   end
   for i=1,#stre do
-    if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
+    if layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
     sys.mouse.p.x >= win[6].x+13+384/2+4 and sys.mouse.p.x <= win[6].x+13+384/2+4+120 and
-    sys.mouse.p.y >= win[6].y+342+(20*(i-1)) and sys.mouse.y <= win[6].y+342+(20*(i-1))+20) then
-      for i=1,6 do
-        stre[i].hl = false
+    sys.mouse.p.y >= win[6].y+342+(20*(i-1)) and sys.mouse.y <= win[6].y+342+(20*(i-1))+20 and
+    stre[i].hl ~= true then
+      for ayy=1,#stre do
+        stre[ayy].hl = false
       end
+      stre[i].hl = true
       win[6].update = true
-      --[[if stre[i].hl ~= true then
+      if stre[i].hl == true then
+        sys.mouse.p.p = false
         if i == 1 then
-          love.window.setMode(1,1,{fullscreen=true, fullscreentype="desktop"})
-        elseif i == 2 then
-          love.window.setMode(1280,720,{fullscreen=true, fullscreentype="exclusive"})
-        elseif i == 3 then
-          love.window.setMode(1920,1080,{fullscreen=true, fullscreentype="exclusive"})
-        elseif i == 4 then
-          love.window.setMode(1280,1024,{fullscreen=true, fullscreentype="exclusive"})
-        elseif i == 5 then
-          love.window.setMode(1440,900,{fullscreen=true, fullscreentype="exclusive"})
-        elseif i == 6 then
-          love.window.setMode(1366,768,{fullscreen=true, fullscreentype="exclusive"})
+          local fullscreen, fstype = love.window.getFullscreen()
+          if fstype ~= "desktop" then
+            love.window.setMode(800,600,{fullscreen=true, fullscreentype="desktop"})
+          end
+        elseif i ~= 1 then
+          local fullscreen, fstype = love.window.getFullscreen()
+          if sys.w ~= stre[i].w or sys.h ~= stre[i].h or fstype ~= "exclusive" then
+            love.window.setMode(stre[i].w,stre[i].h,{fullscreen=true, fullscreentype="exclusive"})
+          end
         end
-        for i=1,#win do
-          win[i].update = true
+        for fart=1,#win do
+          win[fart].update = true
         end
-        stre[i].hl = true
-      end]]--
+      end
     end
   end
 end
