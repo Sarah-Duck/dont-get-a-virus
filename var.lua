@@ -211,7 +211,7 @@ function loadVar()
   stre[1].hl = true
   modes = love.window.getFullscreenModes()
   for i=1,#modes do
-    if modes[i].width >= 1000 and modes[i].height >= 720 and i <= 10 then
+    if modes[i].width >= 1000 and modes[i].height >= 720 and i <= 9 then
       table.insert(stre, {
         title = modes[i].width .. "x" .. modes[i].height,
         hl = false,
