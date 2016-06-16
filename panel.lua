@@ -48,7 +48,11 @@ function drawStart()
   else
     clock.ayy = "AM"
   end
-  clock.d = clock.hour .. ":" .. clock.min .. clock.ayy
+  if clock.min < 10 then
+    clock.d = clock.hour .. ":0" .. clock.min .. clock.ayy
+  else
+    clock.d = clock.hour .. ":" .. clock.min .. clock.ayy
+  end
   love.graphics.print(clock.d,sys.w-95+3,panel.s.y+7)
   love.graphics.print("START", panel.s.x+4, panel.s.y+7)
   drawPanelButton(1)
@@ -69,9 +73,18 @@ function drawStart()
     end
   end
   if v1.c.chat.msgs > 35 and v1.yes == true then
+    drawDownBox(sys.w/2+166-250, panel.s.y, 101*2, panel.s.height,2)
+    love.graphics.setColor(100,0,0)
+    love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, 200, panel.s.height-2)
+    love.graphics.setColor(455-v1.c.health*4.55,v1.c.health*2.55,20)
+    love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, v1.c.health*2, panel.s.height-2)
     love.graphics.setColor(colors.font.dark)
-    love.graphics.print("VIRUS HEALTH: " .. v1.c.health, sys.w/2, panel.s.y+7)
-    love.graphics.print("TIMER: " .. v1.fightMinute .. ":" .. math.floor(-(v1.fightTimer-60)), sys.w/2-200, panel.s.y+7)
+    love.graphics.print("VIRUS HEALTH: " .. v1.c.health, sys.w/2-250, panel.s.y+6)
+    if math.floor(-(v1.fightTimer-60)) < 10 then
+      love.graphics.print("TIMER: " .. v1.fightMinute .. ":0" .. math.floor(-(v1.fightTimer-60)), sys.w/2+130, panel.s.y+6)
+    else
+      love.graphics.print("TIMER: " .. v1.fightMinute .. ":" .. math.floor(-(v1.fightTimer-60)), sys.w/2+130, panel.s.y+6)
+    end
   end
 end
 function drawNoti()
