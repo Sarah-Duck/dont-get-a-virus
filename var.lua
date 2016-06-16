@@ -91,6 +91,9 @@ function loadVar()
   av.fireb = false
   av.fire = false
   av.bullets = {}
+  av.shake = 0
+  av.shakex = 0
+  av.shakey = 0
   chat.status = 0
   chat.profilename = "Best Friend"
   colors = {}
@@ -239,7 +242,6 @@ function loadVar()
   f.music[5] = {name="finale.mp3",x=0,y=0,hl=false}
   f.videos = {}
   f.videos[1] = {name="wtf.avi",x=0,y=0,hl=false}
-  f.videos[2] = {name="lol.avi",x=0,y=0,hl=false}
   f.downloads = {}
   files = f.home
   file = {}
