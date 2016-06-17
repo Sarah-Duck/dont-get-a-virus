@@ -3,6 +3,10 @@ function drawDesktop()
   if desktop.bg.current ~= 0 then
     love.graphics.draw(desktop.bg.current, 0, 0, 0, sys.w/1920, sys.h/1280)
   end
+  if scene == 2 and v1.c.chat.msgs > 35 then
+    drawTentacles()
+    removeTentacles()
+  end
   if v1.explodeintro == true and v1.yes == true then
     if expl.frame >= 20 or v1.c.chat.msgs > 1 then
       love.graphics.draw(v1.scorch, win[2].x-300, win[2].y-100)
@@ -70,5 +74,44 @@ function checkIcon(id)
     end
   elseif sys.mouse.drag == true or sys.mouse.p.x > 120 or sys.mouse.p.y > 550 then
     icon[id].hl = false
+  end
+end
+function addTentacle(x,y,s,sp,dy,d,rl,sy)
+  table.insert(v1.t.t, 1, {x=x,y=y,s=s,sy=sy,sp=sp,dy=dy,d=d,rl=rl,t=math.random(1,2),r=0,rm=false})
+end
+function drawTentacles()
+  v1.t.time = v1.t.time - delta
+  if v1.t.x <= 0 then
+    v1.t.x = v1.t.x + delta*2
+  elseif v1.t.x > 0 then
+    v1.t.x = 0
+  end
+  if v1.t.time <= 0 then
+    v1.t.time = 0.5
+    addTentacle(math.random(-20,0),sys.h+200,math.random(3,6),
+    math.random(2,6),-100,true,math.random(5,45),math.random(4,6))
+  end
+  for i=1,#v1.t.t do
+    if v1.t.t[i].t == 1 then
+      love.graphics.draw(v1.tent1,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90),v1.t.t[i].s,v1.t.t[i].sy)
+    elseif v1.t.t[i].t == 2 then
+      love.graphics.draw(v1.tent2,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90),v1.t.t[i].s,v1.t.t[i].sy)
+    end
+    if v1.t.t[i].d == false then
+      v1.t.t[i].y = v1.t.t[i].y + v1.t.t[i].sp
+    else
+      v1.t.t[i].y = v1.t.t[i].y - v1.t.t[i].sp
+    end
+    if v1.t.t[i].y <= v1.t.t[i].dy then
+      v1.t.t[i].rm = true
+    end
+  end
+end
+function removeTentacles()
+  for i=1,#v1.t.t do
+    if v1.t.t[i].rm == true then
+      table.remove(v1.t.t, i)
+      return
+    end
   end
 end
