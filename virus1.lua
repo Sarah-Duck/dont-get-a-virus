@@ -36,7 +36,7 @@ function drawVirusFight1()
   if v1.c.chat.msgs > 7 then
     orderWindows()
     if antivirus.status ~= "VIRUS FOUND!" or v1.c.chat.msgs < 12 then
-      love.graphics.draw(win[4].cvs, win[4].x, win[4].y, 0, win[4].s)
+      love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
     elseif antivirus.status == "VIRUS FOUND!" and v1.c.chat.msgs >= 12 then
       if av.transform == false then
         win[4].w = 342
@@ -44,33 +44,42 @@ function drawVirusFight1()
         av.transform = true
       end
       if av.gun == 98 then
-        love.graphics.draw(antivirus.gun, win[4].x+138/2+99, win[4].y+5-av.gun, 0, win[4].s, win[4].s, 12)
+        love.graphics.draw(antivirus.gun, win[4].x+138/2+99+av.shakex, win[4].y+5-av.gun+av.shakey, 0, win[4].s, win[4].s, 12)
       elseif av.gun ~= 98 and av.wings == 138/2 then
         love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
       end
-      love.graphics.draw(antivirus.body, win[4].x+138/2+99, win[4].y+5, 0, win[4].s, win[4].s, 80)
+      love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
       if av.fireb == true then
-        drawUpBox(win[4].x+138/2+71, win[4].y+93, 56, 19, 2)
+        drawUpBox(win[4].x+138/2+71+av.shakex, win[4].y+93+av.shakey, 56, 19, 2)
       else
-        drawDownBox(win[4].x+138/2+71, win[4].y+93, 56, 19, 2)
+        drawDownBox(win[4].x+138/2+71+av.shakex, win[4].y+93+av.shakey, 56, 19, 2)
       end
       love.graphics.setColor(colors.font.dark)
-      love.graphics.print("FIRE", win[4].x+138/2+76, win[4].y+99)
+      love.graphics.print("FIRE", win[4].x+138/2+76+av.shakex, win[4].y+99+av.shakey)
       love.graphics.setColor(255,255,255)
-      drawDownBox(win[4].x+138/2+79-1, win[4].y+40-1, 42, 42, 2)
+      drawDownBox(win[4].x+138/2+79-1+av.shakex, win[4].y+40-1+av.shakey, 42, 42, 2)
       love.graphics.stencil(chargeStencil, "replace", 1)
       love.graphics.setStencilTest("greater", 0)
-      love.graphics.draw(antivirus.charge, win[4].x+138/2+79, win[4].y+40)
+      love.graphics.draw(antivirus.charge, win[4].x+138/2+79+av.shakex, win[4].y+40+av.shakey)
       love.graphics.setStencilTest()
       if av.wings >= 138/2 then
         av.wings = 138/2
-        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings, win[4].y, 0, win[4].s)
-        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings, win[4].y, 0, win[4].s)
+        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
       elseif av.wings < 138/2 then
         antivirus.open:play()
         av.wings = av.wings + 0.5*sys.s
-        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
-        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1), win[4].y+math.random(-1,1), 0, win[4].s)
+        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
+        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
+      end
+      if av.shake > 0 then
+        av.shakex = math.random(av.shake,-av.shake)
+        av.shakey = math.random(av.shake,-av.shake)
+        av.shake = av.shake - 0.1*sys.s
+      elseif av.shake < 0 then
+        av.shake = 0
+        av.shakex = 0
+        av.shakey = 0
       end
       if av.gun == 10 then
         antivirus.opengun:play()
@@ -123,6 +132,15 @@ function drawVirusFight1()
       v1.shakey = math.random(v1.shake,-v1.shake)
       v1.rumbleLoop:setPitch(v1.shake/6)
     end
+    if v1.shake > 0 and v1.c.chat.msgs < 41 then
+      v1.shakex = math.random(v1.shake,-v1.shake)
+      v1.shakey = math.random(v1.shake,-v1.shake)
+      v1.shake = v1.shake - 0.3*sys.s
+    elseif v1.shake < 0 and v1.c.chat.msgs < 41 then
+      v1.shake = 0
+      v1.shakex = 0
+      v1.shakey = 0
+    end
     if v1.c.load == false then
       v1.c.x = win[2].x+v1.c.monitorspin.x
       v1.c.y = v1.c.monitorspin.y
@@ -153,13 +171,13 @@ function drawVirusFight1()
       end
     end
     if v1.c.chat.msgs > 28 and expl.frame <= 10 then
-      v1.turret[2].x = v1.c.x-120
-      v1.turret[2].y = v1.c.y+200-100
-      v1.turret[3].x = v1.c.x+120
-      v1.turret[3].y = v1.c.y+200-100
+      v1.turret[2].x = v1.c.x-120+v1.shakex
+      v1.turret[2].y = v1.c.y+200-100+v1.shakey
+      v1.turret[3].x = v1.c.x+120+v1.shakex
+      v1.turret[3].y = v1.c.y+200-100+v1.shakey
       love.graphics.draw(v1.turret1, v1.turret[2].x, v1.turret[2].y, v1.turret[2].r, v1.c.s, v1.c.s, 42, 42)
       love.graphics.draw(v1.turret1, v1.turret[3].x, v1.turret[3].y, v1.turret[3].r, v1.c.s, v1.c.s, 42, 42)
-      love.graphics.draw(v1.shipBack, v1.c.x-615/2, v1.c.y-100+20, 0, v1.c.s)
+      love.graphics.draw(v1.shipBack, v1.c.x-615/2+v1.shakex, v1.c.y-100+20+v1.shakey, 0, v1.c.s)
     end
     if v1.c.chat.msgs < 29 then
       love.graphics.setColor(0,0,0,100)
@@ -195,11 +213,11 @@ function drawVirusFight1()
     love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5)+v1.shakex, v1.c.y-28+v1.c.eyey+math.random(0,0.5)+v1.shakey, v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
     playAnimation(v1.c.idle, true, v1.c.x+v1.shakex, v1.c.y+v1.shakey, v1.c.r, v1.c.s, 100, 100, 0.5)
     if v1.c.chat.msgs > 28 and expl.frame <= 10 then
-      v1.turret[1].x = v1.c.x-615/2-10
-      v1.turret[1].y = v1.c.y+95-100+20
-      v1.turret[4].x = v1.c.x+615/2+10
-      v1.turret[4].y = v1.c.y+95-100+20
-      love.graphics.draw(v1.shipFront, v1.c.x-615/2, v1.c.y-100+20, 0, v1.c.s)
+      v1.turret[1].x = v1.c.x-615/2-10+v1.shakex
+      v1.turret[1].y = v1.c.y+95-100+20+v1.shakey
+      v1.turret[4].x = v1.c.x+615/2+10+v1.shakex
+      v1.turret[4].y = v1.c.y+95-100+20+v1.shakey
+      love.graphics.draw(v1.shipFront, v1.c.x-615/2+v1.shakex, v1.c.y-100+20+v1.shakey, 0, v1.c.s)
       love.graphics.draw(v1.turret2, v1.turret[1].x, v1.turret[1].y, v1.turret[1].r, v1.c.s, v1.c.s, 59/2, 40)
       love.graphics.draw(v1.turret2, v1.turret[4].x, v1.turret[4].y, v1.turret[4].r, v1.c.s, v1.c.s, 59/2, 40)
     elseif v1.c.chat.msgs >= 36 and v1.c.chat.msgs <= 38 and expl.frame > 10 then
@@ -610,13 +628,16 @@ function drawBullets()
           else
             av.charge = av.charge - 10
           end
+          av.shake = 4
         elseif v1.bullets[i].id == 2 or v1.bullets[i].id == 3 then
           sys.mouse.drag = false
           win[4].hover = false
+          av.shake = 4
         elseif v1.bullets[i].id == 5 then
           sys.mouse.drag = false
           win[4].hover = false
           win[4].crazy = true
+          av.shake = 4
         end
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()
@@ -646,6 +667,7 @@ function drawBullets()
           v1.c.health = v1.c.health - 5
           v1.spm = v1.spm + 0.20*(sys.h/1080)
         end
+        v1.shake = 10
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()
@@ -656,6 +678,7 @@ function drawBullets()
       if av.bullets[i].x >= v1.c.x-615/2 and av.bullets[i].x <= v1.c.x-615/2+615 and av.bullets[i].y >= v1.c.y-100+20
       and av.bullets[i].y <= v1.c.y-100+20+200 and v1.c.chat.msgs > 35 and v1.c.health > 20 then
         v1.c.health = v1.c.health - 5
+        v1.shake = 10
         v1.spm = v1.spm + 0.25*(sys.h/1080)
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
