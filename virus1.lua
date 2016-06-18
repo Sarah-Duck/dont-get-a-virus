@@ -107,7 +107,7 @@ function drawVirusFight1()
         av.fireb = true
       end
       if av.charge < 40 then
-        av.charge = av.charge + math.random(1,10,25,40,5,2,8)*delta
+        av.charge = av.charge + (math.random(4,12,25,40,5,2,10)*delta)/di
       elseif av.charge > 40 then
         av.charge = 40
       end
@@ -150,7 +150,7 @@ function drawVirusFight1()
     end
     if v1.c.chat.msgs > 30 and v1.c.chat.msgs ~= 37 and v1.c.chat.msgs ~= 38 and v1.c.chat.msgs < 41 then
       for i=1,4 do
-        if v1.specialAbi == false or v1.c.chat.msgs <= 20 then
+        if v1.specialAbi == false or v1.c.health <= 20 then
           v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
         elseif v1.specialAbi == true and v1.turretTimer < 30 then
           v1.turret[i].rt = 0
@@ -316,6 +316,7 @@ function drawVirusFight1()
       v1.c.chat.msg = ""
     elseif v1.c.chat.msgs == 40 and v1.c.health <= 0 then
       music.battle1:stop()
+      v1.shine:stop()
       v1.rumbleLoop:play()
       v1.c.chat.msgs = 41
       v1.c.chat.char = 0
@@ -575,7 +576,7 @@ function drawVirusFight1()
       v1.complete = true
     end
     love.graphics.setColor(255,255,255)
-    love.graphics.draw(expl.pic, expl.frames[math.floor(v1.explodeEndFrame)], v1.c.x-615/2-800, v1.c.y-100+20-700, 0, 7, 7)
+    love.graphics.draw(expl.pic, expl.frames[math.floor(v1.explodeEndFrame)], v1.c.x, v1.c.y, 0, 20, 20, 320/2,240/2)
     v1.explodeEndFrame = v1.explodeEndFrame + 1*sys.s
     v1.explosionSound:play()
     v1.rumbleLoop:stop()

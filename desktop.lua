@@ -91,7 +91,7 @@ function drawTentacles()
   love.graphics.setColor(256,256,256)
   v1.t.time = v1.t.time - delta
   if v1.t.x <= -30 then
-    v1.t.x = v1.t.x + delta*4
+    v1.t.x = v1.t.x + delta*5
   elseif v1.t.x > -30 then
     v1.t.x = -30
   end
@@ -105,14 +105,14 @@ function drawTentacles()
   for i=1,#v1.t.t do
     if v1.t.t[i].syp == 0 and v1.c.chat.msgs <= 40 then
       if v1.t.t[i].syc <= v1.t.t[i].syl then
-        v1.t.t[i].syc = v1.t.t[i].syc + math.random(0.1,0.02,0.05,0.01,0.08,0.065)+((v1.t.t[i].syl-v1.t.t[i].syc)/10)
+        v1.t.t[i].syc = v1.t.t[i].syc + math.random(0.1,0.02,0.05,0.01,0.08,0.065)+((v1.t.t[i].syl-v1.t.t[i].syc)/10)*sys.s
       elseif v1.t.t[i].syc > v1.t.t[i].syl then
         v1.t.t[i].syp = 1
         v1.t.t[i].syl = math.random(0,3)
       end
     elseif v1.t.t[i].syp == 1 and v1.c.chat.msgs <= 40 then
       if v1.t.t[i].syc >= -v1.t.t[i].syl then
-        v1.t.t[i].syc = v1.t.t[i].syc - math.random(0.1,0.2,0.05,0.01,0.08,0.065)+((-v1.t.t[i].syl-v1.t.t[i].syc)/10)
+        v1.t.t[i].syc = v1.t.t[i].syc - math.random(0.1,0.2,0.05,0.01,0.08,0.065)+((-v1.t.t[i].syl-v1.t.t[i].syc)/10)*sys.s
       elseif v1.t.t[i].r < -v1.t.t[i].syl then
         v1.t.t[i].syp = 0
         v1.t.t[i].syl = math.random(0,3)
@@ -120,14 +120,14 @@ function drawTentacles()
     end
     if v1.t.t[i].rup == 0 and v1.c.chat.msgs <= 40 then
       if v1.t.t[i].r <= v1.t.t[i].rl then
-        v1.t.t[i].r = v1.t.t[i].r + math.random(0.1,0.2,0.3,0.4,0.5,1,2)+((v1.t.t[i].rl-v1.t.t[i].r)/10)
+        v1.t.t[i].r = v1.t.t[i].r + math.random(0.1,0.2,0.3,0.4,0.5,1,2)+((v1.t.t[i].rl-v1.t.t[i].r)/10)*sys.s
       elseif v1.t.t[i].r > v1.t.t[i].rl then
         v1.t.t[i].rup = 1
         v1.t.t[i].rl = math.random(2,20)
       end
     elseif v1.t.t[i].rup == 1 and v1.c.chat.msgs <= 40 then
       if v1.t.t[i].r >= -v1.t.t[i].rl then
-        v1.t.t[i].r = v1.t.t[i].r - math.random(0.1,0.2,0.3,0.4,0.5,1,2)+((-v1.t.t[i].rl-v1.t.t[i].r)/10)
+        v1.t.t[i].r = v1.t.t[i].r - math.random(0.1,0.2,0.3,0.4,0.5,1,2)+((-v1.t.t[i].rl-v1.t.t[i].r)/10)*sys.s
       elseif v1.t.t[i].r < -v1.t.t[i].rl then
         v1.t.t[i].rup = 0
         v1.t.t[i].rl = math.random(2,20)
@@ -147,12 +147,12 @@ function drawTentacles()
       end
     end
     if v1.t.t[i].d == false and v1.c.chat.msgs <= 40 then
-      v1.t.t[i].y = v1.t.t[i].y + v1.t.t[i].sp
+      v1.t.t[i].y = v1.t.t[i].y + v1.t.t[i].sp*sys.s
       if v1.t.t[i].y >= v1.t.t[i].dy then
         v1.t.t[i].rm = true
       end
     elseif v1.t.t[i].d == false and v1.c.chat.msgs <= 40 then
-      v1.t.t[i].y = v1.t.t[i].y - v1.t.t[i].sp
+      v1.t.t[i].y = v1.t.t[i].y - v1.t.t[i].sp*sys.s
       if v1.t.t[i].y <= v1.t.t[i].dy then
         v1.t.t[i].rm = true
       end
