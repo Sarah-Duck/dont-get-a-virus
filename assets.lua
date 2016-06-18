@@ -172,6 +172,7 @@ function loadAssets(id)
   if id == 14 then
     v1.c = {}
     v1.c.chat = {}
+    v1.fadeImg = love.graphics.newImage("assets/fade.png")
     v1.rumbleLoop:setLooping(true)
     v1.turret = {}
     v1.turret[1] = {r=math.rad(30),x=0,y=0,rt=math.rad(30),t=0,tl=1}
