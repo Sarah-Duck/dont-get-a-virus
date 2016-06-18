@@ -150,7 +150,7 @@ function drawVirusFight1()
     end
     if v1.c.chat.msgs > 30 and v1.c.chat.msgs ~= 37 and v1.c.chat.msgs ~= 38 and v1.c.chat.msgs < 41 then
       for i=1,4 do
-        if v1.specialAbi == false then
+        if v1.specialAbi == false or v1.c.chat.msgs <= 20 then
           v1.turret[i].rt = math.atan2((win[4].y+win[4].h/2 - v1.turret[i].y), (win[4].x+win[4].w/2 - v1.turret[i].x))-math.rad(90)
         elseif v1.specialAbi == true and v1.turretTimer < 30 then
           v1.turret[i].rt = 0
