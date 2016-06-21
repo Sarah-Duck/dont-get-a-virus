@@ -25,6 +25,8 @@ function love.update(dt)
   sys.s = 60/fps
   sys.w = love.graphics.getWidth()
   sys.h = love.graphics.getHeight()
+  sys.sw = sys.w/1920
+  sys.sh = sys.h/1080
   minim = sys.h+10
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()

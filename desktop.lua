@@ -34,13 +34,13 @@ function drawDesktop()
   end
   if scene == 2 and v1.c.chat.msgs > 35 then
     love.graphics.setColor(0,0,0,100)
-    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2,sys.h)
-    love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2,sys.h)
+    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2*sys.sw,sys.h*sys.sw)
+    love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2*sys.sw,sys.h)
     drawTentacles()
     removeTentacles()
     love.graphics.setColor(0,0,0,235)
-    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2,sys.h)
-    love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2,sys.h)
+    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2*sys.sw,sys.h)
+    love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2*sys.sw,sys.h)
   end
   for i=1,6 do
     drawIcon(i)
@@ -135,15 +135,15 @@ function drawTentacles()
     end
     if v1.t.t[i].si == 0 then
       if v1.t.t[i].t == 1 then
-        love.graphics.draw(v1.tent1,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90+v1.t.t[i].r),v1.t.t[i].s,v1.t.t[i].sy+v1.t.t[i].syc,16)
+        love.graphics.draw(v1.tent1,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90+v1.t.t[i].r),v1.t.t[i].s*sys.sh,v1.t.t[i].sy*sys.sw+v1.t.t[i].syc,16)
       elseif v1.t.t[i].t == 2 then
-        love.graphics.draw(v1.tent2,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90+v1.t.t[i].r),v1.t.t[i].s,v1.t.t[i].sy+v1.t.t[i].syc,16)
+        love.graphics.draw(v1.tent2,v1.t.t[i].x+v1.t.x,v1.t.t[i].y,math.rad(-90+v1.t.t[i].r),v1.t.t[i].s*sys.sh,v1.t.t[i].sy*sys.sw+v1.t.t[i].syc,16)
       end
     elseif v1.t.t[i].si == 1 then
       if v1.t.t[i].t == 1 then
-        love.graphics.draw(v1.tent1,(-v1.t.t[i].x)+(sys.w-v1.t.x),v1.t.t[i].y,math.rad(90+v1.t.t[i].r),v1.t.t[i].s,v1.t.t[i].sy+v1.t.t[i].syc,16)
+        love.graphics.draw(v1.tent1,(-v1.t.t[i].x)+(sys.w-v1.t.x),v1.t.t[i].y,math.rad(90+v1.t.t[i].r),v1.t.t[i].s*sys.sh,v1.t.t[i].sy*sys.sw+v1.t.t[i].syc,16)
       elseif v1.t.t[i].t == 2 then
-        love.graphics.draw(v1.tent2,(-v1.t.t[i].x)+(sys.w-v1.t.x),v1.t.t[i].y,math.rad(90+v1.t.t[i].r),v1.t.t[i].s,v1.t.t[i].sy+v1.t.t[i].syc,16)
+        love.graphics.draw(v1.tent2,(-v1.t.t[i].x)+(sys.w-v1.t.x),v1.t.t[i].y,math.rad(90+v1.t.t[i].r),v1.t.t[i].s*sys.sh,v1.t.t[i].sy*sys.sw+v1.t.t[i].syc,16)
       end
     end
     if v1.t.t[i].d == false and v1.c.chat.msgs <= 40 then

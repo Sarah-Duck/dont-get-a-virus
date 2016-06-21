@@ -173,7 +173,7 @@ function loadVar()
   v1.t = {}
   v1.t.time = 0
   v1.t.t = {}
-  v1.t.x = -1000
+  v1.t.x = -1000*sys.sw
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
