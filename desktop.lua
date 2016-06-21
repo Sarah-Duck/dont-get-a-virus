@@ -34,7 +34,7 @@ function drawDesktop()
   end
   if scene == 2 and v1.c.chat.msgs > 35 then
     love.graphics.setColor(0,0,0,100)
-    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2*sys.sw,sys.h*sys.sw)
+    love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2*sys.sw,sys.h)
     love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2*sys.sw,sys.h)
     drawTentacles()
     removeTentacles()
