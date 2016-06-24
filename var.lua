@@ -299,6 +299,9 @@ function loadPre()
   loadingId = 1
   time = 0
   fadeOpacity = 0
+  pause = {}
+  pause.p = false
+  pause.esc = false
   sys = {}
   sys.s = 0
   sys.mouse = {}

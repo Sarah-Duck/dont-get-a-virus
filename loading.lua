@@ -33,3 +33,17 @@ function drawBSOD()
     loadRe()
   end
 end
+function drawPause()
+  love.graphics.setBackgroundColor(0,0,120)
+  love.graphics.setColor(256,256,256)
+  love.graphics.draw(pause.pic, sys.w/2, sys.h/2, 0, 1, 1, 320, 200)
+  if love.keyboard.isDown("return") == true then
+    love.event.quit()
+  end
+  if love.keyboard.isDown("escape") == true and pause.esc == false then
+    love.audio.resume()
+    pause.esc = true
+    pause.p = false
+    love.graphics.setBackgroundColor(0, 128, 128)
+  end
+end

@@ -246,6 +246,7 @@ function loadAssets(id)
   if id == 18 then
     bsod = {}
     bsod.pic = love.graphics.newImage("assets/bsod.png")
+    pause.pic = love.graphics.newImage("assets/pause.png")
   end
   if id == 19 then
     loaded = true

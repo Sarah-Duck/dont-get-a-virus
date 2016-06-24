@@ -30,29 +30,21 @@ function love.update(dt)
   minim = sys.h+10
   sys.mouse.x = love.mouse.getX()
   sys.mouse.y = love.mouse.getY()
-  if love.keyboard.isDown("escape") == true then
-    love.event.quit()
+  if love.keyboard.isDown("escape") == true and pause.esc == false and loaded == true and pause.p == false then
+    love.audio.pause()
+    pause.esc = true
+    pause.p = true
+    sys.mouse.p.p = false
   end
-  if love.keyboard.isDown("f4") == true then
-    love.window.setMode(800, 600, {fullscreen=true, fullscreentype="desktop"})
-    for i=1,#win do
-      win[i].update = true
-    end
-  elseif love.keyboard.isDown("f5") == true then
-    love.window.setMode(1280,720,{fullscreen=true, fullscreentype="exclusive"})
-    for i=1,#win do
-      win[i].update = true
-    end
-  end
-  if fade == 1 and fadeOpacity < 255 then
+  if fade == 1 and fadeOpacity < 255 and pause.p == false then
     fadeOpacity = fadeOpacity + 5
-  elseif fade == 0  and fadeOpacity > 0 then
+  elseif fade == 0  and fadeOpacity > 0 and pause.p == false then
     fadeOpacity = fadeOpacity - 5
   end
-  if scene == 1 then
+  if scene == 1 and pause.p == false then
     updateSystem(dt)
   end
-  if loaded == true then
+  if loaded == true and pause.p == false then
     if v1.yes == true and v1.complete == false then
       v1.timer = v1.timer + dt
     end
@@ -89,6 +81,9 @@ function love.keyreleased(key)
      v1.c.health = v1.c.health - 5
      v1.spm = v1.spm + 0.5*(sys.h/1080)
    end
+   if key == "escape" then
+     pause.esc = false
+   end
 end
 function love.mousereleased(x, y, button)
   if scene ~= 0 then
@@ -105,7 +100,9 @@ function love.mousereleased(x, y, button)
   end
 end
 function love.draw()
-  if scene == 1 then
+  if pause.p == true then
+    drawPause()
+  elseif scene == 1 then
     drawSystem()
   elseif scene == 0 then
     drawLoading()
