@@ -30,12 +30,27 @@ function drawInternet()
   love.graphics.setStencilTest()
 end
 function updateInternet()
+  if layer[1] == 2 then
+    internet.blinkTimer = internet.blinkTimer + delta
+    if internet.blinkTimer >= 0.5 then
+      if internet.blink == true then
+        internet.blink = false
+      else
+        internet.blink = true
+      end
+      internet.blinkTimer = 0
+    end
+  else
+    internet.blinkTimer = 0
+  end
   internet.urlold = internet.url
   function love.keypressed(key)
     if key == "backspace" and layer[1] == 2 and v1.yes == false then
       internet.url = string.sub(internet.url, 1, string.len(internet.url)-1)
       if internet.url ~= internet.urlold then
         win[2].update = true
+        internet.blink = true
+        internet.blinkTimer = 0
       end
     end
     if key == "return" and layer[1] == 2 then
@@ -49,6 +64,8 @@ function updateInternet()
       internet.url = internet.url .. t
       if internet.url ~= internet.urlold then
         win[2].update = true
+        internet.blink = true
+        internet.blinkTimer = 0
       end
     end
   end
@@ -61,4 +78,15 @@ function updateInternet()
 end
 function internetStencil()
   love.graphics.rectangle("fill", 8, 74, 600, internet.load)
+end
+function internetBlink()
+  if layer[1] == 2 then
+    if internet.blink == true then
+      return "|"
+    else
+      return ""
+    end
+  else
+    return ""
+  end
 end

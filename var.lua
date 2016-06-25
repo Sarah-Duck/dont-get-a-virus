@@ -124,6 +124,8 @@ function loadVar()
   internet.urlold = internet.url
   internet.urlc = internet.url
   internet.load = 0
+  internet.blinkTimer = 0
+  internet.blink = false
   v1.yes = false
   v1.timer = 0
   v1.shakemin = 0
