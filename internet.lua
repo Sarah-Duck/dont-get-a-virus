@@ -13,13 +13,13 @@ function drawInternet()
   love.graphics.setColor(255, 255, 255)
   love.graphics.draw(internet.back, 11, 32)
   love.graphics.setColor(colors.font.dark)
-  love.graphics.print(internet.url, 70, 44)
+  love.graphics.print(internet.url .. internetBlink(), 70, 44)
   love.graphics.stencil(internetStencil, "replace", 1)
   love.graphics.setStencilTest("greater", 0)
   love.graphics.setColor(255, 255, 255)
-  if internet.urlc == "www.homepage.com" then
+  if internet.urlc == "www.homepage.com" or internet.urlc == "homepage.com" then
     love.graphics.draw(internet.welcome, 8, 74)
-  elseif internet.urlc == "www.freedownloads.com" then
+  elseif internet.urlc == "www.freedownloads.com" or internet.urlc == "freedownloads.com" then
     love.graphics.draw(internet.freedownloads1, 8, 74)
     if v1.complete == false then
       v1.yes = true
