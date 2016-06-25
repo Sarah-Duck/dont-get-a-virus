@@ -50,9 +50,9 @@ function drawVirusFight1()
       end
       love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
       if av.fireb == true then
-        drawUpBox(win[4].x+138/2+71+av.shakex, win[4].y+93+av.shakey, 56, 19, 2)
+        drawUpBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
       else
-        drawDownBox(win[4].x+138/2+71+av.shakex, win[4].y+93+av.shakey, 56, 19, 2)
+        drawDownBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
       end
       love.graphics.setColor(colors.font.dark)
       love.graphics.print("FIRE", win[4].x+138/2+76+av.shakex, win[4].y+99+av.shakey)
@@ -93,8 +93,8 @@ function drawVirusFight1()
       if av.charge ~= 40 then
         av.fireb = false
       end
-      if (sys.mouse.p.x >= win[4].x+138/2+71 and sys.mouse.p.x <= (win[4].x+138/2+71)+56 and av.fireb == true and av.charge == 40
-      and sys.mouse.p.y >= win[4].y+93 and sys.mouse.p.y <= (win[4].y+93)+19 and sys.mouse.drag == false and sys.mouse.p.p == true) then
+      if (sys.mouse.p.x >= win[4].x+138/2+71-3 and sys.mouse.p.x <= (win[4].x+138/2+71-3)+56+6 and av.fireb == true and av.charge == 40
+      and sys.mouse.p.y >= win[4].y+93-3 and sys.mouse.p.y <= (win[4].y+93-3)+19+6 and sys.mouse.drag == false and sys.mouse.p.p == true) then
         av.fire = true
         av.fireb = false
         av.charge = 0

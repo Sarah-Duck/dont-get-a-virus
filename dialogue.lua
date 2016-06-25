@@ -96,7 +96,7 @@ function loadDia()
   v1.msgs[31] = "You won't stand a chance against these lasers!"
   v1.msgs[32] = "They don't actually harm you, they stall you. Leaving you helpless as I take over!"
   v1.msgs[33] = "Green bullets drain your energy, red ones drop the window, yellow ones making it move on its own!"
-  v1.msgs[34] = "In fact, it'll take me exactly 5 minutes! I'll put a timer on the bottom or something."
+  v1.msgs[34] = "It'll take me exactly 5 minutes to take over! I'll put a timer on the bottom or something."
   v1.msgs[35] = "Now, it's time to get wriggity wriggity rekt son!"
   v1.msgs[37] = "NO! MY SHIP! I WORKED REALLY HARD ON THAT! IT'LL TAKE WEEKS TO GET ALL THE PARTS AGAIN!"
   v1.msgs[39] = "I WILL STILL DESTROY YOU! I'll just have to do it the old fasioned way!"
