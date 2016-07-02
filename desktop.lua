@@ -8,6 +8,9 @@ function drawDesktop()
       love.graphics.setColor(256,256,256)
       love.graphics.draw(v1.scorch, win[2].x-300, win[2].y-100)
     end
+    if v1.timer >= 16 and v1.c.chat.msgs < 2 then
+      drawVirus1StartThing()
+    end
     if expl.deb.load == false then
       expl.deb[1].x = win[2].x
       expl.deb[1].y = win[2].y

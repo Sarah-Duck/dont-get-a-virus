@@ -34,93 +34,7 @@ function drawVirusFight1()
     expl.frame = 1
   end
   if v1.c.chat.msgs > 7 then
-    orderWindows()
-    if antivirus.status ~= "VIRUS FOUND!" or v1.c.chat.msgs < 12 then
-      love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
-    elseif antivirus.status == "VIRUS FOUND!" and v1.c.chat.msgs >= 12 then
-      if av.transform == false then
-        win[4].w = 342
-        win[4].x = win[4].x - 138/2
-        av.transform = true
-      end
-      if av.gun == 98 then
-        love.graphics.draw(antivirus.gun, win[4].x+138/2+99+av.shakex, win[4].y+5-av.gun+av.shakey, 0, win[4].s, win[4].s, 12)
-      elseif av.gun ~= 98 and av.wings == 138/2 then
-        love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
-      end
-      love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
-      if av.fireb == true then
-        drawUpBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
-      else
-        drawDownBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
-      end
-      love.graphics.setColor(colors.font.dark)
-      love.graphics.print("FIRE", win[4].x+138/2+76+av.shakex, win[4].y+99+av.shakey)
-      love.graphics.setColor(255,255,255)
-      drawDownBox(win[4].x+138/2+79-1+av.shakex, win[4].y+40-1+av.shakey, 42, 42, 2)
-      love.graphics.stencil(chargeStencil, "replace", 1)
-      love.graphics.setStencilTest("greater", 0)
-      love.graphics.draw(antivirus.charge, win[4].x+138/2+79+av.shakex, win[4].y+40+av.shakey)
-      love.graphics.setStencilTest()
-      if av.wings >= 138/2 then
-        av.wings = 138/2
-        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
-        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
-      elseif av.wings < 138/2 then
-        antivirus.open:play()
-        av.wings = av.wings + 0.5*sys.s
-        love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
-        love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
-      end
-      if av.shake > 0 then
-        av.shakex = math.random(av.shake,-av.shake)
-        av.shakey = math.random(av.shake,-av.shake)
-        av.shake = av.shake - 0.1*sys.s
-      elseif av.shake < 0 then
-        av.shake = 0
-        av.shakex = 0
-        av.shakey = 0
-      end
-      if av.gun == 10 then
-        antivirus.opengun:play()
-      end
-      if av.wings == 138/2 and av.gun < 98 then
-        av.gun = av.gun + 1*sys.s
-      end
-      if av.gun > 98 then
-        av.gun = 98
-      end
-      if av.charge ~= 40 then
-        av.fireb = false
-      end
-      if (sys.mouse.p.x >= win[4].x+138/2+71-3 and sys.mouse.p.x <= (win[4].x+138/2+71-3)+56+6 and av.fireb == true and av.charge == 40
-      and sys.mouse.p.y >= win[4].y+93-3 and sys.mouse.p.y <= (win[4].y+93-3)+19+6 and sys.mouse.drag == false and sys.mouse.p.p == true) then
-        av.fire = true
-        av.fireb = false
-        av.charge = 0
-        if v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
-          v1.c.chat.msgs = v1.c.chat.msgs + 1
-          v1.c.chat.char = 0
-        end
-      end
-      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40) and av.charge == 40 then
-        av.fireb = true
-      end
-      if av.charge < 40 then
-        av.charge = av.charge + (math.random(4,12,25,40,5,2,10)*delta)/di
-      elseif av.charge > 40 then
-        av.charge = 40
-      end
-      if av.fire == true then
-        addBullet(win[4].x+138/2+99,win[4].y+5-av.gun,math.rad(-90),25,"av")
-        if antivirus.laser:isPlaying() == true then
-          antivirus.laser:rewind()
-        else
-          antivirus.laser:play()
-        end
-        av.fire = false
-      end
-    end
+    drawAntivirusFight()
   end
   if v1.timer >= 16 and v1.c.chat.msgs < 36 then
     music.tension1:play()
@@ -369,7 +283,7 @@ function drawVirusFight1()
           -math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].x
           local y = math.sin(v1.turret[i].r+math.rad(90))*(v1.turret[i].x+148-v1.turret[i].x)
           +math.cos(v1.turret[i].r+math.rad(90))*(v1.turret[i].y-v1.turret[i].y)+v1.turret[i].y
-          addBullet(x,y,v1.turret[i].r+math.rad(90),((8*(0.75+(v1.spm/4)))*(sys.h/1080))*di,"v1",math.random(1,5))
+          addBullet(x,y,v1.turret[i].r+math.rad(90),((6*(0.75+(v1.spm/4)))*(sys.h/1080))*di,"v1",math.random(1,5))
           if v1.laserSound:isPlaying() == true then
             v1.laserSound:rewind()
           else
@@ -504,14 +418,7 @@ function drawVirusFight1()
       end
     end
   end
-  if v1.timer >= 16 then
-    love.graphics.setColor(255,255,255)
-    if win[2].y+v1.c.slime.y >= v1.c.monitorspin.y then
-      playAnimation(v1.c.slime, true, win[2].x+v1.c.slime.x+math.random(1,4), win[2].y+v1.c.slime.y+math.random(1,4), 0, 2.5, 25, 25, 0.5)
-      playAnimation(v1.c.monitorspin, true, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y, 0, 1, 100, 100, v1.c.monitorspin.sp)
-      v1.c.slime.y = v1.c.slime.y - 0.5*sys.s
-      v1.c.monitorspin.y = v1.c.monitorspin.y + 1.5*sys.s
-    end
+  if v1.timer >= 16 and v1.c.chat.msgs < 2 then
     if win[2].y+v1.c.slime.y <= v1.c.monitorspin.y+100 and v1.c.shine.s > -70 then
       love.graphics.setColor(255,255,255,v1.c.shine.opa)
       if v1.shineplay == false then
@@ -557,10 +464,6 @@ function drawVirusFight1()
         v1.c.shine.s = v1.c.shine.s - 0.5*sys.s
         v1.c.shine.opa = v1.c.shine.opa - 5*sys.s
       end
-    end
-    if v1.timer < 20 then
-      love.graphics.setColor(255,255,255)
-      love.graphics.draw(v1.scorchMask, win[2].x-300, win[2].y-100)
     end
   end
   if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
@@ -708,4 +611,110 @@ function drawBullets()
 end
 function chargeStencil()
    love.graphics.rectangle("fill", win[4].x+138/2+79, win[4].y+40+40, 40, -av.charge)
+end
+function drawVirus1StartThing()
+  love.graphics.setColor(255,255,255)
+  if win[2].y+v1.c.slime.y >= v1.c.monitorspin.y then
+    playAnimation(v1.c.slime, true, win[2].x+v1.c.slime.x+math.random(1,4), win[2].y+v1.c.slime.y+math.random(1,4), 0, 2.5, 25, 25, 0.5)
+    playAnimation(v1.c.monitorspin, true, win[2].x+v1.c.monitorspin.x, v1.c.monitorspin.y, 0, 1, 100, 100, v1.c.monitorspin.sp)
+    v1.c.slime.y = v1.c.slime.y - 0.5*sys.s
+    v1.c.monitorspin.y = v1.c.monitorspin.y + 1.5*sys.s
+  end
+  if v1.timer < 20 then
+    love.graphics.setColor(255,255,255)
+    love.graphics.draw(v1.scorchMask, win[2].x-300, win[2].y-100)
+  end
+end
+function drawAntivirusFight()
+  orderWindows()
+  if antivirus.status ~= "VIRUS FOUND!" or v1.c.chat.msgs < 12 then
+    love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+  elseif antivirus.status == "VIRUS FOUND!" and v1.c.chat.msgs >= 12 then
+    if av.transform == false then
+      win[4].w = 342
+      win[4].x = win[4].x - 138/2
+      av.transform = true
+    end
+    if av.gun == 98 then
+      love.graphics.draw(antivirus.gun, win[4].x+138/2+99+av.shakex, win[4].y+5-av.gun+av.shakey, 0, win[4].s, win[4].s, 12)
+    elseif av.gun ~= 98 and av.wings == 138/2 then
+      love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
+    end
+    love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
+    if av.fireb == true then
+      drawUpBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
+    else
+      drawDownBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
+    end
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("FIRE", win[4].x+138/2+76+av.shakex, win[4].y+99+av.shakey)
+    love.graphics.setColor(255,255,255)
+    drawDownBox(win[4].x+138/2+79-1+av.shakex, win[4].y+40-1+av.shakey, 42, 42, 2)
+    love.graphics.stencil(chargeStencil, "replace", 1)
+    love.graphics.setStencilTest("greater", 0)
+    love.graphics.draw(antivirus.charge, win[4].x+138/2+79+av.shakex, win[4].y+40+av.shakey)
+    love.graphics.setStencilTest()
+    if av.wings >= 138/2 then
+      av.wings = 138/2
+      love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+      love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+    elseif av.wings < 138/2 then
+      antivirus.open:play()
+      av.wings = av.wings + 0.5*sys.s
+      love.graphics.draw(antivirus.left, win[4].x+138/2-av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
+      love.graphics.draw(antivirus.right, win[4].x+138/2+97+av.wings+math.random(-1,1)+av.shakex, win[4].y+math.random(-1,1)+av.shakey, 0, win[4].s)
+    end
+    if av.shake > 0 then
+      av.shakex = math.random(av.shake,-av.shake)
+      av.shakey = math.random(av.shake,-av.shake)
+      av.shake = av.shake - 0.1*sys.s
+    elseif av.shake < 0 then
+      av.shake = 0
+      av.shakex = 0
+      av.shakey = 0
+    end
+    if av.gun == 10 then
+      antivirus.opengun:play()
+    end
+    if av.wings == 138/2 and av.gun < 98 then
+      av.gun = av.gun + 1*sys.s
+    end
+    if av.gun > 98 then
+      av.gun = 98
+    end
+    if av.charge ~= 40 then
+      av.fireb = false
+    end
+    if (sys.mouse.p.x >= win[4].x+138/2+71-3 and sys.mouse.p.x <= (win[4].x+138/2+71-3)+56+6 and av.fireb == true and av.charge == 40
+    and sys.mouse.p.y >= win[4].y+93-3 and sys.mouse.p.y <= (win[4].y+93-3)+19+6 and sys.mouse.drag == false and sys.mouse.p.p == true) then
+      av.fire = true
+      av.fireb = false
+      av.charge = 0
+      if scene == 2 then
+        if v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 then
+          v1.c.chat.msgs = v1.c.chat.msgs + 1
+          v1.c.chat.char = 0
+        end
+      end
+    end
+    if scene == 2 then
+      if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40) and av.charge == 40 then
+        av.fireb = true
+      end
+    end
+    if av.charge < 40 then
+      av.charge = av.charge + (math.random(4,12,25,40,5,2,10)*delta)/di
+    elseif av.charge > 40 then
+      av.charge = 40
+    end
+    if av.fire == true then
+      addBullet(win[4].x+138/2+99,win[4].y+5-av.gun,math.rad(-90),25,"av")
+      if antivirus.laser:isPlaying() == true then
+        antivirus.laser:rewind()
+      else
+        antivirus.laser:play()
+      end
+      av.fire = false
+    end
+  end
 end
