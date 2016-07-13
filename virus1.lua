@@ -124,7 +124,53 @@ function drawVirusFight1()
     elseif v1.c.eyety < v1.c.y-28+v1.c.eyey and v1.c.eyey > -10 then
       v1.c.eyey = v1.c.eyey - 3*sys.s
     end
+    v1.lid.bTimer = v1.lid.bTimer - delta
+    if v1.lid.bTimer <= 0 then
+      v1.lid.b = true
+    end
+    if v1.lid.b == true then
+      v1.lid.lowyd = 0
+      v1.lid.upyd = 0
+    end
+    if v1.lid.upy == 0 and v1.lid.lowy == 0 then
+      v1.lid.lowyd = 25
+      v1.lid.upyd = -25
+      v1.lid.b = false
+      v1.lid.bTimer = math.random(4,8)
+    end
+    if v1.lid.lowy > v1.lid.lowyd then
+      if v1.lid.lowy - 3*sys.s < v1.lid.lowyd then
+        v1.lid.lowy = v1.lid.lowyd
+      else
+        v1.lid.lowy = v1.lid.lowy - 3*sys.s
+      end
+    elseif v1.lid.lowy < v1.lid.lowyd then
+      if v1.lid.lowy + 3*sys.s > v1.lid.lowyd then
+        v1.lid.lowy = v1.lid.lowyd
+      else
+        v1.lid.lowy = v1.lid.lowy + 3*sys.s
+      end
+    end
+    if v1.lid.upy > v1.lid.upyd then
+      if v1.lid.upy - 3*sys.s < v1.lid.upyd then
+        v1.lid.upy = v1.lid.upyd
+      else
+        v1.lid.upy = v1.lid.upy - 3*sys.s
+      end
+    elseif v1.lid.upy < v1.lid.upyd then
+      if v1.lid.upy + 3*sys.s > v1.lid.upyd then
+        v1.lid.upy = v1.lid.upyd
+      else
+        v1.lid.upy = v1.lid.upy + 3*sys.s
+      end
+    end
     love.graphics.draw(v1.c.pupil, v1.c.x+7+v1.c.eyex+math.random(0,0.5)+v1.shakex, v1.c.y-28+v1.c.eyey+math.random(0,0.5)+v1.shakey, v1.c.r, v1.c.s*1.2, v1.c.s*1.2, 3, 11)
+    if v1.lid.upy ~= -25 then
+      love.graphics.draw(v1.lidup, v1.c.x-43+v1.shakex, v1.c.y-58+v1.lid.upy+v1.shakey, v1.c.r, v1.c.s*1.1)
+    end
+    if v1.lid.lowy ~= 25 then
+      love.graphics.draw(v1.lidlow, v1.c.x-43+v1.shakex, v1.c.y-58+v1.lid.lowy+v1.shakey, v1.c.r, v1.c.s*1.1)
+    end
     playAnimation(v1.c.idle, true, v1.c.x+v1.shakex, v1.c.y+v1.shakey, v1.c.r, v1.c.s, 100, 100, 0.5)
     if v1.c.chat.msgs > 28 and expl.frame <= 10 then
       v1.turret[1].x = v1.c.x-615/2-10+v1.shakex

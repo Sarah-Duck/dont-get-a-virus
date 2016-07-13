@@ -176,6 +176,13 @@ function loadVar()
   v1.t.time = 0
   v1.t.t = {}
   v1.t.x = -1000*sys.sw
+  v1.lid = {}
+  v1.lid.lowy = 25
+  v1.lid.upy = -25
+  v1.lid.lowyd = 25
+  v1.lid.upyd = -25
+  v1.lid.bTimer = math.random(4,8)
+  v1.lid.b = false
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

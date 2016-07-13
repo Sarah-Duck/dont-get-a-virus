@@ -166,7 +166,9 @@ function loadAssets(id)
       shipBack = love.graphics.newImage("assets/virus1_ship_back.png"),
       rumbleLoop = love.audio.newSource("assets/rumble_loop.ogg"),
       tent1 = love.graphics.newImage("assets/tentacle1.png"),
-      tent2 = love.graphics.newImage("assets/tentacle2.png")
+      tent2 = love.graphics.newImage("assets/tentacle2.png"),
+      lidup = love.graphics.newImage("assets/v1_upper_eyelid.png"),
+      lidlow = love.graphics.newImage("assets/v1_lower_eyelid.png")
     }
   end
   if id == 14 then
