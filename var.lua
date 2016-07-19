@@ -183,6 +183,7 @@ function loadVar()
   v1.lid.upyd = -25
   v1.lid.bTimer = math.random(4,8)
   v1.lid.b = false
+  v2.pop.p = {}
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
