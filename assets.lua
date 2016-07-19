@@ -117,6 +117,12 @@ function loadAssets(id)
       offline = love.graphics.newImage("assets/chat_status_offline.png"),
       profile = love.graphics.newImage("assets/chat_profile.png")
     }
+    v2 = {}
+    v2.pop = {}
+    v2.pop.a = {}
+    for i=1,10 do
+      v2.pop.a[i] = love.graphics.newImage("assets/popup" .. i .. ".png")
+    end
   end
   if id == 10 then
     internet = {
