@@ -184,6 +184,8 @@ function loadVar()
   v1.lid.bTimer = math.random(4,8)
   v1.lid.b = false
   v2.pop.p = {}
+  v2.pop.add = false
+  v2.pop.hov = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
