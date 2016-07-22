@@ -61,6 +61,7 @@ function loadVar()
   loadWin(7, 400, 400, "Image Viewer", nil, icons[16].image)
   loadWin(8, 400, 300, "Video Player", nil, icons[16].video)
   loadWin(9, 250, 150, "Music Player", nil, icons[16].music)
+  loadWin(10, 350, 500, "Document Viewer", nil, icons[16].document)
   win[4].crazy = false
   win[4].crazyLeft = false
   win[4].crazyUp = false
@@ -265,6 +266,9 @@ function loadVar()
   file.p = false
   file.back = false
   picture.img = 0
+  doc = {}
+  doc.doc = ""
+  loadDocuments()
   mplay = {}
   mplay.volx = 232
   mplay.volpx = mplay.volx

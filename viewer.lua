@@ -1,3 +1,12 @@
+function drawDocuments()
+  drawDownBox(8, 31, win[10].w-17, win[10].h-40, 4)
+  love.graphics.setColor(256,256,256)
+  love.graphics.rectangle("fill", 8, 31, win[10].w-17, win[10].h-40)
+  love.graphics.setFont(pixeloperators)
+  love.graphics.setColor(colors.font.dark)
+  love.graphics.printf(doc.doc, 8+30, 31+30, win[10].w-17-60, "left")
+  love.graphics.setFont(pressstart)
+end
 function drawPicture()
   drawDownBox(8, 31, win[7].w-17, win[7].h-40, 4)
   if picture.img ~= 0 then

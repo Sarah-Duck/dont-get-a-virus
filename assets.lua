@@ -21,7 +21,8 @@ function loadAssets(id)
       antivirus = love.graphics.newImage("assets/icon_16_antivirus.png"),
       image = love.graphics.newImage("assets/icon_16_image.png"),
       video = love.graphics.newImage("assets/icon_16_video.png"),
-      music = love.graphics.newImage("assets/icon_16_music.png")
+      music = love.graphics.newImage("assets/icon_16_music.png"),
+      document = love.graphics.newImage("assets/icon_16_document.png")
     }
   end
   if id == 3 then

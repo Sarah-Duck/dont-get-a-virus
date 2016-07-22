@@ -32,6 +32,8 @@ function drawWindow(id)
       drawMusic()
     elseif id == 8 then
       drawVideo()
+    elseif id == 10 then
+      drawDocuments()
     end
     love.graphics.setCanvas()
     win[id].update = false
