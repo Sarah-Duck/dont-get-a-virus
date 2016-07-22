@@ -188,3 +188,26 @@ function updateMusic()
     mplay.volpx = mplay.volx
   end
 end
+function loadDocuments()
+  doc.help = "This game functions like a parody of the Windows 98 operating system, with " ..
+  "similarly styled programs and such. Using your antivirus, you fend off " ..
+  "different computer viruses whose sole purpose is to destroy your computer. If you can't beat them in time, you lose! " ..
+  "To control the antivirus, you drag it around " ..
+  "like you would a window on your computer, and press the fire button to shoot " ..
+  "your enemies! The health bar on the bottom indicates the viruses health, and the timer " ..
+  "displays how much time is left. A difficulty setting is present in the settings menu, " ..
+  "if you are finding it too challenging/easy. To activate the fight, follow the instructions from " ..
+  "your best friend, in the chat window. Good luck, and have fun!"
+  doc.credits = [[Created By
+  Chris B.
+
+  Created With
+  Love2D, Blender, GIMP, Audacity, and Atom
+
+  Music
+  ‘Thrills And Spills’ By Jay Man - OurMusicBox
+  ‘Storm Chasers’ By Silent Partner
+
+  Sound Effects
+  Freesound.org and the Youtube Audio Library]]
+end

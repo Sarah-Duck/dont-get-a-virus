@@ -86,6 +86,15 @@ function updateFiles()
             win[7].update = true
           end
           openFileWindow(7)
+        elseif files == f.documents then
+          if i == 1 and doc.doc ~= doc.help then
+            doc.doc = doc.help
+            win[10].update = true
+          elseif i == 2 and doc.doc ~= doc.credits then
+            doc.doc = doc.credits
+            win[10].update = true
+          end
+          openFileWindow(10)
         elseif files == f.videos then
           if i == 1 and vplay.v ~= video.attacktortoise then
             if vplay.v ~= 0 then

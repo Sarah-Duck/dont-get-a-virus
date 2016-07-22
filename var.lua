@@ -251,6 +251,8 @@ function loadVar()
   f.pictures[1] = {name="cat.jpg",x=0,y=0,hl=false}
   f.pictures[2] = {name="art.jpg",x=0,y=0,hl=false}
   f.documents = {}
+  f.documents[1] = {name="Help",x=0,y=0,hl=false}
+  f.documents[2] = {name="Credits",x=0,y=0,hl=false}
   f.music = {}
   f.music[1] = {name="chill.mp3",x=0,y=0,hl=false}
   f.music[2] = {name="rage.mp3",x=0,y=0,hl=false}
