@@ -124,3 +124,130 @@ function loadDia()
     v1.msgs[52] = "Just fuck off!"
   end
 end
+function chatReply(m)
+  if string.find(m, "virus") ~= nil and msg.c > 6 then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "I don't think theres a virus...",
+        "The site says theres no virus.",
+        "Who cares, get a free game!",
+        "Doesn't matter, free game!"
+      }
+    })
+  elseif string.find(m, "hello") ~= nil or string.find(m, "hi") ~= nil or string.find(m, "ayy") ~= nil or string.find(m, "hey") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "Hi!",
+        "Ayyy!",
+        "Wazzzup!",
+        "Hello!",
+        "Hey!"
+      }
+    })
+  elseif string.find(m, "whats up") ~= nil or string.find(m, "wazzup") ~= nil or string.find(m, "hows it going") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "I'm great",
+        "I'm doin' fine! ;D",
+        "Im pretty good!",
+        "I'm pretty chill!",
+        "Everythings great!"
+      }
+    })
+  elseif string.find(m, "fuck you") ~= nil or string.find(m, "fuck u") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "Go on and do it then!",
+        "Gladly, let's do it!",
+        "I love you too <3",
+        "Fuck me? Go ahead!",
+        "I know you love me :3"
+      }
+    })
+  elseif string.find(m, "duty of call") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "I love that game!",
+        "It's my fav game!",
+        "Such a good game!",
+        "I love Duty of Call!",
+        "I'm a fan of DoC!"
+      }
+    })
+  elseif string.find(m, "call of duty") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "What's what?",
+        "What's Call of Duty?",
+        "I don't want to get sued.",
+        "Never heard of it.",
+        "Please don't sue me."
+      }
+    })
+  elseif string.find(m, "whats your name") ~= nil or string.find(m, "what is your name") ~= nil then
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "I can't say.",
+        "You'll never know.",
+        "Be quiet, they're listening!!",
+        "It isn't Greg.",
+        "I don't know.",
+        "I'm not real, silly.",
+        "You don't remember? :("
+      }
+    })
+  elseif string.find(m, "i love you") ~= nil then
+    chat.profilename = "Your Lover"
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "I know <3",
+        "Awww :3",
+        "We'll bang, OK?",
+        "Same.",
+        "Welcome to the LGBT community!",
+        "I could always tell! <3",
+        "This is like that movie 'her'",
+        "I'm glad you're outta the closet!",
+        "Rawr! *nuzzles u* :3",
+        "Are you a robophile?"
+      }
+    })
+  elseif string.find(m, "i hate you") ~= nil then
+    chat.profilename = "Your Enemy"
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        ":(",
+        "Oh...",
+        "Lol, umm...",
+        "I thought we were friends?",
+        "Whatever I did im sorry..!",
+        "But you're my only friend...",
+        "I don't know how to respond..",
+        "You and your jokes... right..?",
+        "I'll pretend i didn't read that"
+      }
+    })
+  elseif string.find(m, "im sorry") ~= nil or string.find(m, "sorry") ~= nil and chat.profilename == "Your Enemy" then
+    chat.profilename = "Best Friend"
+    table.insert(msg.r, {
+      t = 1,
+      r = {
+        "Thank you!",
+        "Im so glad!",
+        "Thank god!",
+        "I forgive you!",
+        "Thanks!",
+        "Best friends forever!"
+      }
+    })
+  end
+end
