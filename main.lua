@@ -98,6 +98,9 @@ function love.mousereleased(x, y, button)
     vplay.drag = false
     mplay.pr = false
     vplay.pr = false
+    if layer[1] == 1 then
+      win[1].update = true
+    end
   end
 end
 function love.draw()

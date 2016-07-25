@@ -97,6 +97,10 @@ function loadVar()
   av.shakey = 0
   chat.status = 0
   chat.profilename = "Best Friend"
+  chat.msg = ""
+  chat.msgold = ""
+  chat.blink = false
+  chat.blinkTimer = 0.5
   colors = {}
   colors.win = {}
   colors.win.light = {220,220,220}
@@ -119,6 +123,7 @@ function loadVar()
   msg = {}
   msg.new = false
   msg.c = 1
+  msg.r = {}
   msg.msgs = {}
   msgs = {}
   internet.url = "www.homepage.com"

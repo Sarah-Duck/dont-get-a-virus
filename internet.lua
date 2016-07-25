@@ -58,6 +58,21 @@ function updateInternet()
       win[2].update = true
       internet.load = 0
     end
+    if key == "backspace" and layer[1] == 1 and v1.yes == false then
+      chat.msg = string.sub(chat.msg, 1, string.len(chat.msg)-1)
+      if chat.msg ~= chat.msgold then
+        win[1].update = true
+        chat.blink = true
+        chat.blinkTimer = 0.5
+      end
+    end
+    if key == "return" and layer[1] == 1 and chat.msg ~= "" then
+      sendMessage(2, chat.msg)
+      if chat.status == 1 then
+        chatReply(string.lower(chat.msg))
+      end
+      chat.msg = ""
+    end
   end
   function love.textinput(t)
     if layer[1] == 2 and v1.yes == false then
@@ -66,6 +81,16 @@ function updateInternet()
         win[2].update = true
         internet.blink = true
         internet.blinkTimer = 0
+      end
+    end
+    if layer[1] == 1 and v1.yes == false then
+      if string.len(chat.msg) < 18 then
+        chat.msg = chat.msg .. t
+      end
+      if chat.msg ~= chat.msgold then
+        win[1].update = true
+        chat.blink = true
+        chat.blinkTimer = 0.5
       end
     end
   end
