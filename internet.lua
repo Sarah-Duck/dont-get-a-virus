@@ -107,7 +107,7 @@ end
 function internetBlink()
   if layer[1] == 2 then
     if internet.blink == true then
-      return "|"
+      return "_"
     else
       return ""
     end
