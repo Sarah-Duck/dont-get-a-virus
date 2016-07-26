@@ -77,7 +77,7 @@ function loadDia()
   if virus1Pissed == false then
     v1.msgs[23] = "Whatever. You had your chance! Now it's time to destory you!"
   else
-    v1.msgs[23] = "I already played you're little games last time, and I won't fall for it again!"
+    v1.msgs[23] = "I already played your little games last time, and I won't fall for it again!"
   end
   if virus1Lose == 0 then
     v1.msgs[25] = "Ouch! It's stronger than I thought! No matter, because I have defenses of my own!"
@@ -117,7 +117,7 @@ function loadDia()
   if virus1Lose <= 1 then
     v1.msgs[50] = "AAAAHAHAHAH! I WIN YET AGAIN! ANOTHER COMPUTER, DOMINATED BY ME!!! AAAAAHAHAHA!!!"
     v1.msgs[51] = "I WIN! YOU LOSE! JUST LIKE IT'S MEANT TO BE! JUST LIKE IT ALWAYS WILL BE!"
-    v1.msgs[52] = "AND FOR THE GRAND FINALE, YOUR COMPUTER IS DESTORYED! HAHAHA!!!"
+    v1.msgs[52] = "AND FOR THE GRAND FINALE, YOUR COMPUTER IS DESTROYED! HAHAHA!!!"
   elseif virus1Lose >= 2 then
     v1.msgs[50] = "Yaddah Yaddah Yaddah, I win... Blah blah blah, you lose."
     v1.msgs[51] = "Seriously! I won, okay?! Stop reseting and being such a sore loser!"
