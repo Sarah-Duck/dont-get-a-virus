@@ -198,16 +198,20 @@ function loadDocuments()
   "displays how much time is left. A difficulty setting is present in the settings menu, " ..
   "if you are finding it too challenging/easy. To activate the fight, follow the instructions from " ..
   "your best friend, in the chat window. Good luck, and have fun!"
-  doc.credits = [[Created By
-  Chris B.
+  doc.credits = [[‘Don't Get a Virus’
+Created By Chris Bradley
+Created With Love2D, Blender, GIMP, Audacity, and Atom
 
-  Created With
-  Love2D, Blender, GIMP, Audacity, and Atom
+-Music-
+‘Thrills And Spills’ By Jay Man - OurMusicBox
+‘Storm Chasers’, ‘Close my Mouth’ By Silent Partner
+‘Down N' Dirty’ By Jingle Punks
+‘Fight or Flight’ By Ethan Meixsell
+How it Begins Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+‘Ich Grolle Nicht’ By Rox Meixsell and Wahneta Meixsell
 
-  Music
-  ‘Thrills And Spills’ By Jay Man - OurMusicBox
-  ‘Storm Chasers’ By Silent Partner
-
-  Sound Effects
-  Freesound.org and the Youtube Audio Library]]
+-Sound Effects-
+Freesound.org and the Youtube Audio Library]]
 end
