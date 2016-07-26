@@ -123,6 +123,20 @@ function loadDia()
     v1.msgs[51] = "Seriously! I won, okay?! Stop reseting and being such a sore loser!"
     v1.msgs[52] = "Just fuck off!"
   end
+  v2.msgs[1] = "Surprise! How do ya do?"
+  v2.msgs[2] = "So let me tell you a story, yes? I was traversing the internet and I found somthin' neat!"
+  v2.msgs[3] = "A computer, this very computer, with its entire security system down!"
+  v2.msgs[4] = "The firewall was down! The antivirus was preoccupied!"
+  v2.msgs[5] = "So little ol' me just quietly slipped in during the battle! That was quite a fight you put up!"
+  v2.msgs[6] = "That little runt was pretty full of himself! The strongest virus? HA! Yeah right."
+  v2.msgs[7] = "He was stupid too, all he wanted was destruction. That's it!"
+  v2.msgs[8] = "Sure, destruction is fun..."
+  v2.msgs[9] = "But why not make a little money first?"
+  v2.msgs[10] = "After you make a good amount o' cash, THAT is when you destory them!"
+  v2.msgs[11] = "I don't need time to destory this computer. I just need my cold hard cash! 1000$ will do!"
+  v2.msgs[12] = "I have to give that aggorant punk some credit, he did leave your door wide open for me!"
+  v2.msgs[13] = "He was oddly specific when explaining the fight, so I'll assume you know how this works!"
+  v2.msgs[14] = "So, lets get to work... shall we?"
 end
 function chatReply(m)
   if string.find(m, "virus") ~= nil and msg.c > 6 then
