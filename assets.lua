@@ -131,7 +131,8 @@ function loadAssets(id)
       freedownloads1 = love.graphics.newImage("assets/internet_freedownloads.png"),
       freedownloads2 = love.graphics.newImage("assets/internet_freedownloads2.png"),
       welcome = love.graphics.newImage("assets/internet_welcome.png"),
-      error = love.graphics.newImage("assets/internet_error.png")
+      error = love.graphics.newImage("assets/internet_error.png"),
+      utube = love.graphics.newImage("assets/internet_utube.png")
     }
   end
   if id == 11 then
