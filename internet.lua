@@ -17,9 +17,9 @@ function drawInternet()
   love.graphics.stencil(internetStencil, "replace", 1)
   love.graphics.setStencilTest("greater", 0)
   love.graphics.setColor(255, 255, 255)
-  if internet.urlc == "www.homepage.com" or internet.urlc == "homepage.com" then
+  if string.find(internet.urlc, "homepage.com") ~= nil then
     love.graphics.draw(internet.welcome, 8, 74)
-  elseif internet.urlc == "www.freedownloads.com" or internet.urlc == "freedownloads.com" then
+  elseif string.find(internet.urlc, "freedownloads.com") ~= nil then
     love.graphics.draw(internet.freedownloads1, 8, 74)
     if v1.complete == false then
       v1.yes = true
