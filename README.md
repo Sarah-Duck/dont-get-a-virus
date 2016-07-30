@@ -9,4 +9,6 @@ If you fail a viruses minigame, the virus takes over and you lose the game.
 
 To run my code, you will need to get the love2d framework, available [here!](https://love2d.org/) After installation, execute this code by dragging the game folder onto the LOVE icon. More detailed instructions are available on the [LOVE Wiki.](https://love2d.org/wiki/Getting_Started)
 
+Please don't contribute any code to the project. This game is a learning experience for me and I want to do everything on my own, so I won't accept any pull requests. Feel free to report any bugs you find, or give suggestions in the issues section.
+
 ![alt text](https://i.imgur.com/MVQFGPq.png "A Screenshot of the game so far.")
