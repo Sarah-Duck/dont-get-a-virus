@@ -75,31 +75,33 @@ function loadDia()
   v1.msgs[19] = "ARE YOU REALLY THAT STUPID!? SHOOT ME! DO IT YOU MORON!"
   v1.msgs[21] = "WHAT IS WRONG WITH YOU?! ARE YOU SERIOUS!? OR ARE YOU JUST TRYING TO PISS ME OFF!?"
   if virus1Pissed == false then
-    v1.msgs[23] = "Whatever. You had your chance! Now it's time to destory you!"
+    v1.msgs[23] = "WHATEVER!! Fuck you! You had your chance! Now it's time to destory you!"
   else
-    v1.msgs[23] = "I already played your little games last time, and I won't fall for it again!"
+    v1.msgs[23] = "I already played your little games last time, and I won't fall for it again, buttface!"
   end
   if virus1Lose == 0 then
-    v1.msgs[25] = "Ouch! It's stronger than I thought! No matter, because I have defenses of my own!"
+    v1.msgs[25] = "OWWW! It's... stronger than I thought! But no match for me! Heh..."
   elseif virus1Lose ~= 0 then
     v1.msgs[25] = "I expected that. it hasn't changed since last time! Anyways, now for my part."
   end
-  v1.msgs[26] = "Prepare youself for my UNIMAGINABLY DESTRUCTIVE POWER!"
+  v1.msgs[26] = "My turn now! Prepare youself for my UNIMAGINABLY DESTRUCTIVE POWER!"
   v1.msgs[27] = "Also, my giant battleship with multiple turrets."
   if virus1Lose == 0 then
-    v1.msgs[30] = "What do you think? I made it myself! It's made from the numerous computers I have DESTORYED!"
+    v1.msgs[30] = "What do you think? I made it myself from the numerous computers I have OBLITERATED!!!"
   elseif virus1Lose == 1 then
     v1.msgs[30] = "One nice benefit of you restarting everything is that I get my ship back! Ha!"
-  elseif virus1Lose >= 2 then
-    v1.msgs[30] = "Here's my ship again, I know you've already seen it."
+  elseif virus1Lose == 2 then
+    v1.msgs[30] = "Here's my ship again for the 3rd time."
+  elseif virus1Lose >= 3 then
+    v1.msgs[30] = "Here AGAIN is my ship for the " .. virus1Lose+1 .. "th time."
   end
   v1.msgs[31] = "You won't stand a chance against these lasers!"
   v1.msgs[32] = "They don't actually harm you, they stall you. Leaving you helpless as I take over!"
   v1.msgs[33] = "Green bullets drain your energy, red ones drop the window, yellow ones making it move on its own!"
   v1.msgs[34] = "It'll take me exactly 5 minutes to take over! I'll put a timer on the bottom or something."
   v1.msgs[35] = "Now, it's time to get wriggity wriggity rekt son!"
-  v1.msgs[37] = "NO! MY SHIP! I WORKED REALLY HARD ON THAT! IT'LL TAKE WEEKS TO GET ALL THE PARTS AGAIN!"
-  v1.msgs[39] = "I WILL STILL DESTROY YOU! I'll just have to do it the old fasioned way!"
+  v1.msgs[37] = "NO! MY SHIP! I WORKED REALLY HARD ON THAT! IT'LL TAKE AGES TO GET ALL THE PARTS AGAIN!"
+  v1.msgs[39] = "I WILL STILL DEMOLISH YOUR STUPID COMPUTER! I'll just have to do it the old fasioned way!"
   if virus1Lose == 0 then
     v1.msgs[41] = "AHH! WHAT!? NO!!!"
     v1.msgs[42] = "UGH, HOW!? HOW DID YOU BEAT ME!?!? NOBODY IS STRONGER THAN ME!!!"
@@ -114,14 +116,18 @@ function loadDia()
     v1.msgs[45] = "THAT SHOULDN'T BE POSSIBLE! YOU CHEATED! YOU'RE A HACKER! YOU FUCKING ASSHOLE!"
   end
   v1.msgs[46] = "AAAH! MY FUCKING GOD IT HURTS! IT HURTS SO MUCH! JUST STOP IT! END IT ALREADY!"
-  if virus1Lose <= 1 then
+  if virus1Lose == 0 then
     v1.msgs[50] = "AAAAHAHAHAH! I WIN YET AGAIN! ANOTHER COMPUTER, DOMINATED BY ME!!! AAAAAHAHAHA!!!"
     v1.msgs[51] = "I WIN! YOU LOSE! JUST LIKE IT'S MEANT TO BE! JUST LIKE IT ALWAYS WILL BE!"
     v1.msgs[52] = "AND FOR THE GRAND FINALE, YOUR COMPUTER IS DESTROYED! HAHAHA!!!"
-  elseif virus1Lose >= 2 then
+  elseif virus1Lose == 1 then
     v1.msgs[50] = "Yaddah Yaddah Yaddah, I win... Blah blah blah, you lose."
     v1.msgs[51] = "Seriously! I won, okay?! Stop reseting and being such a sore loser!"
     v1.msgs[52] = "Just fuck off!"
+  elseif virus1Lose >= 2 then
+    v1.msgs[50] = "Yaddah Yaddah Yaddah, I win... Blah blah blah, you lose."
+    v1.msgs[51] = "Stop trying, OK!? I'm going to beat you every time! Don't you get it?"
+    v1.msgs[52] = "I'll ALWAYS crush you. Theres no point in EVER attepting to change that! Now, byee!"
   end
   v2.msgs[1] = "Surprise! How do ya do?"
   v2.msgs[2] = "So let me tell you a story, yes? I was traversing the internet and I found somthin' neat!"
