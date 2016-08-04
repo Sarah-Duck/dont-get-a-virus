@@ -55,10 +55,18 @@ function updateInternet()
         internet.blinkTimer = 0
       end
     end
-    if key == "return" and layer[1] == 2 then
-      internet.urlc = internet.url
-      win[2].update = true
-      internet.load = 0
+    if key == "return" or key == "kpenter" then
+      if layer[1] == 2 then
+        internet.urlc = internet.url
+        win[2].update = true
+        internet.load = 0
+      elseif layer[1] == 1 and chat.msg ~= "" then
+        sendMessage(2, chat.msg)
+        if chat.status == 1 then
+          chatReply(string.lower(chat.msg))
+        end
+        chat.msg = ""
+      end
     end
     if key == "backspace" and layer[1] == 1 and v1.yes == false then
       chat.msg = string.sub(chat.msg, 1, string.len(chat.msg)-1)
@@ -67,13 +75,6 @@ function updateInternet()
         chat.blink = true
         chat.blinkTimer = 0.5
       end
-    end
-    if key == "return" and layer[1] == 1 and chat.msg ~= "" then
-      sendMessage(2, chat.msg)
-      if chat.status == 1 then
-        chatReply(string.lower(chat.msg))
-      end
-      chat.msg = ""
     end
   end
   function love.textinput(t)
