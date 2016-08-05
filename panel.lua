@@ -105,6 +105,14 @@ function drawNoti()
     elseif notify.op ~= 0 and notify.yes == false then
       notify.op = notify.op - 17
     end
+    if mouseClick(notify.x,notify.y,250,113) == true then
+      if win[1].ex == true then
+        win[1].ex = false
+        win[1].s = 0.2
+      end
+      win[1].oldlayer = win[1].layer
+      layer.sentToFront = 1
+    end
   end
 end
 function timeNoti(dt)
