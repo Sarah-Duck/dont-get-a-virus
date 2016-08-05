@@ -66,7 +66,6 @@ function loadAssets(id)
   if id == 5 then
     music = {
       battle1 = love.audio.newSource("assets/music/Thrills And Spills.ogg"),
-      battleNSA = love.audio.newSource("assets/music/Less Than Three.ogg"),
       battleUndertale = love.audio.newSource("assets/music/Alphys Takes Action.ogg"),
       battle2 = love.audio.newSource("assets/music/Skyscraper Party.ogg"),
       sad1 = love.audio.newSource("assets/music/Startup Ambiance.ogg"),
@@ -87,7 +86,6 @@ function loadAssets(id)
     sound.boot:setLooping(false)
     music.battle1:setLooping(true)
     music.battle2:setLooping(true)
-    music.battleNSA:setLooping(true)
     music.battleUndertale:setLooping(true)
   end
   if id == 7 then
