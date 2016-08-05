@@ -80,6 +80,9 @@ function checkIcon(id)
         win[id].s = 0.2
         win[id].oldlayer = win[id].layer
         layer.sentToFront = id
+      else
+        win[id].oldlayer = win[id].layer
+        layer.sentToFront = id
       end
     end
   elseif sys.mouse.drag == true or sys.mouse.p.x > 120 or sys.mouse.p.y > 550 then

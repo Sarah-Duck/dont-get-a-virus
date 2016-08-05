@@ -131,9 +131,11 @@ function drawMenuItems(id)
     love.graphics.rectangle("fill", 35, 5+(id*55-55), 208, 50)
     love.graphics.setColor(colors.win.light)
     love.graphics.print(win[id].title, 85, 5+22+(id*55-55))
-    if sys.mouse.p.p == true and win[id].ex == true and v1.yes == false then
-      win[id].ex = false
-      win[id].s = 0.2
+    if sys.mouse.p.p == true and v1.yes == false then
+      if win[id].ex == true then
+        win[id].ex = false
+        win[id].s = 0.2
+      end
       win[id].oldlayer = win[id].layer
       layer.sentToFront = id
       start.o = false
