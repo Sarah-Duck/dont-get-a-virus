@@ -230,6 +230,19 @@ function loadAssets(id)
     v1.c.shine.sm2 = true
     v1.c.shine.ct = 0
     v1.c.shine.opa = 255
+    v2.c = {}
+    v2.c.idle = {}
+    v2.c.idle.fs = {}
+    v2.c.idle.pic = love.graphics.newImage("assets/virus2_idle.png")
+    v2.c.pupil = love.graphics.newImage("assets/virus2_pupil.png")
+    v2.c.idle.hands = love.graphics.newImage("assets/eye_thing.png")
+    v2.c.idle.f = 1
+    loadAnimation(v2.c.idle.pic, v2.c.idle.fs, 37, 10, 250, 250)
+    v2.c.idle.mask = {}
+    v2.c.idle.mask.fs = {}
+    v2.c.idle.mask.pic = love.graphics.newImage("assets/virus2_idle_mask.png")
+    v2.c.idle.mask.f = 1
+    loadAnimation(v2.c.idle.mask.pic, v2.c.idle.mask.fs, 37, 10, 250, 250)
   end
   if id == 15 then
     expl = {}
