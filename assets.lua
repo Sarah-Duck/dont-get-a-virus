@@ -262,6 +262,14 @@ function loadAssets(id)
     video = {}
     video.attacktortoise = love.graphics.newVideo("assets/attacktortoise.ogv")
     loadVar()
+    mask_effect = love.graphics.newShader[[
+      vec4 effect (vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
+        if (Texel(texture, texture_coords).rgb == vec3(0.0)) {
+         discard;
+        }
+        return vec4(1.0);
+      }
+    ]]
   end
   if id == 17 then
     loadDia()
