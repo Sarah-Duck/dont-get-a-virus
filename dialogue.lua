@@ -155,7 +155,7 @@ function chatReply(m)
         "Doesn't matter, free game!"
       }
     })
-  elseif string.find(m, "hello") ~= nil or string.find(m, "hi") ~= nil or string.find(m, "ayy") ~= nil or string.find(m, "hey") ~= nil then
+  elseif string.find(m, "hello") ~= nil or m == "hi" or string.find(m, "ayy") ~= nil or string.find(m, "hey") ~= nil or m == "hi!" or m == "hi." or m == "hi?" then
     table.insert(msg.r, {
       t = 1,
       r = {
