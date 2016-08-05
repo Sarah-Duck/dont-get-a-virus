@@ -193,6 +193,10 @@ function loadVar()
   v2.pop.add = false
   v2.pop.hov = 0
   v2.msgs = {}
+  v2.c.x = 300
+  v2.c.y = 300
+  v2.c.s = 1
+  v2.c.r = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

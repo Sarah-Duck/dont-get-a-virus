@@ -101,3 +101,18 @@ function drawPopups()
     v2.pop.add = false
   end
 end
+function drawVirus2()
+  love.graphics.setColor(255,255,255)
+  playAnimation(v2.c.idle, true, v2.c.x, v2.c.y, v2.c.r, v2.c.s, 125, 125, 0.5)
+  love.graphics.stencil(drawVirus2Stencil, "replace", 1)
+  love.graphics.setStencilTest("greater", 0)
+  love.graphics.draw(v2.c.pupil, v2.c.x-26+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
+  love.graphics.draw(v2.c.pupil, v2.c.x+21+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
+  love.graphics.setStencilTest()
+  love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+end
+function drawVirus2Stencil()
+  love.graphics.setShader(mask_effect)
+  playAnimation(v2.c.idle.mask, true, v2.c.x, v2.c.y, v2.c.r, v2.c.s, 125, 125, 0.5)
+  love.graphics.setShader()
+end

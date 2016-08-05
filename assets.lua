@@ -296,6 +296,9 @@ function loadAnimation(pic, quad, frames, limit, w, h)
   end
 end
 function playAnimation(ani, loop, x, y, r, s, xo, yo, sp)
+  if ani == v2.c.idle.mask then
+    ani.f = v2.c.idle.f
+  end
   if ani.fs[math.floor(ani.f)] ~= nil then
     love.graphics.draw(ani.pic, ani.fs[math.floor(ani.f)], x, y, r, s, s, xo, yo)
   end
