@@ -43,6 +43,7 @@ function drawPopup(id)
   love.graphics.setCanvas()
 end
 function addPopup(rand, x, y, w, h, ad, dup, m)
+  notification.sound3:play()
   if rand == true then
     table.insert(v2.pop.p, 1, {
       w = math.random(300,800),

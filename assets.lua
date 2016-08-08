@@ -87,6 +87,7 @@ function loadAssets(id)
     sound.boot:setLooping(false)
     music.battle1:setLooping(true)
     music.battle2:setLooping(true)
+    music.tension2:setLooping(true)
     music.battleUndertale:setLooping(true)
   end
   if id == 7 then
@@ -152,7 +153,8 @@ function loadAssets(id)
     notification = {
       bubble = love.graphics.newImage("assets/notification.png"),
       sound1 = love.audio.newSource("assets/notification1.ogg"),
-      sound2 = love.audio.newSource("assets/notification2.ogg")
+      sound2 = love.audio.newSource("assets/notification2.ogg"),
+      sound3 = love.audio.newSource("assets/notification3.ogg")
     }
     notification.sound1:setVolume(0.5)
     notification.sound2:setVolume(0.5)
