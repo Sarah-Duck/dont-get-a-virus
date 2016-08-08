@@ -76,7 +76,8 @@ function loadAssets(id)
       rage = love.audio.newSource("assets/music/Fight or Flight.ogg"),
       sophie = love.audio.newSource("assets/music/Close My Mouth.ogg"),
       ohyeah = love.audio.newSource("assets/music/Down N Dirty.ogg"),
-      finale = love.audio.newSource("assets/music/Ich Grolle Nicht.ogg")
+      finale = love.audio.newSource("assets/music/Ich Grolle Nicht.ogg"),
+      tension2 = love.audio.newSource("assets/music/Overturn.ogg")
     }
   end
   if id == 6 then

@@ -83,7 +83,12 @@ function drawPopups()
     end
     if mouseClick(v2.pop.p[i].x+v2.pop.p[i].w-22, v2.pop.p[i].y+5, 16, 16) == true and v2.pop.p[i].exit == false and v2.pop.hov == i then
       v2.pop.p[i].exit = true
-    elseif mouseClick(v2.pop.p[i].x+8, v2.pop.p[i].y+31, v2.pop.p[i].w-16, v2.pop.p[i].h-39) == true and v2.pop.p[i].exit == false and v2.pop.hov == i then
+      if v2.pop.p[i].m == true then
+        music.tension2:play()
+        scene = 3
+      end
+    elseif mouseClick(v2.pop.p[i].x+8, v2.pop.p[i].y+31, v2.pop.p[i].w-16, v2.pop.p[i].h-39) == true
+    and v2.pop.p[i].exit == false and v2.pop.hov == i and v2.pop.p[i].dup == true then
       v2.pop.p[i].exit = true
       if #v2.pop.p <= 6 then
         v2.pop.add = true
