@@ -11,6 +11,17 @@ function updateSystem(dt)
     chat.status = 1
     msgssent = msgssent + 1
   end
+  if v1.complete == true and v2.start == false then
+    v2.startTime = v2.startTime + dt
+    if v2.startTime >= 20 then
+      v2.start = true
+      addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
+    end
+    if v2.startTime >= v2.startPopups and v2.start == false then
+      v2.startPopups = v2.startPopups + 5
+      addPopup(true)
+    end
+  end
 end
 function drawSystem()
   love.graphics.setBackgroundColor(0, 128, 128)
@@ -25,6 +36,9 @@ function drawSystem()
   end
   for i=1,#layer do
     drawLayer((#layer+1)-i)
+  end
+  if v1.complete == true and v2.complete == false then
+    drawPopups()
   end
   drawStart()
   if start.o == true then

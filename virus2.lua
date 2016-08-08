@@ -1,4 +1,11 @@
 function drawVirusFight2()
+  drawDesktop()
+  drawVirus2()
+  drawPopups()
+  if start.o == true then
+    drawMenu()
+  end
+  drawStart()
 end
 function drawPopup(id)
   love.graphics.setCanvas(v2.pop.p[id].cvs)
@@ -35,7 +42,7 @@ function drawPopup(id)
   love.graphics.draw(v2.pop.a[v2.pop.p[id].ad], 8, 31, 0, (v2.pop.p[id].w-16)/640, (v2.pop.p[id].h-39)/400)
   love.graphics.setCanvas()
 end
-function addPopup(rand, x, y, w, h, ad)
+function addPopup(rand, x, y, w, h, ad, dup, m)
   if rand == true then
     table.insert(v2.pop.p, 1, {
       w = math.random(300,800),
@@ -43,7 +50,8 @@ function addPopup(rand, x, y, w, h, ad)
       d = false,
       s = 0.2,
       exit = false,
-      add = false
+      add = false,
+      dup = true
     })
     v2.pop.p[1].h = v2.pop.p[1].w/math.random(1.4,1.6,1.8,2)
     v2.pop.p[1].x = math.random(0,sys.w-v2.pop.p[1].w)
@@ -54,7 +62,12 @@ function addPopup(rand, x, y, w, h, ad)
       v2.pop.p[1].d = true
     end
   elseif rand == false then
-    table.insert(v2.pop.p, 1, {x=x,y=y,w=w,h=h,ad=ad})
+    table.insert(v2.pop.p, 1, {x=x,y=y,w=w,h=h,ad=ad,d=false,s=0.2,exit=false,add=false,dup=dup,m=m})
+    v2.pop.p[1].cvs = love.graphics.newCanvas(v2.pop.p[1].w, v2.pop.p[1].h)
+    if v2.pop.p[1].d == false then
+      drawPopup(1)
+      v2.pop.p[1].d = true
+    end
   end
 end
 function drawPopups()

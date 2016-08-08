@@ -68,7 +68,7 @@ function drawIcon(id, x, y)
 end
 function checkIcon(id)
   if(sys.mouse.p.x >= icon[id].x+4 and sys.mouse.p.x <= icon[id].x+100 and sys.mouse.p.p == true
-  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75 and v1.yes == false) then
+  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75 and v1.yes == false and v2.start == false) then
     if icon[id].hl == false and icon[id].cl == false then
       icon[id].hl = true
       icon[id].cl = true

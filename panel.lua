@@ -69,7 +69,6 @@ function drawStart()
       start.o = false
     elseif start.o == false then
       start.o = true
-      --sendMessage(1, msgs[msg.c])
     end
   end
   if v1.c.chat.msgs > 35 and v1.yes == true then
@@ -139,7 +138,7 @@ function drawMenuItems(id)
     love.graphics.rectangle("fill", 35, 5+(id*55-55), 208, 50)
     love.graphics.setColor(colors.win.light)
     love.graphics.print(win[id].title, 85, 5+22+(id*55-55))
-    if sys.mouse.p.p == true and v1.yes == false then
+    if sys.mouse.p.p == true and v1.yes == false and v2.start == false then
       if win[id].ex == true then
         win[id].ex = false
         win[id].s = 0.2
