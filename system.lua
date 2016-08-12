@@ -18,7 +18,7 @@ function updateSystem(dt)
       addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
     end
     if v2.startTime >= v2.startPopups and v2.start == false then
-      v2.startPopups = v2.startPopups + 5
+      v2.startPopups = v2.startPopups + math.random(2,10)
       addPopup(true)
     end
   end
