@@ -129,6 +129,23 @@ function drawVirus2()
   love.graphics.draw(v2.c.pupil, v2.c.x+21+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
   love.graphics.setStencilTest()
   love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  if v2.c.chat.time >= 2 then
+    drawBubble(v2.c.x+50, v2.c.y-160, 300, 115, v2.c.chat.msg)
+    if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false then
+      v2.c.chat.next = true
+      v2.c.chat.msgs = v2.c.chat.msgs + 1
+      v2.c.chat.char = 0
+      v2.c.chat.msg = ""
+    end
+    if v2.msgs[v2.c.chat.msgs] ~= nil then
+      if string.len(v2.msgs[v2.c.chat.msgs]) ~= string.len(v2.c.chat.msg) then
+        v2.c.chat.char = v2.c.chat.char + v2.c.chat.sp*(60/love.timer.getFPS())
+        v2.c.chat.msg = string.sub(v2.msgs[v2.c.chat.msgs], 1, math.floor(v2.c.chat.char))
+      end
+    end
+  else
+    v2.c.chat.time = v2.c.chat.time + delta
+  end
 end
 function drawVirus2Stencil()
   love.graphics.setShader(mask_effect)

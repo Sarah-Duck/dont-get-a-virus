@@ -201,6 +201,13 @@ function loadVar()
   v2.start = false
   v2.startPopups = 10
   v2.complete = false
+  v2.c.chat = {}
+  v2.c.chat.next = false
+  v2.c.chat.msgs = 1
+  v2.c.chat.msg = ""
+  v2.c.chat.sp = 0.5
+  v2.c.chat.char = 0
+  v2.c.chat.time = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

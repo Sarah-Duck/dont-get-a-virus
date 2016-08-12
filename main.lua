@@ -72,6 +72,11 @@ function love.mousepressed(x, y, button)
         v1.c.chat.next = false
       end
     end
+    if v2.msgs[v2.c.chat.msgs] ~= nil then
+      if string.len(v2.msgs[v2.c.chat.msgs]) == string.len(v2.c.chat.msg) and v2.start == true then
+        v2.c.chat.next = false
+      end
+    end
   end
 end
 function love.keyreleased(key)
