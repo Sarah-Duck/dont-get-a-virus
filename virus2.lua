@@ -18,7 +18,7 @@ function drawPopup(id)
   if v2.pop.p[id].ad == 1 then
     love.graphics.print("FREE PHONE!!!", 28, 9)
   elseif v2.pop.p[id].ad == 2 then
-    love.graphics.print("CURE FOOT FUNCGUS!!", 28, 9)
+    love.graphics.print("CURE FOOT FUNGUS!!", 28, 9)
   elseif v2.pop.p[id].ad == 3 then
     love.graphics.print("YOU WON!!!", 28, 9)
   elseif v2.pop.p[id].ad == 4 then
