@@ -197,6 +197,12 @@ function loadVar()
   v2.c.y = sys.h/2
   v2.c.s = 1
   v2.c.r = 0
+  v2.c.xd = 0
+  v2.c.yd = 0
+  v2.c.spx = 0
+  v2.c.spy = 0
+  v2.c.sp = 1
+  v2.c.angle = 0
   v2.startTime = 0
   v2.start = false
   v2.startPopups = 10
@@ -208,6 +214,7 @@ function loadVar()
   v2.c.chat.sp = 0.5
   v2.c.chat.char = 0
   v2.c.chat.time = 0
+  v2.c.handp = "idle"
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

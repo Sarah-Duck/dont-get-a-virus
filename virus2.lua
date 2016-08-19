@@ -6,6 +6,33 @@ function drawVirusFight2()
     drawMenu()
   end
   drawStart()
+  if v2.c.chat.msgs == 1 or v2.c.chat.msgs == 6 then
+    v2.c.xd = sys.w/2
+    v2.c.yd = sys.h/3
+    if v2.c.chat.msgs == 6 then
+      v2.c.handp = "fist"
+    end
+  elseif v2.c.chat.msgs == 2 then
+    v2.c.xd = sys.w/3
+    v2.c.yd = sys.h/1.7
+  elseif v2.c.chat.msgs == 3 then
+    v2.c.xd = sys.w/3
+    v2.c.yd = sys.h/3
+  elseif v2.c.chat.msgs == 4 then
+    v2.c.xd = sys.w/1.7
+    v2.c.yd = sys.h/1.7
+  elseif v2.c.chat.msgs == 5 then
+    v2.c.xd = sys.w/2
+    v2.c.yd = sys.h/2
+  elseif v2.c.chat.msgs == 8 then
+    v2.c.xd = sys.w/2
+    v2.c.yd = sys.h/2
+    v2.c.handp = "gunidle"
+    if v2.c.cockgunplay == false then
+      v2.c.cockgun:play()
+      v2.c.cockgunplay = true
+    end
+  end
 end
 function drawPopup(id)
   love.graphics.setCanvas(v2.pop.p[id].cvs)
@@ -132,7 +159,43 @@ function drawVirus2()
   love.graphics.draw(v2.c.pupil, v2.c.x-26+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
   love.graphics.draw(v2.c.pupil, v2.c.x+21+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
   love.graphics.setStencilTest()
-  love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  v2.c.sp = math.sqrt(math.abs(v2.c.xd - v2.c.x)*2 + math.abs(v2.c.yd - v2.c.y)*2)/5
+  v2.c.angle = math.atan2((v2.c.yd - v2.c.y), (v2.c.xd - v2.c.x))
+  v2.c.spx = v2.c.sp * math.cos(v2.c.angle)
+  v2.c.spy = v2.c.sp * math.sin(v2.c.angle)
+  if v2.c.x > v2.c.xd then
+    if v2.c.x + v2.c.spx <= v2.c.xd then
+      v2.c.x = v2.c.xd
+    else
+      v2.c.x = v2.c.x + v2.c.spx
+    end
+  elseif v2.c.x < v2.c.xd then
+    if v2.c.x + v2.c.spx >= v2.c.xd then
+      v2.c.x = v2.c.xd
+    else
+      v2.c.x = v2.c.x + v2.c.spx
+    end
+  end
+  if v2.c.y > v2.c.yd then
+    if v2.c.y + v2.c.spy <= v2.c.yd then
+      v2.c.y = v2.c.yd
+    else
+      v2.c.y = v2.c.y + v2.c.spy
+    end
+  elseif v2.c.y < v2.c.yd then
+    if v2.c.y + v2.c.spy >= v2.c.yd then
+      v2.c.y = v2.c.yd
+    else
+      v2.c.y = v2.c.y + v2.c.spy
+    end
+  end
+  if v2.c.handp == "idle" then
+    love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  elseif v2.c.handp == "fist" then
+    love.graphics.draw(v2.c.idle.fist, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  elseif v2.c.handp == "gunidle" then
+    love.graphics.draw(v2.c.idle.gunidle, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  end
   if v2.c.chat.time >= 2 then
     drawBubble(v2.c.x+50, v2.c.y-160, 300, 115, v2.c.chat.msg)
     if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false then
