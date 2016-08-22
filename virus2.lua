@@ -156,6 +156,9 @@ function drawPopups()
       if v2.pop.p[i].m == true then
         music.tension2:play()
         scene = 3
+        for i=1,#v2.pop.p do
+          v2.pop.p[i].exit = true
+        end
       end
     elseif mouseClick(v2.pop.p[i].x+8, v2.pop.p[i].y+31, v2.pop.p[i].w-16, v2.pop.p[i].h-39) == true
     and v2.pop.p[i].exit == false and v2.pop.hov == i and v2.pop.p[i].dup == true then
