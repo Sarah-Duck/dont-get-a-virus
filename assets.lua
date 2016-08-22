@@ -241,8 +241,17 @@ function loadAssets(id)
     v2.c.idle.gunidle = love.graphics.newImage("assets/virus2_hands_gunidle.png")
     v2.c.idle.fist = love.graphics.newImage("assets/virus2_hands_fist.png")
     v2.c.idle.f = 1
+    v2.c.gunfront = love.graphics.newImage("assets/virus2_hands_gunfront.png")
+    v2.c.gunpoint = love.graphics.newImage("assets/virus2_hands_gunpoint.png")
+    v2.c.gunup = love.graphics.newImage("assets/virus2_hands_gunup.png")
     v2.c.cockgun = love.audio.newSource("assets/virus2_shotgun_cock.ogg")
     v2.c.fire = love.audio.newSource("assets/virus2_shotgun_fire.ogg")
+    v2.c.handsOp = 0
+    v2.c.gunidleOp = 0
+    v2.c.fistOp = 0
+    v2.c.gunfrontOp = 256
+    v2.c.gunpointOp = 0
+    v2.c.gunupOp = 0
     v2.c.cockgunplay = false
     loadAnimation(v2.c.idle.pic, v2.c.idle.fs, 37, 10, 250, 250)
     v2.c.idle.mask = {}

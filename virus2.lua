@@ -38,9 +38,11 @@ function drawVirusFight2()
   elseif v2.c.chat.msgs == 2 then
     v2.c.xd = sys.w/3
     v2.c.yd = sys.h/1.7
+    v2.c.handp = "gunup"
   elseif v2.c.chat.msgs == 3 then
     v2.c.xd = sys.w/3
     v2.c.yd = sys.h/3
+    v2.c.handp = "idle"
   elseif v2.c.chat.msgs == 4 then
     v2.c.xd = sys.w/1.7
     v2.c.yd = sys.h/1.7
@@ -212,14 +214,32 @@ function drawVirus2()
       v2.c.y = v2.c.y + v2.c.spy
     end
   end
-  if v2.c.handp == "idle" then
+  handOpa("idle",v2.c.handsOp)
+  handOpa("fist",v2.c.fistOp)
+  handOpa("gunup",v2.c.gunupOp)
+  handOpa("gunfront",v2.c.gunfrontOp)
+  handOpa("gunidle",v2.c.gunidleOp)
+  if v2.c.handsOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.handsOp)
     love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
-  elseif v2.c.handp == "fist" then
-    love.graphics.draw(v2.c.idle.fist, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
-  elseif v2.c.handp == "gunidle" then
+  end
+  if v2.c.fistOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.fistOp)
+    love.graphics.draw(v2.c.idle.fist, v2.c.x+math.random(-0.2,0.2), v2.c.y+math.random(-0.2,0.2), v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  end
+  if v2.c.gunidleOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.gunidleOp)
     love.graphics.draw(v2.c.idle.gunidle, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
-  if v2.c.chat.time >= 2 then
+  if v2.c.gunfrontOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.gunfrontOp)
+    love.graphics.draw(v2.c.gunfront, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  end
+  if v2.c.gunupOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.gunupOp)
+    love.graphics.draw(v2.c.gunup, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  end
+  if v2.c.chat.time >= 2 and v2.msgs[v2.c.chat.msgs] ~= nil then
     drawBubble(v2.c.x+50, v2.c.y-160, 300, 115, v2.c.chat.msg)
     if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false then
       v2.c.chat.next = true
@@ -241,4 +261,35 @@ function drawVirus2Stencil()
   love.graphics.setShader(mask_effect)
   playAnimation(v2.c.idle.mask, true, v2.c.x, v2.c.y, v2.c.r, v2.c.s, 125, 125, 0.5)
   love.graphics.setShader()
+end
+function handOpa(hand,opa)
+  if v2.c.handp == hand then
+    if opa < 256 then
+      if hand == "idle" then
+        v2.c.handsOp = v2.c.handsOp + 16
+      elseif hand == "fist" then
+        v2.c.fistOp = v2.c.fistOp + 16
+      elseif hand == "gunfront" then
+        v2.c.gunfrontOp = v2.c.gunfrontOp + 16
+      elseif hand == "gunidle" then
+        v2.c.gunidleOp = v2.c.gunidleOp + 16
+      elseif hand == "gunup" then
+        v2.c.gunupOp = v2.c.gunupOp + 16
+      end
+    end
+  else
+    if opa > 0 then
+      if hand == "idle" then
+        v2.c.handsOp = v2.c.handsOp - 16
+      elseif hand == "fist" then
+        v2.c.fistOp = v2.c.fistOp - 16
+      elseif hand == "gunfront" then
+        v2.c.gunfrontOp = v2.c.gunfrontOp - 16
+      elseif hand == "gunidle" then
+        v2.c.gunidleOp = v2.c.gunidleOp - 16
+      elseif hand == "gunup" then
+        v2.c.gunupOp = v2.c.gunupOp - 16
+      end
+    end
+  end
 end
