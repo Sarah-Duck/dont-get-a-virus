@@ -26,6 +26,9 @@ function drawVirusFight2()
   if start.o == true then
     drawMenu()
   end
+  if start.o == true and sys.mouse.p.p == true and sys.mouse.p.x > 255 or sys.mouse.p.y < sys.h-380 then
+    start.o = false
+  end
   drawStart()
   if v2.c.chat.msgs == 1 or v2.c.chat.msgs == 6 then
     v2.c.xd = sys.w/2
