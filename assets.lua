@@ -124,6 +124,7 @@ function loadAssets(id)
     for i=1,10 do
       v2.pop.a[i] = love.graphics.newImage("assets/popup" .. i .. ".png")
     end
+    v2.popshot = love.graphics.newImage("assets/popup_shot.png")
   end
   if id == 10 then
     internet = {
@@ -241,6 +242,7 @@ function loadAssets(id)
     v2.c.idle.fist = love.graphics.newImage("assets/virus2_hands_fist.png")
     v2.c.idle.f = 1
     v2.c.cockgun = love.audio.newSource("assets/virus2_shotgun_cock.ogg")
+    v2.c.fire = love.audio.newSource("assets/virus2_shotgun_fire.ogg")
     v2.c.cockgunplay = false
     loadAnimation(v2.c.idle.pic, v2.c.idle.fs, 37, 10, 250, 250)
     v2.c.idle.mask = {}

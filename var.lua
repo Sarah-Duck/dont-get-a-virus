@@ -207,6 +207,12 @@ function loadVar()
   v2.start = false
   v2.startPopups = 10
   v2.complete = false
+  v2.popshotx = sys.w/2
+  v2.popshoty = sys.h/2
+  v2.popshotsh = 10
+  v2.popshotm = -15
+  v2.popshotr = 0
+  v2.popshots = false
   v2.c.chat = {}
   v2.c.chat.next = false
   v2.c.chat.msgs = 1
@@ -214,7 +220,8 @@ function loadVar()
   v2.c.chat.sp = 0.5
   v2.c.chat.char = 0
   v2.c.chat.time = 0
-  v2.c.handp = "idle"
+  v2.c.handp = "gunfront"
+  v2.explodeFrame = 1
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

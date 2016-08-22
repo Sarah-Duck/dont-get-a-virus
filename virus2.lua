@@ -2,6 +2,27 @@ function drawVirusFight2()
   drawDesktop()
   drawVirus2()
   drawPopups()
+  if v2.popshoty < sys.h+1000 then
+    if v2.popshots == false then
+      v2.c.fire:play()
+      v2.popshots = true
+    end
+    love.graphics.setColor(256,256,256)
+    love.graphics.draw(v2.popshot, v2.popshotx+math.random(-v2.popshotsh,v2.popshotsh),
+    v2.popshoty+math.random(-v2.popshotsh,v2.popshotsh), v2.popshotr+math.rad(math.random(-v2.popshotsh,v2.popshotsh)), 1, 1, 300, 200)
+    if v2.popshotsh > 0 then
+      v2.popshotsh = v2.popshotsh - 0.5*sys.s
+    end
+    v2.popshoty = v2.popshoty + v2.popshotm*sys.s
+    v2.popshotm = v2.popshotm + 0.75*sys.s
+    v2.popshotr = v2.popshotr + math.rad(1*sys.s)
+    if v2.explodeFrame <= 89 then
+      love.graphics.setColor(255,255,255)
+      love.graphics.draw(expl.pic, expl.frames[math.floor(v2.explodeFrame)], sys.w/2, sys.h/2, 0, 2.5, 2.5, 320/2,240/2)
+      v2.explodeFrame = v2.explodeFrame + 1*sys.s
+      v1.explosionSound:play()
+    end
+  end
   if start.o == true then
     drawMenu()
   end
@@ -11,6 +32,8 @@ function drawVirusFight2()
     v2.c.yd = sys.h/3
     if v2.c.chat.msgs == 6 then
       v2.c.handp = "fist"
+    elseif v2.c.chat.msgs == 1 then
+      v2.c.handp = "gunfront"
     end
   elseif v2.c.chat.msgs == 2 then
     v2.c.xd = sys.w/3
