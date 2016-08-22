@@ -49,7 +49,7 @@ function drawVirusFight2()
   elseif v2.c.chat.msgs == 5 then
     v2.c.xd = sys.w/2
     v2.c.yd = sys.h/2
-  elseif v2.c.chat.msgs == 8 then
+  elseif v2.c.chat.msgs == 10 then
     v2.c.xd = sys.w/2
     v2.c.yd = sys.h/2
     v2.c.handp = "gunidle"
