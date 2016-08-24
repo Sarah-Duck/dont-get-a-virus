@@ -141,6 +141,7 @@ function loadAssets(id)
       gun = love.graphics.newImage("assets/antivirus_turret_gun.png"),
       body = love.graphics.newImage("assets/antivirus_turret_body.png"),
       left = love.graphics.newImage("assets/antivirus_turret_leftwing.png"),
+      leftd = love.graphics.newImage("assets/antivirus_turret_leftwing_destroy.png"),
       right = love.graphics.newImage("assets/antivirus_turret_rightwing.png"),
       open = love.audio.newSource("assets/antivirus_open.ogg"),
       opengun = love.audio.newSource("assets/antivirus_open_gun.ogg"),

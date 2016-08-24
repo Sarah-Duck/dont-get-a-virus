@@ -116,7 +116,10 @@ function drawWindow(id)
     win[id].ex = true
   end
   if v2.start == true then
-    win[id].ex = true
+    if id == 4 and v2.c.chat.msgs > 16 then
+    else
+      win[id].ex = true
+    end
   end
   if v1.yes == true and id == 2 and v1.timer >= 4 then
     layer.sendToFront = 2

@@ -222,6 +222,10 @@ function loadVar()
   v2.c.chat.time = 0
   v2.c.handp = "gunfront"
   v2.explodeFrame = 1
+  v2.mTime = 0
+  v2.gun = {}
+  v2.gun.rt = 0
+  v2.gun.r = 0
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

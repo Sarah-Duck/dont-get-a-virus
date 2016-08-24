@@ -1,6 +1,7 @@
 function drawVirusFight2()
   drawDesktop()
   drawVirus2()
+  drawAntivirusV2()
   drawPopups()
   if v2.popshoty < sys.h+1000 then
     if v2.popshots == false then
@@ -60,6 +61,10 @@ function drawVirusFight2()
       v2.c.cockgun:play()
       v2.c.cockgunplay = true
     end
+  elseif v2.c.chat.msgs == 21 then
+    v2.c.xd = win[4].x-150
+    v2.c.yd = win[4].y+75
+    v2.c.handp = "gunpoint"
   end
 end
 function drawPopup(id)
@@ -225,6 +230,7 @@ function drawVirus2()
   handOpa("gunup",v2.c.gunupOp)
   handOpa("gunfront",v2.c.gunfrontOp)
   handOpa("gunidle",v2.c.gunidleOp)
+  handOpa("gunpoint",v2.c.gunpointOp)
   if v2.c.handsOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.handsOp)
     love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
@@ -245,13 +251,39 @@ function drawVirus2()
     love.graphics.setColor(256,256,256,v2.c.gunupOp)
     love.graphics.draw(v2.c.gunup, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
+  if v2.c.gunpointOp ~= 0 then
+    v2.gun.rt = math.atan2((win[4].y+win[4].h/2 - v2.c.y), (win[4].x+win[4].w/2 - v2.c.x))
+    if v2.gun.r > v2.gun.rt then
+      if v2.gun.r - math.rad((2*sys.s)*di) < v2.gun.rt then
+        v2.gun.r = v2.gun.rt
+      else
+        v2.gun.r = v2.gun.r - math.rad((2*sys.s)*di)
+      end
+    elseif v2.gun.r < v2.gun.rt then
+      if v2.gun.r + math.rad((2*sys.s)*di) > v2.gun.rt then
+        v2.gun.r = v2.gun.rt
+      else
+        v2.gun.r = v2.gun.r + math.rad((2*sys.s)*di)
+      end
+    end
+    love.graphics.setColor(256,256,256,v2.c.gunpointOp)
+    love.graphics.draw(v2.c.gunpoint, v2.c.x, v2.c.y, v2.gun.r, v2.c.s, v2.c.s, 125, 125)
+  end
+  v2.mTime = v2.mTime + delta
+  if v2.mTime > 6 and v2.c.chat.msgs == 17 and win[4].ex == true then
+    nextChatv2(18)
+  elseif win[4].ex == false and v2.c.chat.msgs >= 17 and v2.c.chat.msgs <= 18 then
+    nextChatv2(19)
+  elseif v2.mTime > 1 and v2.c.chat.msgs == 19 and win[4].ex == false then
+    nextChatv2(20)
+  elseif v2.c.chat.msgs == 21 and v2.c.x > win[4].x-150-20 and v2.c.x < win[4].x-150+20
+  and v2.c.y > win[4].y+75-20 and v2.c.y < win[4].y+75+20 then
+    nextChatv2(22)
+  end
   if v2.c.chat.time >= 2 and v2.msgs[v2.c.chat.msgs] ~= nil then
     drawBubble(v2.c.x+50, v2.c.y-160, 300, 115, v2.c.chat.msg)
-    if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false then
-      v2.c.chat.next = true
-      v2.c.chat.msgs = v2.c.chat.msgs + 1
-      v2.c.chat.char = 0
-      v2.c.chat.msg = ""
+    if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false and v2.c.chat.msgs ~= 18 then
+      nextChatv2()
     end
     if v2.msgs[v2.c.chat.msgs] ~= nil then
       if string.len(v2.msgs[v2.c.chat.msgs]) ~= string.len(v2.c.chat.msg) then
@@ -281,6 +313,8 @@ function handOpa(hand,opa)
         v2.c.gunidleOp = v2.c.gunidleOp + 16
       elseif hand == "gunup" then
         v2.c.gunupOp = v2.c.gunupOp + 16
+      elseif hand == "gunpoint" then
+        v2.c.gunpointOp = v2.c.gunpointOp + 16
       end
     end
   else
@@ -295,7 +329,29 @@ function handOpa(hand,opa)
         v2.c.gunidleOp = v2.c.gunidleOp - 16
       elseif hand == "gunup" then
         v2.c.gunupOp = v2.c.gunupOp - 16
+      elseif hand == "gunpoint" then
+        v2.c.gunpointOp = v2.c.gunpointOp - 16
       end
     end
   end
+end
+function drawAntivirusV2()
+  orderWindows()
+  if v2.c.chat.msgs == 22 then
+    love.graphics.draw(antivirus.leftd, win[4].x+av.shakex, win[4].y+av.shakey)
+    love.graphics.draw(antivirus.right, win[4].x+95+av.shakex, win[4].y+av.shakey)
+  elseif v2.c.chat.msgs < 22 then
+    love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+  end
+end
+function nextChatv2(messag)
+  v2.c.chat.next = true
+  if messag == nil then
+    v2.c.chat.msgs = v2.c.chat.msgs + 1
+  else
+    v2.c.chat.msgs = messag
+  end
+  v2.c.chat.char = 0
+  v2.c.chat.msg = ""
+  v2.mTime = 0
 end

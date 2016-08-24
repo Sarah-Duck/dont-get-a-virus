@@ -138,14 +138,24 @@ function drawMenuItems(id)
     love.graphics.rectangle("fill", 35, 5+(id*55-55), 208, 50)
     love.graphics.setColor(colors.win.light)
     love.graphics.print(win[id].title, 85, 5+22+(id*55-55))
-    if sys.mouse.p.p == true and v1.yes == false and v2.start == false then
-      if win[id].ex == true then
-        win[id].ex = false
-        win[id].s = 0.2
+    if sys.mouse.p.p == true and v1.yes == false then
+      if v2.start == false then
+        if win[id].ex == true then
+          win[id].ex = false
+          win[id].s = 0.2
+        end
+        win[id].oldlayer = win[id].layer
+        layer.sentToFront = id
+        start.o = false
+      elseif v2.start == true and id == 4 and v2.c.chat.msgs > 16 then
+        if win[4].ex == true then
+          win[4].ex = false
+          win[4].s = 0.2
+        end
+        win[4].oldlayer = win[4].layer
+        layer.sentToFront = 4
+        start.o = false
       end
-      win[id].oldlayer = win[id].layer
-      layer.sentToFront = id
-      start.o = false
     end
   else
     love.graphics.rectangle("fill", 35, 5+(id*55-55), 208, 50)
