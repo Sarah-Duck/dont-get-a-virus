@@ -26,6 +26,8 @@ function drawInternet()
     end
   elseif string.find(internet.urlc, "youtube.com") ~= nil or string.find(internet.urlc, "utube.com") ~= nil then
     love.graphics.draw(internet.utube, 8, 74)
+  elseif string.find(internet.urlc, "facebook.com") ~= nil or string.find(internet.urlc, "fbook.com") ~= nil then
+    love.graphics.draw(internet.fbook, 8, 74)
   else
     love.graphics.draw(internet.error, 8, 74)
   end
