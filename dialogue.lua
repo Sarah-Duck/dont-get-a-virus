@@ -147,6 +147,11 @@ function loadDia()
   v2.msgs[16] = "So, lets get to work... shall we?"
   v2.msgs[18] = "Umm... I'm not going to baby you. Open your antivirus!"
   v2.msgs[20] = "There it is! However, it won't work like this! Let me help."
+  v2.msgs[22] = "Ah, there we go! Yes, this fight will be a little different"
+  v2.msgs[23] = "Now, let's begin."
+  v2.msgs[25] = "No! You won't beat me! I will beat you! Behold my ultimate power!!!"
+  v2.msgs[26] = "Well, I'm done. If you survived that, then theres nothing else I can do..."
+  v2.msgs[27] = "I know this is the end for me, right? You're going to kill me now."
 end
 function chatReply(m)
   if string.find(m, "virus") ~= nil and msg.c > 6 then
