@@ -134,7 +134,8 @@ function loadAssets(id)
       welcome = love.graphics.newImage("assets/internet_welcome.png"),
       error = love.graphics.newImage("assets/internet_error.png"),
       utube = love.graphics.newImage("assets/internet_utube.png"),
-      fbook = love.graphics.newImage("assets/internet_fbook.png")
+      fbook = love.graphics.newImage("assets/internet_fbook.png"),
+      bonehub = love.graphics.newImage("assets/internet_bonehub.png")
     }
   end
   if id == 11 then
