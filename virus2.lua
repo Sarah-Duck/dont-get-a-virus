@@ -1,7 +1,8 @@
 function drawVirusFight2()
   drawDesktop()
   drawVirus2()
-  drawAntivirusV2()
+  --drawAntivirusV2()
+  drawAntivirusFight()
   drawPopups()
   if v2.popshoty < sys.h+1000 then
     if v2.popshots == false then
@@ -53,6 +54,8 @@ function drawVirusFight2()
   elseif v2.c.chat.msgs == 5 then
     v2.c.xd = sys.w/2
     v2.c.yd = sys.h/2
+    win[4].x = sys.w/2
+    win[4].y = sys.h-sys.h/4
   elseif v2.c.chat.msgs == 10 then
     v2.c.xd = sys.w/2
     v2.c.yd = sys.h/2
@@ -61,10 +64,11 @@ function drawVirusFight2()
       v2.c.cockgun:play()
       v2.c.cockgunplay = true
     end
-  elseif v2.c.chat.msgs == 21 then
-    v2.c.xd = win[4].x-150
-    v2.c.yd = win[4].y+75
+  elseif v2.c.chat.msgs == 19 then
+    v2.c.xd = sys.w/4
+    v2.c.yd = sys.h/4
     v2.c.handp = "gunpoint"
+    antivirus.scanning = true
   end
 end
 function drawPopup(id)
@@ -267,7 +271,8 @@ function drawVirus2()
       end
     end
     love.graphics.setColor(256,256,256,v2.c.gunpointOp)
-    love.graphics.draw(v2.c.gunpoint, v2.c.x, v2.c.y, v2.gun.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.idle.handright, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.gunleft, v2.c.x-82, v2.c.y+35, v2.gun.r+math.rad(-100), 1.2, 1.2, 45, 10)
   end
   v2.mTime = v2.mTime + delta
   if v2.mTime > 6 and v2.c.chat.msgs == 17 and win[4].ex == true then
@@ -276,8 +281,7 @@ function drawVirus2()
     nextChatv2(19)
   elseif v2.mTime > 1 and v2.c.chat.msgs == 19 and win[4].ex == false then
     nextChatv2(20)
-  elseif v2.c.chat.msgs == 21 and v2.c.x > win[4].x-150-20 and v2.c.x < win[4].x-150+20
-  and v2.c.y > win[4].y+75-20 and v2.c.y < win[4].y+75+20 then
+  elseif v2.c.chat.msgs == 21 and av.transform == true then
     nextChatv2(22)
   end
   if v2.c.chat.time >= 2 and v2.msgs[v2.c.chat.msgs] ~= nil then
@@ -337,11 +341,15 @@ function handOpa(hand,opa)
 end
 function drawAntivirusV2()
   orderWindows()
-  if v2.c.chat.msgs == 22 then
-    love.graphics.draw(antivirus.leftd, win[4].x+av.shakex, win[4].y+av.shakey)
+  if av.transform == true then
+    love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
+    love.graphics.draw(antivirus.left, win[4].x+av.shakex, win[4].y+av.shakey)
     love.graphics.draw(antivirus.right, win[4].x+95+av.shakex, win[4].y+av.shakey)
-  elseif v2.c.chat.msgs < 22 then
+  elseif v2.c.chat.msgs < 21 or av.transform == false then
     love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
+  end
+  if antivirus.status == "VIRUS FOUND!" then
+    av.transform = true
   end
 end
 function nextChatv2(messag)

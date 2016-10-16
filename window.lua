@@ -94,7 +94,7 @@ function drawWindow(id)
     win[id].py = win[id].y
   end
   if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
-    if id == 4 and v1.yes == true then
+    if id == 4 and (v1.yes == true or v2.start == true) then
       windowMouseMove(id,0,sys.w-win[id].w,sys.h/2,sys.h-win[id].h-panel.thick-1)
     else
       windowMouseMove(id,0,sys.w-win[id].w,0,sys.h-win[id].h-panel.thick-1)
@@ -125,7 +125,7 @@ function drawWindow(id)
     layer.sendToFront = 2
   end
   if (sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-22 and sys.mouse.p.x <= (win[id].x+win[id].w-22)+16 and win[id].ex == false
-  and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5 and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
+  and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5 and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false and v2.start == false then
     win[id].ex = true
   end
   if win[id].ex == true and win[id].s ~= 0 then
@@ -140,7 +140,7 @@ function drawWindow(id)
   end
   if (win[id].min == false and sys.mouse.p.p == true and sys.mouse.p.x >= win[id].x+win[id].w-40
   and sys.mouse.p.x <= (win[id].x+win[id].w-40)+16 and sys.mouse.drag == false and sys.mouse.p.y >= win[id].y+5
-  and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false then
+  and sys.mouse.p.y <= (win[id].y+5)+16 and win[id].hover == true) and v1.yes == false and v2.start == false then
     win[id].min = true
   end
   if win[id].min == true and win[id].miny < minim then

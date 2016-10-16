@@ -81,7 +81,11 @@ function love.mousepressed(x, y, button)
 end
 function love.keyreleased(key)
    if key == "f11" then
+     if scene == 2 then
       v1.c.chat.msgs = v1.c.chat.msgs + 1
+    elseif scene == 3 then
+      v2.c.chat.msgs = v2.c.chat.msgs + 1
+    end
    end
    if key == "f10" then
      v1.c.health = v1.c.health - 5
