@@ -1,9 +1,57 @@
 function drawVirusFight2()
   drawDesktop()
+  floatingShotgun()
+  drawBullets()
   drawVirus2()
-  --drawAntivirusV2()
   drawAntivirusFight()
   drawPopups()
+  love.graphics.print(#v2.sg)
+  if v2.fightStart == true then
+    v2.fightTimer = v2.fightTimer + delta
+    v2.c.money =  v2.c.money + delta*(#v2.pop.p+1)
+    v2.attackNextTimer = v2.attackNextTimer + delta
+    v2.attackTimer = v2.attackTimer - delta
+  end
+  if v2.currentAttack == "first" then
+    v2FirstAttack()
+  elseif v2.currentAttack == "rShotgun" then
+    v2RandomShotgunAttack()
+  elseif v2.currentAttack == "shotgunRow" then
+    v2ShotgunRowAttack()
+  elseif v2.currentAttack == "popup" then
+    v2PopupAttack()
+  elseif v2.currentAttack == "popupShotgun" then
+    v2ShotgunPopupAttack()
+  elseif v2.currentAttack == "shotgunBundle" then
+    shotgunBundleAttack()
+  elseif v2.currentAttack == "shotgunSpiral" then
+    shotgunSpiralAttack()
+  end
+  if v2.nextAttack <= v2.attackNextTimer then
+    local na = math.random(1,6)
+    if na == 1 then
+      v2.currentAttack = "rShotgun"
+    elseif na == 2 then
+      v2.currentAttack = "shotgunRow"
+    elseif na == 3 then
+      v2.currentAttack = "popup"
+    elseif na == 4 then
+      v2.currentAttack = "popupShotgun"
+    elseif na == 5 then
+      v2.currentAttack = "shotgunBundle"
+    elseif na == 6 then
+      v2.currentAttack = "shotgunSpiral"
+    end
+    v2.nextAttack = math.random(5,20)
+    if na == 3 or na == 4 then
+      v2.nextAttack = 5
+    end
+    v2.attackNextTimer = 0
+  end
+  if v2.fightTimer >= v2.popupTimer then
+    v2.popupTimer = v2.popupTimer + math.random(10,20)
+    addPopup(true)
+  end
   if v2.popshoty < sys.h+1000 then
     if v2.popshots == false then
       v2.c.fire:play()
@@ -64,11 +112,27 @@ function drawVirusFight2()
       v2.c.cockgun:play()
       v2.c.cockgunplay = true
     end
+  elseif v2.c.chat.msgs == 11 then
+    v2.c.handp = "spread"
+  elseif v2.c.chat.msgs == 12 then
+    v2.c.handp = "fist"
+  elseif v2.c.chat.msgs == 14 then
+    v2.c.handp = "idle"
   elseif v2.c.chat.msgs == 19 then
     v2.c.xd = sys.w/4
     v2.c.yd = sys.h/4
     v2.c.handp = "gunpoint"
     antivirus.scanning = true
+  elseif v2.c.chat.msgs == 22 then
+    v2.c.handp = "idle"
+    v2.c.xd = sys.w/2
+    v2.c.yd = sys.h/4
+  elseif v2.c.chat.msgs == 24 then
+    v2.fightStart = true
+  end
+  if v2.fightStart == true then
+    music.tension2:stop()
+    music.battle2:play()
   end
 end
 function drawPopup(id)
@@ -193,13 +257,15 @@ function drawPopups()
 end
 function drawVirus2()
   love.graphics.setColor(255,255,255)
-  playAnimation(v2.c.idle, true, v2.c.x, v2.c.y, v2.c.r, v2.c.s, 125, 125, 0.5)
+  playAnimation(v2.c.idle, true, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, 125, 125, 0.5)
   love.graphics.stencil(drawVirus2Stencil, "replace", 1)
   love.graphics.setStencilTest("greater", 0)
-  love.graphics.draw(v2.c.pupil, v2.c.x-26+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
+  love.graphics.draw(v2.c.pupil, v2.c.x-26+math.random(-0.7+(v2.shakex/10),0.7+(v2.shakex/10)),
+  v2.c.y-57+math.random(-0.7+(v2.shakey/10),0.7+(v2.shakey/10)),v2.c.r,v2.c.s)
   love.graphics.draw(v2.c.pupil, v2.c.x+21+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
   love.graphics.setStencilTest()
   v2.c.sp = math.sqrt(math.abs(v2.c.xd - v2.c.x)*2 + math.abs(v2.c.yd - v2.c.y)*2)/5
+  v2.c.sp = v2.c.sp * v2.spm
   v2.c.angle = math.atan2((v2.c.yd - v2.c.y), (v2.c.xd - v2.c.x))
   v2.c.spx = v2.c.sp * math.cos(v2.c.angle)
   v2.c.spy = v2.c.sp * math.sin(v2.c.angle)
@@ -229,31 +295,45 @@ function drawVirus2()
       v2.c.y = v2.c.y + v2.c.spy
     end
   end
+  if v2.shake > 0 and v2.c.chat.msgs == 24 then
+    v2.shakex = math.random(v2.shake,-v2.shake)
+    v2.shakey = math.random(v2.shake,-v2.shake)
+    v2.shake = v2.shake - 0.3*sys.s
+  elseif v2.shake < 0 and v1.c.chat.msgs == 24 then
+    v2.shake = 0
+    v2.shakex = 0
+    v2.shakey = 0
+  end
   handOpa("idle",v2.c.handsOp)
   handOpa("fist",v2.c.fistOp)
   handOpa("gunup",v2.c.gunupOp)
   handOpa("gunfront",v2.c.gunfrontOp)
   handOpa("gunidle",v2.c.gunidleOp)
   handOpa("gunpoint",v2.c.gunpointOp)
+  handOpa("spread",v2.c.spreadOp)
   if v2.c.handsOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.handsOp)
-    love.graphics.draw(v2.c.idle.hands, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.idle.hands, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
   if v2.c.fistOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.fistOp)
-    love.graphics.draw(v2.c.idle.fist, v2.c.x+math.random(-0.2,0.2), v2.c.y+math.random(-0.2,0.2), v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.idle.fist, v2.c.x+v2.shakex+math.random(-0.2,0.2), v2.c.y+v2.shakey+math.random(-0.2,0.2), v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
   if v2.c.gunidleOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.gunidleOp)
-    love.graphics.draw(v2.c.idle.gunidle, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.idle.gunidle, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
   if v2.c.gunfrontOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.gunfrontOp)
-    love.graphics.draw(v2.c.gunfront, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.gunfront, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
   if v2.c.gunupOp ~= 0 then
     love.graphics.setColor(256,256,256,v2.c.gunupOp)
-    love.graphics.draw(v2.c.gunup, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.gunup, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+  end
+  if v2.c.spreadOp ~= 0 then
+    love.graphics.setColor(256,256,256,v2.c.spreadOp)
+    love.graphics.draw(v2.c.idle.spread, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
   end
   if v2.c.gunpointOp ~= 0 then
     v2.gun.rt = math.atan2((win[4].y+win[4].h/2 - v2.c.y), (win[4].x+win[4].w/2 - v2.c.x))
@@ -271,8 +351,8 @@ function drawVirus2()
       end
     end
     love.graphics.setColor(256,256,256,v2.c.gunpointOp)
-    love.graphics.draw(v2.c.idle.handright, v2.c.x, v2.c.y, v2.c.r, v2.c.s, v2.c.s, 125, 125)
-    love.graphics.draw(v2.c.gunleft, v2.c.x-82, v2.c.y+35, v2.gun.r+math.rad(-100), 1.2, 1.2, 45, 10)
+    love.graphics.draw(v2.c.idle.handright, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
+    love.graphics.draw(v2.c.gunleft, v2.c.x-82+v2.shakex, v2.c.y+35+v2.shakey, v2.gun.r+math.rad(-100), 1.2, 1.2, 45, 10)
   end
   v2.mTime = v2.mTime + delta
   if v2.mTime > 6 and v2.c.chat.msgs == 17 and win[4].ex == true then
@@ -281,7 +361,7 @@ function drawVirus2()
     nextChatv2(19)
   elseif v2.mTime > 1 and v2.c.chat.msgs == 19 and win[4].ex == false then
     nextChatv2(20)
-  elseif v2.c.chat.msgs == 21 and av.transform == true then
+  elseif v2.c.chat.msgs == 21 and av.gun == 98 then
     nextChatv2(22)
   end
   if v2.c.chat.time >= 2 and v2.msgs[v2.c.chat.msgs] ~= nil then
@@ -301,7 +381,7 @@ function drawVirus2()
 end
 function drawVirus2Stencil()
   love.graphics.setShader(mask_effect)
-  playAnimation(v2.c.idle.mask, true, v2.c.x, v2.c.y, v2.c.r, v2.c.s, 125, 125, 0.5)
+  playAnimation(v2.c.idle.mask, true, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, 125, 125, 0.5)
   love.graphics.setShader()
 end
 function handOpa(hand,opa)
@@ -319,6 +399,8 @@ function handOpa(hand,opa)
         v2.c.gunupOp = v2.c.gunupOp + 16
       elseif hand == "gunpoint" then
         v2.c.gunpointOp = v2.c.gunpointOp + 16
+      elseif hand == "spread" then
+        v2.c.spreadOp = v2.c.spreadOp + 16
       end
     end
   else
@@ -335,23 +417,13 @@ function handOpa(hand,opa)
         v2.c.gunupOp = v2.c.gunupOp - 16
       elseif hand == "gunpoint" then
         v2.c.gunpointOp = v2.c.gunpointOp - 16
+      elseif hand == "spread" then
+        v2.c.spreadOp = v2.c.spreadOp - 16
       end
     end
   end
 end
-function drawAntivirusV2()
-  orderWindows()
-  if av.transform == true then
-    love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
-    love.graphics.draw(antivirus.left, win[4].x+av.shakex, win[4].y+av.shakey)
-    love.graphics.draw(antivirus.right, win[4].x+95+av.shakex, win[4].y+av.shakey)
-  elseif v2.c.chat.msgs < 21 or av.transform == false then
-    love.graphics.draw(win[4].cvs, win[4].x+av.shakex, win[4].y+av.shakey, 0, win[4].s)
-  end
-  if antivirus.status == "VIRUS FOUND!" then
-    av.transform = true
-  end
-end
+
 function nextChatv2(messag)
   v2.c.chat.next = true
   if messag == nil then
@@ -362,4 +434,146 @@ function nextChatv2(messag)
   v2.c.chat.char = 0
   v2.c.chat.msg = ""
   v2.mTime = 0
+end
+function addShotgun(x,y,d,b)
+  local rot = math.atan2((win[4].y+win[4].h/2 - y), (win[4].x+win[4].w/2 - x))
+  table.insert(v2.sg, 1, {x=x,y=y,r=rot,d=d,b=b,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+  if v2.c.cockgun:isPlaying() == true then
+    v2.c.cockgun:rewind()
+  else
+    v2.c.cockgun:play()
+  end
+end
+function floatingShotgun()
+  for i=1,#v2.sg do
+    love.graphics.setColor(256,256,256,v2.sg[i].op)
+    love.graphics.draw(v2.c.shotgun, v2.sg[i].x, v2.sg[i].y, v2.sg[i].r+v2.sg[i].ra, 1, 1, 150, 60)
+  end
+  love.graphics.setColor(256,256,256,256)
+  for i=1,#v2.sg do
+    v2.sg[i].t = v2.sg[i].t + delta
+    if v2.sg[i].ra > math.rad(0) and v2.sg[i].remp == false then
+      v2.sg[i].ra = v2.sg[i].ra - math.rad(5)*sys.s
+    elseif v2.sg[i].ra <= 0 and v2.sg[i].remp == false then
+      v2.sg[i].ra = 0
+    end
+    if v2.sg[i].t >= v2.sg[i].d and v2.sg[i].f == false then
+      local x1 = math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-15-v2.sg[i].x)
+      -math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].x
+      local y1 = math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-15-v2.sg[i].x)
+      +math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].y
+      local x2 = math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-25-v2.sg[i].x)
+      -math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].x
+      local y2 = math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-25-v2.sg[i].x)
+      +math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].y
+      local x3 = math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-30-v2.sg[i].x)
+      -math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].x
+      local y3 = math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-30-v2.sg[i].x)
+      +math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].y
+      addBullet(x1,y1,v2.sg[i].r+math.rad(4),10,"v1",2)
+      addBullet(x2,y2,v2.sg[i].r,10,"v1",1)
+      addBullet(x3,y3,v2.sg[i].r-math.rad(4),10,"v1",2)
+      v2.sg[i].f = true
+      if v2.c.fire:isPlaying() == true then
+        v2.c.fire:rewind()
+      else
+        v2.c.fire:play()
+      end
+    end
+    if v2.sg[i].op < 256 and v2.sg[i].remp == false then
+      v2.sg[i].op = v2.sg[i].op + 20*sys.s
+    end
+    if v2.sg[i].op > 256 then
+      v2.sg[i].op = 256
+    end
+    if v2.sg[i].remp == true then
+      v2.sg[i].op = v2.sg[i].op - 20*sys.s
+      v2.sg[i].ra = v2.sg[i].ra + math.rad(5)*sys.s
+    end
+    if v2.sg[i].t > v2.sg[i].d+0.5 then
+      v2.sg[i].remp = true
+    end
+    if v2.sg[i].t > v2.sg[i].d+1 then
+      v2.sg[i].rem = true
+    end
+    if v2.sg[i].rem == true then
+      table.remove(v2.sg, i)
+      return
+    end
+  end
+end
+function v2FirstAttack()
+  if v2.fightTimer > v2.firstAttack and v2.firstAttack <= 13 then
+    local hole = math.random(1,math.floor(sys.w/130)-2)
+    v2.spm = 2
+    v2.c.xd = math.random(125,sys.w-125)
+    for i=1,math.floor(sys.w/130)+1 do
+      if i <= hole+2 and i >= hole then
+      else
+        table.insert(v2.sg, 1, {x=i*140-50,y=200,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+      end
+    end
+    v2.firstAttack = v2.firstAttack + 1.8-(v2.firstAttack/10)
+    if v2.firstAttack >= 12 then
+      v2.spm = 1
+    end
+  end
+  if v2.fightTimer > v2.firstAttack and v2.firstAttack > 13 and v2.firstAttack <= 18 then
+    addPopup(true)
+    v2.firstAttack = v2.firstAttack + 1
+  end
+end
+function v2RandomShotgunAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 0.4
+    addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
+  end
+end
+function v2ShotgunRowAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 1
+    local hole = math.random(1,math.floor(sys.w/130)-2)
+    for i=1,math.floor(sys.w/130)+1 do
+      if i <= hole+2 and i >= hole then
+      else
+        table.insert(v2.sg, 1, {x=i*140-50,y=200,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+      end
+    end
+  end
+end
+function v2PopupAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 1
+    addPopup(true)
+  end
+end
+function v2ShotgunAttack()
+end
+function v2ShootingPopupAttack()
+end
+function v2ShotgunPopupAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 1.5
+    addPopup(true)
+    addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),1,1)
+  end
+end
+function shotgunBundleAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 1.5
+    for i=1,10 do
+      addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
+    end
+  end
+end
+function shotgunSpiralAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 1.5
+    local xx = math.random(0,sys.w)
+    local yy = math.random(0,sys.h)
+    local dd = math.random(1,8)
+    for i=1,8 do
+      table.insert(v2.sg, 1, {x=xx,y=yy,r=math.rad(45*i),d=dd,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+    end
+  end
 end

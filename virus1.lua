@@ -552,6 +552,9 @@ function addBullet(x,y,a,s,t,id)
   if t == "v1" then
     table.insert(v1.bullets, 1, {x=x,y=y,a=a,s=s*sys.s,spx=0,spy=0,rm=false,id=id})
   end
+  if t == "v2" then
+    table.insert(v2.bullets, 1, {x=x,y=y,a=a,s=s*sys.s,spx=0,spy=0,rm=false,id=id})
+  end
 end
 function drawBullets()
   for i=1,#v1.bullets do
@@ -631,6 +634,19 @@ function drawBullets()
         v1.c.health = v1.c.health - 5
         v1.shake = 10
         v1.spm = v1.spm + 0.25*(sys.h/1080)
+        av.bullets[i].rm = true
+        if antivirus.hit:isPlaying() == true then
+          antivirus.hit:rewind()
+        else
+          antivirus.hit:play()
+        end
+      end
+    end
+    if v2.start == true then
+      if av.bullets[i].x >= v2.c.x-110 and av.bullets[i].x <= v2.c.x+110 and av.bullets[i].y >= v2.c.y-110 and av.bullets[i].y <= v2.c.y+110 then
+        v2.c.health = v2.c.health - 5
+        v2.spm = v2.spm + 0.20*(sys.h/1080)
+        v2.shake = 10
         av.bullets[i].rm = true
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()

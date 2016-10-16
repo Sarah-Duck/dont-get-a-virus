@@ -242,8 +242,10 @@ function loadAssets(id)
     v2.c.pupil = love.graphics.newImage("assets/virus2_pupil.png")
     v2.c.idle.hands = love.graphics.newImage("assets/virus2_hands_idle.png")
     v2.c.idle.handright = love.graphics.newImage("assets/virus2_hands_idle_right.png")
+    v2.c.idle.spread = love.graphics.newImage("assets/virus2_hands_spread.png")
     v2.c.idle.gunidle = love.graphics.newImage("assets/virus2_hands_gunidle.png")
     v2.c.idle.fist = love.graphics.newImage("assets/virus2_hands_fist.png")
+    v2.c.shotgun = love.graphics.newImage("assets/virus2_shotgun.png")
     v2.c.idle.f = 1
     v2.c.gunfront = love.graphics.newImage("assets/virus2_hands_gunfront.png")
     v2.c.gunpoint = love.graphics.newImage("assets/virus2_hands_gunpoint.png")
@@ -252,6 +254,7 @@ function loadAssets(id)
     v2.c.cockgun = love.audio.newSource("assets/virus2_shotgun_cock.ogg")
     v2.c.fire = love.audio.newSource("assets/virus2_shotgun_fire.ogg")
     v2.c.handsOp = 0
+    v2.c.spreadOp = 0
     v2.c.gunidleOp = 0
     v2.c.fistOp = 0
     v2.c.gunfrontOp = 256

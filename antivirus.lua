@@ -110,6 +110,10 @@ function drawAntivirusFight()
       if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40) and av.charge == 40 then
         av.fireb = true
       end
+    elseif scene == 3 then
+      if v2.c.chat.msgs == 24 and av.charge == 40 then
+        av.fireb = true
+      end
     end
     if av.charge < 40 then
       av.charge = av.charge + (math.random(4,12,25,40,5,2,10)*delta)/di

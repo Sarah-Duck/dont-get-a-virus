@@ -85,6 +85,16 @@ function drawStart()
       love.graphics.print("TIMER: " .. v1.fightMinute .. ":" .. math.floor(-(v1.fightTimer-60)), sys.w/2+130, panel.s.y+6)
     end
   end
+  if v2.c.chat.msgs >= 24 and v2.start == true then
+    drawDownBox(sys.w/2+166-250, panel.s.y, 101*2, panel.s.height,2)
+    love.graphics.setColor(100,0,0)
+    love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, 200, panel.s.height-2)
+    love.graphics.setColor(455-v2.c.health*4.55,v2.c.health*2.55,20)
+    love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, v2.c.health*2, panel.s.height-2)
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("VIRUS HEALTH: " .. v2.c.health, sys.w/2-250, panel.s.y+6)
+    love.graphics.print("MONEY: $" .. math.floor(v2.c.money), sys.w/2+130, panel.s.y+6)
+  end
 end
 function drawNoti()
   notify.x = sys.w-258

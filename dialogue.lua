@@ -141,7 +141,7 @@ function loadDia()
   v2.msgs[10] = "Sure, destruction is fun..."
   v2.msgs[11] = "But why not make a little money first?"
   v2.msgs[12] = "After you make a good amount o' cash, THAT is when you end them!"
-  v2.msgs[13] = "I don't need time to destroy this computer. I just need my cold hard cash! $1000 will do!"
+  v2.msgs[13] = "I don't need time to destroy this computer. I just need my cold hard cash! $500 will do!"
   v2.msgs[14] = "I have to give that arrogant punk some credit, he did leave your door wide open for me!"
   v2.msgs[15] = "He was oddly specific when explaining the fight, so I'll assume you know how this works!"
   v2.msgs[16] = "So, lets get to work... shall we?"
@@ -150,8 +150,8 @@ function loadDia()
   v2.msgs[22] = "This'll be fun, you better not disappoint me!"
   v2.msgs[23] = "Now, let's begin."
   v2.msgs[25] = "No! You won't beat me! I will beat you! Behold my ultimate power!!!"
-  v2.msgs[26] = "Well, I'm done. If you survived that, then theres nothing else I can do..."
-  v2.msgs[27] = "I know this is the end for me, right? You're going to kill me now."
+  v2.msgs[27] = "Well, I'm done. If you survived that, then theres nothing else I can do..."
+  v2.msgs[28] = "I know this is the end for me, right? You're going to kill me now."
 end
 function chatReply(m)
   if string.find(m, "virus") ~= nil and msg.c > 6 then
