@@ -39,9 +39,15 @@ function drawVirusFight2()
     v2ShotgunAttack()
   elseif v2.currentAttack == "shotgunSpiral" then
     shotgunSpiralAttack()
+  elseif v2.currentAttack == "centerShotgun" then
+    centerShotgunAttack()
+  elseif v2.currentAttack == "assholeShotgun" then
+    assholeShotgunAttack()
+  elseif v2.currentAttack == "targetShotgun" then
+    targetShotgunAttack()
   end
   if v2.nextAttack <= v2.attackNextTimer then
-    local na = math.random(1,9)
+    local na = math.random(1,12)
     if na == 1 then
       v2.currentAttack = "rShotgun"
     elseif na == 2 then
@@ -60,6 +66,12 @@ function drawVirusFight2()
       v2.currentAttack = "shotgun"
     elseif na == 9 then
       v2.currentAttack = "shotgunSpiral"
+    elseif na == 10 then
+      v2.currentAttack = "centerShotgun"
+    elseif na == 11 then
+      v2.currentAttack = "assholeShotgun"
+    elseif na == 12 then
+      v2.currentAttack = "targetShotgun"
     end
     v2.nextAttack = math.random(5,15)
     if na == 3 or na == 4 then
@@ -148,7 +160,7 @@ function drawVirusFight2()
     v2.c.yd = sys.h/4
   elseif v2.c.chat.msgs == 24 then
     v2.fightStart = true
-    if v2.currentAttack ~= "shotgun" and v2.c.health > 40 then
+    if v2.currentAttack ~= "shotgun" and v2.currentAttack ~= "centerShotgun" and v2.c.health > 40 then
       v2.c.handp = "idle"
     elseif v2.c.health <= 40 then
       v2.c.handp = "gunpoint"
@@ -319,7 +331,7 @@ function drawVirus2()
       v2.c.y = v2.c.y + v2.c.spy
     end
   end
-  if v2.currentAttack ~= "first" and v2.c.chat.msgs == 24 then
+  if v2.currentAttack ~= "first" and v2.currentAttack ~= "centerShotgun" and v2.c.chat.msgs == 24 then
     if v2.c.x == v2.c.xd and v2.c.y == v2.c.yd then
       v2.c.xd = math.random(125, sys.w-125)
       v2.c.yd = math.random(125, sys.h/2)
@@ -551,6 +563,11 @@ function v2FirstAttack()
         table.insert(v2.sg, 1, {x=i*140-50,y=200,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
       end
     end
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
+    end
     v2.firstAttack = v2.firstAttack + 1.8-(v2.firstAttack/10)
     if v2.firstAttack >= 12 then
       v2.spm = 1
@@ -576,6 +593,11 @@ function v2ShotgunRowAttack()
       else
         table.insert(v2.sg, 1, {x=i*140-50,y=200,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
       end
+    end
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
     end
   end
 end
@@ -623,6 +645,11 @@ function shotgunWheelAttack()
     for i=1,8 do
       table.insert(v2.sg, 1, {x=xx,y=yy,r=math.rad(45*i),d=dd,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
     end
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
+    end
   end
 end
 function superFastShotgunAttack()
@@ -640,6 +667,11 @@ function shotgunSpiralAttack()
       local dd = 0.4+0.1*i
       table.insert(v2.sg, 1, {x=xx,y=yy,r=math.rad(30*i),d=dd,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
     end
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
+    end
   end
 end
 function v2FireShotgun()
@@ -656,5 +688,50 @@ function v2FireShotgun()
     v2.c.fire:rewind()
   else
     v2.c.fire:play()
+  end
+end
+function centerShotgunAttack()
+  v2.c.handp = "gunpoint"
+  if v2.attackTimer <= 0 then
+    if math.random(1,2) == 1 then
+      v2FireShotgun()
+    end
+    v2.c.xd = sys.w/2+math.random(-25,25)
+    v2.c.yd = sys.h/4+math.random(-25,25)
+    v2.attackTimer = 0.4
+  end
+end
+function assholeShotgunAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 3
+    local hole = math.random(1,math.floor(sys.w/130)-2)
+    for i=1,math.floor(sys.w/130)+1 do
+      if i <= hole+2 and i >= hole then
+        table.insert(v2.sg, 1, {x=i*140-50,y=150,r=math.rad(90),d=1,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=1.7,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+      else
+        table.insert(v2.sg, 1, {x=i*140-50,y=150,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=1.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+      end
+    end
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
+    end
+  end
+end
+function targetShotgunAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 0.8
+    table.insert(v2.sg, 1, {x=win[4].x,y=10,r=math.rad(90),d=0.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+    table.insert(v2.sg, 1, {x=win[4].x+150,y=10,r=math.rad(90),d=0.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+    table.insert(v2.sg, 1, {x=win[4].x,y=sys.h,r=math.rad(-90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+    table.insert(v2.sg, 1, {x=win[4].x+150,y=sys.h,r=math.rad(-90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+    if v2.c.cockgun:isPlaying() == true then
+      v2.c.cockgun:rewind()
+    else
+      v2.c.cockgun:play()
+    end
   end
 end
