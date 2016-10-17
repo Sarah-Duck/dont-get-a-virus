@@ -61,7 +61,7 @@ function love.mousepressed(x, y, button)
   if scene ~= 0 then
     sys.mouse.p.x = x
     sys.mouse.p.y = y
-    if button == 2 then
+    if button ~= 1 then
       sys.mouse.p.p = false
     end
     if button == 1 then
