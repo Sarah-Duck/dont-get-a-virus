@@ -242,6 +242,7 @@ function loadVar()
   v2.attackNextTimer = 0
   v2.nextAttack = 20
   v2.popupTimer = 60
+  v2.shotgunTimer = 10
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5
