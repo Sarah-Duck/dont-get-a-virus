@@ -50,7 +50,7 @@ function drawVirusFight2()
     elseif na == 8 then
       v2.currentAttack = "shotgun"
     end
-    v2.nextAttack = math.random(5,20)
+    v2.nextAttack = math.random(5,15)
     if na == 3 or na == 4 then
       v2.nextAttack = 5
     end
