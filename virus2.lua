@@ -26,9 +26,13 @@ function drawVirusFight2()
     shotgunBundleAttack()
   elseif v2.currentAttack == "shotgunSpiral" then
     shotgunSpiralAttack()
+  elseif v2.currentAttack == "shotgunFast" then
+    superFastShotgunAttack()
+  elseif v2.currentAttack == "shotgun" then
+    v2ShotgunAttack()
   end
   if v2.nextAttack <= v2.attackNextTimer then
-    local na = math.random(1,6)
+    local na = math.random(1,8)
     if na == 1 then
       v2.currentAttack = "rShotgun"
     elseif na == 2 then
@@ -41,6 +45,10 @@ function drawVirusFight2()
       v2.currentAttack = "shotgunBundle"
     elseif na == 6 then
       v2.currentAttack = "shotgunSpiral"
+    elseif na == 7 then
+      v2.currentAttack = "shotgunFast"
+    elseif na == 8 then
+      v2.currentAttack = "shotgun"
     end
     v2.nextAttack = math.random(5,20)
     if na == 3 or na == 4 then
@@ -129,6 +137,9 @@ function drawVirusFight2()
     v2.c.yd = sys.h/4
   elseif v2.c.chat.msgs == 24 then
     v2.fightStart = true
+    if v2.currentAttack ~= "shotgun" then
+      v2.c.handp = "idle"
+    end
   end
   if v2.fightStart == true then
     music.tension2:stop()
@@ -295,6 +306,12 @@ function drawVirus2()
       v2.c.y = v2.c.y + v2.c.spy
     end
   end
+  if v2.currentAttack ~= "first" and v2.c.chat.msgs == 24 then
+    if v2.c.x == v2.c.xd and v2.c.y == v2.c.yd then
+      v2.c.xd = math.random(125, sys.w-125)
+      v2.c.yd = math.random(125, sys.h/2)
+    end
+  end
   if v2.shake > 0 and v2.c.chat.msgs == 24 then
     v2.shakex = math.random(v2.shake,-v2.shake)
     v2.shakey = math.random(v2.shake,-v2.shake)
@@ -352,7 +369,7 @@ function drawVirus2()
     end
     love.graphics.setColor(256,256,256,v2.c.gunpointOp)
     love.graphics.draw(v2.c.idle.handright, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125, 125)
-    love.graphics.draw(v2.c.gunleft, v2.c.x-82+v2.shakex, v2.c.y+35+v2.shakey, v2.gun.r+math.rad(-100), 1.2, 1.2, 45, 10)
+    love.graphics.draw(v2.c.gunleft, v2.c.x-82+v2.shakex, v2.c.y+35+v2.shakey, v2.gun.r+math.rad(-90), 1.2, 1.2, 45, 10)
   end
   v2.mTime = v2.mTime + delta
   if v2.mTime > 6 and v2.c.chat.msgs == 17 and win[4].ex == true then
@@ -470,9 +487,15 @@ function floatingShotgun()
       -math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].x
       local y3 = math.sin(v2.sg[i].r+math.rad(90))*(v2.sg[i].x-30-v2.sg[i].x)
       +math.cos(v2.sg[i].r+math.rad(90))*(v2.sg[i].y-140-v2.sg[i].y)+v2.sg[i].y
-      addBullet(x1,y1,v2.sg[i].r+math.rad(4),10,"v1",2)
-      addBullet(x2,y2,v2.sg[i].r,10,"v1",1)
-      addBullet(x3,y3,v2.sg[i].r-math.rad(4),10,"v1",2)
+      if v2.sg[i].b == 1 then
+        addBullet(x1,y1,v2.sg[i].r+math.rad(4),10,"v1",2)
+        addBullet(x3,y3,v2.sg[i].r-math.rad(4),10,"v1",2)
+      end
+      if math.random(1,8) == 8 then
+        addBullet(x2,y2,v2.sg[i].r,10,"v1",5)
+      else
+        addBullet(x2,y2,v2.sg[i].r,10,"v1",1)
+      end
       v2.sg[i].f = true
       if v2.c.fire:isPlaying() == true then
         v2.c.fire:rewind()
@@ -548,6 +571,31 @@ function v2PopupAttack()
   end
 end
 function v2ShotgunAttack()
+  v2.c.handp = "gunpoint"
+  if v2.attackTimer <= 0 then
+    local xx = math.cos(v2.gun.r+math.rad(90))*(v2.c.x-82+150-v2.c.x-82)
+    -math.sin(v2.gun.r+math.rad(90))*(v2.c.y+35-275-v2.c.y+35)+v2.c.x-82
+    local yy = math.sin(v2.gun.r+math.rad(70))*(v2.c.x-82+150-v2.c.x-82)
+    +math.cos(v2.gun.r+math.rad(90))*(v2.c.y+35-275-v2.c.y+35)+v2.c.y+35
+    addBullet(xx,yy,v2.gun.r+math.rad(4),10,"v1",2)
+    addBullet(xx,yy,v2.gun.r-math.rad(4),10,"v1",2)
+    if math.random(1,8) == 8 then
+      addBullet(xx,yy,v2.gun.r,10,"v1",5)
+    else
+      addBullet(xx,yy,v2.gun.r,10,"v1",1)
+    end
+    if v2.c.fire:isPlaying() == true then
+      v2.c.fire:rewind()
+    else
+      v2.c.fire:play()
+    end
+    if v2.c.health <= 50 and math.random(1,3) == 1 then
+      for i=1,3 do
+        addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
+      end
+    end
+    v2.attackTimer = 1
+  end
 end
 function v2ShootingPopupAttack()
 end
@@ -555,13 +603,13 @@ function v2ShotgunPopupAttack()
   if v2.attackTimer <= 0 then
     v2.attackTimer = 1.5
     addPopup(true)
-    addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),1,1)
+    addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),2,1)
   end
 end
 function shotgunBundleAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 1.5
-    for i=1,10 do
+    v2.attackTimer = 2
+    for i=1,8 do
       addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
     end
   end
@@ -575,5 +623,11 @@ function shotgunSpiralAttack()
     for i=1,8 do
       table.insert(v2.sg, 1, {x=xx,y=yy,r=math.rad(45*i),d=dd,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
     end
+  end
+end
+function superFastShotgunAttack()
+  if v2.attackTimer <= 0 then
+    v2.attackTimer = 0.1
+    addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,2)
   end
 end

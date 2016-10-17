@@ -94,8 +94,10 @@ function drawWindow(id)
     win[id].py = win[id].y
   end
   if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
-    if id == 4 and (v1.yes == true or v2.start == true) then
+    if id == 4 and v1.yes == true then
       windowMouseMove(id,0,sys.w-win[id].w,sys.h/2,sys.h-win[id].h-panel.thick-1)
+    elseif id == 4 and v2.start == true then
+      windowMouseMove(id,0,sys.w-win[id].w,sys.h/2.4,sys.h-win[id].h-panel.thick-1)
     else
       windowMouseMove(id,0,sys.w-win[id].w,0,sys.h-win[id].h-panel.thick-1)
     end
