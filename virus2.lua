@@ -17,7 +17,7 @@ function drawVirusFight2()
   end
   if v2.c.health <= 40 and v2.shotgunTimer <= 0 then
     v2FireShotgun()
-    v2.shotgunTimer = math.random(10,20)
+    v2.shotgunTimer = math.random(15,25)/di
   end
   if v2.currentAttack == "first" then
     v2FirstAttack()
@@ -80,7 +80,7 @@ function drawVirusFight2()
     v2.attackNextTimer = 0
   end
   if v2.fightTimer >= v2.popupTimer then
-    v2.popupTimer = v2.popupTimer + math.random(10,20)
+    v2.popupTimer = v2.popupTimer + math.random(20,40)/di
     addPopup(true)
   end
   if v2.popshoty < sys.h+1000 then
@@ -580,13 +580,13 @@ function v2FirstAttack()
 end
 function v2RandomShotgunAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 0.6
+    v2.attackTimer = 0.6/di
     addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
   end
 end
 function v2ShotgunRowAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 1
+    v2.attackTimer = 1.2/di
     local hole = math.random(1,math.floor(sys.w/130)-2)
     for i=1,math.floor(sys.w/130)+1 do
       if i <= hole+2 and i >= hole then
@@ -603,7 +603,7 @@ function v2ShotgunRowAttack()
 end
 function v2PopupAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 1.5
+    v2.attackTimer = 1.5/di
     addPopup(true)
   end
 end
@@ -616,21 +616,21 @@ function v2ShotgunAttack()
         addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
       end
     end
-    v2.attackTimer = 1
+    v2.attackTimer = 1/di
   end
 end
 function v2ShootingPopupAttack()
 end
 function v2ShotgunPopupAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 2
+    v2.attackTimer = 2.5/di
     addPopup(true)
     addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),2,1)
   end
 end
 function shotgunBundleAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 2.5
+    v2.attackTimer = 2.6/di
     for i=1,8 do
       addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,1)
     end
@@ -654,13 +654,13 @@ function shotgunWheelAttack()
 end
 function superFastShotgunAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 0.1
+    v2.attackTimer = 0.25/di
     addShotgun(math.random(0,sys.w),math.random(0,sys.h/2),0.5,2)
   end
 end
 function shotgunSpiralAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 2.3
+    v2.attackTimer = 2.5/di
     local xx = math.random(150,sys.w-150)
     local yy = sys.h/4
     for i=1,12 do
@@ -698,12 +698,12 @@ function centerShotgunAttack()
     end
     v2.c.xd = sys.w/2+math.random(-25,25)
     v2.c.yd = sys.h/4+math.random(-25,25)
-    v2.attackTimer = 0.4
+    v2.attackTimer = 0.5/di
   end
 end
 function assholeShotgunAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 3
+    v2.attackTimer = 3.5/di
     local hole = math.random(1,math.floor(sys.w/130)-2)
     for i=1,math.floor(sys.w/130)+1 do
       if i <= hole+2 and i >= hole then
@@ -723,7 +723,7 @@ function assholeShotgunAttack()
 end
 function targetShotgunAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 0.8
+    v2.attackTimer = 1.2/di
     table.insert(v2.sg, 1, {x=win[4].x,y=10,r=math.rad(90),d=0.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
     table.insert(v2.sg, 1, {x=win[4].x+150,y=10,r=math.rad(90),d=0.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
     table.insert(v2.sg, 1, {x=win[4].x,y=sys.h,r=math.rad(-90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
