@@ -242,6 +242,16 @@ function drawVirusFight1()
         if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then
           v1.c.chat.char = v1.c.chat.char + v1.c.chat.sp*(60/love.timer.getFPS())
           v1.c.chat.msg = string.sub(v1.msgs[v1.c.chat.msgs], 1, math.floor(v1.c.chat.char))
+          if math.floor(v1.c.chat.char) ~= math.floor(v1.prevChar) then
+            v1.voice:setPitch(math.random(8,12)/10)
+            v1.voice:setVolume(1)
+            if v1.voice:isPlaying() == true then
+              v1.voice:rewind()
+            else
+              v1.voice:play()
+            end
+            v1.prevChar = math.floor(v1.c.chat.char)
+          end
         end
       end
     end

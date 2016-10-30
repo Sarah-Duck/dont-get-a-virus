@@ -182,6 +182,7 @@ function loadAssets(id)
       tent2 = love.graphics.newImage("assets/tentacle2.png"),
       lidup = love.graphics.newImage("assets/v1_upper_eyelid.png"),
       lidlow = love.graphics.newImage("assets/v1_lower_eyelid.png")
+      voice = love.audio.newSource("assets/virus1_voice.ogg")
     }
   end
   if id == 14 then
@@ -266,6 +267,7 @@ function loadAssets(id)
     v2.c.idle.mask.fs = {}
     v2.c.idle.mask.pic = love.graphics.newImage("assets/virus2_idle_mask.png")
     v2.c.idle.mask.f = 1
+    v2.voice = love.audio.newSource("assets/virus2_voice.ogg")
     loadAnimation(v2.c.idle.mask.pic, v2.c.idle.mask.fs, 37, 10, 250, 250)
   end
   if id == 15 then
