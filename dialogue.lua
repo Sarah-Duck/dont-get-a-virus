@@ -149,9 +149,17 @@ function loadDia()
   v2.msgs[20] = "Ah, There it is! Fun! You better not disapoint me, I want some action!"
   v2.msgs[22] = "Remember, The more popups are open, the faster I make money!"
   v2.msgs[23] = "Now, let's begin."
-  v2.msgs[25] = "No! You won't beat me! I will beat you! Behold my ultimate power!!!"
-  v2.msgs[27] = "Well, I'm done. If you survived that, then theres nothing else I can do..."
-  v2.msgs[28] = "I know this is the end for me, right? You're going to kill me now."
+  v2.msgs[25] = "No! You can't beat me! This is ridicilous!"
+  v2.msgs[26] = "Screw the popups, no amount of money is worth dying for! I'll just attack you directly!"
+  v2.msgs[27] = "Sucks for you! You have to care about your own health now!"
+  v2.msgs[28] = "I'm not the one whose going to die today, that's for sure!"
+  v2.msgs[29] = "I refuse to die like that green tentacled idiot! Time for you to face my full power!"
+  v2.msgs[31] = "WOAH WOAH WOAH! WAIT! WAIT!!!"
+  v2.msgs[32] = "We don't have to end it like this! Could we... work something out?"
+  v2.msgs[33] = "I could give you money! Tons of money! Please, just let me live..."
+  v2.msgs[34] = "PSYCH! GOT YA! YOU FELL RIGHT INTO MY TRAP! YOU ARE GOING DOWN RIGHT HERE RIGHT NOW!"
+  v2.msgs[35] = "IT'S ABOUT TIME FOR YOU TO FUCKING DIE! BECAUSE I WON'T! I REFUSE! I'LL SEE YOU IN HELL!"
+  v2.msgs[36] = "AAAAAAAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAAHAHAHAAHAHAHAHAHAAHAHAHAHAHAHAHAHAHAHAHA!!!"
 end
 function chatReply(m)
   if string.find(m, "virus") ~= nil and msg.c > 6 then

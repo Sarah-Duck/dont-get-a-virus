@@ -71,7 +71,7 @@ function drawStart()
       start.o = true
     end
   end
-  if v1.c.chat.msgs > 35 and v1.yes == true then
+  if v1.c.chat.msgs > 35 and v1.yes == true and scene == 2 then
     drawDownBox(sys.w/2+166-250, panel.s.y, 101*2, panel.s.height,2)
     love.graphics.setColor(100,0,0)
     love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, 200, panel.s.height-2)
@@ -85,7 +85,7 @@ function drawStart()
       love.graphics.print("TIMER: " .. v1.fightMinute .. ":" .. math.floor(-(v1.fightTimer-60)), sys.w/2+130, panel.s.y+6)
     end
   end
-  if v2.c.chat.msgs >= 24 and v2.start == true then
+  if v2.c.chat.msgs >= 24 and v2.start == true and scene == 3 then
     drawDownBox(sys.w/2+166-250, panel.s.y, 101*2, panel.s.height,2)
     love.graphics.setColor(100,0,0)
     love.graphics.rectangle("fill",sys.w/2+166+1-250, panel.s.y+1, 200, panel.s.height-2)

@@ -88,8 +88,13 @@ function love.keyreleased(key)
     end
    end
    if key == "f10" then
-     v1.c.health = v1.c.health - 5
-     v1.spm = v1.spm + 0.5*(sys.h/1080)
+     if scene == 2 then
+       v1.c.health = v1.c.health - 5
+       v1.spm = v1.spm + 0.5*(sys.h/1080)
+     elseif scene == 3 then
+       v2.c.health = v2.c.health - 5
+       v2.spm = v2.spm + 0.20*(sys.h/1080)
+     end
    end
    if key == "escape" then
      pause.esc = false

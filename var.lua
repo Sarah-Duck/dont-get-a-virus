@@ -95,6 +95,7 @@ function loadVar()
   av.shake = 0
   av.shakex = 0
   av.shakey = 0
+  av.health = 40
   chat.status = 0
   chat.profilename = "Best Friend"
   chat.msg = ""
@@ -244,7 +245,16 @@ function loadVar()
   v2.nextAttack = 20
   v2.popupTimer = 60
   v2.shotgunTimer = 10
+  v2.musicfade = 1
+  v2.rowTimer = 0.5
+  v2.rowGun = 0
+  v2.rowDown = 0
+  v2.rowLeft = false
   v2.prevChar = 0
+  v2.fadeThing = -1000*sys.sw
+  v2.v1gun = 203
+  v2.v1gunTimer = 1
+  v2.v1gunFire = false
   expl.deb[1].x = 0
   expl.deb[1].y = 0
   expl.deb[1].ym = 5

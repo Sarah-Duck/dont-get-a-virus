@@ -182,7 +182,7 @@ function loadAssets(id)
       tent1 = love.graphics.newImage("assets/tentacle1.png"),
       tent2 = love.graphics.newImage("assets/tentacle2.png"),
       lidup = love.graphics.newImage("assets/v1_upper_eyelid.png"),
-      lidlow = love.graphics.newImage("assets/v1_lower_eyelid.png")
+      lidlow = love.graphics.newImage("assets/v1_lower_eyelid.png"),
       voice = love.audio.newSource("assets/virus1_voice.ogg")
     }
   end

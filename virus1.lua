@@ -579,6 +579,8 @@ function drawBullets()
         love.graphics.draw(v1.bullet, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
       elseif v1.bullets[i].id == 5 then
         love.graphics.draw(v1.bulletYellow, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
+      elseif v1.bullets[i].id == 6 then
+        love.graphics.draw(antivirus.bullet, v1.bullets[i].x, v1.bullets[i].y, v1.bullets[i].a, 1.5, 1.5, 23/2, 7)
       end
       if v1.bullets[i].x < 0 or v1.bullets[i].x > sys.w or v1.bullets[i].y < 0 or v1.bullets[i].y > sys.h then
         v1.bullets[i].rm = true
@@ -602,6 +604,9 @@ function drawBullets()
           win[4].hover = false
           win[4].crazy = true
           av.shake = 4
+        elseif v1.bullets[i].id == 6 then
+          av.health = av.health - 5
+          av.shake = 6
         end
         if antivirus.hit:isPlaying() == true then
           antivirus.hit:rewind()
@@ -615,6 +620,7 @@ function drawBullets()
     end
   end
   for i=1,#av.bullets do
+    if av.bullets[i] ~= nil then
     av.bullets[i].spx = av.bullets[i].s * math.cos(av.bullets[i].a)
     av.bullets[i].spy = av.bullets[i].s * math.sin(av.bullets[i].a)
     av.bullets[i].x = av.bullets[i].x + av.bullets[i].spx
@@ -681,6 +687,7 @@ function drawBullets()
       table.remove(av.bullets, i)
     end
   end
+end
 end
 function chargeStencil()
    love.graphics.rectangle("fill", win[4].x+138/2+79, win[4].y+40+40, 40, -av.charge)

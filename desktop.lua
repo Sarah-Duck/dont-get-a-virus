@@ -45,6 +45,16 @@ function drawDesktop()
     love.graphics.draw(v1.fadeImg,v1.t.x,0,0,2*sys.sw,sys.h)
     love.graphics.draw(v1.fadeImg,sys.w-v1.t.x,sys.h,math.rad(180),2*sys.sw,sys.h)
   end
+  if scene == 3 and v2.c.chat.msgs >= 26 then
+    if v2.fadeThing <= -30 then
+      v2.fadeThing = v2.fadeThing + delta*100
+    else
+      v2.fadeThing = -30
+    end
+    love.graphics.setColor(0,0,0,235)
+    love.graphics.draw(v1.fadeImg,v2.fadeThing,0,0,2*sys.sw,sys.h)
+    love.graphics.draw(v1.fadeImg,sys.w-v2.fadeThing,sys.h,math.rad(180),2*sys.sw,sys.h)
+  end
   for i=1,6 do
     drawIcon(i)
     checkIcon(i)
