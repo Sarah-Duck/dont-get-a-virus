@@ -209,6 +209,7 @@ function drawVirusFight2()
       v2.nextAttack = 15
     end
   elseif v2.c.chat.msgs == 30 then
+    v2.c.handp = "gunpoint"
     if v2.c.health == 5 then
       v2.c.chat.msgs = 31
       v2.c.chat.char = 0
@@ -219,6 +220,12 @@ function drawVirusFight2()
       v2.c.xd = sys.w/2
       v2.c.yd = sys.h/3
     end
+  elseif v2.c.chat.msgs == 31 or v2.c.chat.msgs == 34 then
+    v2.c.handp = "idle"
+  elseif v2.c.chat.msgs == 33 then
+    v2.c.handp = "spread"
+  elseif v2.c.chat.msgs == 35 then
+    v2.c.handp = "fist"
   end
   if v2.fightStart == true and v2.c.chat.msgs == 24 then
     music.tension2:stop()
