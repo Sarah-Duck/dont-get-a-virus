@@ -39,6 +39,12 @@ function love.update(dt)
   end
   if fade == 1 and fadeOpacity < 255 and pause.p == false then
     fadeOpacity = fadeOpacity + 5
+    if scene == 0 and love.keyboard.isDown("1") == true then
+      v1.complete = true
+    elseif scene == 0 and love.keyboard.isDown("2") == true then
+      v1.complete = true
+      v2.complete = true
+    end
   elseif fade == 0  and fadeOpacity > 0 and pause.p == false then
     fadeOpacity = fadeOpacity - 5
   end
