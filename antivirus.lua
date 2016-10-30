@@ -51,13 +51,13 @@ function drawAntivirusFight()
       love.graphics.draw(antivirus.gun, win[4].x+138/2+99+math.random(-1,1), win[4].y+5-av.gun+math.random(-1,1), 0, win[4].s, win[4].s, 12)
     end
     love.graphics.draw(antivirus.body, win[4].x+138/2+99+av.shakex, win[4].y+5+av.shakey, 0, win[4].s, win[4].s, 80)
-    if av.fireb == true then
-      drawUpBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
-    else
-      drawDownBox(win[4].x+138/2+71-3+av.shakex, win[4].y+93-3+av.shakey, 56+6, 19+6, 2)
-    end
+    drawDownBox(win[4].x+138/2+79-2+av.shakex, win[4].y+93-4+11+av.shakey, 44, 17, 2)
+    love.graphics.setColor(455-(av.health*2.5)*4.55,(av.health*2.5)*2.55,20)
+    love.graphics.rectangle("fill", win[4].x+138/2+79-1+av.shakex, win[4].y+93-3+11+av.shakey, av.health*1.05, 15)
     love.graphics.setColor(colors.font.dark)
-    love.graphics.print("FIRE", win[4].x+138/2+76+av.shakex, win[4].y+99+av.shakey)
+    love.graphics.setFont(pixeloperators)
+    love.graphics.print("HP:" .. av.health, win[4].x+138/2+79+2+av.shakex, win[4].y+93-4+11+av.shakey)
+    love.graphics.setFont(pressstart)
     love.graphics.setColor(255,255,255)
     drawDownBox(win[4].x+138/2+79-1+av.shakex, win[4].y+40-1+av.shakey, 42, 42, 2)
     love.graphics.stencil(chargeStencil, "replace", 1)
@@ -109,10 +109,14 @@ function drawAntivirusFight()
     if scene == 2 then
       if (v1.c.chat.msgs == 15 or v1.c.chat.msgs == 17 or v1.c.chat.msgs == 19 or v1.c.chat.msgs == 21 or v1.c.chat.msgs == 36 or v1.c.chat.msgs == 40) and av.charge == 40 then
         av.fireb = true
+      else
+        av.fireb = false
       end
     elseif scene == 3 then
-      if v2.c.chat.msgs == 24 and av.charge == 40 then
+      if (v2.c.chat.msgs == 24 or v2.c.chat.msgs == 30) and av.charge == 40 then
         av.fireb = true
+      else
+        av.fireb = false
       end
     end
     if av.charge < 40 then
