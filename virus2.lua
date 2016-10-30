@@ -220,7 +220,7 @@ function drawVirusFight2()
       v2.c.xd = sys.w/2
       v2.c.yd = sys.h/3
     end
-  elseif v2.c.chat.msgs == 31 or v2.c.chat.msgs == 34 then
+  elseif v2.c.chat.msgs == 31 or v2.c.chat.msgs == 34 or v2.c.chat.msgs == 32 then
     v2.c.handp = "idle"
   elseif v2.c.chat.msgs == 33 then
     v2.c.handp = "spread"
