@@ -225,18 +225,19 @@ function drawVirusFight1()
     end
     if v1.c.shine.s < -50 and v1.msgs[v1.c.chat.msgs] ~= nil then
       drawBubble(v1.c.x+40, v1.c.y-135, 300, 115, v1.c.chat.msg)
-      if mouseClick(v1.c.x+40,v1.c.y-135,300,110) == true and
-      v1.c.chat.next == false and v1.c.chat.msgs ~= 15 and
+      if v1.c.chat.next == false and v1.c.chat.msgs ~= 15 and
       v1.c.chat.msgs ~= 17 and v1.c.chat.msgs ~= 19 and v1.c.chat.msgs ~= 21 then
-        v1.c.chat.next = true
-        if v1.c.chat.msgs == 23 then
-          v1.c.chat.msgs = 26
-          virus1Pissed = true
-        else
-          v1.c.chat.msgs = v1.c.chat.msgs + 1
+        if mouseClick(v1.c.x+40,v1.c.y-135,300,110) == true or love.keyboard.isDown("z") then
+          v1.c.chat.next = true
+          if v1.c.chat.msgs == 23 then
+            v1.c.chat.msgs = 26
+            virus1Pissed = true
+          else
+            v1.c.chat.msgs = v1.c.chat.msgs + 1
+          end
+          v1.c.chat.char = 0
+          v1.c.chat.msg = ""
         end
-        v1.c.chat.char = 0
-        v1.c.chat.msg = ""
       end
       if v1.msgs[v1.c.chat.msgs] ~= nil then
         if string.len(v1.msgs[v1.c.chat.msgs]) ~= string.len(v1.c.chat.msg) then

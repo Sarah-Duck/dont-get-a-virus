@@ -23,7 +23,7 @@ function loadDia()
   msgstime = {30,35,40,45,50,55,60,65,160,190,230,270,300,330,360,390,430,460,490,520,600}
   msgssent = 0
   if virus1Lose == 0 then
-    v1.msgs[1] = "Well well well, who do we have here? Oh, and before I forget... Click on the bubble to see my next message."
+    v1.msgs[1] = "Well well, who do we have here? Before I forget... Click on the bubble or press Z to see my next message."
     v1.msgs[2] = "Cliche introductions out of the way, I'm here to take over your computer!"
     v1.msgs[3] = "Who the hell uses freedownloads.com anyways? Like, how freakin' stupid are you?"
     v1.msgs[4] = "This shouldn't be too difficult then. From this point forward, this computer is MINE! Ha! HAHA!"
@@ -166,8 +166,8 @@ function loadDia()
     end
     v2.msgs[3] = "How are you doing this? This doesn't make any sense!"
     v2.msgs[4] = "I destoryed your computer! I... what is going on?"
-    v2.msgs[5] = "It's not time travel, I still have the money I made off of you!"
-    v2.msgs[6] = "This is the most bizarre thing I've ever encountered, it defies all logic..."
+    v2.msgs[5] = "This is the most bizarre thing I've ever encountered, it defies all logic..."
+    v2.msgs[6] = "Is it time travel...? Actually no, I still have the money I made off of you..."
     v2.msgs[7] = "Can... can you control it? Is this your doing, or someone elses?"
     v2.msgs[8] = "Someone like you couldn't have this power, impossible."
     v2.msgs[9] = "Then... whose doing it? Is this reality being controlled? Or are you just gifted?"

@@ -13,9 +13,16 @@ function updateSystem(dt)
   end
   if v1.complete == true and v2.start == false and v2.complete == false then
     v2.startTime = v2.startTime + dt
-    if v2.startTime >= 20 then
-      v2.start = true
-      addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
+    if virus2Lose == 0 then
+      if v2.startTime >= 20 then
+        v2.start = true
+        addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
+      end
+    elseif virus2Lose ~= 0 then
+      if v2.startTime >= 3 then
+        v2.start = true
+        addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
+      end
     end
     if v2.startTime >= v2.startPopups and v2.start == false then
       v2.startPopups = v2.startPopups + math.random(2,10)

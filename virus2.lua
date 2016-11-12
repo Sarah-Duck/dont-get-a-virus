@@ -6,7 +6,7 @@ function drawVirusFight2()
   drawAntivirusFight()
   drawPopups()
   --love.graphics.print(#v2.sg)
-  if v2.fightStart == true and v2.c.chat.msgs == 24 or v2.c.chat.msgs == 30 then
+  if v2.fightStart == true and (v2.c.chat.msgs == 24 or v2.c.chat.msgs == 30) then
     v2.fightTimer = v2.fightTimer + delta
     if v2.c.chat.msgs == 24 then
       v2.c.money =  v2.c.money + delta*(#v2.pop.p+1)
@@ -98,7 +98,7 @@ function drawVirusFight2()
       end
     end
     if v2.c.chat.msgs == 30 then
-      local na = math.random(1,4)
+      local na = math.random(1,5)
       if na == 1 then
         v2.currentAttack = "rShotgun"
       elseif na == 2 then
@@ -107,6 +107,8 @@ function drawVirusFight2()
         v2.currentAttack = "shotgunBundle"
       elseif na == 4 then
         v2.currentAttack = "shotgun"
+      elseif na == 5 then
+        v2.currentAttack = "shotgunFinalRow"
       end
       v2.nextAttack = math.random(10,15)
     end
@@ -211,7 +213,10 @@ function drawVirusFight2()
         v2.pop.p[i].exit = true
       end
       v2.currentAttack = "shotgunFinalRow"
+      v2.attackNextTimer = 0
       v2.nextAttack = 15
+      v2.c.xd = sys.w/2
+      v2.c.yd = sys.h/3
     end
     if v2.c.money >= 500 then
       nextChatv2(40)
@@ -264,6 +269,8 @@ function drawVirusFight2()
   elseif v2.fightStart == true and v2.c.chat.msgs == 26 then
     music.battle2:stop()
     music.battle2part2:play()
+    v2.currentAttack = "shotgunFinalRow"
+    v2.attackNextTimer = 0
   elseif v2.fightStart == true and v2.c.chat.msgs == 31 then
     music.battle2part2:stop()
   elseif v2.fightStart == true and v2.c.chat.msgs == 34 then
@@ -569,8 +576,10 @@ function drawVirus2()
   end
   if v2.c.chat.time >= 2 and v2.msgs[v2.c.chat.msgs] ~= nil then
     drawBubble(v2.c.x+50, v2.c.y-160, 300, 115, v2.c.chat.msg)
-    if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true and v2.c.chat.next == false and v2.c.chat.msgs ~= 18 then
-      nextChatv2()
+    if v2.c.chat.next == false and v2.c.chat.msgs ~= 18 then
+      if mouseClick(v2.c.x+50,v2.c.y-160,300,110) == true or love.keyboard.isDown("z") == true then
+        nextChatv2()
+      end
     end
     if v2.msgs[v2.c.chat.msgs] ~= nil then
       if string.len(v2.msgs[v2.c.chat.msgs]) ~= string.len(v2.c.chat.msg) then
