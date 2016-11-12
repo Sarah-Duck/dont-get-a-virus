@@ -321,6 +321,8 @@ function drawVirusFight2()
         win[4].update = true
         time = 0
         av.transform = false
+        av.wings = 0
+        av.gun = 0
       else
         scene = 666
         virus2Lose = virus2Lose + 1

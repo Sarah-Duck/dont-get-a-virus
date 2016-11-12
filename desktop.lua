@@ -78,11 +78,18 @@ function drawIcon(id, x, y)
 end
 function checkIcon(id)
   if(sys.mouse.p.x >= icon[id].x+4 and sys.mouse.p.x <= icon[id].x+100 and sys.mouse.p.p == true
-  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75 and v1.yes == false and v2.start == false) then
-    if icon[id].hl == false and icon[id].cl == false then
+  and sys.mouse.p.y >= icon[id].y and sys.mouse.p.y <= icon[id].y+75 and v1.yes == false) then
+    local click = true
+    if v2.start == true then
+      if v2.c.chat.msgs == 17 or v2.c.chat.msgs == 18 and id == 4 and scene == 3 then
+      else
+        click = false
+      end
+    end
+    if icon[id].hl == false and icon[id].cl == false and click == true then
       icon[id].hl = true
       icon[id].cl = true
-    elseif icon[id].hl == true and icon[id].cl == false then
+    elseif icon[id].hl == true and icon[id].cl == false and click == true then
       icon[id].hl = false
       icon[id].cl = true
       if win[id].ex == true then
@@ -90,7 +97,7 @@ function checkIcon(id)
         win[id].s = 0.2
         win[id].oldlayer = win[id].layer
         layer.sentToFront = id
-      else
+      elseif v2.start == false and win[id].ex == false then
         win[id].oldlayer = win[id].layer
         layer.sentToFront = id
       end

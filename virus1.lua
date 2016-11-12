@@ -548,6 +548,8 @@ function drawVirusFight1()
         scene = 1
         time = 0
         av.transform = false
+        av.wings = 0
+        av.gun = 0
       elseif v1.c.chat.msgs == 53 then
         virus1Lose = virus1Lose + 1
         scene = 666

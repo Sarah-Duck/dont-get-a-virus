@@ -57,7 +57,7 @@ function loadDia()
     v1.msgs[11] = "But you're still pretty stupid."
     v1.msgs[13] = "HAHA! PATHETIC! Is that it? Is that all you got?"
     v1.msgs[14] = "I bet that thing couldn't put a dent in me!"
-    v1.msgs[15] = "Go ahead! Try it, you won't stop me! Position it below me, and press the fire button! Go on! DO IT!"
+    v1.msgs[15] = "Go ahead! Try it, you won't stop me! Position it below me, and press the spacebar! Go on! DO IT!"
   elseif virus1Lose ~= 0 then
     v1.msgs[9] = "Oh nooo, you're antiviurs appeared! I've neeeevver seen THAT before!"
     if virus1Lose == 1 then
