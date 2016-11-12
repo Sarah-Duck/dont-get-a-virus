@@ -886,15 +886,15 @@ function centerShotgunAttack()
 end
 function assholeShotgunAttack()
   if v2.attackTimer <= 0 then
-    v2.attackTimer = 3.5/di
+    v2.attackTimer = 4
     local hole = math.random(1,math.floor(sys.w/130)-2)
     for i=1,math.floor(sys.w/130)+1 do
       if i <= hole+2 and i >= hole then
-        table.insert(v2.sg, 1, {x=i*140-50,y=150,r=math.rad(90),d=1,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
-        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=1.7,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+        table.insert(v2.sg, 1, {x=i*140-50,y=150,r=math.rad(90),d=1.2,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=2.2,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
       else
         table.insert(v2.sg, 1, {x=i*140-50,y=150,r=math.rad(90),d=0.5,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
-        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=1.3,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
+        table.insert(v2.sg, 1, {x=i*140-50+25,y=0,r=math.rad(90),d=1.7,b=1,t=0,op=0,ra=math.rad(45),rem=false,remp=false,f=false})
       end
     end
     if v2.c.cockgun:isPlaying() == true then
