@@ -254,6 +254,11 @@ function drawVirusFight2()
     music.battle2:setVolume(1)
     music.tension2:stop()
     music.battle2:play()
+    music.realization:stop()
+  elseif virus2Lose > 0 and virus2Lose < 3 and v2.c.chat.msgs == 3 then
+    music.realization:play()
+  elseif v2.c.chat.msgs == 11 and virus2Lose == 1 then
+    music.realization:stop()
   elseif v2.c.chat.msgs == 12 and virus2Lose == 1 then
     music.tension2:play()
   elseif v2.fightStart == true and v2.c.chat.msgs == 26 then

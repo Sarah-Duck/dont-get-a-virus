@@ -205,7 +205,7 @@ Created With Love2D, Blender, GIMP, Audacity, and Atom
 Music Credits:
 ‘Thrills And Spills’ By Jay Man - OurMusicBox
 ‘Skyscraper Party’ By David Anakhasian (David L.A.) davidla.bandcamp.com/ soundcloud.com/david_man
-‘Fire of Wrath’ By Occams Laser occamslaser.bandcamp.com/
+‘Fire of Wrath’ and ‘Ceaseless Existence’ By Occams Laser occamslaser.bandcamp.com/
 How it Begins By Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 3.0 License
 creativecommons.org/licenses/by/3.0/
