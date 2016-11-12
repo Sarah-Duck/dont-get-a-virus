@@ -5,7 +5,7 @@ function drawVirusFight2()
   drawVirus2()
   drawAntivirusFight()
   drawPopups()
-  love.graphics.print(#v2.sg)
+  --love.graphics.print(#v2.sg)
   if v2.fightStart == true and v2.c.chat.msgs == 24 or v2.c.chat.msgs == 30 then
     v2.fightTimer = v2.fightTimer + delta
     if v2.c.chat.msgs == 24 then
@@ -149,6 +149,9 @@ function drawVirusFight2()
     v2.c.yd = sys.h/3
     if v2.c.chat.msgs == 6 then
       v2.c.handp = "fist"
+      if virus2Lose >= 3 then
+        nextChatv2(16)
+      end
     elseif v2.c.chat.msgs == 1 then
       v2.c.handp = "gunfront"
     end
@@ -156,6 +159,9 @@ function drawVirusFight2()
     v2.c.xd = sys.w/3
     v2.c.yd = sys.h/1.7
     v2.c.handp = "gunup"
+    if virus2Lose ~= 0 then
+      music.tension2:stop()
+    end
   elseif v2.c.chat.msgs == 3 then
     v2.c.xd = sys.w/3
     v2.c.yd = sys.h/3
@@ -199,14 +205,22 @@ function drawVirusFight2()
       v2.c.handp = "gunpoint"
     end
     if v2.c.health == 30 then
-      v2.c.chat.msgs = 25
-      v2.c.chat.char = 0
-      v2.c.chat.msg = ""
+      nextChatv2(25)
+      music.battle2:stop()
       for i=1,#v2.pop.p do
         v2.pop.p[i].exit = true
       end
       v2.currentAttack = "shotgunFinalRow"
       v2.nextAttack = 15
+    end
+    if v2.c.money >= 500 then
+      nextChatv2(40)
+      music.battle2:stop()
+      for i=1,#v2.pop.p do
+        v2.pop.p[i].exit = true
+      end
+      v2.c.xd = sys.w/2
+      v2.c.yd = sys.h/2
     end
   elseif v2.c.chat.msgs == 30 then
     v2.c.handp = "gunpoint"
@@ -214,22 +228,34 @@ function drawVirusFight2()
       v2.c.chat.msgs = 31
       v2.c.chat.char = 0
       v2.c.chat.msg = ""
-      music.tension2:play()
-      music.tension2:seek(19.5,"seconds")
-      music.tension2:pause()
       v2.c.xd = sys.w/2
       v2.c.yd = sys.h/3
+    end
+    if av.health <= 0 then
+      nextChatv2(50)
+      music.battle2part2:stop()
+      for i=1,#v2.pop.p do
+        v2.pop.p[i].exit = true
+      end
+      v2.c.xd = sys.w/2
+      v2.c.yd = sys.h/2
     end
   elseif v2.c.chat.msgs == 31 or v2.c.chat.msgs == 34 or v2.c.chat.msgs == 32 then
     v2.c.handp = "idle"
   elseif v2.c.chat.msgs == 33 then
     v2.c.handp = "spread"
+    music.tension2:play()
+    music.tension2:seek(19.5,"seconds")
+    music.tension2:pause()
   elseif v2.c.chat.msgs == 35 then
     v2.c.handp = "fist"
   end
   if v2.fightStart == true and v2.c.chat.msgs == 24 then
+    music.battle2:setVolume(1)
     music.tension2:stop()
     music.battle2:play()
+  elseif v2.c.chat.msgs == 12 and virus2Lose == 1 then
+    music.tension2:play()
   elseif v2.fightStart == true and v2.c.chat.msgs == 26 then
     music.battle2:stop()
     music.battle2part2:play()
@@ -249,7 +275,9 @@ function drawVirusFight2()
   if v2.c.chat.msgs >= 34 then
     v2ShotgunTrick()
     love.graphics.setColor(255,255,255)
-    love.graphics.draw(v1.turret2Held, sys.w+v2.v1gun, v2.c.y, math.rad(90))
+    if v2.c.chat.msgs < 40 then
+      love.graphics.draw(v1.turret2Held, sys.w+v2.v1gun, v2.c.y, math.rad(90))
+    end
     if v2.v1gun >= 25 then
       v2.v1gun = v2.v1gun - delta*25
     else
@@ -271,20 +299,27 @@ function drawVirusFight2()
       v1.explodeEndFrame = 1
     end
   end
-  if v2.c.health == -20 then
-    v2.complete = true
+  if v2.c.health == -20 or v2.c.chat.msgs == 43 or v2.c.chat.msgs == 54 then
+    if v2.c.health == -20 then
+      v2.complete = true
+    end
     love.graphics.setColor(255,255,255)
     love.graphics.draw(expl.pic, expl.frames[math.floor(v1.explodeEndFrame)], v2.c.x, v2.c.y, 0, 20, 20, 320/2,240/2)
     v1.explodeEndFrame = v1.explodeEndFrame + 1*sys.s
     v1.explosionSound:play()
     if v1.explodeEndFrame >= 20 then
-      scene = 1
       v2.start = false
-      win[4].w = 200
-      antivirus.status = "Virus Defeated"
-      win[4].update = true
-      time = 0
-      av.transform = false
+      if v2.c.health == -20 then
+        scene = 1
+        win[4].w = 200
+        antivirus.status = "Virus Defeated"
+        win[4].update = true
+        time = 0
+        av.transform = false
+      else
+        scene = 666
+        virus2Lose = virus2Lose + 1
+      end
     end
   end
 end
@@ -383,7 +418,9 @@ function drawPopups()
     if mouseClick(v2.pop.p[i].x+v2.pop.p[i].w-22, v2.pop.p[i].y+5, 16, 16) == true and v2.pop.p[i].exit == false and v2.pop.hov == i then
       v2.pop.p[i].exit = true
       if v2.pop.p[i].m == true then
-        music.tension2:play()
+        if virus2Lose < 3 then
+          music.tension2:play()
+        end
         scene = 3
         for i=1,#v2.pop.p do
           v2.pop.p[i].exit = true

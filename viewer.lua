@@ -202,16 +202,14 @@ function loadDocuments()
 Created By Chris Bradley
 Created With Love2D, Blender, GIMP, Audacity, and Atom
 
--Music-
+Music Credits:
 ‘Thrills And Spills’ By Jay Man - OurMusicBox
-‘Storm Chasers’, ‘Close my Mouth’ By Silent Partner
-‘Down N' Dirty’ By Jingle Punks
-‘Fight or Flight’ By Ethan Meixsell
-How it Begins Kevin MacLeod (incompetech.com)
+‘Skyscraper Party’ By David Anakhasian (David L.A.) davidla.bandcamp.com/ soundcloud.com/david_man
+‘Fire of Wrath’ By Occams Laser occamslaser.bandcamp.com/
+How it Begins By Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 3.0 License
-http://creativecommons.org/licenses/by/3.0/
-‘Ich Grolle Nicht’ By Rox Meixsell and Wahneta Meixsell
+creativecommons.org/licenses/by/3.0/
+Additional Music from the Youtube Audio Library
 
--Sound Effects-
-Freesound.org and the Youtube Audio Library]]
+Sound Effects from Freesound.org and the Youtube Audio Library]]
 end

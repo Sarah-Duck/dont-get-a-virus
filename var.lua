@@ -150,7 +150,9 @@ function loadVar()
   v1.shakex = 0
   v1.shakey = 0
   v1.explodeEndFrame = 1
-  v1.complete = false
+  if v1.complete == nil then
+    v1.complete = false
+  end
   v1.fightMinute = 5
   v1.c.x = 0
   v1.c.y = 0
@@ -210,7 +212,9 @@ function loadVar()
   v2.startTime = 0
   v2.start = false
   v2.startPopups = 10
-  v2.complete = false
+  if v2.complete == nil then
+    v2.complete = false
+  end
   v2.popshotx = sys.w/2
   v2.popshoty = sys.h/2
   v2.popshotsh = 10
@@ -402,6 +406,7 @@ function loadPre()
   sys.h = love.graphics.getHeight()
   virus1Lose = 0
   virus1Pissed = false
+  virus2Lose = 0
 end
 function loadRe()
   loading = 0
