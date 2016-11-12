@@ -256,6 +256,8 @@ function loadAssets(id)
     v2.c.gunleft = love.graphics.newImage("assets/virus2_hands_left.png")
     v2.c.cockgun = love.audio.newSource("assets/virus2_shotgun_cock.ogg")
     v2.c.fire = love.audio.newSource("assets/virus2_shotgun_fire.ogg")
+    v2.c.fire:setVolume(0.6)
+    v2.c.cockgun:setVolume(0.7)
     v2.c.handsOp = 0
     v2.c.spreadOp = 0
     v2.c.gunidleOp = 0
@@ -324,8 +326,8 @@ function loadAnimation(pic, quad, frames, limit, w, h)
   end
 end
 function playAnimation(ani, loop, x, y, r, s, xo, yo, sp)
-  if ani == v2.c.idle.mask then
-    ani.f = v2.c.idle.f
+  if ani == v2.c.idle then
+    v2.maskFrame = ani.f
   end
   if ani.fs[math.floor(ani.f)] ~= nil then
     love.graphics.draw(ani.pic, ani.fs[math.floor(ani.f)], x, y, r, s, s, xo, yo)

@@ -256,7 +256,7 @@ function drawVirusFight2()
     v2.c.handp = "fist"
   end
   if v2.fightStart == true and v2.c.chat.msgs == 24 then
-    music.battle2:setVolume(1)
+    music.battle2:setVolume(0.9)
     music.tension2:stop()
     music.battle2:play()
     music.realization:stop()
@@ -464,9 +464,73 @@ function drawVirus2()
   playAnimation(v2.c.idle, true, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, 125, 125, 0.5)
   love.graphics.stencil(drawVirus2Stencil, "replace", 1)
   love.graphics.setStencilTest("greater", 0)
-  love.graphics.draw(v2.c.pupil, v2.c.x-26+math.random(-0.7+(v2.shakex/10),0.7+(v2.shakex/10)),
-  v2.c.y-57+math.random(-0.7+(v2.shakey/10),0.7+(v2.shakey/10)),v2.c.r,v2.c.s)
-  love.graphics.draw(v2.c.pupil, v2.c.x+21+math.random(-0.7,0.7),v2.c.y-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
+  love.graphics.draw(v2.c.pupil, v2.c.x-26+v2.c.eyex+math.random(-0.7+(v2.shakex/10),0.7+(v2.shakex/10)),
+  v2.c.y-57+v2.c.eyey+math.random(-0.7+(v2.shakey/10),0.7+(v2.shakey/10)),v2.c.r,v2.c.s)
+  love.graphics.draw(v2.c.pupil, v2.c.x+21+v2.c.eyex+math.random(-0.7,0.7),v2.c.y+v2.c.eyey-57+math.random(-0.7,0.7),v2.c.r,v2.c.s)
+  if v2.c.chat.msgs < 16 or v2.c.chat.msgs == 18 or v2.c.chat.msgs > 31 then
+    v2.c.eyex = 0
+    v2.c.eyey = 0
+  elseif v2.c.chat.msgs > 24 and v2.msgs[v2.c.chat.msgs] ~= nil then
+    v2.c.eyex = 0
+    v2.c.eyey = 0
+  elseif v2.c.chat.msgs == 17 or v2.c.chat.msgs >= 19 or v2.c.chat.msgs <= 21 then
+    v2.c.eyex = (win[4].x-v2.c.x)/sys.w*12
+    v2.c.eyey = (win[4].y-v2.c.y)/sys.h*6-1
+  elseif av.bullets[1] ~= nil then
+    v2.c.eyex = (av.bullets[1].x-v2.c.x)/sys.w*12
+    v2.c.eyey = (av.bullets[1].y-v2.c.y)/sys.h*6-1
+  else
+    v2.c.eyex = (sys.mouse.x-v2.c.x)/sys.w*12
+    v2.c.eyey = (sys.mouse.y-v2.c.y)/sys.h*6-1
+  end
+  v2.lid.bTimer = v2.lid.bTimer - delta
+  if v2.lid.bTimer <= 0 then
+    v2.lid.b = true
+  end
+  if v2.lid.b == true then
+    v2.lid.lowyd = 0
+    v2.lid.upyd = 0
+  end
+  if v2.lid.upy == 0 and v2.lid.lowy == 0 then
+    v2.lid.lowyd = 25
+    v2.lid.upyd = -25
+    v2.lid.b = false
+    v2.lid.bTimer = math.random(4,8)
+  end
+  if v2.lid.lowy > v2.lid.lowyd then
+    if v2.lid.lowy - 3*sys.s < v2.lid.lowyd then
+      v2.lid.lowy = v2.lid.lowyd
+    else
+      v2.lid.lowy = v2.lid.lowy - 3*sys.s
+    end
+  elseif v2.lid.lowy < v2.lid.lowyd then
+    if v2.lid.lowy + 3*sys.s > v2.lid.lowyd then
+      v2.lid.lowy = v2.lid.lowyd
+    else
+      v2.lid.lowy = v2.lid.lowy + 3*sys.s
+    end
+  end
+  if v2.lid.upy > v2.lid.upyd then
+    if v2.lid.upy - 3*sys.s < v2.lid.upyd then
+      v2.lid.upy = v2.lid.upyd
+    else
+      v2.lid.upy = v2.lid.upy - 3*sys.s
+    end
+  elseif v2.lid.upy < v2.lid.upyd then
+    if v2.lid.upy + 3*sys.s > v2.lid.upyd then
+      v2.lid.upy = v2.lid.upyd
+    else
+      v2.lid.upy = v2.lid.upy + 3*sys.s
+    end
+  end
+  love.graphics.setColor(0,0,0)
+  if v2.lid.upy ~= -25 then
+    love.graphics.rectangle("fill", v2.c.x-48+v2.shakex, v2.c.y-63+v2.lid.upy+v2.shakey, 95, 26)
+  end
+  if v2.lid.lowy ~= 25 then
+    love.graphics.rectangle("fill", v2.c.x-48+v2.shakex, v2.c.y-63+v2.lid.lowy+v2.shakey, 95, 26)
+  end
+  love.graphics.setColor(255,255,255)
   love.graphics.setStencilTest()
   v2.c.sp = math.sqrt(math.abs(v2.c.xd - v2.c.x)*2 + math.abs(v2.c.yd - v2.c.y)*2)/5
   v2.c.sp = v2.c.sp * v2.spm
@@ -603,7 +667,9 @@ function drawVirus2()
 end
 function drawVirus2Stencil()
   love.graphics.setShader(mask_effect)
-  playAnimation(v2.c.idle.mask, true, v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, 125, 125, 0.5)
+  if v2.c.idle.mask.fs[math.floor(v2.maskFrame)] ~= nil then
+    love.graphics.draw(v2.c.idle.mask.pic, v2.c.idle.mask.fs[math.floor(v2.maskFrame)], v2.c.x+v2.shakex, v2.c.y+v2.shakey, v2.c.r, v2.c.s, v2.c.s, 125,125)
+  end
   love.graphics.setShader()
 end
 function handOpa(hand,opa)
