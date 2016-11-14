@@ -91,6 +91,7 @@ function loadAssets(id)
     music.battle2:setLooping(true)
     music.tension2:setLooping(true)
     music.battleUndertale:setLooping(true)
+    music.battle2part2:setLooping(true)
   end
   if id == 7 then
     window = {
@@ -152,7 +153,8 @@ function loadAssets(id)
       laser = love.audio.newSource("assets/antivirus_laser.ogg"),
       bullet = love.graphics.newImage("assets/bullet_blue.png"),
       hit = love.audio.newSource("assets/antivirus_hit.ogg"),
-      charge = love.graphics.newImage("assets/antivirus_charge.png")
+      charge = love.graphics.newImage("assets/antivirus_charge.png"),
+      shutdown = love.audio.newSource("assets/antivirus_shutdown.ogg")
     }
   end
   if id == 12 then

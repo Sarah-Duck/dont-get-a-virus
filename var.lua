@@ -96,6 +96,7 @@ function loadVar()
   av.shakex = 0
   av.shakey = 0
   av.health = 40
+  av.dead = false
   chat.status = 0
   chat.profilename = "Best Friend"
   chat.msg = ""

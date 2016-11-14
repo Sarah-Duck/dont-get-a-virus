@@ -96,9 +96,9 @@ function drawWindow(id)
   if sys.mouse.drag == true and win[id].min == false and win[id].ex == false and layer[1] == id then
     if id == 4 and v1.yes == true then
       windowMouseMove(id,0,sys.w-win[id].w,sys.h/2,sys.h-win[id].h-panel.thick-1)
-    elseif id == 4 and v2.start == true then
+    elseif id == 4 and v2.start == true and av.dead == false then
       windowMouseMove(id,0,sys.w-win[id].w,sys.h/2.4,sys.h-win[id].h-panel.thick-1)
-    else
+    elseif scene == 1 and v1.yes == false and v2.start == false and av.dead == false then
       windowMouseMove(id,0,sys.w-win[id].w,0,sys.h-win[id].h-panel.thick-1)
     end
   end
