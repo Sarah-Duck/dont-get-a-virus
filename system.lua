@@ -19,7 +19,7 @@ function updateSystem(dt)
         addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
       end
     elseif virus2Lose ~= 0 then
-      if v2.startTime >= 3 then
+      if v2.startTime >= 8 then
         v2.start = true
         addPopup(false, sys.w/2-300, sys.h/2-200, 600, 400, 1, false, true)
       end
