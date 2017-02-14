@@ -47,3 +47,16 @@ function drawPause()
     love.graphics.setBackgroundColor(0, 128, 128)
   end
 end
+function loadSave()
+  if love.filesystem.exists("savegame.txt") == false then
+    love.filesystem.write("savegame.txt", "")
+  else
+    loadGame = love.filesystem.load("savegame.txt")
+    loadGame()
+  end
+  if love.filesystem.exists("profile.txt") == true then
+    loadProfile = love.filesystem.load("profile.txt")
+    loadProfile()
+    profile.setup = true
+  end
+end

@@ -322,6 +322,8 @@ function drawVirusFight2()
     if v1.explodeEndFrame >= 20 then
       v2.start = false
       if v2.c.health == -20 then
+        local prevSave = love.filesystem.read("savegame.txt")
+        love.filesystem.write("savegame.txt", prevSave .. "v2.complete = true;virus2Lose = " .. virus2Lose .. ";")
         scene = 1
         win[4].w = 200
         antivirus.status = "Virus Defeated"

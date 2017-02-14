@@ -62,6 +62,7 @@ function loadVar()
   loadWin(8, 400, 300, "Video Player", nil, icons[16].video)
   loadWin(9, 250, 150, "Music Player", nil, icons[16].music)
   loadWin(10, 350, 500, "Document Viewer", nil, icons[16].document)
+  loadWin(11, 400, 600, "First Time Setup", nil, icons[16].help)
   win[4].crazy = false
   win[4].crazyLeft = false
   win[4].crazyUp = false
@@ -134,6 +135,11 @@ function loadVar()
   internet.load = 0
   internet.blinkTimer = 0
   internet.blink = false
+  profile = {}
+  profile.setup = false
+  profile.name = "No Name"
+  profile.gender = "Person"
+  profile.pronoun = {they,them,their}
   v1.yes = false
   v1.timer = 0
   v1.shakemin = 0
@@ -451,6 +457,7 @@ function loadRe()
   v1.turret[4] = {r=math.rad(-30),x=0,y=0,rt=math.rad(-30),t=0,tl=4}
   expl.frame = 1
   loadVar()
+  loadSave()
   loadDia()
   scene = 0
 end

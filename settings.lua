@@ -49,9 +49,9 @@ function drawSettings()
   drawDownBox(8, 305, 384/2-4, 25, 2)
   love.graphics.setColor(colors.font.dark)
   love.graphics.print("Difficulty", 14, 313)
-  drawDownBox(8, 340, 384/2-4, 198, 2)
+  drawDownBox(8, 340, 384/2-4, 122, 2)
   love.graphics.setColor(255,255,255)
-  love.graphics.rectangle("fill", 9, 341, 384/2-6, 196)
+  love.graphics.rectangle("fill", 9, 341, 384/2-6, 120)
   for i=1,6 do
     drawDiSel(i)
   end
@@ -64,6 +64,13 @@ function drawSettings()
   for i=1,#stre do
     drawReSel(i)
   end
+  drawUpBox(8, 467, 384/2-4, 23, 2)
+  drawUpBox(8, 492, 384/2-4, 23, 2)
+  drawUpBox(8, 517, 384/2-4, 23, 2)
+  love.graphics.setColor(colors.font.dark)
+  love.graphics.print("Erase Save File", 14, 475)
+  love.graphics.print("Erase Profile", 14, 500)
+  love.graphics.print("Erase Both", 14, 525)
 end
 function stencilBg()
   love.graphics.rectangle("fill", 88-64, 44+32, 152, 120)
@@ -102,6 +109,22 @@ function drawReSel(i)
   end
 end
 function updateSettings()
+  if mouseClick(win[6].x+8, win[6].y+467, 384/2-4, 23) == true and layer[1] == 6 then
+    love.audio.stop()
+    love.filesystem.remove("savefile.txt")
+    loadRe()
+  end
+  if mouseClick(win[6].x+8, win[6].y+492, 384/2-4, 23) == true and layer[1] == 6 then
+    love.audio.stop()
+    love.filesystem.remove("profile.txt")
+    loadRe()
+  end
+  if mouseClick(win[6].x+8, win[6].y+517, 384/2-4, 23) == true and layer[1] == 6 then
+    love.audio.stop()
+    love.filesystem.remove("savefile.txt")
+    love.filesystem.remove("profile.txt")
+    loadRe()
+  end
   for i=1,6 do
     if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
     sys.mouse.p.x >= win[6].x+263 and sys.mouse.p.x <= win[6].x+263+120 and

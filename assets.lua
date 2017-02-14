@@ -304,6 +304,7 @@ function loadAssets(id)
     ]]
   end
   if id == 17 then
+    loadSave()
     loadDia()
   end
   if id == 18 then
