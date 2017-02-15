@@ -543,7 +543,6 @@ function drawVirusFight1()
     if v1.explodeEndFrame >= 20 then
       v1.yes = false
       if v1.c.chat.msgs == 47 then
-        love.filesystem.write("savegame.txt", "v1.complete = true;virus1Lose = " .. virus1Lose .. ";")
         win[4].w = 200
         antivirus.status = "Virus Defeated"
         win[4].update = true
@@ -556,6 +555,7 @@ function drawVirusFight1()
         virus1Lose = virus1Lose + 1
         scene = 666
       end
+      saveGameFile()
     end
   end
 end

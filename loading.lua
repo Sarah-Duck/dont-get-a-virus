@@ -47,9 +47,15 @@ function drawPause()
     love.graphics.setBackgroundColor(0, 128, 128)
   end
 end
+function saveGameFile()
+  love.filesystem.write("savegame.txt","v1.complete = ".. bool2str(v1.complete) ..";virus1Lose = " .. virus1Lose .. ";v2.complete = ".. bool2str(v2.complete) ..";virus2Lose = " .. virus2Lose .. ";")
+end
+function resetGameFile()
+  love.filesystem.write("savegame.txt","v1.complete = false;virus1Lose = 0;v2.complete = false;virus2Lose = 0;")
+end
 function loadSave()
   if love.filesystem.exists("savegame.txt") == false then
-    love.filesystem.write("savegame.txt", "")
+    saveGameFile()
   else
     loadGame = love.filesystem.load("savegame.txt")
     loadGame()
@@ -58,5 +64,12 @@ function loadSave()
     loadProfile = love.filesystem.load("profile.txt")
     loadProfile()
     profile.setup = true
+  end
+end
+function bool2str(bool)
+  if bool == false then
+    return "false"
+  else
+    return "true"
   end
 end

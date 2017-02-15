@@ -111,7 +111,7 @@ end
 function updateSettings()
   if mouseClick(win[6].x+8, win[6].y+467, 384/2-4, 23) == true and layer[1] == 6 then
     love.audio.stop()
-    love.filesystem.remove("savefile.txt")
+    resetGameFile()
     loadRe()
   end
   if mouseClick(win[6].x+8, win[6].y+492, 384/2-4, 23) == true and layer[1] == 6 then
@@ -121,7 +121,7 @@ function updateSettings()
   end
   if mouseClick(win[6].x+8, win[6].y+517, 384/2-4, 23) == true and layer[1] == 6 then
     love.audio.stop()
-    love.filesystem.remove("savefile.txt")
+    resetGameFile()
     love.filesystem.remove("profile.txt")
     loadRe()
   end
