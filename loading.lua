@@ -60,11 +60,6 @@ function loadSave()
     loadGame = love.filesystem.load("savegame.txt")
     loadGame()
   end
-  if love.filesystem.exists("profile.txt") == true then
-    loadProfile = love.filesystem.load("profile.txt")
-    loadProfile()
-    profile.setup = true
-  end
 end
 function bool2str(bool)
   if bool == false then

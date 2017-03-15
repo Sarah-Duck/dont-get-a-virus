@@ -135,11 +135,6 @@ function loadVar()
   internet.load = 0
   internet.blinkTimer = 0
   internet.blink = false
-  profile = {}
-  profile.setup = false
-  profile.name = "No Name"
-  profile.gender = "Person"
-  profile.pronoun = {they,them,their}
   v1.yes = false
   v1.timer = 0
   v1.shakemin = 0
@@ -297,6 +292,7 @@ function loadVar()
   expl.deb[3].r = math.rad(0)
   expl.deb[3].rm = math.rad(1)
   expl.deb.load = false
+  eraseGame = false
   std = {}
   std[1] = {}
   std[1].title = "Baby"
@@ -429,6 +425,7 @@ function loadPre()
 end
 function loadRe()
   loading = 0
+  sys.mouse.p.p = false
   fade = 0
   loaded = true
   loadingId = 1

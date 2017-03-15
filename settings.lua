@@ -64,13 +64,18 @@ function drawSettings()
   for i=1,#stre do
     drawReSel(i)
   end
-  drawUpBox(8, 467, 384/2-4, 23, 2)
-  drawUpBox(8, 492, 384/2-4, 23, 2)
-  drawUpBox(8, 517, 384/2-4, 23, 2)
-  love.graphics.setColor(colors.font.dark)
-  love.graphics.print("Erase Save File", 14, 475)
-  love.graphics.print("Erase Profile", 14, 500)
-  love.graphics.print("Erase Both", 14, 525)
+  drawUpBox(8, 467+5, 384/2-4, 23, 2)
+  if eraseGame == false then
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("Erase Save File", 14, 475+5)
+  else
+    drawUpBox(30, 507, 60, 28, 2)
+    drawUpBox(110, 507, 60, 28, 2)
+    love.graphics.setColor(colors.font.dark)
+    love.graphics.print("Are you sure?", 24, 475+5)
+    love.graphics.print("Yes", 41, 517)
+    love.graphics.print("No", 128, 517)
+  end
 end
 function stencilBg()
   love.graphics.rectangle("fill", 88-64, 44+32, 152, 120)
@@ -109,21 +114,19 @@ function drawReSel(i)
   end
 end
 function updateSettings()
-  if mouseClick(win[6].x+8, win[6].y+467, 384/2-4, 23) == true and layer[1] == 6 then
-    love.audio.stop()
-    resetGameFile()
-    loadRe()
+  if mouseClick(win[6].x+8, win[6].y+467+5, 384/2-4, 23) == true and layer[1] == 6 then
+    eraseGame = true
+    win[6].update = true
   end
-  if mouseClick(win[6].x+8, win[6].y+492, 384/2-4, 23) == true and layer[1] == 6 then
-    love.audio.stop()
-    love.filesystem.remove("profile.txt")
-    loadRe()
-  end
-  if mouseClick(win[6].x+8, win[6].y+517, 384/2-4, 23) == true and layer[1] == 6 then
-    love.audio.stop()
-    resetGameFile()
-    love.filesystem.remove("profile.txt")
-    loadRe()
+  if eraseGame == true then
+    if mouseClick(win[6].x+30, win[6].y+507, 60, 28) == true and layer[1] == 6 then
+      love.audio.stop()
+      resetGameFile()
+      loadRe()
+    elseif mouseClick(win[6].x+110, win[6].y+507, 60, 28) == true and layer[1] == 6 then
+      eraseGame = false
+      win[6].update = true
+    end
   end
   for i=1,6 do
     if (layer[1] == 6 and win[6].hover == true and sys.mouse.p.p == true and sys.mouse.drag == false and
